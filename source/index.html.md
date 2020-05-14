@@ -25,8 +25,7 @@ search: true
 
 # Introduction
 
-Welcome to the Skynet API docs! You can use our API to upload your data to
-Skynet and manage it.
+Welcome to the Skynet SDK docs!
 
 We have language bindings in Shell, Python, JavaScript and Go! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
