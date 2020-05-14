@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Skynet Docs</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,41 +141,52 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nn {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .nl {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ni {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .bp {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vg {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .vi {
   color: #ffffff;
+  background-color: #272822;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .w {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+  background-color: #272822;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,25 +207,25 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all.js"></script>
+    <link href="stylesheets/screen-a1ce949a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;,&quot;python&quot;,&quot;go&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo.png" class="logo" alt="Logo" />
+      <img src="images/logo-42407883.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
+              <a href="#" data-language-name="python">python</a>
+              <a href="#" data-language-name="go">go</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -228,159 +239,144 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#skyfile" class="toc-h1 toc-link" data-title="Skyfile">Skyfile</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#upload-file" class="toc-h2 toc-link" data-title="Upload File">Upload File</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#skylink" class="toc-h1 toc-link" data-title="Skylink">Skylink</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#download-file" class="toc-h2 toc-link" data-title="Download File">Download File</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#encryption" class="toc-h1 toc-link" data-title="Encryption">Encryption</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-skykey" class="toc-h2 toc-link" data-title="Get Skykey">Get Skykey</a>
+                  </li>
+                  <li>
+                    <a href="#get-skykey-id" class="toc-h2 toc-link" data-title="Get Skykey ID">Get Skykey ID</a>
+                  </li>
+                  <li>
+                    <a href="#create-skykey" class="toc-h2 toc-link" data-title="Create Skykey">Create Skykey</a>
+                  </li>
+                  <li>
+                    <a href="#add-skykey" class="toc-h2 toc-link" data-title="Add Skykey">Add Skykey</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#blacklist" class="toc-h1 toc-link" data-title="Blacklist">Blacklist</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-blacklist" class="toc-h2 toc-link" data-title="Get Blacklist">Get Blacklist</a>
+                  </li>
+                  <li>
+                    <a href="#edit-blacklist" class="toc-h2 toc-link" data-title="Edit Blacklist">Edit Blacklist</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#portals" class="toc-h1 toc-link" data-title="Portals">Portals</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-portals" class="toc-h2 toc-link" data-title="Get Portals">Get Portals</a>
+                  </li>
+                  <li>
+                    <a href="#edit-portals" class="toc-h2 toc-link" data-title="Edit Portals">Edit Portals</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#statistics" class="toc-h1 toc-link" data-title="Statistics">Statistics</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-stats" class="toc-h2 toc-link" data-title="Get Stats">Get Stats</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#standard-responses" class="toc-h1 toc-link" data-title="Standard Responses">Standard Responses</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#success" class="toc-h2 toc-link" data-title="Success">Success</a>
+                  </li>
+                  <li>
+                    <a href="#error" class="toc-h2 toc-link" data-title="Error">Error</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/lord/slate'>Documentation Powered by Slate</a></li>
+            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Skynet API docs! You can use our API to upload your data to
+Skynet and manage it.</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in Shell, Python, JavaScript and Go! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/lord/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
-<pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
+<h1 id='authentication'>Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>// example POST curl call with Authentication
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"amount=123&amp;destination=abcd"</span> <span class="s2">"localhost:9980/wallet/siacoins"</span>
+</code></pre></div>
+<p>API authentication is enabled by default, using a password stored in a flat
+file. The location of this file is:</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
-</blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
+<ul>
+<li>Linux:   <code>$HOME/.sia/apipassword</code></li>
+<li>MacOS:   <code>$HOME/Library/Application Support/Sia/apipassword</code></li>
+<li>Windows: <code>%LOCALAPPDATA%\Sia\apipassword</code></li>
+</ul>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+The file contains a trailing newline, which must be trimmed before use.
 </aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<p>Authentication is HTTP Basic Authentication as described in <a href="https://tools.ietf.org/html/rfc2617">RFC 2617</a>, however, the username is the empty string. The flag does not enforce authentication on all API endpoints. Only endpoints that expose sensitive information or modify state require authentication.</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<p>For example, if the API password is &quot;foobar&quot; the request header should include</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">();</span>
-</code></pre>
+<p><code>Authorization: Basic OmZvb2Jhcg==</code></p>
+
+<p>And for a curl call the following would be included</p>
+
+<p><code>--user &quot;&quot;:&lt;apipassword&gt;</code></p>
+
+<p>Authentication can be disabled by passing the <code>--authenticate-api=false</code> flag to
+siad. You can change the password by modifying the password file, setting the
+<code>SIA_API_PASSWORD</code> environment variable, or passing the <code>--temp-password</code> flag
+to siad.</p>
+<h1 id='skyfile'>Skyfile</h1><h2 id='upload-file'>Upload File</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// This <span class="nb">command </span>uploads the file <span class="s1">'myImage.png'</span> to the Sia folder
+// <span class="s1">'var/skynet/images/myImage.png'</span><span class="nb">.</span> Users <span class="nb">who </span>download the file will see the name
+// <span class="s1">'image.png'</span><span class="nb">.</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skyfile/images/myImage.png?filename=image.png"</span> <span class="nt">--data-binary</span> @myImage.png
+</code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
-<td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
-</tr>
-</tbody></table>
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"skylink"</span><span class="p">:</span><span class="w">    </span><span class="s2">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">string</span><span class="w">
+</span><span class="nl">"merkleroot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">hash</span><span class="w">
+</span><span class="nl">"bitfield"</span><span class="p">:</span><span class="w">   </span><span class="mi">2048</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">int</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
+</span></code></pre></div>
+<p>This endpoint uploads a file to the network using a stream. If the upload stream
+POST call fails or quits before the file is fully uploaded, the file can be
+repaired by a
+subsequent call to the upload stream endpoint using the <code>repair</code> flag.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST /skynet/skyfile/&lt;siapath&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -389,37 +385,262 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
+<td>siapath</td>
+<td>Location where the file will reside in the renter on the network. The path must be non-empty, may not include any path traversal strings (&quot;./&quot;, &quot;../&quot;), and may not begin with a forward-slash character. If the &#39;root&#39; flag is not set, the path will be prefixed with &#39;var/skynet/&#39;, placing the skyfile into the Sia system&#39;s default skynet folder.</td>
 </tr>
 </tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<h3 id='query-string-parameters'>Query String Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>basechunkredundancy</td>
+<td>uint8</td>
+<td>The amount of redundancy to use when uploading the base chunk. The base chunk is the first chunk of the file, and is always uploaded using 1-of-N redundancy.</td>
+</tr>
+<tr>
+<td>convertpath</td>
+<td>string</td>
+<td>The siapath of an existing siafile that should be converted to a skylink. A new skyfile will be created. Both the new skyfile and the existing siafile are required to be maintained on the network in order for the skylink to remain active. This field is mutually exclusive with uploading streaming.</td>
+</tr>
+<tr>
+<td>filename</td>
+<td>string</td>
+<td>The name of the file. This name will be encoded into the skyfile metadata, and will be a part of the skylink. If the name changes, the skylink will change as well.</td>
+</tr>
+<tr>
+<td>dryrun</td>
+<td>bool</td>
+<td>If dryrun is set to true, the request will return the Skylink of the file without uploading the actual file to the Sia network.</td>
+</tr>
+<tr>
+<td>force</td>
+<td>bool</td>
+<td>If there is already a file that exists at the provided siapath, setting this flag will cause the new file to overwrite/delete the existing file. If this flag is not set, an error will be returned preventing the user from destroying existing data.</td>
+</tr>
+<tr>
+<td>mode</td>
+<td>uint32</td>
+<td>The file mode / permissions of the file. Users who download this file will be presented a file with this mode. If no mode is set, the default of 0644 will be used.</td>
+</tr>
+<tr>
+<td>root</td>
+<td>bool</td>
+<td>Whether or not to treat the siapath as being relative to the root directory. If this field is not set, the siapath will be interpreted as relative to &#39;var/skynet&#39;.</td>
+</tr>
+<tr>
+<td>skykeyname</td>
+<td>string</td>
+<td><strong>UNSTABLE - subject to change in v1.4.9</strong> The name of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
+</tr>
+<tr>
+<td>skykeyid</td>
+<td>string</td>
+<td><strong>UNSTABLE - subject to change in v1.4.9</strong> The ID of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
+</tr>
+</tbody></table>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<aside class="notice"> All query string parameters are optional </aside>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="o">.</span><span class="n">kittens</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  -X DELETE
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
+<aside class="warning">skykeyid and skykeyname can not be supplied at the same time</aside>
+<h3 id='http-request-headers'>HTTP Request Headers</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Content-Disposition</td>
+<td>string</td>
+<td>If the filename is set in the Content-Disposition field, that filename will be used as the filename of the object being uploaded. Note that this header is only taken into consideration when using a multipart form upload. For more details on setting Content-Disposition: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition</td>
+</tr>
+<tr>
+<td>Skynet-Disable-Force</td>
+<td>bool</td>
+<td>This request header allows overruling the behaviour of the <code>force</code> parameter that can be passed in through the query string parameters. This header is useful for Skynet portal operators that would like to have some control over the requests that are being passed to siad. To avoid having to parse query string parameters and overrule them that way, this header can be set to disable the force flag and disallow overwriting the file at the given siapath.</td>
+</tr>
+</tbody></table>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre>
+<aside class="notice"> All request headers are optional </aside>
+<h3 id='response-fields'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skylink</td>
+<td>string</td>
+<td>This is the skylink that can be used with the <code>/skynet/skylink</code> GET endpoint to retrieve the file that has been uploaded.</td>
+</tr>
+<tr>
+<td>merkleroot</td>
+<td>hash</td>
+<td>This is the hash that is encoded into the skylink.</td>
+</tr>
+<tr>
+<td>bitfield</td>
+<td>int</td>
+<td>This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.</td>
+</tr>
+</tbody></table>
+<h1 id='skylink'>Skylink</h1><h2 id='download-file'>Download File</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># entire file</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+
+<span class="c"># directory</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder"</span>
+
+<span class="c"># sub file</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"</span>
+</code></pre></div>
+<p>This endpoint downloads a skylink using http streaming. This call blocks until
+the data is received. There is a 30s default timeout applied to downloading a
+skylink. If the data can not be found within this 30s time constraint, a 404
+will be returned. This timeout is configurable through the query string
+parameters.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /skynet/skylink/&lt;skylink&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skylink</td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
+</tr>
+</tbody></table>
+<h3 id='query-string-parameters'>Query String Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>attachment</td>
+<td>bool</td>
+<td>If &#39;attachment&#39; is set to true, the Content-Disposition http header will be set to &#39;attachment&#39; instead of &#39;inline&#39;. This will cause web browsers to download the file as though it is an attachment instead of rendering it.</td>
+</tr>
+<tr>
+<td>format</td>
+<td>string</td>
+<td>If &#39;format&#39; is set, the skylink can point to a directory and it will return the data inside that directory. Format will decide the format in which it is returned. Currently we only support &#39;concat&#39;, which will return the concatenated data of all subfiles in that directory.</td>
+</tr>
+<tr>
+<td>timeout</td>
+<td>int</td>
+<td>If &#39;timeout&#39; is set, the download will fail if the Skyfile can not be retrieved  before it expires. Note that this timeout does not cover the actual download time, but rather covers the TTFB. Timeout is specified in seconds, a timeout  value of 0 will be ignored. If no timeout is given, the default will be used, which is a 30 second timeout. The maximum allowed timeout is 900s (15 minutes).</td>
+</tr>
+</tbody></table>
+<h3 id='http-response-headers'>HTTP Response Headers</h3>
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Skynet-File-Metadata</td>
+<td>SkyfileMetadata</td>
+<td>The header field &quot;Skynet-FileMetadata&quot; will be set such that it has an encoded json object which matches the modules.SkyfileMetadata struct. If a path was supplied, this metadata will be relative to the given path.</td>
+</tr>
+</tbody></table>
+<h3 id='http-head-request'>HTTP HEAD Request</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>The above command returns JSON structured like this</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"mode"</span><span class="p">:</span><span class="w">     </span><span class="mi">640</span><span class="p">,</span><span class="w">      </span><span class="err">//</span><span class="w"> </span><span class="err">os.FileMode</span><span class="w">
+</span><span class="nl">"filename"</span><span class="p">:</span><span class="w"> </span><span class="s2">"folder"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">string</span><span class="w">
+</span><span class="nl">"subfiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">         </span><span class="err">//</span><span class="w"> </span><span class="p">[]</span><span class="err">SkyfileSubfileMetadata</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"mode"</span><span class="p">:</span><span class="w">         </span><span class="mi">640</span><span class="p">,</span><span class="w">                </span><span class="err">//</span><span class="w"> </span><span class="err">os.FileMode</span><span class="w">
+  </span><span class="nl">"filename"</span><span class="p">:</span><span class="w">     </span><span class="s2">"folder/file1.txt"</span><span class="p">,</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">string</span><span class="w">
+  </span><span class="nl">"contenttype"</span><span class="p">:</span><span class="w">  </span><span class="s2">"text/plain"</span><span class="p">,</span><span class="w">       </span><span class="err">//</span><span class="w"> </span><span class="err">string</span><span class="w">
+  </span><span class="nl">"offset"</span><span class="p">:</span><span class="w">       </span><span class="mi">0</span><span class="p">,</span><span class="w">                  </span><span class="err">//</span><span class="w"> </span><span class="err">uint</span><span class="mi">64</span><span class="w">
+  </span><span class="nl">"len"</span><span class="p">:</span><span class="w">          </span><span class="mi">6</span><span class="w">                   </span><span class="err">//</span><span class="w"> </span><span class="err">uint</span><span class="mi">64</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
+</span></code></pre></div>
+<p>This curl command performs a HEAD request that fetches the headers for
+the given skylink. These headers are identical to the ones that would be
+returned if the request had been a GET request. </p>
+<h1 id='encryption'>Encryption</h1><h2 id='get-skykey'>Get Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"id=gi5z8cf5NWbcvPBaBn0DFQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"skykey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>UNSTABLE - subject to change in v1.4.9</strong></p>
+
+<p>This endpoint returns the base-64 encoded skykey stored under that name, or with
+that ID.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /skynet/skykey/&lt;name|id&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>name of the skykey being queried</td>
+</tr>
+<tr>
+<td>id</td>
+<td>base-64 encoded ID of the skykey being queried</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skykey</td>
+<td>string</td>
+<td>base-64 encoded skykey</td>
+</tr>
+</tbody></table>
+<h2 id='get-skykey-id'>Get Skykey ID</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykeyid"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"skykeyid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gi5z8cf5NWbcvPBaBn0DFQ=="</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>UNSTABLE - subject to change in v1.4.9</strong></p>
+
+<p>This endpoint returns the base-64 encoded ID of the skykey stored under that
+name.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET /skynet/skykeyid/&lt;name&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -428,76 +649,308 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
+<td>name</td>
+<td>name of the skykey being queried</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
+<h3 id='response-fields-2'>Response Fields</h3>
 <table><thead>
 <tr>
-<th>Error Code</th>
-<th>Meaning</th>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
+<td>skykeyid</td>
+<td>string</td>
+<td>base-64 encoded skykey ID</td>
 </tr>
 </tbody></table>
+<h2 id='create-skykey'>Create Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"skykey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>UNSTABLE - subject to change in v1.4.9</strong></p>
+
+<p>This endpoint creates a skykey stored under the given name.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>POST /skynet/createskykey/&lt;name&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>desired name of the skykey</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-3'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skykey</td>
+<td>string</td>
+<td>base-64 encoded skykey</td>
+</tr>
+</tbody></table>
+<h2 id='add-skykey'>Add Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
+</code></pre></div>
+<p><strong>UNSTABLE - subject to change in v1.4.9</strong></p>
+
+<p>This endpoint stores the given skykey with the renter&#39;s skykey manager.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>POST /skynet/addskykey/&lt;skykey&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>skykey</td>
+<td>base-64 encoded skykey</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3>
+<p>standard success or error response. See <a href="#standard-responses">standard
+responses</a>.</p>
+<h1 id='blacklist'>Blacklist</h1><h2 id='get-blacklist'>Get Blacklist</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/blacklist"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"blacklist"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
+    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
+    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of merkleroots that are blacklisted.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /skynet/blacklist</code></p>
+<h3 id='response-fields'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>blacklist</td>
+<td>object</td>
+<td>The blacklist is a list of merkle roots, which are hashes, that are blacklisted.</td>
+</tr>
+</tbody></table>
+<h2 id='edit-blacklist'>Edit Blacklist</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// add skylink
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"add" : ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"]}'</span> <span class="s2">"localhost:9980/skynet/blacklist"</span>
+
+// remove skylink
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"]}'</span> <span class="s2">"localhost:9980/skynet/blacklist"</span>
+</code></pre></div>
+<p>This endpoint allows to update the list of skylinks that should be blacklisted
+from Skynet. It can be used to both add and remove skylinks from the blacklist.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /skynet/blacklist</code></p>
+<h3 id='request-body-fields'>Request Body Fields</h3>
+<aside class="warning">At least one of the following fields needs to be non empty</aside>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>add</td>
+<td>array of strings</td>
+<td>add is an array of skylinks that should be added to the blacklist.</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>array of strings</td>
+<td>remove is an array of skylinks that should be removed from the blacklist.</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-2'>Response Fields</h3>
+<p>standard success or error response. See <a href="#standard-responses">standard
+responses</a>.</p>
+<h1 id='portals'>Portals</h1><h2 id='get-portals'>Get Portals</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/portals"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"portals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siasky.net:443"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"public"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of known Skynet portals.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /skynet/portals</code></p>
+<h3 id='response-fields'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>string</td>
+<td>The IP or domain name and the port of the portal. Must be a valid network address.</td>
+</tr>
+<tr>
+<td>public</td>
+<td>bool</td>
+<td>Indicates whether the portal can be accessed publicly or not.</td>
+</tr>
+</tbody></table>
+<h2 id='edit-portals'>Edit Portals</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// add portal
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"add" : [{"address":"siasky.net:443","public":true}]}'</span> <span class="s2">"localhost:9980/skynet/portals"</span>
+
+// remove portal
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["siasky.net:443"]}'</span> <span class="s2">"localhost:9980/skynet/portals"</span>
+</code></pre></div>
+<p>This endpoint allows to update the list of known Skynet portals. It can be used
+to both add and remove portals from the list.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>POST /skynet/portals</code></p>
+<h3 id='request-body-fields'>Request Body Fields</h3>
+<aside class="warning">At least one of the following fields needs to be non empty</aside>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>add</td>
+<td>array of SkynetPortal</td>
+<td>add is an array of portal info that should be added to the list of portals.</td>
+</tr>
+<tr>
+<td>remove</td>
+<td>array of strings</td>
+<td>remove is an array of portal network addresses that should be removed from the</td>
+</tr>
+</tbody></table>
+
+<p>list of portals.</p>
+<h3 id='response-fields-2'>Response Fields</h3>
+<p>standard success or error response. See <a href="#standard-responses">standard
+responses</a>.</p>
+<h1 id='statistics'>Statistics</h1><h2 id='get-stats'>Get Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/stats"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"uploadstats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"numfiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalsize"</span><span class="p">:</span><span class="w"> </span><span class="mi">44527895</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"versioninfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"version"</span><span class="p">:</span><span class="w">     </span><span class="s2">"1.4.4-master"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gitrevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd5a83712"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"performancestats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns statistical information about Skynet, e.g. number of files uploaded</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET /skynet/stats</code></p>
+<h3 id='response-fields'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uploadstats</td>
+<td>object</td>
+<td>Uploadstats is an object with statistics about the data uploaded to Skynet.</td>
+</tr>
+<tr>
+<td>numfiles</td>
+<td>int</td>
+<td>Numfiles is the total number of files uploaded to Skynet.</td>
+</tr>
+<tr>
+<td>totalsize</td>
+<td>int</td>
+<td>Totalsize is the total amount of data in bytes uploaded to Skynet.</td>
+</tr>
+<tr>
+<td>versioninfo</td>
+<td>object</td>
+<td>Versioninfo is an object that contains the node&#39;s version information.</td>
+</tr>
+<tr>
+<td>version</td>
+<td>string</td>
+<td>Version is the siad version the node is running.</td>
+</tr>
+<tr>
+<td>gitrevision</td>
+<td>string</td>
+<td>Gitrevision refers to the commit hash used to build said.</td>
+</tr>
+<tr>
+<td>performancestats</td>
+<td>object</td>
+<td>PerformanceStats is an object that contains a breakdown of performance metrics for the skynet endpoints. Things are broken down into containers based on the type of action performed. For example, there is a container for downloads less than 64kb in size. <br><br>Within each container, there is a bucket of half lives. Every time a data point is added to a container, it is put in to every bucket, counting up the total number of requests. The buckets decay at the stated half life, which means they give a good representation of how much activity there has been over twice their halflife. So for the one minute bucket, the total number of datapoints in the bucket is a good representation of how many things have happened in the past two minutes.<br><br>Within each bucket, there are several fields. For example, the n60ms field represents the number of requests that finished in under 60ms. There is an NErr field which gets incremented if there is a failure that can be attributed to siad.<br><br>Every download request will go into the TimeToFirstByte container, as well as the appropriate download container based on the size of the download. Within the chosen containers, every bucket will have the same field incremented. The field that gets incremented is the one that corresponds to the amount of time the request took.<br><br>The performance stats fields are not protected by a compatibility promise, and may change over time.</td>
+</tr>
+</tbody></table>
+<h1 id='standard-responses'>Standard Responses</h1><h2 id='success'>Success</h2>
+<p>The standard response indicating the request was successfully processed is HTTP
+status code <code>204 No Content</code>. If the request was successfully processed and the
+server responded with JSON the HTTP status code is <code>200 OK</code>. Specific endpoints
+may specify other 2xx status codes on success.</p>
+<h2 id='error'>Error</h2><div class="highlight"><pre class="highlight go tab-go"><code><span class="p">{</span>
+    <span class="s">"message"</span><span class="o">:</span> <span class="n">String</span>
+
+    <span class="c">// There may be additional fields depending on the specific error.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The standard error response indicating the request failed for any reason, is a
+4xx or 5xx HTTP status code with an error JSON object describing the error.</p>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
+                <a href="#" data-language-name="python">python</a>
+                <a href="#" data-language-name="go">go</a>
           </div>
       </div>
     </div>
