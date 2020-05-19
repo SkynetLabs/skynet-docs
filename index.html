@@ -236,13 +236,10 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
             <a href="#skyfile" class="toc-h1 toc-link" data-title="Skyfile">Skyfile</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#upload-file" class="toc-h2 toc-link" data-title="Upload File">Upload File</a>
+                    <a href="#uploading" class="toc-h2 toc-link" data-title="Uploading">Uploading</a>
                   </li>
               </ul>
           </li>
@@ -302,6 +299,9 @@
               </ul>
           </li>
           <li>
+            <a href="#api-authentication" class="toc-h1 toc-link" data-title="API Authentication">API Authentication</a>
+          </li>
+          <li>
             <a href="#standard-responses" class="toc-h1 toc-link" data-title="Standard Responses">Standard Responses</a>
               <ul class="toc-list-h2">
                   <li>
@@ -323,56 +323,52 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Skynet SDK docs!</p>
 
-<p>We have language bindings in Shell, Python, JavaScript and Go! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have SDK support for several languages, you can view code examples in the
+dark area to the right. Switch to the programming language of your choice by
+clicking the the tabs in the top right.</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>// example POST curl call with Authentication
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"amount=123&amp;destination=abcd"</span> <span class="s2">"localhost:9980/wallet/siacoins"</span>
-</code></pre></div>
-<p>API authentication is enabled by default, using a password stored in a flat
-file. The location of this file is:</p>
+<p>This documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>.</p>
+<h1 id='skyfile'>Skyfile</h1><h2 id='uploading'>Uploading</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skyfile/image.png"</span> <span class="nt">--data-binary</span> @image.png
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">siaskynet</span> <span class="kn">import</span> <span class="n">Skynet</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">Skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"./src.jpg"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">upload</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">onUploadProgress</span> <span class="o">=</span> <span class="p">(</span><span class="nx">progress</span><span class="p">,</span> <span class="p">{</span> <span class="nx">loaded</span><span class="p">,</span> <span class="nx">total</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">`Progress </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">progress</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)}</span><span class="s2">%`</span><span class="p">);</span>
+<span class="p">};</span>
 
-<ul>
-<li>Linux:   <code>$HOME/.sia/apipassword</code></li>
-<li>MacOS:   <code>$HOME/Library/Application Support/Sia/apipassword</code></li>
-<li>Windows: <code>%LOCALAPPDATA%\Sia\apipassword</code></li>
-</ul>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">upload</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="nx">onUploadProgress</span> <span class="p">});</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// handle error</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
-<aside class="notice">
-The file contains a trailing newline, which must be trimmed before use.
-</aside>
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="p">)</span>
 
-<p>Authentication is HTTP Basic Authentication as described in <a href="https://tools.ietf.org/html/rfc2617">RFC 2617</a>, however, the username is the empty string. The flag does not enforce authentication on all API endpoints. Only endpoints that expose sensitive information or modify state require authentication.</p>
-
-<p>For example, if the API password is &quot;foobar&quot; the request header should include</p>
-
-<p><code>Authorization: Basic OmZvb2Jhcg==</code></p>
-
-<p>And for a curl call the following would be included</p>
-
-<p><code>--user &quot;&quot;:&lt;apipassword&gt;</code></p>
-
-<p>Authentication can be disabled by passing the <code>--authenticate-api=false</code> flag to
-siad. You can change the password by modifying the password file, setting the
-<code>SIA_API_PASSWORD</code> environment variable, or passing the <code>--temp-password</code> flag
-to siad.</p>
-<h1 id='skyfile'>Skyfile</h1><h2 id='upload-file'>Upload File</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// This <span class="nb">command </span>uploads the file <span class="s1">'myImage.png'</span> to the Sia folder
-// <span class="s1">'var/skynet/images/myImage.png'</span><span class="nb">.</span> Users <span class="nb">who </span>download the file will see the name
-// <span class="s1">'image.png'</span><span class="nb">.</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skyfile/images/myImage.png?filename=image.png"</span> <span class="nt">--data-binary</span> @myImage.png
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">UploadFile</span><span class="p">(</span><span class="s">"./src.jpg"</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Unable to upload: %v"</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="nl">"skylink"</span><span class="p">:</span><span class="w">    </span><span class="s2">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">string</span><span class="w">
-</span><span class="nl">"merkleroot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">hash</span><span class="w">
-</span><span class="nl">"bitfield"</span><span class="p">:</span><span class="w">   </span><span class="mi">2048</span><span class="w"> </span><span class="err">//</span><span class="w"> </span><span class="err">int</span><span class="w">
+</span><span class="nl">"skylink"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"merkleroot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"bitfield"</span><span class="p">:</span><span class="w"> </span><span class="mi">2048</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint uploads a file to the network using a stream. If the upload stream
-POST call fails or quits before the file is fully uploaded, the file can be
-repaired by a
+<p>This endpoint uploads a file to the network using a stream. If the upload call
+fails or quits before the file is fully uploaded, the file can be repaired by a
 subsequent call to the upload stream endpoint using the <code>repair</code> flag.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>POST /skynet/skyfile/&lt;siapath&gt;</code></p>
@@ -389,6 +385,8 @@ subsequent call to the upload stream endpoint using the <code>repair</code> flag
 </tr>
 </tbody></table>
 <h3 id='query-string-parameters'>Query String Parameters</h3>
+<aside class="notice"> All query string parameters are optional </aside>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -432,21 +430,21 @@ subsequent call to the upload stream endpoint using the <code>repair</code> flag
 <td>Whether or not to treat the siapath as being relative to the root directory. If this field is not set, the siapath will be interpreted as relative to &#39;var/skynet&#39;.</td>
 </tr>
 <tr>
-<td>skykeyname</td>
+<td>skykeyname <strong>UNSTABLE - subject to change in v1.4.9</strong></td>
 <td>string</td>
-<td><strong>UNSTABLE - subject to change in v1.4.9</strong> The name of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
+<td>The name of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
 </tr>
 <tr>
-<td>skykeyid</td>
+<td>skykeyid <strong>UNSTABLE - subject to change in v1.4.9</strong></td>
 <td>string</td>
-<td><strong>UNSTABLE - subject to change in v1.4.9</strong> The ID of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
+<td>The ID of the skykey that will be used to encrypt this skyfile. Only the name or the ID of the skykey should be specified.</td>
 </tr>
 </tbody></table>
 
-<aside class="notice"> All query string parameters are optional </aside>
-
-<aside class="warning">skykeyid and skykeyname can not be supplied at the same time</aside>
+<aside class="warning">the parameters 'skykeyid' and 'skykeyname' can not be supplied at the same time</aside>
 <h3 id='http-request-headers'>HTTP Request Headers</h3>
+<aside class="notice"> All request headers are optional </aside>
+
 <table><thead>
 <tr>
 <th>Name</th>
@@ -465,8 +463,6 @@ subsequent call to the upload stream endpoint using the <code>repair</code> flag
 <td>This request header allows overruling the behaviour of the <code>force</code> parameter that can be passed in through the query string parameters. This header is useful for Skynet portal operators that would like to have some control over the requests that are being passed to siad. To avoid having to parse query string parameters and overrule them that way, this header can be set to disable the force flag and disallow overwriting the file at the given siapath.</td>
 </tr>
 </tbody></table>
-
-<aside class="notice"> All request headers are optional </aside>
 <h3 id='response-fields'>Response Fields</h3>
 <table><thead>
 <tr>
@@ -929,6 +925,36 @@ responses</a>.</p>
 <td>PerformanceStats is an object that contains a breakdown of performance metrics for the skynet endpoints. Things are broken down into containers based on the type of action performed. For example, there is a container for downloads less than 64kb in size. <br><br>Within each container, there is a bucket of half lives. Every time a data point is added to a container, it is put in to every bucket, counting up the total number of requests. The buckets decay at the stated half life, which means they give a good representation of how much activity there has been over twice their halflife. So for the one minute bucket, the total number of datapoints in the bucket is a good representation of how many things have happened in the past two minutes.<br><br>Within each bucket, there are several fields. For example, the n60ms field represents the number of requests that finished in under 60ms. There is an NErr field which gets incremented if there is a failure that can be attributed to siad.<br><br>Every download request will go into the TimeToFirstByte container, as well as the appropriate download container based on the size of the download. Within the chosen containers, every bucket will have the same field incremented. The field that gets incremented is the one that corresponds to the amount of time the request took.<br><br>The performance stats fields are not protected by a compatibility promise, and may change over time.</td>
 </tr>
 </tbody></table>
+<h1 id='api-authentication'>API Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>// example POST curl call with Authentication
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"amount=123&amp;destination=abcd"</span> <span class="s2">"localhost:9980/wallet/siacoins"</span>
+</code></pre></div>
+<p>API authentication is enabled by default, using a password stored in a flat
+file. The location of this file is:</p>
+
+<ul>
+<li>Linux:   <code>$HOME/.sia/apipassword</code></li>
+<li>MacOS:   <code>$HOME/Library/Application Support/Sia/apipassword</code></li>
+<li>Windows: <code>%LOCALAPPDATA%\Sia\apipassword</code></li>
+</ul>
+
+<aside class="notice">
+The file contains a trailing newline, which must be trimmed before use.
+</aside>
+
+<p>Authentication is HTTP Basic Authentication as described in <a href="https://tools.ietf.org/html/rfc2617">RFC 2617</a>, however, the username is the empty string. The flag does not enforce authentication on all API endpoints. Only endpoints that expose sensitive information or modify state require authentication.</p>
+
+<p>For example, if the API password is &quot;foobar&quot; the request header should include</p>
+
+<p><code>Authorization: Basic OmZvb2Jhcg==</code></p>
+
+<p>And for a curl call the following would be included</p>
+
+<p><code>--user &quot;&quot;:&lt;apipassword&gt;</code></p>
+
+<p>Authentication can be disabled by passing the <code>--authenticate-api=false</code> flag to
+siad. You can change the password by modifying the password file, setting the
+<code>SIA_API_PASSWORD</code> environment variable, or passing the <code>--temp-password</code> flag
+to siad.</p>
 <h1 id='standard-responses'>Standard Responses</h1><h2 id='success'>Success</h2>
 <p>The standard response indicating the request was successfully processed is HTTP
 status code <code>204 No Content</code>. If the request was successfully processed and the
