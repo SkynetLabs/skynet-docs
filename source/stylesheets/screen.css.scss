@@ -65,6 +65,7 @@ html, body {
   // language selector for mobile devices
   .lang-selector {
     display: none;
+
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
@@ -113,6 +114,7 @@ html, body {
     transition-duration: 180ms;
     transition-timing-function: ease-in-out;
     background: $nav-subitem-bg;
+
     &.visible {
       height: 30%;
       margin-bottom: 1em;
@@ -151,16 +153,22 @@ html, body {
     transition-duration: 200ms;
   }
 
-  // This is the currently selected ToC entry
-  .toc-link.active {
-    background-color: $nav-active-bg;
-    color: $nav-active-text;
-  }
+  .toc-link {
+    // This is the currently selected ToC entry
+    &.active {
+      background-color: $nav-active-bg;
+      color: $nav-active-text;
+    }
 
-  // this is parent links of the currently selected ToC entry
-  .toc-link.active-parent {
-    background-color: $nav-active-parent-bg;
-    color: $nav-active-parent-text;
+    // this is parent links of the currently selected ToC entry
+    &.active-parent {
+      background-color: $nav-active-parent-bg;
+      color: $nav-active-parent-text;
+    }
+
+    &:hover {
+      background-color: $hover-bg;
+    }
   }
 
   .toc-list-h2 {
@@ -189,7 +197,7 @@ html, body {
     }
 
     li {
-      font-size: 0.8em;
+      font-size: 0.6em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -200,8 +208,6 @@ html, body {
   padding: 0 $nav-padding 0 $nav-padding;
   display: block;
   overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
   text-decoration: none;
   color: $nav-text;
   transition-property: background;
@@ -236,7 +242,7 @@ html, body {
     vertical-align: bottom;
   }
 
-  transition: left 0.3s ease-in-out;
+  transition: left 0.1s ease-in-out;
 
   &:hover { opacity: 1; }
   &.open {left: $nav-width}
@@ -281,6 +287,7 @@ html, body {
   background-color: $lang-select-bg;
   width: 100%;
   font-weight: bold;
+
   a {
     display: block;
     float:left;
@@ -297,6 +304,11 @@ html, body {
 
     &.active {
       background-color: $lang-select-active-bg;
+      color: $lang-select-active-text;
+    }
+
+    &:hover {
+      background-color: $hover-bg;
       color: $lang-select-active-text;
     }
   }

@@ -11,7 +11,7 @@ curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGv
 
 # sub file
 curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"
-```  
+```
 
 This endpoint downloads a skylink using http streaming. This call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
@@ -20,6 +20,7 @@ will be returned. This timeout is configurable through the query string
 parameters.
 
 ### HTTP Request
+
 `GET /skynet/skylink/<skylink>`
 
 ### URL Parameters
@@ -68,4 +69,4 @@ curl -I -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCb
 
 This curl command performs a HEAD request that fetches the headers for
 the given skylink. These headers are identical to the ones that would be
-returned if the request had been a GET request. 
+returned if the request had been a GET request.
