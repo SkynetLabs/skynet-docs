@@ -154,6 +154,8 @@ html, body {
   }
 
   .toc-link {
+    color: $nav-text;
+
     // This is the currently selected ToC entry
     &.active {
       background-color: $nav-active-bg;
@@ -168,6 +170,7 @@ html, body {
 
     &:hover {
       background-color: $hover-bg;
+      color: $nav-active-text;
     }
   }
 
