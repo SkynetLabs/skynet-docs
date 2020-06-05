@@ -28,8 +28,6 @@ search: true
 
 Welcome to the Skynet SDK docs!
 
-We have SDK support for several languages, you can view code examples in the
+We have SDK support for several languages. You can view code examples in the
 dark area to the right. Switch to the programming language of your choice by
-clicking the the tabs in the top right.
-
-This documentation page was created with [Slate](https://github.com/slatedocs/slate).
+clicking the tabs in the top right.

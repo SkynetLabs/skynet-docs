@@ -1,6 +1,6 @@
 # Upload
 
-## Uploading a File 
+## Uploading a File
 
 ```shell
 curl "https://siasky.net/skynet/skyfile" -F file=@image.png
@@ -25,7 +25,7 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 	"fmt"
 )
-                        
+
 func main() {
 	response, err := skynet.UploadFile("image.jpg", skynet.DefaultUploadOptions)
 	if err != nil {
@@ -35,19 +35,19 @@ func main() {
 }
 ```
 
-> The above command returns JSON structured like this
+> The above command returns JSON structured like this:
 
 ```json
 {
-"skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
-"merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
-"bitfield": 2048
+  "skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
+  "merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
+  "bitfield": 2048
 }
 ```
 
 Uploading a file to Skynet can be done through a Skynet portal or your
 local siad instance. All SDKs follow the pattern `skynet.Upload(path,
-Settings)` as much as possible. The `Settings` 
+Settings)` as much as possible. The `Settings`
 
 ### Upload Settings
 
@@ -77,12 +77,14 @@ curl "https://siasky.net/skynet/skyfile" -F files[]=@./images/image1.png -F file
 
 ```python
 from siaskynet import Skynet
+
 response = Skynet.upload_directory("./images")
 print(responsek)
 ```
 
 ```javascript
 import { uploadDirectory } from "skynet-js";
+
 const response = await uploadDirectory(portalUrl, directory, filename);
 console.log(response)
 ```
@@ -94,7 +96,7 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 	"fmt"
 )
-                        
+
 func main() {
 	response, err := skynet.UploadDirectory("./images", skynet.DefaultUploadOptions)
 	if err != nil {
@@ -108,9 +110,9 @@ func main() {
 
 ```json
 {
-"skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
-"merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
-"bitfield": 2048
+  "skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
+  "merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
+  "bitfield": 2048
 }
 ```
 
@@ -118,7 +120,7 @@ It is possible to upload a directory as a single piece of content. Doing this
 will allow to address your content under one skylink, and access the files by
 their path. This is especially useful for webapps.
 
-Directory uploads works using multipart form upload. 
+Directory uploads works using multipart form upload.
 
 ### Upload Directory Settings
 
@@ -178,7 +180,6 @@ Name | Type | Description
 Content-Disposition | string | If the filename is set in the Content-Disposition field, that filename will be used as the filename of the object being uploaded. Note that this header is only taken into consideration when using a multipart form upload. For more details on setting Content-Disposition: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
 Skynet-Disable-Force | bool | This request header allows overruling the behaviour of the `force` parameter that can be passed in through the query string parameters. This header is useful for Skynet portal operators that would like to have some control over the requests that are being passed to siad. To avoid having to parse query string parameters and overrule them that way, this header can be set to disable the force flag and disallow overwriting the file at the given siapath.
 
-
 ### Response Fields
 
 Field | Type | Description
@@ -191,4 +192,4 @@ bitfield | int | This is the bitfield that gets encoded into the skylink. The bi
 
 TODO
 
-- link to list of public portals 
+- link to list of public portals
