@@ -1,43 +1,62 @@
-# Upload
+# Uploading to Skynet
 
 ## Uploading a File
 
 ```shell
-curl "https://siasky.net/skynet/skyfile" -F file=@image.png
+curl -X POST "https://siasky.net/skynet/skyfile" -F file=@image.jpg
+```
+
+```javascript
+const skynet = require('@nebulous/skynet');
+
+(async () => {
+	const skylink = await skynet.UploadFile(
+		"./image.jpg",
+		skynet.DefaultUploadOptions
+	);
+	console.log(`Upload successful, skylink: ${skylink}`);
+})();
 ```
 
 ```python
 from siaskynet import Skynet
-response = Skynet.upload_file("image.jpg")
-print(responsek)
-```
 
-```javascript
-import { upload } from "skynet-js";
-const response = await upload(portalUrl, file);
-console.log(response)
+skylink = Skynet.upload_file("image.jpg")
+print("Upload successful, skylink: " + skylink)
 ```
 
 ```go
 package main
 
 import (
-	skynet "github.com/NebulousLabs/go-skynet"
 	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
 )
 
 func main() {
-	response, err := skynet.UploadFile("image.jpg", skynet.DefaultUploadOptions)
+	skylink, err := skynet.UploadFile("./image.jpg", skynet.DefaultUploadOptions)
 	if err != nil {
-		panic(err)
+		fmt.Println("Unable to upload:", err.Error())
+		return
 	}
-	fmt.Printf("%+v", response)
+	fmt.Printf("Upload successful, skylink: %v\n", skylink)
 }
 ```
 
-> The above command returns JSON structured like this:
+Uploading a file to Skynet can be done through a Skynet portal or your
+local siad instance. All SDKs follow the pattern `skynet.Upload(path,
+Settings)` as much as possible.
 
-```json
+### Upload Settings
+
+Field      | Description
+---------- | -----------
+`portal`   | The URL of the portal
+`filename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
+
+### Upload Response
+
+```shell
 {
   "skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
   "merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
@@ -45,24 +64,25 @@ func main() {
 }
 ```
 
-Uploading a file to Skynet can be done through a Skynet portal or your
-local siad instance. All SDKs follow the pattern `skynet.Upload(path,
-Settings)` as much as possible. The `Settings`
+```javascript
+// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+```
 
-### Upload Settings
+```python
+# skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+```
 
-Field     | Description
---------- | -----------
-portal    | the URL of the portal
-filename  | custom filename, this is the filename that will be returned when downloading the file in a browser
+```go
+// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+```
 
-### Upload Response
+The response will contain some or all of these fields:
 
-Field     | Description
---------- | -----------
-skylink   | `TODO`
-merkleroot | `TODO`
-bitfield | `TODO`
+Field        | Description
+------------ | -----------
+`skylink`    | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
+`merkleroot` | This is the hash that is encoded into the skylink.
+`bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
 <!-- ### Public Portal
 Uploading can be done through a Skynet portal, or your own Sia node. If a file
@@ -78,37 +98,56 @@ curl "https://siasky.net/skynet/skyfile" -F files[]=@./images/image1.png -F file
 ```python
 from siaskynet import Skynet
 
-response = Skynet.upload_directory("./images")
-print(responsek)
+url = Skynet.upload_directory("./images")
+print("Upload successful, url: " + url)
 ```
 
 ```javascript
-import { uploadDirectory } from "skynet-js";
+const skynet = require('@nebulous/skynet');
 
-const response = await uploadDirectory(portalUrl, directory, filename);
-console.log(response)
+(async () => {
+	const url = await skynet.UploadDirectory(
+		"./images",
+		skynet.DefaultUploadOptions
+	);
+	console.log(`Upload successful, url: ${url}`);
+})();
 ```
 
 ```go
 package main
 
 import (
-	skynet "github.com/NebulousLabs/go-skynet"
 	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
 )
 
 func main() {
-	response, err := skynet.UploadDirectory("./images", skynet.DefaultUploadOptions)
+	url, err := skynet.UploadDirectory("./images", skynet.DefaultUploadOptions)
 	if err != nil {
-		panic(err)
+		fmt.Println("Unable to upload:", err.Error())
+		return
 	}
-	fmt.Printf("%+v", response)
+	fmt.Printf("Upload successful, url: %v\n", url)
 }
 ```
 
-> The above command returns JSON structured like this
+It is possible to upload a directory as a single piece of content. Doing this
+will allow you to address your content under one skylink, and access the files
+by their path. This is especially useful for webapps.
 
-```json
+Directory uploads work using multipart form upload.
+
+### Upload Directory Settings
+
+Field       | Description
+----------- | -----------
+`portal`    | The URL of the portal
+`filename`  | Custom filename, this is the filename that will be returned when downloading the file in a browser
+
+### Upload Response
+
+```shell
 {
   "skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
   "merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
@@ -116,26 +155,23 @@ func main() {
 }
 ```
 
-It is possible to upload a directory as a single piece of content. Doing this
-will allow to address your content under one skylink, and access the files by
-their path. This is especially useful for webapps.
+```javascript
+// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+```
 
-Directory uploads works using multipart form upload.
+```python
+# url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+```
 
-### Upload Directory Settings
+```go
+// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+```
 
-Field     | Description
---------- | -----------
-portal    | the URL of the portal
-filename  | custom filename, this is the filename that will be returned when downloading the file in a browser
-
-### Upload Response
-
-Field     | Description
---------- | -----------
-skylink   | `TODO`
-merkleroot | `TODO`
-bitfield | `TODO`
+Field        | Description
+------------ | -----------
+`skylink`    | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
+`merkleroot` | This is the hash that is encoded into the skylink.
+`bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
 <!---
 ## API Documentation

@@ -1,4 +1,4 @@
-# Skylink
+# Downloading from Skynet
 
 ## Download File
 
@@ -11,6 +11,50 @@ curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGv
 
 # sub file
 curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"
+```
+
+```javascript
+const skynet = require('@nebulous/skynet');
+
+// Must have a 'skylink' from an earlier upload.
+
+(async () => {
+	await skynet.DownloadFile(
+		"./dst.jpg",
+		skylink,
+		skynet.DefaultDownloadOptions
+	);
+	console.log('Download successful');
+})();
+```
+
+```python
+from siaskynet import Skynet
+
+# Must have a 'skylink' from an earlier upload.
+
+Skynet.download_file("./dst.jpg", skylink)
+print("Download successful")
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	// Must have a 'skylink' from an earlier upload.
+
+	err = skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+	if err != nil {
+		fmt.Println("Something went wrong, please try again.\nError:", err.Error())
+		return
+	}
+	fmt.Println("Download successful")
+}
 ```
 
 This endpoint downloads a skylink using http streaming. This call blocks until
@@ -49,21 +93,21 @@ Skynet-File-Metadata | SkyfileMetadata | The header field "Skynet-FileMetadata" 
 curl -I -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
-> The above command returns JSON structured like this
+> The above command returns JSON structured like this:
 
 ```json
 {
-"mode":     640,      // os.FileMode
-"filename": "folder", // string
-"subfiles": [         // []SkyfileSubfileMetadata | null
-  {
-  "mode":         640,                // os.FileMode
-  "filename":     "folder/file1.txt", // string
-  "contenttype":  "text/plain",       // string
-  "offset":       0,                  // uint64
-  "len":          6                   // uint64
-  }
-]
+  "mode":     640,      // os.FileMode
+  "filename": "folder", // string
+  "subfiles": [         // []SkyfileSubfileMetadata | null
+    {
+    "mode":         640,                // os.FileMode
+    "filename":     "folder/file1.txt", // string
+    "contenttype":  "text/plain",       // string
+    "offset":       0,                  // uint64
+    "len":          6                   // uint64
+    }
+  ]
 }
 ```
 
