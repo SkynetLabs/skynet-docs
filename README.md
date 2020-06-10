@@ -44,6 +44,12 @@ Test | JavaScript | Python | Go
 -- | -- | -- | --
 Directory walking | **No** | **No** | **No**
 
+### Misc
+
+-- | JavaScript | Python | Go
+-- | -- | -- | --
+Ability to set request timeout | **No** | **Open PR** | **No**
+
 ## Building the docs
 
 For information on building the docs using [Slate](https://github.com/slatedocs/slate) see [here](https://github.com/slatedocs/slate/wiki#getting-started).
