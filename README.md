@@ -1,6 +1,13 @@
 # Skynet SDK Docs
 
-Documentation for the Skynet SDKs in various languages.
+Documentation for the Skynet SDKs in various languages:
+
+- Shell (using curl)
+- [NodeJS](https://github.com/NebulousLabs/nodejs-skynet)
+- [Python](https://github.com/NebulousLabs/python-skynet)
+- [Go](https://github.com/NebulousLabs/go-skynet)
+
+Unofficial SDKs are not documented here.
 
 ## Status of SDKs
 
