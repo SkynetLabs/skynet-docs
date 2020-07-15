@@ -200,7 +200,7 @@ html, body {
     }
 
     li {
-      font-size: 0.6em;
+      font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -288,12 +288,14 @@ html, body {
 
 .lang-selector {
   background-color: $lang-select-bg;
-  width: 100%;
+  max-width: 100%;
   font-weight: bold;
 
+  // Make the language tabs wrap if they don't fit.
+  display: flex;
+  flex-wrap: wrap;
+
   a {
-    display: block;
-    float:left;
     color: $lang-select-text;
     text-decoration: none;
     padding: 0 10px;
@@ -314,12 +316,6 @@ html, body {
       background-color: $hover-bg;
       color: $lang-select-active-text;
     }
-  }
-
-  &:after {
-    content: '';
-    clear: both;
-    display: block;
   }
 }
 
