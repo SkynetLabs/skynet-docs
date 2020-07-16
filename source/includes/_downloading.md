@@ -58,8 +58,7 @@ func main() {
 
 	err = skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
 	if err != nil {
-		fmt.Println("Something went wrong, please try again.\nError:", err.Error())
-		return
+		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
 	fmt.Println("Download successful")
 }
@@ -71,13 +70,13 @@ skylink. If the data can not be found within this 30s time constraint, a 404
 will be returned. This timeout is configurable through the query string
 parameters.
 
-### Download Settings
+### Settings
 
 Field | Description
 ----- | -----------
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
 
-### Download Response
+### Response
 
 TODO
 
@@ -112,10 +111,10 @@ the entire content. These API calls will perform a HEAD request that fetches the
 headers for the given skylink. These headers are identical to the ones that
 would be returned if the request had been a GET request.
 
-### Metadata Settings
+### Settings
 
 TODO
 
-### Metadata Response
+### Response
 
 TODO

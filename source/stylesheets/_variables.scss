@@ -29,7 +29,8 @@ $code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
 $active-bg: #58B560 !default;
 $hover-bg: #0F75D4 !default;
-$inactive-text: #aaa !default;
+$active-text: #eee !default;
+$inactive-text: #bbb !default;
 
 $nav-subitem-bg: #1E2224 !default;
 $nav-active-bg: $active-bg !default;
@@ -48,11 +49,11 @@ $search-notice-bg: #c97a7e !default;
 ////////////////////
 $main-text: #333 !default; // main content text color
 $nav-text: $inactive-text !default;
-$nav-active-text: #eee !default;
-$nav-active-parent-text: #eee !default; // parent links of the current section
+$nav-active-text: $active-text !default;
+$nav-active-parent-text: $active-text !default; // parent links of the current section
 $lang-select-text: $inactive-text !default; // color of unselected language tab text
-$lang-select-active-text: #eee !default; // color of selected language tab text
-$lang-select-pressed-text: #eee !default; // color of language tab text when mouse is pressed
+$lang-select-active-text: $active-text !default; // color of selected language tab text
+$lang-select-pressed-text: $active-text !default; // color of language tab text when mouse is pressed
 
 
 // SIZES

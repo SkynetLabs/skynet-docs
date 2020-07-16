@@ -44,8 +44,7 @@ import (
 func main() {
 	skylink, err := skynet.UploadFile("./image.jpg", skynet.DefaultUploadOptions)
 	if err != nil {
-		fmt.Println("Unable to upload:", err.Error())
-		return
+		panic("Unable to upload: " + err.Error())
 	}
 	fmt.Printf("Upload successful, skylink: %v\n", skylink)
 }

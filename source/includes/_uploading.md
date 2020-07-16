@@ -44,8 +44,7 @@ import (
 func main() {
 	skylink, err := skynet.UploadFile("./image.jpg", skynet.DefaultUploadOptions)
 	if err != nil {
-		fmt.Println("Unable to upload:", err.Error())
-		return
+		panic("Unable to upload: " + err.Error())
 	}
 	fmt.Printf("Upload successful, skylink: %v\n", skylink)
 }
@@ -54,14 +53,18 @@ func main() {
 Uploading a file to Skynet can be done through a Skynet portal or your
 local siad instance.
 
-### Upload File Settings
+<aside class="notice">
+If a file is uploaded through a portal, the portal owner is paying to host that file, and it will remain on the network for as long as that file contract is valid.
+</aside>
+
+### Settings
 
 Field      | Description
 ---------- | -----------
-`portal`   | The URL of the portal
+`portal`   | The URL of the portal.
 `filename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
 
-### Upload Response
+### Response
 
 ```shell--curl
 {
@@ -98,11 +101,6 @@ Field        | Description
 `skylink`    | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
 `merkleroot` | This is the hash that is encoded into the skylink.
 `bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
-
-<!-- ### Public Portal
-Uploading can be done through a Skynet portal, or your own Sia node. If a file
-is uploaded through a portal, the portal owner is paying to host that file, it
-will remaining on the network for as long as that file contract is valid. -->
 
 ## Uploading a Directory
 
@@ -148,8 +146,7 @@ import (
 func main() {
 	url, err := skynet.UploadDirectory("./images", skynet.DefaultUploadOptions)
 	if err != nil {
-		fmt.Println("Unable to upload:", err.Error())
-		return
+		panic("Unable to upload: " + err.Error())
 	}
 	fmt.Printf("Upload successful, url: %v\n", url)
 }
@@ -161,14 +158,14 @@ by their path. This is especially useful for webapps.
 
 Directory uploads work using multipart form upload.
 
-### Upload Directory Settings
+### Settings
 
 Field       | Description
 ----------- | -----------
 `portal`    | The URL of the portal
 `filename`  | Custom filename. This is the filename that will be returned when downloading the file in a browser
 
-### Upload Response
+### Response
 
 ```shell--curl
 {

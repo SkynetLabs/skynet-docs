@@ -45,5 +45,7 @@ as well as the [Skynet CLI](https://github.com/NebulousLabs/skynet-cli) (written
 
 These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints. Full documentation for the HTTP API can be found in the [Sia API Documentation](https://sia.tech/docs/#skynet).
 
+<aside class="success">
 You can view code examples in the dark area to the right. Switch to the
 programming language of your choice by clicking the tabs in the top right.
+</aside>
