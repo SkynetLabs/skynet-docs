@@ -1,75 +1,100 @@
 # Encryption
 
-## Get Skykey
+## Getting a Skykey By Name
 
-```shell
+```shell--curl
 curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localhost:9980/skynet/skykey"
-curl -A "Sia-Agent"  -u "":<apipassword> --data "id=gi5z8cf5NWbcvPBaBn0DFQ==" "localhost:9980/skynet/skykey"
 ```
 
-> The above command returns JSON structured like this
+```go
+package main
 
-```json
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	const name = "testcreateskykey"
+
+	fmt.Printf("Getting skykey with name %v...\n", name)
+	skykey, err := skynet.GetSkykeyByName(name, skynet.DefaultGetSkykeyOptions)
+	if err != nil {
+		panic("Unable to get skykey: " + err.Error())
+	}
+	fmt.Printf("Skykey: %#v\n", skykey)
+```
+
+> TODO
+
+This endpoint returns the base-64 encoded skykey stored under that name.
+
+### Settings
+
+Parameter | Description
+--------- | -----------
+`name` | Name of the skykey being queried.
+
+### Response
+
+```shell--curl
 {
   "skykey": "BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"
 }
 ```
 
-**UNSTABLE - subject to change in v1.4.9**
-
-This endpoint returns the base-64 encoded skykey stored under that name, or with
-that ID.
-
-### HTTP Request
-`GET /skynet/skykey/<name|id>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-name | name of the skykey being queried
-id | base-64 encoded ID of the skykey being queried
-
-### Response Fields
+> TODO
 
 Field | Type | Description
 ----- | ---- | -----------
-skykey | string | base-64 encoded skykey
+`skykey` | Skykey | Full Skykey object
 
+### Getting a Skykey By ID
 
-## Get Skykey ID
-
-```shell
-curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localhost:9980/skynet/skykeyid"
+```shell--curl
+curl -A "Sia-Agent"  -u "":<apipassword> --data "id=gi5z8cf5NWbcvPBaBn0DFQ==" "localhost:9980/skynet/skykey"
 ```
 
-> The above command returns JSON structured like this
+```go
+package main
 
-```json
-{
-  "skykeyid": "gi5z8cf5NWbcvPBaBn0DFQ=="
+import skynet "github.com/NebulousLabs/go-skynet"
+
+func main() {
+	const id = "pJAPPfWkWXpss3BvMDCJCw=="
+
+	fmt.Printf("Getting skykey with id %v...\n", id)
+	skykey, err = skynet.GetSkykeyByID(id, skynet.DefaultGetSkykeyOptions)
+	if err != nil {
+		panic("Unable to get skykey: " + err.Error())
+	}
+	fmt.Printf("Skykey: %#v\n", skykey)
 }
 ```
 
-**UNSTABLE - subject to change in v1.4.9**
+> TODO
 
-This endpoint returns the base-64 encoded ID of the skykey stored under that
-name.
+This endpoint returns the base-64 encoded skykey stored under that ID.
 
-### HTTP Request
-`GET /skynet/skykeyid/<name>`
-
-### URL Parameters
+### Settings
 
 Parameter | Description
 --------- | -----------
-name | name of the skykey being queried
+`id` | ID of the skykey being queried
 
-### Response Fields
+### Response
+
+```shell--curl
+{
+  "skykey": "BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"
+}
+```
+
+> TODO
 
 Field | Type | Description
 ----- | ---- | -----------
-skykeyid | string | base-64 encoded skykey ID
+`skykey` | Skykey | Full Skykey object
 
 ## Create Skykey
 
@@ -77,32 +102,38 @@ skykeyid | string | base-64 encoded skykey ID
 curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localhost:9980/skynet/createskykey"
 ```
 
-> The above command returns JSON structured like this
+```go
+package main
 
-```json
-{
-  "skykey": "BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"
-}
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	const name = "testcreateskykey"
+
+	fmt.Printf("Creating skykey with name %v...\n", name)
+	skykey, err := skynet.CreateSkykey(name, "private-id", skynet.DefaultCreateSkykeyOptions)
+	if err != nil {
+		panic("Unable to create skykey: " + err.Error())
+	}
+	fmt.Printf("Created skykey %v\n", skykey)
 ```
-
-**UNSTABLE - subject to change in v1.4.9**
 
 This endpoint creates a skykey stored under the given name.
 
-### HTTP Request
-`POST /skynet/createskykey/<name>`
-
-### URL Parameters
+### Settings
 
 Parameter | Description
 --------- | -----------
-name | desired name of the skykey
+`name` | Desired name of the skykey.
 
-### Response Fields
+### Response
 
 Field | Type | Description
 ----- | ---- | -----------
-skykey | string | base-64 encoded skykey
+`skykey` | Skykey | Full Skykey object.
 
 ## Add Skykey
 
@@ -110,21 +141,56 @@ skykey | string | base-64 encoded skykey
 curl -A "Sia-Agent"  -u "":<apipassword> --data "skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a" "localhost:9980/skynet/addskykey"
 ```
 
-**UNSTABLE - subject to change in v1.4.9**
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
+
+	fmt.Printf("Adding skykey %v...\n", skykey)
+	err := skynet.AddSkykey(skykey, skynet.DefaultAddSkykeyOptions)
+	if err != nil {
+		panic("Unable to add skykey: " + err.Error())
+	}
+```
+
+> TODO
 
 This endpoint stores the given skykey with the renter's skykey manager.
 
-### HTTP Request
-
-`POST /skynet/addskykey/<skykey>`
-
-### URL Parameters
+### Settings
 
 Parameter | Description
 --------- | -----------
-skykey | base-64 encoded skykey
+`skykey` | Base-64 encoded skykey
 
 ### Response
 
-standard success or error response. See [standard
-responses](#standard-responses).
+standard success or error response. See [standard responses](#standard-responses).
+
+## List Skykeys
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	fmt.Println("Listing skykeys...")
+	skykeys, err := skynet.ListSkykeys(skynet.DefaultListSkykeysOptions)
+	if err != nil {
+		panic("Unable to get skykeys: " + err.Error())
+	}
+	fmt.Printf("Skykeys: %v\n", skykeys)
+}
+```
+
+**TODO**
