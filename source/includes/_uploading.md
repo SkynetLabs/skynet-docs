@@ -1,6 +1,6 @@
-# Uploading to Skynet
+# Uploading To Skynet
 
-## Uploading a File
+## Uploading A File
 
 ```shell--curl
 curl -X POST "https://siasky.net/skynet/skyfile" -F file=@image.jpg
@@ -11,7 +11,13 @@ skynet upload "./image.jpg"
 ```
 
 ```javascript--browser
-// TODO
+import { upload } from "skynet-js";
+
+try {
+  const { skylink } = await upload("https://siasky.net", "./image.jpg");
+} catch (error) {
+  console.log(error)
+}
 ```
 
 ```javascript--node
@@ -51,18 +57,66 @@ func main() {
 ```
 
 Uploading a file to Skynet can be done through a Skynet portal or your
-local siad instance.
+local `siad` instance.
 
 <aside class="notice">
 If a file is uploaded through a portal, the portal owner is paying to host that file, and it will remain on the network for as long as that file contract is valid.
 </aside>
 
-### Settings
+### Parameters
 
-Field      | Description
----------- | -----------
-`portal`   | The URL of the portal.
-`filename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
+Field | Description
+----- | -----------
+`path` | The local path where the file to upload may be found.
+
+### Additional Options
+
+```javascript--browser
+export const defaultUploadOptions = {
+  ...options,
+  portalEndpointPath: "/skynet/skyfile",
+  portalFileFieldname: "file",
+  portalDirectoryFileFieldname: "files[]",
+  customFilename: "",
+};
+```
+
+```go
+UploadOptions struct {
+    Options
+
+    // PortalFileFieldName is the fieldName for files on the portal.
+    PortalFileFieldName string
+    // PortalDirectoryFileFieldName is the fieldName for directory files on
+    // the portal.
+    PortalDirectoryFileFieldName string
+
+    // CustomFilename is the custom filename to use for the upload. If this
+    // is empty, the filename of the file being uploaded will be used by
+    // default.
+    CustomFilename string
+    // CustomDirname is the custom name of the directory. If this is empty,
+    // the base name of the directory being uploaded will be used by
+    // default.
+    CustomDirname string
+
+    // SkykeyName is the name of the skykey used to encrypt the upload.
+    SkykeyName string
+    // SkykeyID is the ID of the skykey used to encrypt the upload.
+    SkykeyID string
+}
+```
+
+Eventually, all SDKs will support the following options:
+
+Field | Description
+----- | -----------
+`portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed.
+`portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed.
+`customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
+`customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default.
+`skykeyName` | The name of the skykey on the portal used to encrypt the upload.
+`skykeyID` | The ID of the skykey on the portal used to encrypt the upload.
 
 ### Response
 
@@ -102,7 +156,7 @@ Field        | Description
 `merkleroot` | This is the hash that is encoded into the skylink.
 `bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
-## Uploading a Directory
+## Uploading A Directory
 
 ```shell--curl
 curl "https://siasky.net/skynet/skyfile" -F files[]=@./images/image1.png -F files[]=@./images/image2.png

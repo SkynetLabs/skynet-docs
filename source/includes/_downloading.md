@@ -1,6 +1,6 @@
-# Downloading from Skynet
+# Downloading From Skynet
 
-## Downloading a File
+## Downloading A File
 
 ```shell--curl
 # entire file
