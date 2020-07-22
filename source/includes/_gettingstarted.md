@@ -13,8 +13,10 @@ skynet upload "./image.jpg"
 ```javascript--browser
 import { upload } from "skynet-js";
 
+// Assume we have a file from an input form.
+
 try {
-  const { skylink } = await upload("https://siasky.net", "./image.jpg");
+  const { skylink } = await upload("https://siasky.net", file);
 } catch (error) {
   console.log(error)
 }
@@ -70,8 +72,10 @@ import SkynetClient from "skynet-js";
 // Or SkynetClient() without arguments to use the default portal.
 const client = new SkynetClient("https://some-other-portal.xyz");
 
+// Assume we have a file from an input form.
+
 try {
-  const { skylink } = await client.upload("./image.jpg");
+  const { skylink } = await client.upload(file);
 } catch (error) {
   console.log(error)
 }
