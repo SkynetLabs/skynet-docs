@@ -1,6 +1,6 @@
-# Downloading from Skynet
+# Downloading From Skynet
 
-## Downloading a File
+## Downloading A File
 
 ```shell--curl
 # entire file
@@ -64,17 +64,42 @@ func main() {
 }
 ```
 
-This endpoint downloads a skylink using http streaming. This call blocks until
+This endpoint downloads a skylink using http streaming. The call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
-skylink. If the data can not be found within this 30s time constraint, a 404
-will be returned. This timeout is configurable through the query string
-parameters.
+skylink. If the data can not be found within this 30s time constraint, a `404`
+error will be returned. This timeout is configurable.
 
-### Settings
+### Parameters
 
 Field | Description
 ----- | -----------
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
+
+### Additional Options
+
+Eventually, all SDKs will support the following options:
+
+Field | Description
+----- | -----------
+`skykeyName` | The name of the skykey on the portal used to decrypt the download.
+`skykeyID` | The ID of the skykey on the portal used to decrypt the download.
+
+### Default Options
+
+```javascript--browser
+export const defaultDownloadOptions = {
+  ...options,
+  portalEndpointPath: "/",
+};
+```
+
+```go
+DefaultDownloadOptions = DownloadOptions{
+    Options: DefaultOptions("/"),
+}
+```
+
+The default endpoint for this function is `/`.
 
 ### Response
 
@@ -106,12 +131,16 @@ TODO
 TODO
 ```
 
-It is also possible to get metadata about a file or directory without fetching
+It is possible to get metadata about a file or directory without fetching
 the entire content. These API calls will perform a HEAD request that fetches the
 headers for the given skylink. These headers are identical to the ones that
 would be returned if the request had been a GET request.
 
-### Settings
+### Parameters
+
+TODO
+
+### Additional Options
 
 TODO
 

@@ -1,6 +1,6 @@
-# Uploading to Skynet
+# Uploading To Skynet
 
-## Uploading a File
+## Uploading A File
 
 ```shell--curl
 curl -X POST "https://siasky.net/skynet/skyfile" -F file=@image.jpg
@@ -11,7 +11,15 @@ skynet upload "./image.jpg"
 ```
 
 ```javascript--browser
-// TODO
+import { upload } from "skynet-js";
+
+// Assume we have a file from an input form.
+
+try {
+  const { skylink } = await upload("https://siasky.net", file);
+} catch (error) {
+  console.log(error)
+}
 ```
 
 ```javascript--node
@@ -51,18 +59,57 @@ func main() {
 ```
 
 Uploading a file to Skynet can be done through a Skynet portal or your
-local siad instance.
+local `siad` instance.
 
 <aside class="notice">
 If a file is uploaded through a portal, the portal owner is paying to host that file, and it will remain on the network for as long as that file contract is valid.
 </aside>
 
-### Settings
+### Parameters
 
-Field      | Description
----------- | -----------
-`portal`   | The URL of the portal.
-`filename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
+Field | Description
+----- | -----------
+`path` | The local path where the file to upload may be found.
+
+### Additional Options
+
+Eventually, all SDKs will support the following options:
+
+Field | Description
+----- | -----------
+`portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed.
+`portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed.
+`customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
+`customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default.
+`skykeyName` | The name of the skykey on the portal used to encrypt the upload.
+`skykeyID` | The ID of the skykey on the portal used to encrypt the upload.
+
+### Default Options
+
+```javascript--browser
+export const defaultUploadOptions = {
+  ...options,
+  portalEndpointPath: "/skynet/skyfile",
+  portalFileFieldname: "file",
+  portalDirectoryFileFieldname: "files[]",
+  customFilename: "",
+};
+```
+
+```go
+DefaultUploadOptions = UploadOptions{
+    Options: DefaultOptions("/skynet/skyfile"),
+
+    PortalFileFieldName:          "file",
+    PortalDirectoryFileFieldName: "files[]",
+    CustomFilename:               "",
+    CustomDirname:                "",
+    SkykeyName:                   "",
+    SkykeyID:                     "",
+}
+```
+
+The default endpoint for this function is `/skynet/skyfile`.
 
 ### Response
 
@@ -102,7 +149,7 @@ Field        | Description
 `merkleroot` | This is the hash that is encoded into the skylink.
 `bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
-## Uploading a Directory
+## Uploading A Directory
 
 ```shell--curl
 curl "https://siasky.net/skynet/skyfile" -F files[]=@./images/image1.png -F files[]=@./images/image2.png
@@ -113,7 +160,27 @@ skynet upload "source dir path"
 ```
 
 ```javascript--browser
-// TODO
+import { getRelativeFilePath, getRootDirectory, uploadDirectory } from "skynet-js";
+
+// Assume we have a list of files from an input form.
+const filename = getRootDirectory(files[0]);
+const directory = files.reduce((acc, file) => {
+  const path = getRelativeFilePath(file);
+
+  return { ...acc, [path]: file };
+}, {});
+
+try {
+  const directory = files.reduce((acc, file) => {
+    const path = getRelativeFilePath(file);
+
+    return { ...acc, [path]: file };
+  }, {});
+
+  const { skylink } = await uploadDirectory(portalUrl, directory, filename);
+} catch (error) {
+  console.log(error);
+}
 ```
 
 ```javascript--node
@@ -158,12 +225,26 @@ by their path. This is especially useful for webapps.
 
 Directory uploads work using multipart form upload.
 
-### Settings
+### Parameters
 
-Field       | Description
------------ | -----------
-`portal`    | The URL of the portal
-`filename`  | Custom filename. This is the filename that will be returned when downloading the file in a browser
+Field | Description
+----- | -----------
+`path` | The local path where the directory to upload may be found.
+
+*Browser JS:*
+
+Field | Description
+----- | -----------
+`directory` | Object containing `File`s from an input form to upload, indexed by their path strings.
+`filename` | The name of the directory.
+
+### Additional Options
+
+See [Uploading A File](.#uploading-a-file).
+
+### Default Options
+
+See [Uploading A File](.#uploading-a-file).
 
 ### Response
 
@@ -195,11 +276,7 @@ Field       | Description
 // url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
 ```
 
-Field        | Description
------------- | -----------
-`skylink`    | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
-`merkleroot` | This is the hash that is encoded into the skylink.
-`bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
+See [Uploading A File](.#uploading-a-file).
 
 ## Uploading With Encryption
 
