@@ -13,6 +13,8 @@ skynet upload "./image.jpg"
 ```javascript--browser
 import { upload } from "skynet-js";
 
+// NOTE: This example is different from the other SDKs because we cannot just take a path to a local file.
+
 // Assume we have a file from an input form.
 
 try {
@@ -71,45 +73,26 @@ Field | Description
 ----- | -----------
 `path` | The local path where the file to upload may be found.
 
+*Browser JS:*
+
+Field | Description
+----- | -----------
+`file` | The `File` object returned from an input form.
+
 ### Additional Options
 
 Eventually, all SDKs will support the following options:
 
-Field | Description
------ | -----------
-`portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed.
-`portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed.
-`customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser.
-`customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default.
-`skykeyName` | The name of the skykey on the portal used to encrypt the upload.
-`skykeyID` | The ID of the skykey on the portal used to encrypt the upload.
-
-### Default Options
-
-```javascript--browser
-export const defaultUploadOptions = {
-  ...options,
-  portalEndpointPath: "/skynet/skyfile",
-  portalFileFieldname: "file",
-  portalDirectoryFileFieldname: "files[]",
-  customFilename: "",
-};
-```
-
-```go
-DefaultUploadOptions = UploadOptions{
-    Options: DefaultOptions("/skynet/skyfile"),
-
-    PortalFileFieldName:          "file",
-    PortalDirectoryFileFieldName: "files[]",
-    CustomFilename:               "",
-    CustomDirname:                "",
-    SkykeyName:                   "",
-    SkykeyID:                     "",
-}
-```
-
-The default endpoint for this function is `/skynet/skyfile`.
+Field | Description | Default
+----- | ----------- | -------
+`endpointPath` | The relative URL path of the portal endpoint to contact. | `"/skynet/skyfile"`
+`portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed. | `"file"`
+`portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed. | `"files[]"`
+`customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser. | `""`
+`customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default. | `""`
+`skykeyName` | The name of the skykey on the portal used to encrypt the upload. | `""`
+`skykeyID` | The ID of the skykey on the portal used to encrypt the upload. | `""`
+`timeout_seconds` | The timeout in seconds. | `""`
 
 ### Response
 
@@ -122,7 +105,7 @@ The default endpoint for this function is `/skynet/skyfile`.
 ```
 
 ```shell--cli
-# TODO
+Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
 ```
 
 ```javascript--browser
@@ -161,6 +144,8 @@ skynet upload "source dir path"
 
 ```javascript--browser
 import { getRelativeFilePath, getRootDirectory, uploadDirectory } from "skynet-js";
+
+// NOTE: This example is different from the other SDKs because we cannot just take a path to a local directory.
 
 // Assume we have a list of files from an input form.
 const filename = getRootDirectory(files[0]);
@@ -242,10 +227,6 @@ Field | Description
 
 See [Uploading A File](.#uploading-a-file).
 
-### Default Options
-
-See [Uploading A File](.#uploading-a-file).
-
 ### Response
 
 ```shell--curl
@@ -257,7 +238,7 @@ See [Uploading A File](.#uploading-a-file).
 ```
 
 ```shell--cli
-# TODO
+Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
 ```
 
 ```javascript--browser
@@ -280,4 +261,55 @@ See [Uploading A File](.#uploading-a-file).
 
 ## Uploading With Encryption
 
+```shell--curl
 TODO
+```
+
+```shell--cli
+TODO
+```
+
+```javascript--browser
+import { upload } from "skynet-js";
+
+// Assume we have a file from an input form.
+
+try {
+  const { skylink } = await upload("https://siasky.net", file, { skykeyName: "my-skykey" });
+} catch (error) {
+  console.log(error)
+}
+```
+
+```javascript--node
+TODO
+```
+
+```python
+TODO
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	opts := skynet.DefaultUploadOptions
+	opts.SkykeyName = "my-skykey"
+	skylink, err := skynet.UploadFile("./image.jpg", opts)
+	if err != nil {
+		panic("Unable to upload: " + err.Error())
+	}
+	fmt.Printf("Upload successful, skylink: %v\n", skylink)
+}
+```
+
+If you have a skykey on the portal you can ask the portal to encrypt the uploaded content for you. Simply pass the skykey name or ID in the custom options when uploading a file or directory.
+
+See the additional options in [Uploading A File](.#uploading-a-file).
+
+Also see [Encryption](.#encryption).

@@ -27,8 +27,7 @@ const skynet = require('@nebulous/skynet');
 
 (async () => {
 	const skylink = await skynet.UploadFile(
-		"./image.jpg",
-		skynet.DefaultUploadOptions
+		"./image.jpg"
 	);
 	console.log(`Upload successful, skylink: ${skylink}`);
 })();
@@ -62,7 +61,9 @@ The SDKs are set up to be as simple as possible. Despite the many options for co
 
 ## Using A Different Portal
 
-The default portal used is `https://siasky.net` and no configuration is required to use it. Having a reasonable choice already selected keeps friction for new developers low. However, as Skynet is a decentralized project, it is also possible to use different portals.
+The default portal used is `https://siasky.net` (also available through the exported constant, `defaultPortalUrl`) and no configuration is required to use it. Having a reasonable choice already selected keeps friction for new developers low. However, as Skynet is a decentralized project, it is also possible to use different portals.
+
+In most SDKs, a different portal can be passed in as part of the options for each function.
 
 ### Browser JS
 
@@ -86,43 +87,20 @@ In Browser JS it is possible to either:
 - Use the standalone functions and pass in a different portal as the first argument.
 - Create a new client with the desired portal. Clients implement all the standalone functions as methods with bound `portalUrl` so you don't need to repeat it every time. See the code example on the right.
 
-### Other Languages
-
-In other languages, a different portal can be passed in as part of the options for each function.
-
 ## Setting Additional Options
 
 Each SDK function also accepts additional options. These vary depending on the endpoint and are documented alongside each function.
 
 <aside class="notice">
-In most of our SDKs the additional options may be left out of the function calls, in which case the default options are used. In Go the options must always be passed in, as the language does not support optional function parameters.
+In most of our SDKs the additional options may be left out of the function calls, in which case the default options are used. In <b>Go</b> the options must always be passed in, as the language does not support optional function parameters.
 </aside>
 
 ### Common Options
 
-```javascript--browser
-export const options = {
-  portalEndpointPath: "",
-  customUserAgent: "",
-};
-```
-
-```go
-Options struct {
-    // PortalURL is the URL of the portal to use.
-    PortalURL string
-    // EndpointPath is the relative URL path of the portal endpoint to
-    // contact.
-    EndpointPath string
-    // CustomUserAgent is the custom user agent to use.
-    CustomUserAgent string
-}
-```
-
 Every function accepts the following common options:
 
-Field | Description
------ | -----------
-`portal` | The URL of the portal.
-`endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths.
-`customUserAgent` | This option is available to change the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons.
+Field | Description | Default
+----- | ----------- | -------
+`portal` | The URL of the portal. | `"https://siasky.net"`
+`endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths. | `""`
+`customUserAgent` | This option is available to change the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
