@@ -4,12 +4,13 @@ title: Skynet Docs
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell--curl: curl
   - shell--cli: CLI
-  - javascript--browser: JS Browser
+  - javascript--browser: Browser JS
   - javascript--node: NodeJS
   - python: Python
   - go: Go
 
 toc_footers:
+  - <a href='https://siasky.net/'>Check out Skynet</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
   # - <a href='#'>Sign Up for a Developer Key</a>
   - ---
@@ -17,14 +18,13 @@ toc_footers:
 
 includes:
   - gettingstarted
+  - authentication
   - uploading
   - downloading
   - encryption
-  - blacklist
+  - blocklist
   - portals
   - statistics
-  - authentication
-  - responses
 
 search: true
 ---
@@ -49,3 +49,27 @@ These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints.
 You can view code examples in the dark area to the right. Switch to the
 programming language of your choice by clicking the tabs in the top right.
 </aside>
+
+## A Note About Language Differences
+
+Though we tried to keep the SDKs as similar to each other as possible in usage, differences between the languages -- the idiosyncracies and best practices of each -- resulted in differences between the SDKs. We've noted them where necessary throughout the documentation.
+
+### Case
+
+In particular, note that the casing of functions and their parameters differs between the languages:
+
+- Javascript: [`camelCase`](https://en.wikipedia.org/wiki/Camel_case)
+- Python: [`snake_case`](https://en.wikipedia.org/wiki/Snake_case)
+- Go: [`PascalCase`](https://en.wikipedia.org/wiki/PascalCase)
+
+For consistency throughout this document, functions and their parameters are documented using `camelCase`.
+
+### Standard Responses
+
+Functions will respond with the desired content on success and with errors or exceptions on failure. The error messages may contain HTTP status codes (see [Standard Responses](https://sia.tech/docs/#standard-responses)).
+
+Functions will fail differently in each SDK depending on the language:
+
+- Javascript: exceptions are raised and must be caught with a `try-catch` block.
+- Python: same as above.
+- Go: errors are returned and must be checked for explicitly.

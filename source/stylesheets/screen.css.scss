@@ -154,6 +154,8 @@ html, body {
   }
 
   .toc-link {
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
     color: $nav-text;
 
     // This is the currently selected ToC entry
@@ -180,7 +182,14 @@ html, body {
     font-weight: 500;
   }
 
+  .toc-h1 {
+    // Lower the line height to make overflowed headers look better.
+    line-height: 1.5em;
+  }
+
   .toc-h2 {
+    // Lower the line height to make overflowed headers look better.
+    line-height: 1.4em;
     padding-left: $nav-padding + $nav-indent;
     font-size: 12px;
   }
