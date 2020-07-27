@@ -15,9 +15,8 @@ import { upload } from "skynet-js";
 
 // NOTE: This example is different from the other SDKs because we cannot just take a path to a local file.
 
-// Assume we have a file from an input form.
-
 try {
+  // Using a file from an input form.
   const { skylink } = await upload("https://siasky.net", file);
 } catch (error) {
   console.log(error)
@@ -80,8 +79,6 @@ Field | Description
 `file` | The `File` object returned from an input form.
 
 ### Additional Options
-
-Eventually, all SDKs will support the following options:
 
 Field | Description | Default
 ----- | ----------- | -------

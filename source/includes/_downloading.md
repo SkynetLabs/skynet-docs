@@ -20,7 +20,7 @@ skynet download [skylink] [destination]
 ```javascript--browser
 import { download } from "skynet-js";
 
-// Assume we have a skylink e.g. from a previous upload.
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
   download(portalUrl, skylink);
@@ -32,7 +32,7 @@ try {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
-// Must have a 'skylink' from an earlier upload.
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
 	await skynet.DownloadFile(
@@ -46,7 +46,7 @@ const skynet = require('@nebulous/skynet');
 ```python
 import siaskynet as skynet
 
-# Must have a 'skylink' from an earlier upload.
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
 skynet.download_file("./dst.jpg", skylink)
 print("Download successful")
@@ -61,7 +61,7 @@ import (
 )
 
 func main() {
-	// Must have a 'skylink' from an earlier upload.
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
 	err = skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
 	if err != nil {
@@ -91,8 +91,6 @@ Field | Description
 
 ### Additional Options
 
-Eventually, all SDKs will support the following options:
-
 Field | Description | Default
 ----- | ----------- | -------
 `endpointPath` | The relative URL path of the portal endpoint to contact. | `"/"`
@@ -119,7 +117,7 @@ TODO
 ```javascript--browser
 import { metadata } from "skynet-js";
 
-// Assume we have a skylink e.g. from a previous upload.
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
   const md = metadata(portalUrl, skylink);
@@ -270,7 +268,7 @@ skynet download [skylink] [destination] --skykey-name "my-skykey"
 ```javascript--browser
 import { download } from "skynet-js";
 
-// Assume we have a skylink e.g. from a previous upload.
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
   download(portalUrl, skylink, { skykeyName: "my-skykey" });
@@ -282,7 +280,7 @@ try {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
-// Must have a 'skylink' from an earlier upload.
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
 	await skynet.DownloadFile(
@@ -297,7 +295,7 @@ const skynet = require('@nebulous/skynet');
 ```python
 import siaskynet as skynet
 
-# Must have a 'skylink' from an earlier upload.
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
 skynet.download_file("./dst.jpg", skylink, { skykeyName: "my-skykey" })
 print("Download successful")
@@ -310,6 +308,8 @@ import (
 	"fmt"
 	skynet "github.com/NebulousLabs/go-skynet"
 )
+
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
 func main() {
 	// Must have a 'skylink' from an earlier upload.

@@ -192,7 +192,7 @@ TODO
 ```javascript--browser
 import { getSkykeyByName } from "skynet-js";
 
-// Assume we have a skykey name.
+const name = "testcreateskykey";
 
 try {
   const skykey = getSkykeyByName(portalUrl, name);
@@ -253,7 +253,7 @@ TODO
 ```javascript--browser
 import { getSkykeyById } from "skynet-js";
 
-// Assume we have a skykey ID.
+const id = "pJAPPfWkWXpss3BvMDCJCw==";
 
 try {
   const skykey = getSkykeyById(portalUrl, id);

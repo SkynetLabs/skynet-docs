@@ -52,7 +52,7 @@ programming language of your choice by clicking the tabs in the top right.
 
 ## A Note About Language Differences
 
-Though we tried to keep the SDKs as similar to each other as possible, differences between the languages -- the idiosyncracies and best practices of each -- resulted in differences between the SDKs. We've noted them where necessary.
+Though we tried to keep the SDKs as similar to each other as possible in usage, differences between the languages -- the idiosyncracies and best practices of each -- resulted in differences between the SDKs. We've noted them where necessary throughout the documentation.
 
 ### Case
 
@@ -62,7 +62,7 @@ In particular, note that the casing of functions and their parameters differs be
 - Python: [`snake_case`](https://en.wikipedia.org/wiki/Snake_case)
 - Go: [`PascalCase`](https://en.wikipedia.org/wiki/PascalCase)
 
-For consistency throughout this document, functions and their parameters are documented using camelCase.
+For consistency throughout this document, functions and their parameters are documented using `camelCase`.
 
 ### Standard Responses
 
