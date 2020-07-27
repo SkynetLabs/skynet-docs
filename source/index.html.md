@@ -22,7 +22,7 @@ includes:
   - uploading
   - downloading
   - encryption
-  - blacklist
+  - blocklist
   - portals
   - statistics
 
