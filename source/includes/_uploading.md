@@ -13,7 +13,8 @@ skynet upload "./image.jpg"
 ```javascript--browser
 import { upload } from "skynet-js";
 
-// NOTE: This example is different from the other SDKs because we cannot just take a path to a local file.
+// NOTE: This example is different from the other SDKs because we cannot just
+// take a path to a local file.
 
 try {
   // Using a file from an input form.
@@ -123,8 +124,12 @@ Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOl
 Field        | Description
 ------------ | -----------
 `skylink` | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
-`merkleroot` | This is the hash that is encoded into the skylink.
-`bitfield` | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
+`merkleroot` | (`curl` only) This is the hash that is encoded into the skylink.
+`bitfield` | (`curl` only) This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
+
+<aside class="warning">
+Note that the SDKs only return the skylink since this is what you want most of the time. We are still working on ways to access more information from the result without complicating the main use case.
+</aside>
 
 ## Uploading A Directory
 
@@ -139,7 +144,8 @@ skynet upload "source dir path"
 ```javascript--browser
 import { getRelativeFilePath, getRootDirectory, uploadDirectory } from "skynet-js";
 
-// NOTE: This example is different from the other SDKs because we cannot just take a path to a local directory.
+// NOTE: This example is different from the other SDKs because we cannot just
+// take a path to a local directory.
 
 // Assume we have a list of files from an input form.
 const filename = getRootDirectory(files[0]);
@@ -224,7 +230,7 @@ Accessing one of the two directories...
 ...portal.../...skylink.../dir2
 </pre>
 
-... will download them as a .zip archive containing the contents, by default.
+will download it as a .zip archive (by default) containing the directory contents.
 
 ### Parameters
 
@@ -291,7 +297,11 @@ import { upload } from "skynet-js";
 // Assume we have a file from an input form.
 
 try {
-  const { skylink } = await upload("https://siasky.net", file, { skykeyName: "my-skykey" });
+  const { skylink } = await upload(
+    "https://siasky.net",
+    file,
+    { skykeyName: "my-skykey" }
+  );
 } catch (error) {
   console.log(error)
 }

@@ -3,15 +3,11 @@
 ## Downloading A File
 
 ```shell--curl
-# entire file
 curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
-
-# sub path
-curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"
 ```
 
 ```shell--cli
-skynet download [skylink] [destination]
+skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "./dst.jpg"
 ```
 
 ```javascript--browser
@@ -98,6 +94,69 @@ Field | Description | Default
 ### Response
 
 Empty on success.
+
+## Downloading A File From An Uploaded Directory
+
+```shell--curl
+curl -A "Sia-Agent" "https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+```
+
+```shell--cli
+skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2" "./dst.jpg"
+```
+
+```javascript--browser
+import { download } from "skynet-js";
+
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
+
+try {
+  download("https://siasky.net", skylink);
+} catch (error) {
+  console.log(error)
+}
+```
+
+```javascript--node
+const skynet = require('@nebulous/skynet');
+
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
+
+(async () => {
+	await skynet.downloadFile("./dst.jpg", skylink);
+	console.log('Download successful');
+})();
+```
+
+```python
+import siaskynet as skynet
+
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+
+skynet.download_file("./dst.jpg", skylink)
+print("Download successful")
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+
+	err := skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+	if err != nil {
+		panic("Something went wrong, please try again.\nError: " + err.Error())
+	}
+	fmt.Println("Download successful")
+}
+```
+
+It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from [Uploading A Directory](.#uploading-a-directory) to illustrate this.
 
 ## Getting Metadata
 
