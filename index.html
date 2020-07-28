@@ -269,6 +269,9 @@
                     <a href="#downloading-a-file" class="toc-h2 toc-link" data-title="Downloading A File">Downloading A File</a>
                   </li>
                   <li>
+                    <a href="#downloading-a-file-from-an-uploaded-directory" class="toc-h2 toc-link" data-title="Downloading A File From An Uploaded Directory">Downloading A File From An Uploaded Directory</a>
+                  </li>
+                  <li>
                     <a href="#getting-metadata" class="toc-h2 toc-link" data-title="Getting Metadata">Getting Metadata</a>
                   </li>
                   <li>
@@ -565,7 +568,8 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">upload</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just take a path to a local file.</span>
+<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just</span>
+<span class="c1">// take a path to a local file.</span>
 
 <span class="k">try</span> <span class="p">{</span>
   <span class="c1">// Using a file from an input form.</span>
@@ -704,18 +708,23 @@ valid.
 </tr>
 <tr>
 <td><code>merkleroot</code></td>
-<td>This is the hash that is encoded into the skylink.</td>
+<td>(<code>curl</code> only) This is the hash that is encoded into the skylink.</td>
 </tr>
 <tr>
 <td><code>bitfield</code></td>
-<td>This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.</td>
+<td>(<code>curl</code> only) This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+Note that the SDKs only return the skylink since this is what you want most of the time. We are still working on ways to access more information from the result without complicating the main use case.
+</aside>
 <h2 id='uploading-a-directory'>Uploading A Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> files[]<span class="o">=</span>@./images/image1.png <span class="nt">-F</span> files[]<span class="o">=</span>@./images/image2.png
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"source dir path"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getRelativeFilePath</span><span class="p">,</span> <span class="nx">getRootDirectory</span><span class="p">,</span> <span class="nx">uploadDirectory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just take a path to a local directory.</span>
+<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just</span>
+<span class="c1">// take a path to a local directory.</span>
 
 <span class="c1">// Assume we have a list of files from an input form.</span>
 <span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">getRootDirectory</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -790,7 +799,7 @@ dir1
 ...portal.../...skylink.../dir2
 </pre>
 
-<p>... will download them as a .zip archive containing the contents, by default.</p>
+<p>will download it as a .zip archive (by default) containing the directory contents.</p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -842,7 +851,11 @@ dir1
 <span class="c1">// Assume we have a file from an input form.</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">upload</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">upload</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span>
+    <span class="nx">file</span><span class="p">,</span>
+    <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">}</span>
+  <span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
@@ -880,12 +893,8 @@ options when uploading a file or directory.</p>
 <p>See the additional options in <a href=".#uploading-a-file">Uploading A File</a>.</p>
 
 <p>Also see <a href=".#encryption">Encryption</a>.</p>
-<h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># entire file</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-
-<span class="c"># sub path</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="o">[</span>skylink] <span class="o">[</span>destination]
+<h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"./dst.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">download</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
@@ -995,6 +1004,49 @@ Directory</a> for examples.</p>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
+<h2 id='downloading-a-file-from-an-uploaded-directory'>Downloading A File From An Uploaded Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2"</span> <span class="s2">"./dst.jpg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">download</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="nx">download</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
+
+<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
+
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href=".#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
 <h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
