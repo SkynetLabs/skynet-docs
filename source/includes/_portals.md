@@ -1,14 +1,67 @@
 # Portals
 
-## Get Portals
+## Getting The List Of Portals
 
-```shell
+```shell--curl
 curl -A "Sia-Agent" "localhost:9980/skynet/portals"
 ```
 
-> The above command returns JSON structured like this
+```shell--cli
+Coming Soon
+```
 
-```json
+```javascript--browser
+import { getPortals } from "skynet-js";
+
+try {
+  const portals = await getPortals("https://siasky.net");
+} catch (error) {
+  console.log(error)
+}
+```
+
+```javascript--node
+const skynet = require('@nebulous/skynet');
+
+(async () => {
+	const portals = await skynet.getPortals();
+})();
+```
+
+```python
+import siaskynet as skynet
+
+portals = skynet.get_portals()
+print("Get portals successful, portals: " + portals)
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	fmt.Println("Getting portals...")
+	portals, err := skynet.GetPortals(skynet.DefaultGetPortalsOptions)
+	if err != nil {
+		panic("Unable to get portals: " + err.Error())
+	}
+	fmt.Printf("Portals: %+v\n", portals)
+}
+```
+
+This function returns the list of known Skynet portals.
+
+### Settings
+
+None
+
+### Response
+
+```shell--curl
 {
   "portals": [
     {
@@ -19,22 +72,40 @@ curl -A "Sia-Agent" "localhost:9980/skynet/portals"
 }
 ```
 
-This endpoint returns the list of known Skynet portals.
+```shell--cli
+Coming Soon
+```
 
-### HTTP Request
+```javascript--browser
+[{"address": "siasky.net:443", "public": true}]
+```
 
-`GET /skynet/portals`
+```javascript--node
+[{"address": "siasky.net:443", "public": true}]
+```
 
-### Response Fields
+```python
+[{"address": "siasky.net:443", "public": true}]
+```
+
+```go
+[{"address": "siasky.net:443", "public": true}]
+```
 
 Field | Type | Description
 ----- | ---- | -----------
-address | string | The IP or domain name and the port of the portal. Must be a valid network address.
-public | bool | Indicates whether the portal can be accessed publicly or not.
+`portals` | array of `Portal` | The list of known Skynet portals.
 
-## Edit Portals
+`Portal`:
 
-```shell
+Field | Type | Description
+----- | ---- | -----------
+`address` | string | The IP or domain name and the port of the portal. Must be a valid network address.
+`public` | bool | Indicates whether the portal can be accessed publicly or not.
+
+## Editing The List Of Portals
+
+```shell--curl
 // add portal
 curl -A "Sia-Agent" --user "":<apipassword> --data '{"add" : [{"address":"siasky.net:443","public":true}]}' "localhost:9980/skynet/portals"
 
@@ -42,24 +113,100 @@ curl -A "Sia-Agent" --user "":<apipassword> --data '{"add" : [{"address":"siasky
 curl -A "Sia-Agent" --user "":<apipassword> --data '{"remove" : ["siasky.net:443"]}' "localhost:9980/skynet/portals"
 ```
 
-This endpoint allows to update the list of known Skynet portals. It can be used
-to both add and remove portals from the list.
+```shell--cli
+Coming Soon
+```
 
-### HTTP Request
+```javascript--browser
+import { updatePortals } from "skynet-js";
 
-`POST /skynet/portals`
+const additions = [
+  {
+    address: "https://localhost:9980",
+    public: true
+  }
+];
+const removals = ["https://localhost:997"];
 
-### Request Body Fields
+try {
+  await updatePortals("https://siasky.net", additions, removals);
+} catch (error) {
+  console.log(error)
+}
+```
 
-<aside class="warning">At least one of the following fields needs to be non empty</aside>
+```javascript--node
+const skynet = require('@nebulous/skynet');
+
+const additions = [
+  {
+    address: "https://localhost:9980",
+    public: true
+  }
+];
+const removals = ["https://localhost:997"];
+
+(async () => {
+	await skynet.updatePortals(additions, removals);
+	console.log("Update portals successful");
+```
+
+```python
+import siaskynet as skynet
+
+additions = [
+	{
+		address: "https://localhost:9980",
+		public: true
+	}
+]
+const removals = ["https://localhost:997"]
+
+skynet.update_portals(additions, removals)
+print("Update portals successful)
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	var additions = []skynet.Portal{
+		Portal{
+			Address: "https://localhost:9980",
+			Public: true,
+		},
+	}
+	var removals = []string{"https://localhost:997"}
+
+	err := skynet.UpdatePortals(additions, removals, skynet.DefaultUpdatePortalsOptions)
+	if err != nil {
+		panic("Unable to update portals: " + err.Error())
+	}
+	fmt.Printf("Update portals successful")
+}
+```
+
+This function updates the list of known Skynet portals. It can be used to both
+add and remove portals from the list.
+
+### Settings
+
+<aside class="warning">At least one of the following fields needs to be non empty.</aside>
 
 Field | Type | Description
 ----- | ---- | -----------
-add | array of SkynetPortal | add is an array of portal info that should be added to the list of portals.
-remove | array of strings | remove is an array of portal network addresses that should be removed from the
-list of portals.
+`additions` | array of `Portal` | An array of portal info that should be added to the list of portals.
+`removals` | array of strings | An array of portal network addresses that should be removed from the list of portals.
 
-### Response Fields
+`Portal`:
 
-standard success or error response. See [standard
-responses](#standard-responses).
+See [Getting The List Of Portals](.#getting-the-list-of-portals).
+
+### Response
+
+Empty on success.

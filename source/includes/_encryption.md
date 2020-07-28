@@ -1,5 +1,14 @@
 # Encryption
 
+Encryption and decryption in Skynet are performed using *skykeys*. Skykeys can
+be created and queried using the functions in this section. The name or ID of a
+skykey must be provided when uploading or downloading with encryption.
+
+See also:
+
+- [Uploading With Encryption](.#uploading-with-encryption)
+- [Downloading With Decryption](.#downloading-with-decryption)
+
 ## Creating A Skykey
 
 ```shell--curl
@@ -7,7 +16,7 @@ curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localh
 ```
 
 ```shell--cli
-TODO
+skynet skykey create "testcreateskykey"
 ```
 
 ```javascript--browser
@@ -16,18 +25,29 @@ import { createSkykey } from "skynet-js";
 const name = "testcreateskykey";
 
 try {
-  const skykey = createSkykey(portalUrl, name, "private-id");
+  const skykey = await createSkykey("https://siasky.net", name, "private-id");
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+const name = "testcreateskykey";
+
+(async () => {
+	const skykey = await skynet.createSkykey(name, "private-id");
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+name = "testcreateskykey"
+
+skykey = skynet.create_skykey(name, "private-id")
+print("Create skykey successful, skykey: " + skykey)
 ```
 
 ```go
@@ -51,15 +71,12 @@ func main() {
 
 This function creates a skykey stored under the given name.
 
-### Settings
+### Parameters
 
 Parameter | Description
 --------- | -----------
 `name` | Desired name of the skykey.
-`id` | Desired type of the skykey. The two supported types are "public-id" and
-"private-id". Users should use "private-id" skykeys unless they have a specific
-reason to use "public-id" skykeys which reveal skykey IDs and show which
-skyfiles are encrypted with the same skykey.
+`type` | Desired type of the skykey. The two supported types are `"public-id"` and `"private-id"`. Users should use `"private-id"` skykeys unless they have a specific reason to use `"public-id"` skykeys which reveal skykey IDs and show which skyfiles are encrypted with the same skykey.
 
 ### Response
 
@@ -73,7 +90,7 @@ skyfiles are encrypted with the same skykey.
 ```
 
 ```shell--cli
-TODO
+Coming Soon
 ```
 
 ```javascript--browser
@@ -119,14 +136,14 @@ Field | Type | Description
 `id` | string | ID of the Skykey
 `type` | string | Desired type of the skykey. See above for more information.
 
-## Addding A Skykey
+## Adding A Skykey
 
 ```shell--curl
 curl -A "Sia-Agent"  -u "":<apipassword> --data "skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a" "localhost:9980/skynet/addskykey"
 ```
 
 ```shell--cli
-TODO
+skynet skykey add "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
 ```
 
 ```javascript--browser
@@ -135,18 +152,29 @@ import { addSkykey } from "skynet-js";
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
 
 try {
-  addSkykey(portalUrl, skykey);
+  await addSkykey("https://siasky.net", skykey);
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
+
+(async () => {
+	await skynet.addSkykey(skykey);
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
+
+skynet.add_skykey(skykey)
+print("Add skykey successful")
 ```
 
 ```go
@@ -169,7 +197,7 @@ func main() {
 
 This function stores the given skykey with the renter's skykey manager.
 
-### Settings
+### Parameters
 
 Parameter | Description
 --------- | -----------
@@ -186,7 +214,7 @@ curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localh
 ```
 
 ```shell--cli
-TODO
+skynet skykey get name "testcreateskykey"
 ```
 
 ```javascript--browser
@@ -195,18 +223,29 @@ import { getSkykeyByName } from "skynet-js";
 const name = "testcreateskykey";
 
 try {
-  const skykey = getSkykeyByName(portalUrl, name);
+  const skykey = await getSkykeyByName("https://siasky.net", name);
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+const name = "testcreateskykey";
+
+(async () => {
+	const skykey = await skynet.getSkykeyByName(name);
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+name = "testcreateskykey"
+
+skykey = skynet.get_skykey_by_name(name)
+print("Get skykey successful, skykey: " + skykey)
 ```
 
 ```go
@@ -230,7 +269,7 @@ func main() {
 
 This function returns the base-64 encoded skykey stored under that name.
 
-### Settings
+### Parameters
 
 Parameter | Description
 --------- | -----------
@@ -238,7 +277,7 @@ Parameter | Description
 
 ### Response
 
-See [Create Skykey](.#create-skykey).
+See [Creating A Skykey](.#creating-a-skykey).
 
 ### Getting A Skykey By ID
 
@@ -247,7 +286,7 @@ curl -A "Sia-Agent"  -u "":<apipassword> --data "id=gi5z8cf5NWbcvPBaBn0DFQ==" "l
 ```
 
 ```shell--cli
-TODO
+skynet skykey get id "pJAPPfWkWXpss3BvMDCJCw=="
 ```
 
 ```javascript--browser
@@ -256,18 +295,29 @@ import { getSkykeyById } from "skynet-js";
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
 
 try {
-  const skykey = getSkykeyById(portalUrl, id);
+  const skykey = await getSkykeyById("https://siasky.net", id);
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+const id = "pJAPPfWkWXpss3BvMDCJCw==";
+
+(async () => {
+	const skykey = await skynet.getSkykeyById(id);
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+id = "pJAPPfWkWXpss3BvMDCJCw=="
+
+skykey = skynet.get_skykey_by_id(id)
+print("Get skykey successful, skykey: " + skykey)
 ```
 
 ```go
@@ -279,7 +329,7 @@ func main() {
 	const id = "pJAPPfWkWXpss3BvMDCJCw=="
 
 	fmt.Printf("Getting skykey with id %v...\n", id)
-	skykey, err = skynet.GetSkykeyByID(id, skynet.DefaultGetSkykeyOptions)
+	skykey, err := skynet.GetSkykeyByID(id, skynet.DefaultGetSkykeyOptions)
 	if err != nil {
 		panic("Unable to get skykey: " + err.Error())
 	}
@@ -287,46 +337,51 @@ func main() {
 }
 ```
 
-> TODO
-
 This function returns the base-64 encoded skykey stored under that ID.
 
-### Settings
+### Parameters
 
 Parameter | Description
 --------- | -----------
-`id` | ID of the skykey being queried
+`id` | ID of the skykey being queried.
 
 ### Response
 
-See [Create Skykey](.#create-skykey).
+See [Creating A Skykey](.#creating-a-skykey).
 
 ## Listing Skykeys
 
 ```shell--curl
-TODO
+curl -A "Sia-Agent"  -u "":<apipassword> "localhost:9980/skynet/skykeys"
 ```
 
 ```shell--cli
-TODO
+skynet skykey list
 ```
 
 ```javascript--browser
 import { getSkykeys } from "skynet-js";
 
 try {
-  const skykeys = getSkykeys(portalUrl);
+  const skykeys = await getSkykeys("https://siasky.net");
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+(async () => {
+	const skykeys = await skynet.getSkykeys();
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+skykeys = skynet.get_skykeys()
+print("Get skykeys successful, skykeys: " + skykeys)
 ```
 
 ```go
@@ -349,10 +404,10 @@ func main() {
 
 This function lists all skykeys on the given portal.
 
-### Settings
+### Parameters
 
 None
 
 ### Response
 
-List of Skykeys (see [Create Skykey](.#create-skykey).
+List of Skykeys (see [Creating A Skykey](.#creating-a-skykey)).
