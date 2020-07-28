@@ -1,0 +1,2 @@
+# Enable hard tabs, inline HTML, duplicate headings
+rules "~MD010", "~MD033", "~MD024"

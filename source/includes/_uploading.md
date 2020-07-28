@@ -27,10 +27,7 @@ try {
 const skynet = require('@nebulous/skynet');
 
 (async () => {
-	const skylink = await skynet.UploadFile(
-		"./image.jpg",
-		skynet.DefaultUploadOptions
-	);
+	const skylink = await skynet.uploadFile("./image.jpg");
 	console.log(`Upload successful, skylink: ${skylink}`);
 })();
 ```
@@ -63,7 +60,9 @@ Uploading a file to Skynet can be done through a Skynet portal or your
 local `siad` instance.
 
 <aside class="notice">
-If a file is uploaded through a portal, the portal owner is paying to host that file, and it will remain on the network for as long as that file contract is valid.
+If a file is uploaded through a portal, the portal owner is paying to host that
+file, and it will remain on the network for as long as that file contract is
+valid.
 </aside>
 
 ### Parameters
@@ -106,28 +105,26 @@ Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOl
 ```
 
 ```javascript--browser
-// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```javascript--node
-// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```python
-# skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```go
-// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
-
-The response will contain some or all of these fields:
 
 Field        | Description
 ------------ | -----------
-`skylink`    | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
+`skylink` | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
 `merkleroot` | This is the hash that is encoded into the skylink.
-`bitfield`   | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
+`bitfield` | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
 ## Uploading A Directory
 
@@ -159,7 +156,7 @@ try {
     return { ...acc, [path]: file };
   }, {});
 
-  const { skylink } = await uploadDirectory(portalUrl, directory, filename);
+  const { skylink } = await uploadDirectory("https://siasky.net", directory, filename);
 } catch (error) {
   console.log(error);
 }
@@ -169,10 +166,7 @@ try {
 const skynet = require('@nebulous/skynet');
 
 (async () => {
-	const url = await skynet.UploadDirectory(
-		"./images",
-		skynet.DefaultUploadOptions
-	);
+	const url = await skynet.uploadDirectory("./images");
 	console.log(`Upload successful, url: ${url}`);
 })();
 ```
@@ -205,7 +199,32 @@ It is possible to upload a directory as a single piece of content. Doing this
 will allow you to address your content under one skylink, and access the files
 by their path. This is especially useful for webapps.
 
-Directory uploads work using multipart form upload.
+For example, let's say you upload a directory with the following structure:
+
+<pre class="not_example">
+dir1
+|-- file1
+|-- file1
+|-- dir2
+    |-- file3
+</pre>
+
+The three files can be accessed as follows:
+
+<pre class="not_example">
+...portal.../...skylink.../file1
+...portal.../...skylink.../file2
+...portal.../...skylink.../dir2/file3
+</pre>
+
+Accessing one of the two directories...
+
+<pre class="not_example">
+...portal.../...skylink...
+...portal.../...skylink.../dir2
+</pre>
+
+... will download them as a .zip archive containing the contents, by default.
 
 ### Parameters
 
@@ -239,19 +258,19 @@ Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1
 ```
 
 ```javascript--browser
-// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 ```javascript--node
-// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 ```python
-# url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 ```go
-// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 See [Uploading A File](.#uploading-a-file).
@@ -259,11 +278,11 @@ See [Uploading A File](.#uploading-a-file).
 ## Uploading With Encryption
 
 ```shell--curl
-TODO
+Coming Soon
 ```
 
 ```shell--cli
-TODO
+skynet upload "./image.jpg" --skykey-name "my-skykey"
 ```
 
 ```javascript--browser
@@ -279,7 +298,15 @@ try {
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+(async () => {
+	const skylink = await skynet.uploadFile(
+		"./image.jpg",
+		{ skykeyName: "my-skykey" }
+	);
+	console.log(`Upload successful, skylink: ${skylink}');
+})();
 ```
 
 ```python
@@ -305,7 +332,9 @@ func main() {
 }
 ```
 
-If you have a skykey on the portal you can ask the portal to encrypt the uploaded content for you. Simply pass the skykey name or ID in the custom options when uploading a file or directory.
+If you have a skykey on the portal you can ask the portal to encrypt the
+uploaded content for you. Simply pass the skykey name or ID in the custom
+options when uploading a file or directory.
 
 See the additional options in [Uploading A File](.#uploading-a-file).
 

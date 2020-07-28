@@ -26,9 +26,7 @@ try {
 const skynet = require('@nebulous/skynet');
 
 (async () => {
-	const skylink = await skynet.UploadFile(
-		"./image.jpg"
-	);
+	const skylink = await skynet.uploadFile("./image.jpg");
 	console.log(`Upload successful, skylink: ${skylink}`);
 })();
 ```
@@ -57,13 +55,22 @@ func main() {
 }
 ```
 
-The SDKs are set up to be as simple as possible. Despite the many options for configuration, most users will be able to get started with a single API call. In the example on the right, we upload the file `image.jpg` to the default Skynet portal, `https://siasky.net`.
+The SDKs are set up to be as simple as possible. Despite the many options for
+configuration, most users will be able to get started with a single API call. In
+the example on the right, we upload the file `image.jpg` to the default Skynet
+portal, `https://siasky.net`.
 
 ## Using A Different Portal
 
-The default portal used is `https://siasky.net` (also available through the exported constant, `defaultPortalUrl`) and no configuration is required to use it. Having a reasonable choice already selected keeps friction for new developers low. However, as Skynet is a decentralized project, it is also possible to use different portals.
+The default portal used is `https://siasky.net` (also available through the
+exported constant, `defaultPortalUrl`) and no configuration is required to use
+it. Having a reasonable choice already selected keeps friction for new
+developers low. However, as Skynet is a decentralized project, it is also
+possible to use different portals.
 
-In every SDK except Browser JS, a different portal can be passed in as part of the options for each function. See [Setting Additional Options](.#setting-additional-options).
+In every SDK except Browser JS, a different portal can be passed in as part of
+the options for each function. See [Setting Additional
+Options](.#setting-additional-options).
 
 ### Browser JS
 
@@ -90,13 +97,17 @@ In Browser JS it is possible to either:
 ## Setting Additional Options
 
 <aside class="warning">
-The SDKs are actively being worked on, and so far not every additional option has been implemented in every SDK.
+The SDKs are actively being worked on, and so far not every additional option
+has been implemented in every SDK.
 </aside>
 
 Each SDK function also accepts additional options. These vary depending on the endpoint and are documented alongside each function.
 
 <aside class="notice">
-In most of our SDKs the additional options may be left out of the function calls, in which case the default options are used. In <b>Go</b> the options must always be passed in, as the language does not support optional function parameters.
+In most of our SDKs the additional options may be left out of the function
+calls, in which case the default options are used. In <b>Go</b> the options must
+always be passed in, as the language does not support optional function
+parameters.
 </aside>
 
 ### Common Options

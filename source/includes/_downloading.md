@@ -4,13 +4,10 @@
 
 ```shell--curl
 # entire file
-curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 
-# directory
-curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder"
-
-# sub file
-curl -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"
+# sub path
+curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"
 ```
 
 ```shell--cli
@@ -23,7 +20,7 @@ import { download } from "skynet-js";
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  download(portalUrl, skylink);
+  download("https://siasky.net", skylink);
 } catch (error) {
   console.log(error)
 }
@@ -35,10 +32,7 @@ const skynet = require('@nebulous/skynet');
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
-	await skynet.DownloadFile(
-		"./dst.jpg",
-		skylink
-	);
+	await skynet.downloadFile("./dst.jpg", skylink);
 	console.log('Download successful');
 })();
 ```
@@ -63,7 +57,7 @@ import (
 func main() {
   const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
-	err = skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+	err := skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -71,7 +65,7 @@ func main() {
 }
 ```
 
-This endpoint downloads a skylink using http streaming. The call blocks until
+This function downloads a skylink using http streaming. The call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a `404`
 error will be returned. This timeout is configurable.
@@ -81,13 +75,16 @@ error will be returned. This timeout is configurable.
 Field | Description
 ----- | -----------
 `path` | The local path where the file should be downloaded to.
-`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](.#uploading-a-directory) for examples.
 
 *Browser JS:*
 
 Field | Description
 ----- | -----------
-`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
+`skylink` | The skylink that should be downloaded. The skylink can contain an
+optional path. This path can specify a directory or a particular file. If
+specified, only that file or directory will be returned. See [Uploading A
+Directory](.#uploading-a-directory) for examples.
 
 ### Additional Options
 
@@ -100,18 +97,16 @@ Field | Description | Default
 
 ### Response
 
-*Browser JS:*
-
-Exception on failure.
+Empty on success.
 
 ## Getting Metadata
 
 ```shell--curl
-curl -I -A "Sia-Agent" "localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+curl -I -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```shell--cli
-TODO
+Coming Soon
 ```
 
 ```javascript--browser
@@ -120,22 +115,48 @@ import { metadata } from "skynet-js";
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  const md = metadata(portalUrl, skylink);
+  const md = await metadata("https://siasky.net", skylink);
 } catch (error) {
   console.log(error)
 }
 ```
 
 ```javascript--node
-TODO
+const skynet = require('@nebulous/skynet');
+
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+
+(async () => {
+	const md = await skynet.metadata(skylink);
+	console.log(Get metadata successful');
+})();
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+
+md = skynet.metadata(skylink)
 ```
 
 ```go
-TODO
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet"
+)
+
+func main() {
+	const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+
+	md, err := skynet.Metadata(skylink, skynet.DefaultMetadataOptions)
+	if err != nil {
+		panic("Something went wrong, please try again.\nError: " + err.Error())
+	}
+	fmt.Printf("Get metadata successful, metadata: %+v\n", md)
+}
 ```
 
 It is possible to get metadata about a file or directory without fetching
@@ -251,14 +272,12 @@ See [Downloading A File](.#downloading-a-file).
 }
 ```
 
-The response will contain some or all of these fields:
-
-TODO
+Coming Soon
 
 ## Downloading With Decryption
 
 ```shell--curl
-TODO
+Coming Soon
 ```
 
 ```shell--cli
@@ -271,7 +290,7 @@ import { download } from "skynet-js";
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  download(portalUrl, skylink, { skykeyName: "my-skykey" });
+  download("https://siasky.net", skylink, { skykeyName: "my-skykey" });
 } catch (error) {
   console.log(error)
 }
@@ -283,7 +302,7 @@ const skynet = require('@nebulous/skynet');
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
-	await skynet.DownloadFile(
+	await skynet.downloadFile(
 		"./dst.jpg",
 		skylink,
 		{ skykeyName: "my-skykey" }
@@ -316,7 +335,7 @@ func main() {
 
 	opts := skynet.DefaultDownloadOptions
 	opts.SkykeyName = "my-skykey"
-	err = skynet.DownloadFile("./dst.go", skylink, opts)
+	err := skynet.DownloadFile("./dst.go", skylink, opts)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -324,7 +343,9 @@ func main() {
 }
 ```
 
-If you have a skykey on the portal you can ask the portal to decrypt the downloaded content for you. Simply pass the skykey name or ID in the custom options when downloading.
+If you have a skykey on the portal you can ask the portal to decrypt the
+downloaded content for you. Simply pass the skykey name or ID in the custom
+options when downloading.
 
 See the additional options in [Downloading A File](.#downloading-a-file).
 
