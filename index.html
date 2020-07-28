@@ -196,7 +196,7 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-744f7dea.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-3864f93f.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-4910022a.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-c5541673.js"></script>
   </head>
@@ -297,10 +297,10 @@
             <a href="#blocklist" class="toc-h1 toc-link" data-title="Blocklist">Blocklist</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-blocklist" class="toc-h2 toc-link" data-title="Get Blocklist">Get Blocklist</a>
+                    <a href="#getting-the-blocklist" class="toc-h2 toc-link" data-title="Getting The Blocklist">Getting The Blocklist</a>
                   </li>
                   <li>
-                    <a href="#edit-blocklist" class="toc-h2 toc-link" data-title="Edit Blocklist">Edit Blocklist</a>
+                    <a href="#editing-the-blocklist" class="toc-h2 toc-link" data-title="Editing The Blocklist">Editing The Blocklist</a>
                   </li>
               </ul>
           </li>
@@ -308,10 +308,10 @@
             <a href="#portals" class="toc-h1 toc-link" data-title="Portals">Portals</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-portals" class="toc-h2 toc-link" data-title="Get Portals">Get Portals</a>
+                    <a href="#getting-the-list-of-portals" class="toc-h2 toc-link" data-title="Getting The List Of Portals">Getting The List Of Portals</a>
                   </li>
                   <li>
-                    <a href="#edit-portals" class="toc-h2 toc-link" data-title="Edit Portals">Edit Portals</a>
+                    <a href="#editing-the-list-of-portals" class="toc-h2 toc-link" data-title="Editing The List Of Portals">Editing The List Of Portals</a>
                   </li>
               </ul>
           </li>
@@ -319,7 +319,7 @@
             <a href="#statistics" class="toc-h1 toc-link" data-title="Statistics">Statistics</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-stats" class="toc-h2 toc-link" data-title="Get Stats">Get Stats</a>
+                    <a href="#getting-statistics" class="toc-h2 toc-link" data-title="Getting Statistics">Getting Statistics</a>
                   </li>
               </ul>
           </li>
@@ -347,36 +347,74 @@
 <li><a href="https://github.com/NebulousLabs/go-skynet">Go</a></li>
 </ul>
 
-<p>as well as the <a href="https://github.com/NebulousLabs/skynet-cli">Skynet CLI</a> (written in Go).</p>
+<p>as well as the <a href="https://github.com/NebulousLabs/skynet-cli">Skynet CLI</a> (written
+in Go).</p>
 
-<p>These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints. Full documentation for the HTTP API can be found in the <a href="https://sia.tech/docs/#skynet">Sia API Documentation</a>.</p>
+<p>These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints.
+Full documentation for the Skynet HTTP API can be found in the <a href="https://sia.tech/docs/#skynet">Sia API
+Documentation</a>.</p>
 
 <aside class="success">
 You can view code examples in the dark area to the right. Switch to the
 programming language of your choice by clicking the tabs in the top right.
 </aside>
 <h2 id='a-note-about-language-differences'>A Note About Language Differences</h2>
-<p>Though we tried to keep the SDKs as similar to each other as possible in usage, differences between the languages -- the idiosyncracies and best practices of each -- resulted in differences between the SDKs. We&#39;ve noted them where necessary throughout the documentation.</p>
+<p>Though we tried to keep the SDKs as similar to each other as possible in usage,
+differences between the languages -- the idiosyncracies and best practices of
+each -- resulted in differences between the SDKs. We&#39;ve noted them where
+necessary throughout the documentation.</p>
 <h3 id='case'>Case</h3>
-<p>In particular, note that the casing of functions and their parameters differs between the languages:</p>
+<p>In particular, note that the casing of functions and their parameters differs
+between the languages:</p>
 
-<ul>
-<li>Javascript: <a href="https://en.wikipedia.org/wiki/Camel_case"><code>camelCase</code></a></li>
-<li>Python: <a href="https://en.wikipedia.org/wiki/Snake_case"><code>snake_case</code></a></li>
-<li>Go: <a href="https://en.wikipedia.org/wiki/PascalCase"><code>PascalCase</code></a></li>
-</ul>
+<table><thead>
+<tr>
+<th>Language</th>
+<th>Case</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Javascript</td>
+<td><a href="https://en.wikipedia.org/wiki/Camel_case"><code>camelCase</code></a></td>
+</tr>
+<tr>
+<td>Python</td>
+<td><a href="https://en.wikipedia.org/wiki/Snake_case"><code>snake_case</code></a></td>
+</tr>
+<tr>
+<td>Go</td>
+<td><a href="https://en.wikipedia.org/wiki/PascalCase"><code>PascalCase</code></a></td>
+</tr>
+</tbody></table>
 
-<p>For consistency throughout this document, functions and their parameters are documented using <code>camelCase</code>.</p>
+<p>For consistency throughout this document, functions and their parameters are
+documented using <code>camelCase</code>.</p>
 <h3 id='standard-responses'>Standard Responses</h3>
-<p>Functions will respond with the desired content on success and with errors or exceptions on failure. The error messages may contain HTTP status codes (see <a href="https://sia.tech/docs/#standard-responses">Standard Responses</a>).</p>
+<p>Functions will respond with the desired content on success and with errors or
+exceptions on failure. The error messages may contain HTTP status codes (see
+<a href="https://sia.tech/docs/#standard-responses">the Sia Docs</a>).</p>
 
 <p>Functions will fail differently in each SDK depending on the language:</p>
 
-<ul>
-<li>Javascript: exceptions are raised and must be caught with a <code>try-catch</code> block.</li>
-<li>Python: same as above.</li>
-<li>Go: errors are returned and must be checked for explicitly.</li>
-</ul>
+<table><thead>
+<tr>
+<th>Language</th>
+<th>Failure Mode</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Javascript</td>
+<td>Exceptions are raised and must be caught with a <code>try-catch</code> block.</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>Same as above.</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>Errors are returned and must be checked for explicitly.</td>
+</tr>
+</tbody></table>
 <h1 id='getting-started'>Getting Started</h1><h2 id='making-your-first-api-call'>Making Your First API Call</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">upload</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -391,9 +429,7 @@ programming language of your choice by clicking the tabs in the top right.
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">UploadFile</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span>
-    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
@@ -415,11 +451,20 @@ programming language of your choice by clicking the tabs in the top right.
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The SDKs are set up to be as simple as possible. Despite the many options for configuration, most users will be able to get started with a single API call. In the example on the right, we upload the file <code>image.jpg</code> to the default Skynet portal, <code>https://siasky.net</code>.</p>
+<p>The SDKs are set up to be as simple as possible. Despite the many options for
+configuration, most users will be able to get started with a single API call. In
+the example on the right, we upload the file <code>image.jpg</code> to the default Skynet
+portal, <code>https://siasky.net</code>.</p>
 <h2 id='using-a-different-portal'>Using A Different Portal</h2>
-<p>The default portal used is <code>https://siasky.net</code> (also available through the exported constant, <code>defaultPortalUrl</code>) and no configuration is required to use it. Having a reasonable choice already selected keeps friction for new developers low. However, as Skynet is a decentralized project, it is also possible to use different portals.</p>
+<p>The default portal used is <code>https://siasky.net</code> (also available through the
+exported constant, <code>defaultPortalUrl</code>) and no configuration is required to use
+it. Having a reasonable choice already selected keeps friction for new
+developers low. However, as Skynet is a decentralized project, it is also
+possible to use different portals.</p>
 
-<p>In every SDK except Browser JS, a different portal can be passed in as part of the options for each function. See <a href=".#setting-additional-options">Setting Additional Options</a>.</p>
+<p>In every SDK except Browser JS, a different portal can be passed in as part of
+the options for each function. See <a href=".#setting-additional-options">Setting Additional
+Options</a>.</p>
 <h3 id='browser-js'>Browser JS</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="nx">SkynetClient</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="c1">// Or SkynetClient() without arguments to use the default portal.</span>
@@ -441,13 +486,17 @@ programming language of your choice by clicking the tabs in the top right.
 </ul>
 <h2 id='setting-additional-options'>Setting Additional Options</h2>
 <aside class="warning">
-The SDKs are actively being worked on, and so far not every additional option has been implemented in every SDK.
+The SDKs are actively being worked on, and so far not every additional option
+has been implemented in every SDK.
 </aside>
 
 <p>Each SDK function also accepts additional options. These vary depending on the endpoint and are documented alongside each function.</p>
 
 <aside class="notice">
-In most of our SDKs the additional options may be left out of the function calls, in which case the default options are used. In <b>Go</b> the options must always be passed in, as the language does not support optional function parameters.
+In most of our SDKs the additional options may be left out of the function
+calls, in which case the default options are used. In <b>Go</b> the options must
+always be passed in, as the language does not support optional function
+parameters.
 </aside>
 <h3 id='common-options'>Common Options</h3>
 <p>Every function accepts the following common options:</p>
@@ -476,17 +525,20 @@ In most of our SDKs the additional options may be left out of the function calls
 </tr>
 </tbody></table>
 <h1 id='api-authentication'>API Authentication</h1>
-<p>Portals will likely require authentication on several of their endpoints. This is to prevent unwanted modifications to the blocklist, portal list, etc.</p>
+<p>Portals will likely require authentication on several of their endpoints. This
+is to prevent unwanted modifications to the blocklist, portal list, etc.</p>
 
-<p>If you are authorized to use password-protected endpoints on a portal, you may authenticate yourself by setting the <code>APIKey</code> custom option when calling a function.</p>
+<p>If you are authorized to use password-protected endpoints on a portal, you may
+authenticate yourself by setting the <code>APIKey</code> custom option when calling a
+function.</p>
 
-<p>For more information about authentication on portals please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
+<p>For more information about authentication on portals and local <code>siad</code> instances
+please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='uploading-to-skynet'>Uploading To Skynet</h1><h2 id='uploading-a-file'>Uploading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">upload</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just</span>
-<span class="c1">// take a path to a local file.</span>
+<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just take a path to a local file.</span>
 
 <span class="k">try</span> <span class="p">{</span>
   <span class="c1">// Using a file from an input form.</span>
@@ -497,10 +549,7 @@ In most of our SDKs the additional options may be left out of the function calls
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">UploadFile</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span>
-        <span class="nx">skynet</span><span class="p">.</span><span class="nx">DefaultUploadOptions</span>
-    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
@@ -526,7 +575,9 @@ In most of our SDKs the additional options may be left out of the function calls
 local <code>siad</code> instance.</p>
 
 <aside class="notice">
-If a file is uploaded through a portal, the portal owner is paying to host that file, and it will remain on the network for as long as that file contract is valid.
+If a file is uploaded through a portal, the portal owner is paying to host that
+file, and it will remain on the network for as long as that file contract is
+valid.
 </aside>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
@@ -609,13 +660,11 @@ If a file is uploaded through a portal, the portal owner is paying to host that 
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// skylink = "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div>
-<p>The response will contain some or all of these fields:</p>
-
 <table><thead>
 <tr>
 <th>Field</th>
@@ -639,8 +688,7 @@ If a file is uploaded through a portal, the portal owner is paying to host that 
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"source dir path"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getRelativeFilePath</span><span class="p">,</span> <span class="nx">getRootDirectory</span><span class="p">,</span> <span class="nx">uploadDirectory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just</span>
-<span class="c1">// take a path to a local directory.</span>
+<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just take a path to a local directory.</span>
 
 <span class="c1">// Assume we have a list of files from an input form.</span>
 <span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">getRootDirectory</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
@@ -657,17 +705,14 @@ If a file is uploaded through a portal, the portal owner is paying to host that 
     <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">path</span><span class="p">]:</span> <span class="nx">file</span> <span class="p">};</span>
   <span class="p">},</span> <span class="p">{});</span>
 
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">uploadDirectory</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">uploadDirectory</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">UploadDirectory</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./images</span><span class="dl">"</span><span class="p">,</span>
-        <span class="nx">skynet</span><span class="p">.</span><span class="nx">DefaultUploadOptions</span>
-    <span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadDirectory</span><span class="p">(</span><span class="dl">"</span><span class="s2">./images</span><span class="dl">"</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, url: </span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
@@ -695,7 +740,7 @@ by their path. This is especially useful for webapps.</p>
 
 <p>For example, let&#39;s say you upload a directory with the following structure:</p>
 
-<pre>
+<pre class="not_example">
 dir1
 |-- file1
 |-- file1
@@ -705,11 +750,20 @@ dir1
 
 <p>The three files can be accessed as follows:</p>
 
-<p><code>
-<portal>/<skylink>/file1
-<portal>/<skylink>/file2
-<portal>/<skylink>/dir2/file3
-</code></p>
+<pre class="not_example">
+...portal.../...skylink.../file1
+...portal.../...skylink.../file2
+...portal.../...skylink.../dir2/file3
+</pre>
+
+<p>Accessing one of the two directories...</p>
+
+<pre class="not_example">
+...portal.../...skylink...
+...portal.../...skylink.../dir2
+</pre>
+
+<p>... will download them as a .zip archive containing the contents, by default.</p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -748,37 +802,33 @@ dir1
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
+</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// url = sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span>
 </code></pre></div>
 <p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
-<h2 id='uploading-with-encryption'>Uploading With Encryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>TODO
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+<h2 id='uploading-with-encryption'>Uploading With Encryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">upload</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="c1">// Assume we have a file from an input form.</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">upload</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span>
-                                   <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">upload</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">UploadFile</span><span class="p">(</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
         <span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span>
         <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">}</span>
     <span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">');
 })();
-</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"./image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="s">'skykey_name'</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -796,26 +846,25 @@ dir1
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>If you have a skykey on the portal you can ask the portal to encrypt the uploaded content for you. Simply pass the skykey name or ID in the custom options when uploading a file or directory.</p>
+<p>If you have a skykey on the portal you can ask the portal to encrypt the
+uploaded content for you. Simply pass the skykey name or ID in the custom
+options when uploading a file or directory.</p>
 
 <p>See the additional options in <a href=".#uploading-a-file">Uploading A File</a>.</p>
 
 <p>Also see <a href=".#encryption">Encryption</a>.</p>
 <h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># entire file</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 
-<span class="c"># directory</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder"</span>
-
-<span class="c"># sub file</span>
-curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"</span>
+<span class="c"># sub path</span>
+curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg/folder/file.txt"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="o">[</span>skylink] <span class="o">[</span>destination]
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">download</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nx">download</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
+  <span class="nx">download</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
@@ -824,10 +873,7 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">DownloadFile</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span>
-        <span class="nx">skylink</span>
-    <span class="p">);</span>
+    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
@@ -846,14 +892,14 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-    <span class="n">err</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span><span class="p">)</span>
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This endpoint downloads a skylink using http streaming. The call blocks until
+<p>This function downloads a skylink using http streaming. The call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a <code>404</code>
 error will be returned. This timeout is configurable.</p>
@@ -870,7 +916,7 @@ error will be returned. This timeout is configurable.</p>
 </tr>
 <tr>
 <td><code>skylink</code></td>
-<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See <a href=".#uploading-a-directory">Uploading A Directory</a> for examples.</td>
 </tr>
 </tbody></table>
 
@@ -884,9 +930,13 @@ error will be returned. This timeout is configurable.</p>
 </thead><tbody>
 <tr>
 <td><code>skylink</code></td>
-<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
+<td>The skylink that should be downloaded. The skylink can contain an</td>
 </tr>
 </tbody></table>
+
+<p>optional path. This path can specify a directory or a particular file. If
+specified, only that file or directory will be returned. See <a href=".#uploading-a-directory">Uploading A
+Directory</a> for examples.</p>
 <h3 id='additional-options'>Additional Options</h3>
 <table><thead>
 <tr>
@@ -917,23 +967,47 @@ error will be returned. This timeout is configurable.</p>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3>
-<p><em>Browser JS:</em></p>
-
-<p>Exception on failure.</p>
-<h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/skylink/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+<p>Empty on success.</p>
+<h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">md</span> <span class="o">=</span> <span class="nx">metadata</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">md</span> <span class="o">=</span> <span class="nx">metadata</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">md</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">metadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Get</span> <span class="nx">metadata</span> <span class="nx">successful</span><span class="dl">'</span><span class="s1">);
+})();
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+
+<span class="n">md</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+
+    <span class="n">md</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultMetadataOptions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Get metadata successful, metadata: %+v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">md</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>It is possible to get metadata about a file or directory without fetching
 the entire content. These API calls will perform a HEAD request that fetches the
@@ -1032,17 +1106,15 @@ would be returned if the request had been a GET request.</p>
 <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The response will contain some or all of these fields:</p>
-
-<p>TODO</p>
-<h2 id='downloading-with-decryption'>Downloading With Decryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>TODO
+<p>Coming Soon</p>
+<h2 id='downloading-with-decryption'>Downloading With Decryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="o">[</span>skylink] <span class="o">[</span>destination] <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">download</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nx">download</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="nx">download</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
@@ -1051,7 +1123,7 @@ would be returned if the request had been a GET request.</p>
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">DownloadFile</span><span class="p">(</span>
+    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span>
         <span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span>
         <span class="nx">skylink</span><span class="p">,</span>
         <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">}</span>
@@ -1062,7 +1134,7 @@ would be returned if the request had been a GET request.</p>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="s">'skykey_name'</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
+<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1078,31 +1150,55 @@ would be returned if the request had been a GET request.</p>
 
     <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span>
     <span class="n">opts</span><span class="o">.</span><span class="n">SkykeyName</span> <span class="o">=</span> <span class="s">"my-skykey"</span>
-    <span class="n">err</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>If you have a skykey on the portal you can ask the portal to decrypt the downloaded content for you. Simply pass the skykey name or ID in the custom options when downloading.</p>
+<p>If you have a skykey on the portal you can ask the portal to decrypt the
+downloaded content for you. Simply pass the skykey name or ID in the custom
+options when downloading.</p>
 
 <p>See the additional options in <a href=".#downloading-a-file">Downloading A File</a>.</p>
 
 <p>Also see <a href=".#encryption">Encryption</a>.</p>
-<h1 id='encryption'>Encryption</h1><h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+<h1 id='encryption'>Encryption</h1>
+<p>Encryption and decryption in Skynet are performed using <em>skykeys</em>. Skykeys can
+be created and queried using the functions in this section. The name or ID of a
+skykey must be provided when uploading or downloading with encryption.</p>
+
+<p>See also:</p>
+
+<ul>
+<li><a href=".#uploading-with-encryption">Uploading With Encryption</a></li>
+<li><a href=".#downloading-with-decryption">Downloading With Decryption</a></li>
+</ul>
+<h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey create <span class="s2">"testcreateskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createSkykey</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">createSkykey</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">createSkykey</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
+
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">create_skykey</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"private-id"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Create skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1121,7 +1217,7 @@ would be returned if the request had been a GET request.</p>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Created skykey %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div>
 <p>This function creates a skykey stored under the given name.</p>
-<h3 id='settings'>Settings</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1133,21 +1229,17 @@ would be returned if the request had been a GET request.</p>
 <td>Desired name of the skykey.</td>
 </tr>
 <tr>
-<td><code>id</code></td>
-<td>Desired type of the skykey. The two supported types are &quot;public-id&quot; and</td>
+<td><code>type</code></td>
+<td>Desired type of the skykey. The two supported types are <code>&quot;public-id&quot;</code> and <code>&quot;private-id&quot;</code>. Users should use <code>&quot;private-id&quot;</code> skykeys unless they have a specific reason to use <code>&quot;public-id&quot;</code> skykeys which reveal skykey IDs and show which skyfiles are encrypted with the same skykey.</td>
 </tr>
 </tbody></table>
-
-<p>&quot;private-id&quot;. Users should use &quot;private-id&quot; skykeys unless they have a specific
-reason to use &quot;public-id&quot; skykeys which reveal skykey IDs and show which
-skyfiles are encrypted with the same skykey.</p>
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
   <span class="s2">"skykey"</span>: <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1"</span>,
   <span class="s2">"name"</span>: <span class="s2">"key_to_the_castle"</span>,
   <span class="s2">"id"</span>: <span class="s2">"ai5z8cf5NWbcvPBaBn0DFQ=="</span>,
   <span class="s2">"type"</span>: <span class="s2">"private-id"</span>
 <span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="dl">"</span><span class="s2">skykey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1</span><span class="dl">"</span><span class="p">,</span>
   <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">key_to_the_castle</span><span class="dl">"</span><span class="p">,</span>
@@ -1202,18 +1294,29 @@ skyfiles are encrypted with the same skykey.</p>
 </tr>
 </tbody></table>
 <h2 id='addding-a-skykey'>Addding A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey add <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">addSkykey</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nx">addSkykey</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">skykey</span><span class="p">);</span>
+  <span class="nx">addSkykey</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skykey</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">addSkykey</span><span class="p">(</span><span class="nx">skykey</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
+
+<span class="n">skynet</span><span class="o">.</span><span class="n">add_skykey</span><span class="p">(</span><span class="n">skykey</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Add skykey successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1231,7 +1334,7 @@ skyfiles are encrypted with the same skykey.</p>
     <span class="p">}</span>
 </code></pre></div>
 <p>This function stores the given skykey with the renter&#39;s skykey manager.</p>
-<h3 id='settings-2'>Settings</h3>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1246,18 +1349,29 @@ skyfiles are encrypted with the same skykey.</p>
 <h3 id='response-2'>Response</h3>
 <p>Error or exception on failure.</p>
 <h2 id='getting-a-skykey-by-name'>Getting A Skykey By Name</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get name <span class="s2">"testcreateskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSkykeyByName</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">getSkykeyByName</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">getSkykeyByName</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeyByName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
+
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykey_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1276,7 +1390,7 @@ skyfiles are encrypted with the same skykey.</p>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Skykey: %#v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div>
 <p>This function returns the base-64 encoded skykey stored under that name.</p>
-<h3 id='settings-3'>Settings</h3>
+<h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1289,20 +1403,31 @@ skyfiles are encrypted with the same skykey.</p>
 </tr>
 </tbody></table>
 <h3 id='response-3'>Response</h3>
-<p>See <a href=".#create-skykey">Create Skykey</a>.</p>
+<p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
 <h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"id=gi5z8cf5NWbcvPBaBn0DFQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get <span class="nb">id</span> <span class="s2">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSkykeyById</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">getSkykeyById</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="nx">getSkykeyById</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">id</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeyById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="nb">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
+
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykey_by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
@@ -1311,19 +1436,15 @@ skyfiles are encrypted with the same skykey.</p>
     <span class="k">const</span> <span class="n">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Getting skykey with id %v...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">)</span>
-    <span class="n">skykey</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">GetSkykeyByID</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultGetSkykeyOptions</span><span class="p">)</span>
+    <span class="n">skykey</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">GetSkykeyByID</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultGetSkykeyOptions</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to get skykey: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Skykey: %#v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<p>TODO</p>
-</blockquote>
-
 <p>This function returns the base-64 encoded skykey stored under that ID.</p>
-<h3 id='settings-4'>Settings</h3>
+<h3 id='parameters-4'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1332,22 +1453,29 @@ skyfiles are encrypted with the same skykey.</p>
 </thead><tbody>
 <tr>
 <td><code>id</code></td>
-<td>ID of the skykey being queried</td>
+<td>ID of the skykey being queried.</td>
 </tr>
 </tbody></table>
 <h3 id='response-4'>Response</h3>
-<p>See <a href=".#create-skykey">Create Skykey</a>.</p>
-<h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>TODO
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>TODO
+<p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
+<h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey list
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSkykeys</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="nx">getSkykeys</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="nx">getSkykeys</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">TODO</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeys</span><span class="p">();</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skykeys</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykeys</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Get skykeys successful, skykeys: "</span> <span class="o">+</span> <span class="n">skykeys</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1365,25 +1493,33 @@ skyfiles are encrypted with the same skykey.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>This function lists all skykeys on the given portal.</p>
-<h3 id='settings-5'>Settings</h3>
+<h3 id='parameters-5'>Parameters</h3>
 <p>None</p>
 <h3 id='response-5'>Response</h3>
-<p>List of Skykeys (see <a href=".#create-skykey">Create Skykey</a>.</p>
-<h1 id='blocklist'>Blocklist</h1><h2 id='get-blocklist'>Get Blocklist</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
+<p>List of Skykeys (see <a href=".#creating-a-skykey">Creating A Skykey</a>).</p>
+<h1 id='blocklist'>Blocklist</h1><h2 id='getting-the-blocklist'>Getting The Blocklist</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"blocklist"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
-    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
-    </span><span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns the list of merkleroots that are blocklisted.</p>
-<h3 id='response-fields'>Response Fields</h3>
+<p>This function returns the list of hashed merkleroots that are blocklisted.</p>
+<h3 id='parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
+  <span class="s2">"blocklist"</span>: <span class="o">{</span>
+    <span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span>
+    <span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span>
+    <span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1392,21 +1528,26 @@ skyfiles are encrypted with the same skykey.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>blocklist</td>
+<td><code>blocklist</code></td>
 <td>object</td>
-<td>The blocklist is a list of merkle roots, which are hashes, that are blocklisted.</td>
+<td>The blocklist is a list of hashed merkleroots that are blocklisted.</td>
 </tr>
 </tbody></table>
-<h2 id='edit-blocklist'>Edit Blocklist</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>// add skylink
+<h2 id='editing-the-blocklist'>Editing The Blocklist</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>// add skylink
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"add" : ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"]}'</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
 
 // remove skylink
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"]}'</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
 </code></pre></div>
-<p>This endpoint allows to update the list of skylinks that should be blocklisted
-from Skynet. It can be used to both add and remove skylinks from the blocklist.</p>
-<h3 id='request-body-fields'>Request Body Fields</h3>
-<aside class="warning">At least one of the following fields needs to be non empty</aside>
+<p>This function updates the list of skylinks that should be blocklisted from
+Skynet. It can be used to both add and remove skylinks from the blocklist.</p>
+<h3 id='parameters-2'>Parameters</h3>
+<aside class="warning">At least one of the following fields needs to be non empty.</aside>
 
 <table><thead>
 <tr>
@@ -1418,35 +1559,40 @@ from Skynet. It can be used to both add and remove skylinks from the blocklist.<
 <tr>
 <td><code>add</code></td>
 <td>array of strings</td>
-<td>add is an array of skylinks that should be added to the blocklist.</td>
+<td>An array of skylinks that should be added to the blocklist.</td>
 </tr>
 <tr>
 <td><code>remove</code></td>
 <td>array of strings</td>
-<td>remove is an array of skylinks that should be removed from the blocklist.</td>
+<td>An array of skylinks that should be removed from the blocklist.</td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-2'>Response Fields</h3>
-<p>standard success or error response. See <a href="#standard-responses">standard
-responses</a>.</p>
-<h1 id='portals'>Portals</h1><h2 id='get-portals'>Get Portals</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/portals"</span>
+<h3 id='response-2'>Response</h3>
+<p>Empty on success.</p>
+<h1 id='portals'>Portals</h1><h2 id='getting-the-list-of-portals'>Getting The List Of Portals</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/portals"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"portals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"siasky.net:443"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"public"</span><span class="p">:</span><span class="w">  </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns the list of known Skynet portals.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /skynet/portals</code></p>
-<h3 id='response-fields'>Response Fields</h3>
+<p>This function returns the list of known Skynet portals.</p>
+<h3 id='settings'>Settings</h3>
+<p>None</p>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
+  <span class="s2">"portals"</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">"address"</span>: <span class="s2">"siasky.net:443"</span>,
+      <span class="s2">"public"</span>:  <span class="nb">true</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="nx">Coming</span> <span class="nx">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1455,28 +1601,42 @@ responses</a>.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>address</td>
+<td><code>portals</code></td>
+<td>array of <code>SkynetPortal</code></td>
+<td>The list of known Skynet portals.</td>
+</tr>
+</tbody></table>
+
+<p><code>SkynetPortal</code>:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>address</code></td>
 <td>string</td>
 <td>The IP or domain name and the port of the portal. Must be a valid network address.</td>
 </tr>
 <tr>
-<td>public</td>
+<td><code>public</code></td>
 <td>bool</td>
 <td>Indicates whether the portal can be accessed publicly or not.</td>
 </tr>
 </tbody></table>
-<h2 id='edit-portals'>Edit Portals</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>// add portal
+<h2 id='editing-the-list-of-portals'>Editing The List Of Portals</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>// add portal
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"add" : [{"address":"siasky.net:443","public":true}]}'</span> <span class="s2">"localhost:9980/skynet/portals"</span>
 
 // remove portal
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["siasky.net:443"]}'</span> <span class="s2">"localhost:9980/skynet/portals"</span>
 </code></pre></div>
-<p>This endpoint allows to update the list of known Skynet portals. It can be used
-to both add and remove portals from the list.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>POST /skynet/portals</code></p>
-<h3 id='request-body-fields'>Request Body Fields</h3>
-<aside class="warning">At least one of the following fields needs to be non empty</aside>
+<p>This function updates the list of known Skynet portals. It can be used to both
+add and remove portals from the list.</p>
+<h3 id='settings-2'>Settings</h3>
+<aside class="warning">At least one of the following fields needs to be non empty.</aside>
 
 <table><thead>
 <tr>
@@ -1486,43 +1646,132 @@ to both add and remove portals from the list.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>add</td>
-<td>array of SkynetPortal</td>
-<td>add is an array of portal info that should be added to the list of portals.</td>
+<td><code>add</code></td>
+<td>array of <code>SkynetPortal</code></td>
+<td>An array of portal info that should be added to the list of portals.</td>
 </tr>
 <tr>
-<td>remove</td>
+<td><code>remove</code></td>
 <td>array of strings</td>
-<td>remove is an array of portal network addresses that should be removed from the</td>
+<td>An array of portal network addresses that should be removed from the list of portals.</td>
 </tr>
 </tbody></table>
 
-<p>list of portals.</p>
-<h3 id='response-fields-2'>Response Fields</h3>
-<p>standard success or error response. See <a href="#standard-responses">standard
-responses</a>.</p>
-<h1 id='statistics'>Statistics</h1><h2 id='get-stats'>Get Stats</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/stats"</span>
+<p><code>SkynetPortal</code>:</p>
+
+<p>See <a href=".#getting-the-list-of-portals">Getting The List Of Portals</a>.</p>
+<h3 id='response-2'>Response</h3>
+<p>Empty on success.</p>
+<h1 id='statistics'>Statistics</h1><h2 id='getting-statistics'>Getting Statistics</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/stats"</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet stats
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSkykeys</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">stats</span> <span class="o">=</span> <span class="nx">getStats</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">stats</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getStats</span><span class="p">();</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">stats</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Get stats successful, stats: "</span> <span class="o">+</span> <span class="n">stats</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Getting statistics..."</span><span class="p">)</span>
+    <span class="n">stats</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">GetStats</span><span class="p">(</span><span class="n">skynet</span><span class="o">.</span><span class="n">DefaultGetStatsOptions</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to get stats: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Stats: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">stats</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"uploadstats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"numfiles"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"totalsize"</span><span class="p">:</span><span class="w"> </span><span class="mi">44527895</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"versioninfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"version"</span><span class="p">:</span><span class="w">     </span><span class="s2">"1.4.4-master"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"gitrevision"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cd5a83712"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"performancestats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns statistical information about Skynet, e.g. number of files uploaded</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET /skynet/stats</code></p>
-<h3 id='response-fields'>Response Fields</h3>
+<p>This function returns statistical information about Skynet, e.g. number of files
+uploaded, total size, etc.</p>
+<h3 id='parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
+  <span class="s2">"uptime"</span>: 1234,
+  <span class="s2">"uploadstats"</span>: <span class="o">{</span>
+    <span class="s2">"numfiles"</span>: 2,
+    <span class="s2">"totalsize"</span>: 44527895
+  <span class="o">}</span>,
+  <span class="s2">"versioninfo"</span>: <span class="o">{</span>
+    <span class="s2">"version"</span>:     <span class="s2">"1.4.4-master"</span>,
+    <span class="s2">"gitrevision"</span>: <span class="s2">"cd5a83712"</span>
+  <span class="o">}</span>,
+  <span class="s2">"performancestats"</span>: <span class="o">{</span>
+    // Fields omitted
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">uptime</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">uploadstats</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">numfiles</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">totalsize</span><span class="dl">"</span><span class="p">:</span> <span class="mi">44527895</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">versioninfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">1.4.4-master</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">gitrevision</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cd5a83712</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">performancestats</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// Fields omitted</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">uptime</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">uploadstats</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">numfiles</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">totalsize</span><span class="dl">"</span><span class="p">:</span> <span class="mi">44527895</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">versioninfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">version</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">1.4.4-master</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">gitrevision</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">cd5a83712</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">performancestats</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// Fields omitted</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="p">{</span>
+  <span class="s">"uptime"</span><span class="p">:</span> <span class="mi">1234</span><span class="p">,</span>
+  <span class="s">"uploadstats"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"numfiles"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s">"totalsize"</span><span class="p">:</span> <span class="mi">44527895</span>
+  <span class="p">},</span>
+  <span class="s">"versioninfo"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"version"</span><span class="p">:</span>     <span class="s">"1.4.4-master"</span><span class="p">,</span>
+    <span class="s">"gitrevision"</span><span class="p">:</span> <span class="s">"cd5a83712"</span>
+  <span class="p">},</span>
+  <span class="s">"performancestats"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="o">//</span> <span class="n">Fields</span> <span class="n">omitted</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="p">{</span>
+  <span class="s">"uptime"</span><span class="o">:</span> <span class="m">1234</span><span class="p">,</span>
+  <span class="s">"uploadstats"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"numfiles"</span><span class="o">:</span> <span class="m">2</span><span class="p">,</span>
+    <span class="s">"totalsize"</span><span class="o">:</span> <span class="m">44527895</span>
+  <span class="p">},</span>
+  <span class="s">"versioninfo"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"version"</span><span class="o">:</span>     <span class="s">"1.4.4-master"</span><span class="p">,</span>
+    <span class="s">"gitrevision"</span><span class="o">:</span> <span class="s">"cd5a83712"</span>
+  <span class="p">},</span>
+  <span class="s">"performancestats"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c">// Fields omitted</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1531,41 +1780,72 @@ responses</a>.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td>uploadstats</td>
-<td>object</td>
-<td>Uploadstats is an object with statistics about the data uploaded to Skynet.</td>
-</tr>
-<tr>
-<td>numfiles</td>
+<td><code>uptime</code></td>
 <td>int</td>
-<td>Numfiles is the total number of files uploaded to Skynet.</td>
+<td>The amount of time in seconds that siad has been running.</td>
 </tr>
 <tr>
-<td>totalsize</td>
-<td>int</td>
-<td>Totalsize is the total amount of data in bytes uploaded to Skynet.</td>
+<td><code>uploadstats</code></td>
+<td><code>UploadStats</code> object</td>
+<td>An object with statistics about the data uploaded to Skynet.</td>
 </tr>
 <tr>
-<td>versioninfo</td>
-<td>object</td>
-<td>Versioninfo is an object that contains the node&#39;s version information.</td>
+<td><code>versioninfo</code></td>
+<td><code>VersionInfo</code> object</td>
+<td>An object that contains the node&#39;s version information.</td>
 </tr>
 <tr>
-<td>version</td>
-<td>string</td>
-<td>Version is the siad version the node is running.</td>
-</tr>
-<tr>
-<td>gitrevision</td>
-<td>string</td>
-<td>Gitrevision refers to the commit hash used to build said.</td>
-</tr>
-<tr>
-<td>performancestats</td>
-<td>object</td>
-<td>PerformanceStats is an object that contains a breakdown of performance metrics for the skynet endpoints. Things are broken down into containers based on the type of action performed. For example, there is a container for downloads less than 64kb in size. <br><br>Within each container, there is a bucket of half lives. Every time a data point is added to a container, it is put in to every bucket, counting up the total number of requests. The buckets decay at the stated half life, which means they give a good representation of how much activity there has been over twice their halflife. So for the one minute bucket, the total number of datapoints in the bucket is a good representation of how many things have happened in the past two minutes.<br><br>Within each bucket, there are several fields. For example, the n60ms field represents the number of requests that finished in under 60ms. There is an NErr field which gets incremented if there is a failure that can be attributed to siad.<br><br>Every download request will go into the TimeToFirstByte container, as well as the appropriate download container based on the size of the download. Within the chosen containers, every bucket will have the same field incremented. The field that gets incremented is the one that corresponds to the amount of time the request took.<br><br>The performance stats fields are not protected by a compatibility promise, and may change over time.</td>
+<td><code>performancestats</code></td>
+<td><code>PerformanceStats</code> object</td>
+<td>An object that contains a breakdown of performance metrics for the skynet endpoints. Things are broken down into containers based on the type of action performed. For example, there is a container for downloads less than 64kb in size. For more information, see <a href="https://sia.tech/docs/#skynet-stats-get">the Sia Docs</a>.</td>
 </tr>
 </tbody></table>
+
+<p><code>UploadStats</code>:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>numfiles</code></td>
+<td>int</td>
+<td>The total number of files uploaded to Skynet.</td>
+</tr>
+<tr>
+<td><code>totalsize</code></td>
+<td>int</td>
+<td>The total amount of data in bytes uploaded to Skynet.</td>
+</tr>
+</tbody></table>
+
+<p><code>VersionInfo</code>:</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>version</code></td>
+<td>string</td>
+<td>The siad version the node is running.</td>
+</tr>
+<tr>
+<td><code>gitrevision</code></td>
+<td>string</td>
+<td>The commit hash used to build <code>siad</code>.</td>
+</tr>
+</tbody></table>
+
+<p><code>PerformanceStats</code>:</p>
+
+<p>See <a href="https://sia.tech/docs/#skynet-stats-get">the Sia Docs</a>.</p>
 
       </div>
       <div class="dark-box">
