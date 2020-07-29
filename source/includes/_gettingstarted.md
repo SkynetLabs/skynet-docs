@@ -11,14 +11,17 @@ skynet upload "./image.jpg"
 ```
 
 ```javascript--browser
-import { upload } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 // Assume we have a file from an input form.
 
-try {
-  const { skylink } = await upload("https://siasky.net", file);
-} catch (error) {
-  console.log(error)
+async function uploadExample() {
+  try {
+    const client = new SkynetClient();
+    const { skylink } = await client.upload(file);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -62,13 +65,14 @@ portal, `https://siasky.net`.
 
 ## Using A Different Portal
 
-The default portal used is `https://siasky.net` (also available through the
-exported constant, `defaultPortalUrl`) and no configuration is required to use
-it. Having a reasonable choice already selected keeps friction for new
-developers low. However, as Skynet is a decentralized project, it is also
-possible to use different portals.
+The default portal used is `https://siasky.net` for all SDKs *except Browser
+JS*, which tries to use the portal which is running the sky app. The default
+portal is accessible through the exported function, `defaultPortalUrl`, and no
+configuration is required to use it. Having a reasonable choice already selected
+keeps friction for new developers low. However, as Skynet is a decentralized
+project, it is also possible to use different portals.
 
-In every SDK except Browser JS, a different portal can be passed in as part of
+In every SDK *except Browser JS*, a different portal can be passed in as part of
 the options for each function. See [Setting Additional
 Options](.#setting-additional-options).
 
@@ -80,19 +84,18 @@ import SkynetClient from "skynet-js";
 // Or SkynetClient() without arguments to use the default portal.
 const client = new SkynetClient("https://some-other-portal.xyz");
 
-// Assume we have a file from an input form.
-
-try {
-  const { skylink } = await client.upload(file);
-} catch (error) {
-  console.log(error)
+async uploadExample() {
+  try {
+    const { skylink } = await client.upload(file);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
-In Browser JS it is possible to either:
-
-- Use the standalone functions and pass in a different portal as the first argument.
-- Create a new client with the desired portal. Clients implement all the standalone functions as methods with bound `portalUrl` so you don't need to repeat it every time. See the code example on the right.
+In Browser JS you will need to first create a new client with the desired
+portal. The client can be initialized without arguments to use the default
+portal URL or the portal can be specified. See the code example on the right.
 
 ## Setting Additional Options
 
@@ -101,7 +104,8 @@ The SDKs are actively being worked on, and so far not every additional option
 has been implemented in every SDK.
 </aside>
 
-Each SDK function also accepts additional options. These vary depending on the endpoint and are documented alongside each function.
+Each SDK function also accepts additional options. These vary depending on the
+endpoint and are documented alongside each function.
 
 <aside class="notice">
 In most of our SDKs the additional options may be left out of the function
@@ -116,6 +120,6 @@ Every function accepts the following common options:
 
 Field | Description | Default
 ----- | ----------- | -------
-`portal` | The URL of the portal. | `"https://siasky.net"`
+`portalUrl` | The URL of the portal. *(Not available in Browser JS)* | `"https://siasky.net"`
 `endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths. | `""`
 `customUserAgent` | This option is available to change the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`

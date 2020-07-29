@@ -11,12 +11,13 @@ skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "./dst.jpg"
 ```
 
 ```javascript--browser
-import { download } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  download("https://siasky.net", skylink);
+  const client = new SkynetClient();
+  client.download(skylink);
 } catch (error) {
   console.log(error)
 }
@@ -106,12 +107,13 @@ skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2" "./d
 ```
 
 ```javascript--browser
-import { download } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
 try {
-  download("https://siasky.net", skylink);
+  const client = new SkynetClient();
+  client.download(skylink);
 } catch (error) {
   console.log(error)
 }
@@ -169,14 +171,17 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { metadata } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
-try {
-  const md = await metadata("https://siasky.net", skylink);
-} catch (error) {
-  console.log(error)
+async metadataExample() {
+  try {
+    const client = new SkynetClient();
+    const md = await client.metadata(skylink);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -344,12 +349,13 @@ skynet download [skylink] [destination] --skykey-name "my-skykey"
 ```
 
 ```javascript--browser
-import { download } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  download("https://siasky.net", skylink, { skykeyName: "my-skykey" });
+  const client = new SkynetClient();
+  client.download(skylink, { skykeyName: "my-skykey" });
 } catch (error) {
   console.log(error)
 }

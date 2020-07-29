@@ -11,12 +11,15 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { getPortals } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
-try {
-  const portals = await getPortals("https://siasky.net");
-} catch (error) {
-  console.log(error)
+async function getPortalsExample() {
+  try {
+    const client = new SkynetClient();
+    const portals = await client.getPortals();
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -118,7 +121,7 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { updatePortals } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const additions = [
   {
@@ -128,10 +131,13 @@ const additions = [
 ];
 const removals = ["https://localhost:997"];
 
-try {
-  await updatePortals("https://siasky.net", additions, removals);
-} catch (error) {
-  console.log(error)
+async function updatePortalsExample() {
+  try {
+    const client = new SkynetClient();
+    await client.updatePortals(additions, removals);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 

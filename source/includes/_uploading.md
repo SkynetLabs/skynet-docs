@@ -11,16 +11,18 @@ skynet upload "./image.jpg"
 ```
 
 ```javascript--browser
-import { upload } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 // NOTE: This example is different from the other SDKs because we cannot just
 // take a path to a local file.
 
-try {
-  // Using a file from an input form.
-  const { skylink } = await upload("https://siasky.net", file);
-} catch (error) {
-  console.log(error)
+async function uploadExample() {
+  try {
+    const client = new SkynetClient();
+    const { skylink } = await client.upload(file);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -142,21 +144,30 @@ skynet upload "source dir path"
 ```
 
 ```javascript--browser
-import { getRelativeFilePath, getRootDirectory, uploadDirectory } from "skynet-js";
+import { getRelativeFilePath, getRootDirectory, SkynetClient } from "skynet-js";
 
 // Assume we have a list of files from an input form.
 
-try {
-  const filename = getRootDirectory(files[0]);
-  const directory = files.reduce((acc, file) => {
-    const path = getRelativeFilePath(file);
+async function uploadDirectoryExample() {
+  try {
+    // Get the directory name from the list of files.
+    // Can also be named manually, i.e. if you build the files yourself
+    // instead of getting them from an input form.
+    const filename = getRootDirectory(files[0]);
 
-    return { ...acc, [path]: file };
-  }, {});
+    // Use reduce to build the map of files indexed by filepaths
+    // (relative from the directory).
+    const directory = files.reduce((accumulator, file) => {
+      const path = getRelativeFilePath(file);
 
-  const { skylink } = await uploadDirectory(portalUrl, directory, filename);
-} catch (error) {
-  console.log(error);
+      return { ...accumulator, [path]: file };
+    }, {});
+
+    const client = new SkynetClient();
+    const { skylink } = await client.uploadDirectory(directory, filename);
+  } catch (error) {
+    console.log(error);
+  }
 }
 ```
 
@@ -284,18 +295,17 @@ skynet upload "./image.jpg" --skykey-name "my-skykey"
 ```
 
 ```javascript--browser
-import { upload } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 // Assume we have a file from an input form.
 
-try {
-  const { skylink } = await upload(
-    "https://siasky.net",
-    file,
-    { skykeyName: "my-skykey" }
-  );
-} catch (error) {
-  console.log(error)
+async uploadEncryptionExample() {
+  try {
+    const client = new SkynetClient();
+    const { skylink } = await client.upload(file, { skykeyName: "my-skykey" });
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 

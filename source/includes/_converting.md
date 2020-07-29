@@ -11,15 +11,18 @@ skynet convert "src/path" "dest/path"
 ```
 
 ```javascript--browser
-import { upload } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const srcSiaPath = "src/path";
 const destSiaPath = "dest/path";
 
-try {
-  const { skylink } = await convert("https://siasky.net", srcSiaPath, destSiaPath);
-} catch (error) {
-  console.log(error)
+async function convertExample() {
+  try {
+    const client = new SkynetClient();
+    const { skylink } = await client.convert(srcSiaPath, destSiaPath);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
