@@ -144,25 +144,17 @@ skynet upload "source dir path"
 ```javascript--browser
 import { getRelativeFilePath, getRootDirectory, uploadDirectory } from "skynet-js";
 
-// NOTE: This example is different from the other SDKs because we cannot just
-// take a path to a local directory.
-
 // Assume we have a list of files from an input form.
-const filename = getRootDirectory(files[0]);
-const directory = files.reduce((acc, file) => {
-  const path = getRelativeFilePath(file);
-
-  return { ...acc, [path]: file };
-}, {});
 
 try {
+  const filename = getRootDirectory(files[0]);
   const directory = files.reduce((acc, file) => {
     const path = getRelativeFilePath(file);
 
     return { ...acc, [path]: file };
   }, {});
 
-  const { skylink } = await uploadDirectory("https://siasky.net", directory, filename);
+  const { skylink } = await uploadDirectory(portalUrl, directory, filename);
 } catch (error) {
   console.log(error);
 }
