@@ -723,25 +723,17 @@ Note that the SDKs only return the skylink since this is what you want most of t
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"source dir path"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getRelativeFilePath</span><span class="p">,</span> <span class="nx">getRootDirectory</span><span class="p">,</span> <span class="nx">uploadDirectory</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// NOTE: This example is different from the other SDKs because we cannot just</span>
-<span class="c1">// take a path to a local directory.</span>
-
 <span class="c1">// Assume we have a list of files from an input form.</span>
-<span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">getRootDirectory</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
-<span class="kd">const</span> <span class="nx">directory</span> <span class="o">=</span> <span class="nx">files</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">getRelativeFilePath</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-
-  <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">path</span><span class="p">]:</span> <span class="nx">file</span> <span class="p">};</span>
-<span class="p">},</span> <span class="p">{});</span>
 
 <span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="nx">getRootDirectory</span><span class="p">(</span><span class="nx">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
   <span class="kd">const</span> <span class="nx">directory</span> <span class="o">=</span> <span class="nx">files</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">acc</span><span class="p">,</span> <span class="nx">file</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">getRelativeFilePath</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
 
     <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">acc</span><span class="p">,</span> <span class="p">[</span><span class="nx">path</span><span class="p">]:</span> <span class="nx">file</span> <span class="p">};</span>
   <span class="p">},</span> <span class="p">{});</span>
 
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">uploadDirectory</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">uploadDirectory</span><span class="p">(</span><span class="nx">portalUrl</span><span class="p">,</span> <span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">}</span>
