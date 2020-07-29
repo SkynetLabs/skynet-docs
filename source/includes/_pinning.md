@@ -15,15 +15,18 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { pin } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 const destSiaPath = "pin/location";
 
-try {
-  await pin("https://siasky.net", skylink, destSiaPath);
-} catch (error) {
-  console.log(error)
+async function pinExample() {
+  try {
+    const client = new SkynetClient();
+    await client.pin(skylink, destSiaPath);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -95,14 +98,17 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { unpin } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const siaPath = "pin/location";
 
-try {
-  await unpin("https://siasky.net", siaPath);
-} catch (error) {
-  console.log(error)
+async function unpinExample() {
+  try {
+    const client = new SkynetClient();
+    await client.unpin(siaPath);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 

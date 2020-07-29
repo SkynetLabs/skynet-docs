@@ -15,14 +15,17 @@ skynet ls
 ```
 
 ```javascript--browser
-import { ls } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const siaPath = "path/file-or-dir";
 
-try {
-  const ls = await ls("https://siasky.net", siaPath);
-} catch (error) {
-  console.log(error)
+async function lsExample() {
+  try {
+    const client = new SkynetClient();
+    const ls = await client.ls(siaPath);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 

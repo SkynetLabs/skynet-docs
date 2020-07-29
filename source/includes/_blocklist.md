@@ -11,12 +11,15 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { getBlocklist } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
-try {
-  const blocklist = await getBlocklist("https://siasky.net");
-} catch (error) {
-  console.log(error)
+async function getBlocklistExample() {
+  try {
+    const client = new SkynetClient();
+    const blocklist = await client.getBlocklist();
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
@@ -110,15 +113,18 @@ Coming Soon
 ```
 
 ```javascript--browser
-import { updateBlocklist } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
 const additions = ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g", "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"];
 const removals = ["CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"];
 
-try {
-  await updateBlocklist("https://siasky.net", additions, removals);
-} catch (error) {
-  console.log(error)
+async function updateBlocklist() {
+  try {
+    const client = new SkynetClient();
+    await client.updateBlocklist(additions, removals);
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 

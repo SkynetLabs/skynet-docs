@@ -11,12 +11,15 @@ skynet stats
 ```
 
 ```javascript--browser
-import { getStats } from "skynet-js";
+import { SkynetClient } from "skynet-js";
 
-try {
-  const stats = await getStats("https://siasky.net");
-} catch (error) {
-  console.log(error)
+async function getStatsExample() {
+  try {
+    const client = new SkynetClient();
+    const stats = await client.getStats();
+  } catch (error) {
+    console.log(error)
+  }
 }
 ```
 
