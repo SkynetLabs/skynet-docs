@@ -243,10 +243,21 @@
                   <li>
                     <a href="#setting-additional-options" class="toc-h2 toc-link" data-title="Setting Additional Options">Setting Additional Options</a>
                   </li>
+                  <li>
+                    <a href="#useful-constants" class="toc-h2 toc-link" data-title="Useful Constants">Useful Constants</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#api-authentication" class="toc-h1 toc-link" data-title="API Authentication">API Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#setting-the-user-agent" class="toc-h2 toc-link" data-title="Setting The User Agent">Setting The User Agent</a>
+                  </li>
+                  <li>
+                    <a href="#more-information" class="toc-h2 toc-link" data-title="More Information">More Information</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#uploading-to-skynet" class="toc-h1 toc-link" data-title="Uploading To Skynet">Uploading To Skynet</a>
@@ -535,7 +546,7 @@ parameters.
 
 <table><thead>
 <tr>
-<th>Field</th>
+<th>Option</th>
 <th>Description</th>
 <th>Default</th>
 </tr>
@@ -556,14 +567,93 @@ parameters.
 <td><code>&quot;&quot;</code></td>
 </tr>
 </tbody></table>
-<h1 id='api-authentication'>API Authentication</h1>
+<h2 id='useful-constants'>Useful Constants</h2>
+<p>Here are some constants exported by the SDKs which may be of use in applications.</p>
+
+<table><thead>
+<tr>
+<th>Constant</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>defaultPortalUrl</code></td>
+<td>The default Skynet portal to use, if one is not provided.</td>
+<td><code>&quot;https://siasky.net&quot;</code></td>
+</tr>
+<tr>
+<td><code>uriSkynetPrefix</code></td>
+<td>The Skynet URI prefix.</td>
+<td><code>&quot;sia://&quot;</code></td>
+</tr>
+</tbody></table>
+<h1 id='api-authentication'>API Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:<span class="s2">"foobar"</span> <span class="se">\</span>
+  <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--api-key</span> <span class="s2">"foobar"</span> <span class="nt">--custom-user-agent</span> <span class="s2">"Sia-Agent"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">authenticationExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">upload</span><span class="p">(</span>
+      <span class="nx">file</span><span class="p">,</span>
+      <span class="p">{</span> <span class="na">APIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span><span class="p">,</span> <span class="na">customUserAgent</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sia-Agent</span><span class="dl">"</span> <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
+    <span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span>
+    <span class="p">{</span> <span class="na">APIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span><span class="p">,</span> <span class="na">customUserAgent</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sia-Agent</span><span class="dl">"</span> <span class="p">}</span>
+  <span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
+  <span class="s">"image.jpg"</span><span class="p">,</span>
+  <span class="p">{</span><span class="s">"api_key"</span><span class="p">:</span> <span class="s">"foobar"</span><span class="p">,</span> <span class="s">"custom_user_agent"</span><span class="p">:</span> <span class="s">"Sia-Agent"</span><span class="p">}</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">APIKey</span> <span class="o">=</span> <span class="s">"foobar"</span>
+  <span class="n">opts</span><span class="o">.</span><span class="n">CustomUserAgent</span> <span class="o">=</span> <span class="s">"Sia-Agent"</span>
+    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">UploadFile</span><span class="p">(</span><span class="s">"./image.jpg"</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to upload: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Portals will likely require authentication on several of their endpoints. This
 is to prevent unwanted modifications to the blocklist, portal list, etc.</p>
 
 <p>If you are authorized to use password-protected endpoints on a portal, you may
 authenticate yourself by setting the <code>APIKey</code> custom option when calling a
 function.</p>
+<h2 id='setting-the-user-agent'>Setting The User Agent</h2>
+<p>The portal may also require that certain sensitive requests contain a custom
+user agent header, usually <code>Sia-Agent</code>. This is for security purposes, as
+otherwise a malicious website could make requests to your local portal on your
+behalf and steal coins.</p>
 
+<p>We want this to be an opt-in for now, so <code>Sia-Agent</code> is not currently the
+default. You may change the user agent header by setting the <code>customUserAgent</code>
+custom option.</p>
+<h2 id='more-information'>More Information</h2>
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='uploading-to-skynet'>Uploading To Skynet</h1><h2 id='uploading-a-file'>Uploading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
@@ -872,7 +962,10 @@ dir1
     <span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">');
 })();
-</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">TODO</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -1054,7 +1147,7 @@ Directory</a> for examples.</p>
 </code></pre></div>
 <p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href=".#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
 <h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
@@ -1273,7 +1366,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">createSkykeyExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span> <span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
@@ -1606,7 +1699,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 pin files. <em>Pinning</em> re-uploads a copy of a file, ensuring its availability on
 Skynet even if the original upload is no longer available.</p>
 <h2 id='pinning-a-file'>Pinning A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet pin <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"pin/location"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
@@ -1679,7 +1772,7 @@ as you continue maintaining the file in your renter.</p>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
 <h2 id='unpinning-a-file'>Unpinning A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet unpin <span class="s2">"pin/location"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">siaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pin/location</span><span class="dl">"</span><span class="p">;</span>
