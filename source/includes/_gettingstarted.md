@@ -118,8 +118,17 @@ parameters.
 
 Every function accepts the following common options:
 
-Field | Description | Default
------ | ----------- | -------
+Option | Description | Default
+------ | ----------- | -------
 `portalUrl` | The URL of the portal. *(Not available in Browser JS)* | `"https://siasky.net"`
 `endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths. | `""`
 `customUserAgent` | This option is available to change the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
+
+## Useful Constants
+
+Here are some constants exported by the SDKs which may be of use in applications.
+
+Constant | Description | Default
+-------- | ----------- | -------
+`defaultPortalUrl` | The default Skynet portal to use, if one is not provided. | `"https://siasky.net"`
+`uriSkynetPrefix` | The Skynet URI prefix. | `"sia://"`

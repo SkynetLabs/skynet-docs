@@ -167,7 +167,7 @@ curl -I -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_
 ```
 
 ```shell--cli
-Coming Soon
+skynet metadata "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 ```
 
 ```javascript--browser

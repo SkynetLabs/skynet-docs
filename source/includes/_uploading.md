@@ -322,7 +322,10 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
-TODO
+import siaskynet as skynet
+
+skylink = skynet.upload_file("image.jpg", { skykeyName: "my-skykey" })
+print("Upload successful, skylink: " + skylink)
 ```
 
 ```go
