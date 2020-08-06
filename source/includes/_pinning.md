@@ -11,7 +11,7 @@ Coming Soon
 ```
 
 ```shell--cli
-Coming Soon
+skynet pin "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "pin/location"
 ```
 
 ```javascript--browser
@@ -94,7 +94,7 @@ Coming Soon
 ```
 
 ```shell--cli
-Coming Soon
+skynet unpin "pin/location"
 ```
 
 ```javascript--browser

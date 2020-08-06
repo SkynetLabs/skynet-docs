@@ -27,7 +27,7 @@ const name = "testcreateskykey";
 async function createSkykeyExample() {
   try {
     const client = new SkynetClient();
-    const skykey = await client.createSkykey( name, "private-id");
+    const skykey = await client.createSkykey(name, "private-id");
   } catch (error) {
     console.log(error)
   }
