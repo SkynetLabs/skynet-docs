@@ -941,7 +941,9 @@ dir1
 <p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
 <h2 id='uploading-with-encryption'>Uploading With Encryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="c1">// Assume we have a file from an input form.</span>
 
@@ -953,7 +955,9 @@ dir1
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
@@ -962,7 +966,9 @@ dir1
     <span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">');
 })();
-</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
@@ -999,6 +1005,7 @@ options when uploading a file or directory.</p>
 <span class="k">try</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+  <span class="c1">// Or client.open(skylink) to open it in a new browser tab.</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
@@ -1147,8 +1154,12 @@ Directory</a> for examples.</p>
 </code></pre></div>
 <p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href=".#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
 <h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1160,7 +1171,9 @@ Directory</a> for examples.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1173,7 +1186,9 @@ Directory</a> for examples.</p>
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
 <span class="n">md</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -1290,7 +1305,9 @@ would be returned if the request had been a GET request.</p>
 <p>Coming Soon</p>
 <h2 id='downloading-with-decryption'>Downloading With Decryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="o">[</span>skylink] <span class="o">[</span>destination] <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1300,7 +1317,9 @@ would be returned if the request had been a GET request.</p>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1312,7 +1331,9 @@ would be returned if the request had been a GET request.</p>
     <span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
@@ -1359,7 +1380,9 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </ul>
 <h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey create <span class="s2">"testcreateskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1371,14 +1394,18 @@ skykey must be provided when uploading or downloading with encryption.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
 
@@ -1480,7 +1507,9 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tbody></table>
 <h2 id='adding-a-skykey'>Adding A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey add <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1492,14 +1521,18 @@ skykey must be provided when uploading or downloading with encryption.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">addSkykey</span><span class="p">(</span><span class="nx">skykey</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
 
@@ -1538,7 +1571,9 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <p>Error or exception on failure.</p>
 <h2 id='getting-a-skykey-by-name'>Getting A Skykey By Name</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get name <span class="s2">"testcreateskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1550,14 +1585,18 @@ skykey must be provided when uploading or downloading with encryption.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeyByName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
 
@@ -1597,7 +1636,9 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
 <h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"id=gi5z8cf5NWbcvPBaBn0DFQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get <span class="nb">id</span> <span class="s2">"pJAPPfWkWXpss3BvMDCJCw=="</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1609,14 +1650,18 @@ skykey must be provided when uploading or downloading with encryption.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeyById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="nb">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 
@@ -1654,7 +1699,9 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
 <h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey list
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getSkykeysExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -1664,12 +1711,16 @@ skykey must be provided when uploading or downloading with encryption.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getSkykeys</span><span class="p">();</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">skykeys</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykeys</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get skykeys successful, skykeys: "</span> <span class="o">+</span> <span class="n">skykeys</span><span class="p">)</span>
@@ -1699,8 +1750,12 @@ skykey must be provided when uploading or downloading with encryption.</p>
 pin files. <em>Pinning</em> re-uploads a copy of a file, ensuring its availability on
 Skynet even if the original upload is no longer available.</p>
 <h2 id='pinning-a-file'>Pinning A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet pin <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"pin/location"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+skynet pin <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"pin/location"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pin/location</span><span class="dl">"</span><span class="p">;</span>
@@ -1713,7 +1768,9 @@ Skynet even if the original upload is no longer available.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pin/location</span><span class="dl">"</span><span class="p">;</span>
@@ -1721,14 +1778,18 @@ Skynet even if the original upload is no longer available.</p>
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">pin</span><span class="p">(</span><span class="nx">skylink</span><span class="p">,</span> <span class="nx">destSiaPath</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 <span class="n">destSiaPath</span> <span class="o">=</span> <span class="s">"pin/location"</span>
 
 <span class="n">skynet</span><span class="o">.</span><span class="n">pin</span><span class="p">(</span><span class="n">skylink</span><span class="p">,</span> <span class="n">destSiaPath</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Pin successful"</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -1772,8 +1833,12 @@ as you continue maintaining the file in your renter.</p>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
 <h2 id='unpinning-a-file'>Unpinning A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet unpin <span class="s2">"pin/location"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+skynet unpin <span class="s2">"pin/location"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">siaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pin/location</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1785,20 +1850,26 @@ as you continue maintaining the file in your renter.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">siaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pin/location</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">unpin</span><span class="p">(</span><span class="nx">siaPath</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">siaPath</span> <span class="o">=</span> <span class="s">"pin/location"</span>
 
 <span class="n">skynet</span><span class="o">.</span><span class="n">unpin</span><span class="p">(</span><span class="n">siaPath</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Unpin successful"</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -1836,8 +1907,12 @@ have pinned them.</p>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
 <h1 id='converting'>Converting</h1><h2 id='converting-siafiles-to-skyfiles'>Converting Siafiles to Skyfiles</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet convert <span class="s2">"src/path"</span> <span class="s2">"dest/path"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+skynet convert <span class="s2">"src/path"</span> <span class="s2">"dest/path"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">srcSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">src/path</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dest/path</span><span class="dl">"</span><span class="p">;</span>
@@ -1850,7 +1925,9 @@ have pinned them.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">srcSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">src/path</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dest/path</span><span class="dl">"</span><span class="p">;</span>
@@ -1859,14 +1936,18 @@ have pinned them.</p>
     <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">srcSiaPath</span><span class="p">,</span> <span class="nx">destSiaPath</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Convert successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">srcSiaPath</span> <span class="o">=</span> <span class="s">"src/path"</span>
 <span class="n">destSiaPath</span> <span class="o">=</span> <span class="s">"dest/path"</span>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">srcSiaPath</span><span class="p">,</span> <span class="n">destSiaPath</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Convert successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -1911,12 +1992,16 @@ available on Skynet.</p>
 <h3 id='response'>Response</h3>
 <p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
 <h1 id='listing'>Listing</h1><h2 id='listing-pinned-skyfiles'>Listing Pinned Skyfiles</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># Listing a single siapath</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="c"># Listing a single siapath</span>
 skynet <span class="nb">ls</span> <span class="s2">"path/file-or-dir"</span>
 
 <span class="c"># Listing all</span>
 skynet <span class="nb">ls</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">siaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">path/file-or-dir</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1928,20 +2013,26 @@ skynet <span class="nb">ls</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">siaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">path/file-or-dir</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">ls</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">ls</span><span class="p">(</span><span class="nx">siaPath</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">siaPath</span> <span class="o">=</span> <span class="s">"path/file-or-dir"</span>
 
 <span class="n">ls</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">ls</span><span class="p">(</span><span class="n">siaPath</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Ls successful: "</span><span class="p">,</span> <span class="n">ls</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -1992,7 +2083,9 @@ By default, only files in <code>var/skynet/</code> will be displayed. The
 <p>Coming Soon</p>
 <h1 id='blocklist'>Blocklist</h1><h2 id='getting-the-blocklist'>Getting The Blocklist</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getBlocklistExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -2002,16 +2095,22 @@ By default, only files in <code>var/skynet/</code> will be displayed. The
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">blocklist</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getBlocklist</span><span class="p">();</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">blocklist</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_blocklist</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get blocklist successful, blocklist: "</span> <span class="o">+</span> <span class="n">blocklist</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -2062,7 +2161,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 // remove skylinks
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g","GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"]}'</span> <span class="s2">"localhost:9980/skynet/blocklist"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">additions</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span><span class="p">];</span>
 <span class="kd">const</span> <span class="nx">removals</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span><span class="p">];</span>
@@ -2075,7 +2176,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">additions</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span><span class="p">];</span>
 <span class="kd">const</span> <span class="nx">removals</span> <span class="o">=</span> <span class="p">[</span><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span><span class="p">];</span>
@@ -2084,14 +2187,18 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
     <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">updateBlocklist</span><span class="p">(</span><span class="nx">additions</span><span class="p">,</span> <span class="nx">removals</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Update blocklist successful</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">additions</span> <span class="o">=</span> <span class="p">[</span><span class="s">"GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g"</span><span class="p">,</span> <span class="s">"EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span><span class="p">]</span>
 <span class="n">removals</span> <span class="o">=</span> <span class="p">[</span><span class="s">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span><span class="p">]</span>
 
 <span class="n">skynet</span><span class="o">.</span><span class="n">update_blocklist</span><span class="p">(</span><span class="n">additions</span><span class="p">,</span> <span class="n">removals</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Update blocklist successful)</span><span class="err">
-</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -2136,7 +2243,9 @@ Skynet. It can be used to both add and remove skylinks from the blocklist.</p>
 <p>Empty on success.</p>
 <h1 id='portals'>Portals</h1><h2 id='getting-the-list-of-portals'>Getting The List Of Portals</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/portals"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getPortalsExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -2146,16 +2255,22 @@ Skynet. It can be used to both add and remove skylinks from the blocklist.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">portals</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getPortals</span><span class="p">();</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">portals</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_portals</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get portals successful, portals: "</span> <span class="o">+</span> <span class="n">portals</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -2228,7 +2343,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 // remove portal
 curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s1">'{"remove" : ["siasky.net:443"]}'</span> <span class="s2">"localhost:9980/skynet/portals"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">additions</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span>
@@ -2246,7 +2363,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">additions</span> <span class="o">=</span> <span class="p">[</span>
   <span class="p">{</span>
@@ -2259,7 +2378,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">updatePortals</span><span class="p">(</span><span class="nx">additions</span><span class="p">,</span> <span class="nx">removals</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Update portals successful</span><span class="dl">"</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">additions</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
@@ -2271,7 +2392,9 @@ curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class=
 
 <span class="n">skynet</span><span class="o">.</span><span class="n">update_portals</span><span class="p">(</span><span class="n">additions</span><span class="p">,</span> <span class="n">removals</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Update portals successful)</span><span class="err">
-</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</span></code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
@@ -2324,8 +2447,12 @@ add and remove portals from the list.</p>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
 <h1 id='statistics'>Statistics</h1><h2 id='getting-statistics'>Getting Statistics</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/stats"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet stats
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
+
+skynet stats
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getStatsExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -2335,16 +2462,22 @@ add and remove portals from the list.</p>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">stats</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">getStats</span><span class="p">();</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
+</span>
+<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">stats</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get stats successful, stats: "</span> <span class="o">+</span> <span class="n">stats</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
+
+<span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
