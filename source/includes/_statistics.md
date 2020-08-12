@@ -7,10 +7,14 @@ curl -A "Sia-Agent" "localhost:9980/skynet/stats"
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 skynet stats
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 async function getStatsExample() {
@@ -24,6 +28,8 @@ async function getStatsExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 (async () => {
@@ -32,6 +38,8 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 stats = skynet.get_stats()
@@ -39,6 +47,8 @@ print("Get stats successful, stats: " + stats)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (

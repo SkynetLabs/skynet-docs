@@ -20,6 +20,8 @@ skynet skykey create "testcreateskykey"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const name = "testcreateskykey";
@@ -35,6 +37,8 @@ async function createSkykeyExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const name = "testcreateskykey";
@@ -45,6 +49,8 @@ const name = "testcreateskykey";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 name = "testcreateskykey"
@@ -150,6 +156,8 @@ skynet skykey add "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBE
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
@@ -165,6 +173,8 @@ async function addSkykeyExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
@@ -175,6 +185,8 @@ const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDc
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
@@ -224,6 +236,8 @@ skynet skykey get name "testcreateskykey"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const name = "testcreateskykey";
@@ -239,6 +253,8 @@ async function getSkykeyByNameExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const name = "testcreateskykey";
@@ -249,6 +265,8 @@ const name = "testcreateskykey";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 name = "testcreateskykey"
@@ -299,6 +317,8 @@ skynet skykey get id "pJAPPfWkWXpss3BvMDCJCw=="
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
@@ -314,6 +334,8 @@ async function getSkykeyByIdExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
@@ -324,6 +346,8 @@ const id = "pJAPPfWkWXpss3BvMDCJCw==";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 id = "pJAPPfWkWXpss3BvMDCJCw=="
@@ -372,6 +396,8 @@ skynet skykey list
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 async function getSkykeysExample() {
@@ -385,6 +411,8 @@ async function getSkykeysExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 (async () => {
@@ -393,6 +421,8 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 skykeys = skynet.get_skykeys()

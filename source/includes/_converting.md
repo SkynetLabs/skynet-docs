@@ -7,10 +7,14 @@ Coming Soon
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 skynet convert "src/path" "dest/path"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const srcSiaPath = "src/path";
@@ -27,6 +31,8 @@ async function convertExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const srcSiaPath = "src/path";
@@ -39,6 +45,8 @@ const destSiaPath = "dest/path";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 srcSiaPath = "src/path"
@@ -49,6 +57,8 @@ print("Convert successful, skylink: " + skylink)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (
