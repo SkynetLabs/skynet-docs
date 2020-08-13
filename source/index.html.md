@@ -56,6 +56,12 @@ You can view code examples in the dark area to the right. Switch to the
 programming language of your choice by clicking the tabs in the top right.
 </aside>
 
+<aside class="warning">
+The SDKs are still partially under construction. Please see our <a
+href="https://hackmd.io/BFPWYyDfT6yalz0o_gipyw?view">status</a> document to see
+the level of feature support for each language.
+</aside>
+
 ## A Note About Language Differences
 
 Though we tried to keep the SDKs as similar to each other as possible in usage,
