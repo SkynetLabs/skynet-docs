@@ -11,6 +11,8 @@ Coming Soon
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 async function getBlocklistExample() {
@@ -24,6 +26,8 @@ async function getBlocklistExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 (async () => {
@@ -32,6 +36,8 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 blocklist = skynet.get_blocklist()
@@ -39,6 +45,8 @@ print("Get blocklist successful, blocklist: " + blocklist)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (
@@ -113,6 +121,8 @@ Coming Soon
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const additions = ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g", "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"];
@@ -129,6 +139,8 @@ async function updateBlocklist() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const additions = ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g", "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"];
@@ -141,6 +153,8 @@ const removals = ["CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"];
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 additions = ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g", "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"]
@@ -151,6 +165,8 @@ print("Update blocklist successful)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (

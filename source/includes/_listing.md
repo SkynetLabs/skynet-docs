@@ -7,6 +7,8 @@ Coming Soon
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 # Listing a single siapath
 skynet ls "path/file-or-dir"
 
@@ -15,6 +17,8 @@ skynet ls
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const siaPath = "path/file-or-dir";
@@ -30,6 +34,8 @@ async function lsExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const siaPath = "path/file-or-dir";
@@ -40,6 +46,8 @@ const siaPath = "path/file-or-dir";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 siaPath = "path/file-or-dir"
@@ -49,6 +57,8 @@ print("Ls successful: ", ls)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (

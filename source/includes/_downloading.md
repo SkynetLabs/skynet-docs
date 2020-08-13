@@ -18,6 +18,7 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 try {
   const client = new SkynetClient();
   client.download(skylink);
+  // Or client.open(skylink) to open it in a new browser tab.
 } catch (error) {
   console.log(error)
 }
@@ -167,10 +168,14 @@ curl -I -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 skynet metadata "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -186,6 +191,8 @@ async metadataExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -205,6 +212,8 @@ md = skynet.metadata(skylink)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (
@@ -349,6 +358,8 @@ skynet download [skylink] [destination] --skykey-name "my-skykey"
 ```
 
 ```javascript--browser
+// NOTE: this feature has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -362,6 +373,8 @@ try {
 ```
 
 ```javascript--node
+// NOTE: this feature has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -377,6 +390,8 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 ```
 
 ```python
+# NOTE: this feature has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"

@@ -11,6 +11,8 @@ Coming Soon
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 async function getPortalsExample() {
@@ -24,6 +26,8 @@ async function getPortalsExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 (async () => {
@@ -32,6 +36,8 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 portals = skynet.get_portals()
@@ -39,6 +45,8 @@ print("Get portals successful, portals: " + portals)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (
@@ -121,6 +129,8 @@ Coming Soon
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const additions = [
@@ -142,6 +152,8 @@ async function updatePortalsExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const additions = [
@@ -158,6 +170,8 @@ const removals = ["https://localhost:997"];
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 additions = [
@@ -173,6 +187,8 @@ print("Update portals successful)
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (

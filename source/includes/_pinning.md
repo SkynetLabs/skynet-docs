@@ -11,10 +11,14 @@ Coming Soon
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 skynet pin "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "pin/location"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -31,6 +35,8 @@ async function pinExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -42,6 +48,8 @@ const destSiaPath = "pin/location";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
@@ -52,6 +60,8 @@ print("Pin successful")
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (
@@ -94,10 +104,14 @@ Coming Soon
 ```
 
 ```shell--cli
+# NOTE: this function has not yet been implemented for this SDK.
+
 skynet unpin "pin/location"
 ```
 
 ```javascript--browser
+// NOTE: this function has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 const siaPath = "pin/location";
@@ -113,6 +127,8 @@ async function unpinExample() {
 ```
 
 ```javascript--node
+// NOTE: this function has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 const siaPath = "pin/location";
@@ -123,6 +139,8 @@ const siaPath = "pin/location";
 ```
 
 ```python
+# NOTE: this function has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 siaPath = "pin/location"
@@ -132,6 +150,8 @@ print("Unpin successful")
 ```
 
 ```go
+// NOTE: this function has not yet been implemented for this SDK.
+
 package main
 
 import (

@@ -295,6 +295,8 @@ skynet upload "./image.jpg" --skykey-name "my-skykey"
 ```
 
 ```javascript--browser
+// NOTE: this feature has not yet been implemented for this SDK.
+
 import { SkynetClient } from "skynet-js";
 
 // Assume we have a file from an input form.
@@ -310,6 +312,8 @@ async uploadEncryptionExample() {
 ```
 
 ```javascript--node
+// NOTE: this feature has not yet been implemented for this SDK.
+
 const skynet = require('@nebulous/skynet');
 
 (async () => {
@@ -322,6 +326,8 @@ const skynet = require('@nebulous/skynet');
 ```
 
 ```python
+# NOTE: this feature has not yet been implemented for this SDK.
+
 import siaskynet as skynet
 
 skylink = skynet.upload_file("image.jpg", { skykeyName: "my-skykey" })
