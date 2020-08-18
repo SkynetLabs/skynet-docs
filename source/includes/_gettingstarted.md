@@ -13,11 +13,12 @@ skynet upload "./image.jpg"
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 // Assume we have a file from an input form.
 
 async function uploadExample() {
   try {
-    const client = new SkynetClient();
     const { skylink } = await client.upload(file);
   } catch (error) {
     console.log(error)

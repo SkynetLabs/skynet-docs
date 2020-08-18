@@ -15,9 +15,10 @@ Coming Soon
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 async function getBlocklistExample() {
   try {
-    const client = new SkynetClient();
     const blocklist = await client.getBlocklist();
   } catch (error) {
     console.log(error)
@@ -125,12 +126,12 @@ Coming Soon
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const additions = ["GAC38Gan6YHVpLl-bfefa7aY85fn4C0EEOt5KJ6SPmEy4g", "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"];
 const removals = ["CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"];
 
 async function updateBlocklist() {
   try {
-    const client = new SkynetClient();
     await client.updateBlocklist(additions, removals);
   } catch (error) {
     console.log(error)

@@ -21,12 +21,12 @@ skynet pin "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "pin/location"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 const destSiaPath = "pin/location";
 
 async function pinExample() {
   try {
-    const client = new SkynetClient();
     await client.pin(skylink, destSiaPath);
   } catch (error) {
     console.log(error)
@@ -114,11 +114,11 @@ skynet unpin "pin/location"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const siaPath = "pin/location";
 
 async function unpinExample() {
   try {
-    const client = new SkynetClient();
     await client.unpin(siaPath);
   } catch (error) {
     console.log(error)

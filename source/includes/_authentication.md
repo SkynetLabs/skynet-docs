@@ -12,9 +12,10 @@ skynet upload "./image.jpg" --api-key "foobar" --custom-user-agent "Sia-Agent"
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 async function authenticationExample() {
   try {
-    const client = new SkynetClient();
     const { skylink } = await client.upload(
       file,
       { APIKey: "foobar", customUserAgent: "Sia-Agent" }

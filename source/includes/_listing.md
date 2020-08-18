@@ -21,11 +21,11 @@ skynet ls
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const siaPath = "path/file-or-dir";
 
 async function lsExample() {
   try {
-    const client = new SkynetClient();
     const ls = await client.ls(siaPath);
   } catch (error) {
     console.log(error)

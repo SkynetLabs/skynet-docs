@@ -13,10 +13,10 @@ skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg" "./dst.jpg"
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  const client = new SkynetClient();
   client.download(skylink);
   // Or client.open(skylink) to open it in a new browser tab.
 } catch (error) {
@@ -110,10 +110,10 @@ skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2" "./d
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
 try {
-  const client = new SkynetClient();
   client.download(skylink);
 } catch (error) {
   console.log(error)
@@ -178,11 +178,11 @@ skynet metadata "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 async metadataExample() {
   try {
-    const client = new SkynetClient();
     const md = await client.metadata(skylink);
   } catch (error) {
     console.log(error)
@@ -362,10 +362,10 @@ skynet download [skylink] [destination] --skykey-name "my-skykey"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  const client = new SkynetClient();
   client.download(skylink, { skykeyName: "my-skykey" });
 } catch (error) {
   console.log(error)
