@@ -24,11 +24,11 @@ skynet skykey create "testcreateskykey"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const name = "testcreateskykey";
 
 async function createSkykeyExample() {
   try {
-    const client = new SkynetClient();
     const skykey = await client.createSkykey(name, "private-id");
   } catch (error) {
     console.log(error)
@@ -160,11 +160,11 @@ skynet skykey add "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBE
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
 
 async function addSkykeyExample() {
   try {
-    const client = new SkynetClient();
     await client.addSkykey(skykey);
   } catch (error) {
     console.log(error)
@@ -240,11 +240,11 @@ skynet skykey get name "testcreateskykey"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const name = "testcreateskykey";
 
 async function getSkykeyByNameExample() {
   try {
-    const client = new SkynetClient();
     const skykey = await client.getSkykeyByName(name);
   } catch (error) {
     console.log(error)
@@ -321,11 +321,11 @@ skynet skykey get id "pJAPPfWkWXpss3BvMDCJCw=="
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
 
 async function getSkykeyByIdExample() {
   try {
-    const client = new SkynetClient();
     const skykey = await client.getSkykeyById(id);
   } catch (error) {
     console.log(error)
@@ -400,9 +400,10 @@ skynet skykey list
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 async function getSkykeysExample() {
   try {
-    const client = new SkynetClient();
     const skykeys = await client.getSkykeys();
   } catch (error) {
     console.log(error)

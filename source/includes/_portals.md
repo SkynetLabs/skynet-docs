@@ -15,9 +15,10 @@ Coming Soon
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 async function getPortalsExample() {
   try {
-    const client = new SkynetClient();
     const portals = await client.getPortals();
   } catch (error) {
     console.log(error)
@@ -133,6 +134,7 @@ Coming Soon
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const additions = [
   {
     address: "https://localhost:9980",
@@ -143,7 +145,6 @@ const removals = ["https://localhost:997"];
 
 async function updatePortalsExample() {
   try {
-    const client = new SkynetClient();
     await client.updatePortals(additions, removals);
   } catch (error) {
     console.log(error)

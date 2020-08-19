@@ -13,12 +13,13 @@ skynet upload "./image.jpg"
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 // NOTE: This example is different from the other SDKs because we cannot just
 // take a path to a local file.
 
 async function uploadExample() {
   try {
-    const client = new SkynetClient();
     const { skylink } = await client.upload(file);
   } catch (error) {
     console.log(error)
@@ -146,6 +147,8 @@ skynet upload "source dir path"
 ```javascript--browser
 import { getRelativeFilePath, getRootDirectory, SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 // Assume we have a list of files from an input form.
 
 async function uploadDirectoryExample() {
@@ -163,7 +166,6 @@ async function uploadDirectoryExample() {
       return { ...accumulator, [path]: file };
     }, {});
 
-    const client = new SkynetClient();
     const { skylink } = await client.uploadDirectory(directory, filename);
   } catch (error) {
     console.log(error);
@@ -299,11 +301,12 @@ skynet upload "./image.jpg" --skykey-name "my-skykey"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 // Assume we have a file from an input form.
 
 async uploadEncryptionExample() {
   try {
-    const client = new SkynetClient();
     const { skylink } = await client.upload(file, { skykeyName: "my-skykey" });
   } catch (error) {
     console.log(error)

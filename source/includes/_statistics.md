@@ -17,9 +17,10 @@ skynet stats
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
+
 async function getStatsExample() {
   try {
-    const client = new SkynetClient();
     const stats = await client.getStats();
   } catch (error) {
     console.log(error)

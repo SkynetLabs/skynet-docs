@@ -17,12 +17,12 @@ skynet convert "src/path" "dest/path"
 
 import { SkynetClient } from "skynet-js";
 
+const client = new SkynetClient();
 const srcSiaPath = "src/path";
 const destSiaPath = "dest/path";
 
 async function convertExample() {
   try {
-    const client = new SkynetClient();
     const { skylink } = await client.convert(srcSiaPath, destSiaPath);
   } catch (error) {
     console.log(error)
