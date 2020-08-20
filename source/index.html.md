@@ -28,6 +28,7 @@ includes:
   - blocklist
   - portals
   - statistics
+  - browser-js-utils
 
 search: true
 ---

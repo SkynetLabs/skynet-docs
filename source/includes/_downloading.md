@@ -20,7 +20,7 @@ try {
   client.download(skylink);
   // Or client.open(skylink) to open it in a new browser tab.
 } catch (error) {
-  console.log(error)
+  console.log(error);
 }
 ```
 
@@ -116,7 +116,7 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 try {
   client.download(skylink);
 } catch (error) {
-  console.log(error)
+  console.log(error);
 }
 ```
 
@@ -185,7 +185,7 @@ async metadataExample() {
   try {
     const md = await client.metadata(skylink);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
 ```
@@ -368,7 +368,7 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 try {
   client.download(skylink, { skykeyName: "my-skykey" });
 } catch (error) {
-  console.log(error)
+  console.log(error);
 }
 ```
 
