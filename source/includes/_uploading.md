@@ -210,32 +210,32 @@ It is possible to upload a directory as a single piece of content. Doing this
 will allow you to address your content under one skylink, and access the files
 by their path. This is especially useful for webapps.
 
-For example, let's say you upload a directory with the following structure:
+For example, let's say you upload a web app with the following simple structure:
 
 <pre class="not_example">
-dir1
-|-- file1
-|-- file1
-|-- dir2
-    |-- file3
+src
+|-- favicon.ico
+|-- index.html
+|-- css
+    |-- main.css
+|-- js
+    |-- app.js
 </pre>
 
-The three files can be accessed as follows:
+The four files can be accessed as follows:
 
 <pre class="not_example">
-...portal.../...skylink.../file1
-...portal.../...skylink.../file2
-...portal.../...skylink.../dir2/file3
+[portal url]/[skylink]/favicon.ico
+[portal url]/[skylink]/index.html
+[portal url]/[skylink]/css/main.css
+[portal url]/[skylink]/js/app.js
 </pre>
 
-Accessing one of the two directories...
-
-<pre class="not_example">
-...portal.../...skylink...
-...portal.../...skylink.../dir2
-</pre>
-
-will download it as a .zip archive (by default) containing the directory contents.
+<aside class="success">
+You can use relative links to refer to different files within a web app. For
+example, to link to the <code>main.css</code> resource from <code>index.html</code> you would do
+<code>src="css/app.css</code>.
+</aside>
 
 ### Parameters
 
