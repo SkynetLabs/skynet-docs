@@ -210,7 +210,7 @@ It is possible to upload a directory as a single piece of content. Doing this
 will allow you to address your content under one skylink, and access the files
 by their path. This is especially useful for webapps.
 
-For example, let's say you upload a Skynet app with the following simple structure:
+For example, let's say you upload a web app with the following simple structure:
 
 <pre class="not_example">
 src
@@ -231,18 +231,8 @@ The four files can be accessed as follows:
 [portal url]/[skylink]/js/app.js
 </pre>
 
-Accessing one of the two directories...
-
-<pre class="not_example">
-[portal url]/[skylink]/css
-[portal url]/[skylink]/js
-</pre>
-
-or `src` at `[portal url]/[skylink]`, will download it as a .zip archive (by
-default) containing the directory contents.
-
 <aside class="success">
-You can use relative links to refer to different files within a Skynet app. For
+You can use relative links to refer to different files within a web app. For
 example, to link to the <code>main.css</code> resource from <code>index.html</code> you would do
 <code>src="css/app.css</code>.
 </aside>
