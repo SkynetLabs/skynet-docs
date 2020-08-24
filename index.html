@@ -529,7 +529,7 @@ keeps friction for new developers low. However, as Skynet is a decentralized
 project, it is also possible to use different portals.</p>
 
 <p>In every SDK <em>except Browser JS</em>, a different portal can be passed in as part of
-the options for each function. See <a href=".#setting-additional-options">Setting Additional
+the options for each function. See <a href="#setting-additional-options">Setting Additional
 Options</a>.</p>
 <h3 id='browser-js'>Browser JS</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="nx">SkynetClient</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -807,11 +807,11 @@ valid.
   <span class="s2">"merkleroot"</span>: <span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span>,
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded file! Skylink: sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -950,19 +950,19 @@ dir1
 </tr>
 </tbody></table>
 <h3 id='additional-options-2'>Additional Options</h3>
-<p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
+<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
-  <span class="s2">"skylink"</span>: <span class="s2">"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>,
+  <span class="s2">"skylink"</span>: <span class="s2">"EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>,
   <span class="s2">"merkleroot"</span>: <span class="s2">"QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I"</span>,
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
 </code></pre></div>
-<p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
+<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
 <h2 id='uploading-with-encryption'>Uploading With Encryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this feature has not yet been implemented for this SDK.</span>
@@ -1018,9 +1018,9 @@ dir1
 uploaded content for you. Simply pass the skykey name or ID in the custom
 options when uploading a file or directory.</p>
 
-<p>See the additional options in <a href=".#uploading-a-file">Uploading A File</a>.</p>
+<p>See the additional options in <a href="#uploading-a-file">Uploading A File</a>.</p>
 
-<p>Also see <a href=".#encryption">Encryption</a>.</p>
+<p>Also see <a href="#encryption">Encryption</a>.</p>
 <h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"./dst.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -1082,7 +1082,7 @@ error will be returned. This timeout is configurable.</p>
 </tr>
 <tr>
 <td><code>skylink</code></td>
-<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See <a href=".#uploading-a-directory">Uploading A Directory</a> for examples.</td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See <a href="#uploading-a-directory">Uploading A Directory</a> for examples.</td>
 </tr>
 </tbody></table>
 
@@ -1101,7 +1101,7 @@ error will be returned. This timeout is configurable.</p>
 </tbody></table>
 
 <p>optional path. This path can specify a directory or a particular file. If
-specified, only that file or directory will be returned. See <a href=".#uploading-a-directory">Uploading A
+specified, only that file or directory will be returned. See <a href="#uploading-a-directory">Uploading A
 Directory</a> for examples.</p>
 <h3 id='additional-options'>Additional Options</h3>
 <table><thead>
@@ -1177,7 +1177,7 @@ Directory</a> for examples.</p>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href=".#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
+<p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href="#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
 <h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -1247,7 +1247,7 @@ would be returned if the request had been a GET request.</p>
 </tr>
 </tbody></table>
 <h3 id='additional-options-2'>Additional Options</h3>
-<p>See <a href=".#downloading-a-file">Downloading A File</a>.</p>
+<p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
 <span class="s2">"mode"</span>:     640,
 <span class="s2">"filename"</span>: <span class="s2">"folder"</span>,
@@ -1389,9 +1389,9 @@ would be returned if the request had been a GET request.</p>
 downloaded content for you. Simply pass the skykey name or ID in the custom
 options when downloading.</p>
 
-<p>See the additional options in <a href=".#downloading-a-file">Downloading A File</a>.</p>
+<p>See the additional options in <a href="#downloading-a-file">Downloading A File</a>.</p>
 
-<p>Also see <a href=".#encryption">Encryption</a>.</p>
+<p>Also see <a href="#encryption">Encryption</a>.</p>
 <h1 id='encryption'>Encryption</h1>
 <p>Encryption and decryption in Skynet are performed using <em>skykeys</em>. Skykeys can
 be created and queried using the functions in this section. The name or ID of a
@@ -1400,8 +1400,8 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <p>See also:</p>
 
 <ul>
-<li><a href=".#uploading-with-encryption">Uploading With Encryption</a></li>
-<li><a href=".#downloading-with-decryption">Downloading With Decryption</a></li>
+<li><a href="#uploading-with-encryption">Uploading With Encryption</a></li>
+<li><a href="#downloading-with-decryption">Downloading With Decryption</a></li>
 </ul>
 <h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey create <span class="s2">"testcreateskykey"</span>
@@ -1658,7 +1658,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tr>
 </tbody></table>
 <h3 id='response-3'>Response</h3>
-<p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
+<p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
 <h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"id=gi5z8cf5NWbcvPBaBn0DFQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get <span class="nb">id</span> <span class="s2">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
@@ -1721,7 +1721,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tr>
 </tbody></table>
 <h3 id='response-4'>Response</h3>
-<p>See <a href=".#creating-a-skykey">Creating A Skykey</a>.</p>
+<p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
 <h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey list
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
@@ -1770,7 +1770,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <h3 id='parameters-5'>Parameters</h3>
 <p>None</p>
 <h3 id='response-5'>Response</h3>
-<p>List of Skykeys (see <a href=".#creating-a-skykey">Creating A Skykey</a>).</p>
+<p>List of Skykeys (see <a href="#creating-a-skykey">Creating A Skykey</a>).</p>
 <h1 id='pinning-and-unpinning'>Pinning And Unpinning</h1>
 <p>One of the core features of Skynet that makes it so exciting is the ability to
 pin files. <em>Pinning</em> re-uploads a copy of a file, ensuring its availability on
@@ -2014,9 +2014,9 @@ available on Skynet.</p>
 </tr>
 </tbody></table>
 <h3 id='additional-options'>Additional Options</h3>
-<p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
+<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
 <h3 id='response'>Response</h3>
-<p>See <a href=".#uploading-a-file">Uploading A File</a>.</p>
+<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
 <h1 id='listing'>Listing</h1><h2 id='listing-pinned-skyfiles'>Listing Pinned Skyfiles</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -2471,7 +2471,7 @@ add and remove portals from the list.</p>
 
 <p><code>Portal</code>:</p>
 
-<p>See <a href=".#getting-the-list-of-portals">Getting The List Of Portals</a>.</p>
+<p>See <a href="#getting-the-list-of-portals">Getting The List Of Portals</a>.</p>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
 <h1 id='statistics'>Statistics</h1><h2 id='getting-statistics'>Getting Statistics</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"localhost:9980/skynet/stats"</span>
@@ -2690,7 +2690,7 @@ are only provided by the Browser JS SDK.</p>
 natively only limited file extensions like <code>.html</code> or <code>.jpg</code> and will fallback
 to downloading the file.</p>
 <h3 id='parameters'>Parameters</h3>
-<p>See <a href=".#downloading-a-file">Downloading A File</a>.</p>
+<p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
 <h2 id='getting-the-download-url'>Getting The Download URL</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -2706,7 +2706,7 @@ to downloading the file.</p>
 </code></pre></div>
 <p>Use the client to generate a direct <code>skylink</code> url.</p>
 <h3 id='parameters-2'>Parameters</h3>
-<p>See <a href=".#downloading-a-file">Downloading A File</a>.</p>
+<p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='additional-options'>Additional Options</h3>
 <table><thead>
 <tr>
@@ -2777,7 +2777,7 @@ to downloading the file.</p>
 </thead><tbody>
 <tr>
 <td><code>skylink</code></td>
-<td>See <a href=".#uploading-a-file">Uploading A File</a>.</td>
+<td>See <a href="#uploading-a-file">Uploading A File</a>.</td>
 </tr>
 </tbody></table>
 
