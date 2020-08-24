@@ -75,7 +75,7 @@ project, it is also possible to use different portals.
 
 In every SDK *except Browser JS*, a different portal can be passed in as part of
 the options for each function. See [Setting Additional
-Options](.#setting-additional-options).
+Options](#setting-additional-options).
 
 ### Browser JS
 

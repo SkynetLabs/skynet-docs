@@ -91,8 +91,8 @@ Field | Type | Description
 
 ### Additional Options
 
-See [Uploading A File](.#uploading-a-file).
+See [Uploading A File](#uploading-a-file).
 
 ### Response
 
-See [Uploading A File](.#uploading-a-file).
+See [Uploading A File](#uploading-a-file).

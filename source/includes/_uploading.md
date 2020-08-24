@@ -105,7 +105,7 @@ Field | Description | Default
 ```
 
 ```shell--cli
-Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
+Successfully uploaded file! Skylink: sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
 ```
 
 ```javascript--browser
@@ -113,15 +113,15 @@ Successfully uploaded file! Skylink: CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOl
 ```
 
 ```javascript--node
-"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```python
-"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```go
-"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 Field | Description
@@ -252,13 +252,13 @@ Field | Description
 
 ### Additional Options
 
-See [Uploading A File](.#uploading-a-file).
+See [Uploading A File](#uploading-a-file).
 
 ### Response
 
 ```shell--curl
 {
-  "skylink": "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
+  "skylink": "EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg",
   "merkleroot": "QAf9Q7dBSbMarLvyeE6HTQmwhr7RX9VMrP9xIMzpU3I",
   "bitfield": 2048
 }
@@ -269,7 +269,7 @@ Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1
 ```
 
 ```javascript--browser
-"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
+"EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 ```javascript--node
@@ -284,7 +284,7 @@ Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1
 "sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
-See [Uploading A File](.#uploading-a-file).
+See [Uploading A File](#uploading-a-file).
 
 ## Uploading With Encryption
 
@@ -360,6 +360,6 @@ If you have a skykey on the portal you can ask the portal to encrypt the
 uploaded content for you. Simply pass the skykey name or ID in the custom
 options when uploading a file or directory.
 
-See the additional options in [Uploading A File](.#uploading-a-file).
+See the additional options in [Uploading A File](#uploading-a-file).
 
-Also see [Encryption](.#encryption).
+Also see [Encryption](#encryption).

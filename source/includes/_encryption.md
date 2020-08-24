@@ -6,8 +6,8 @@ skykey must be provided when uploading or downloading with encryption.
 
 See also:
 
-- [Uploading With Encryption](.#uploading-with-encryption)
-- [Downloading With Decryption](.#downloading-with-decryption)
+- [Uploading With Encryption](#uploading-with-encryption)
+- [Downloading With Decryption](#downloading-with-decryption)
 
 ## Creating A Skykey
 
@@ -304,7 +304,7 @@ Parameter | Description
 
 ### Response
 
-See [Creating A Skykey](.#creating-a-skykey).
+See [Creating A Skykey](#creating-a-skykey).
 
 ### Getting A Skykey By ID
 
@@ -383,7 +383,7 @@ Parameter | Description
 
 ### Response
 
-See [Creating A Skykey](.#creating-a-skykey).
+See [Creating A Skykey](#creating-a-skykey).
 
 ## Listing Skykeys
 
@@ -456,4 +456,4 @@ None
 
 ### Response
 
-List of Skykeys (see [Creating A Skykey](.#creating-a-skykey)).
+List of Skykeys (see [Creating A Skykey](#creating-a-skykey)).
