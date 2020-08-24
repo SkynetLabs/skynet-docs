@@ -228,7 +228,7 @@ Field | Type | Description
 
 `Portal`:
 
-See [Getting The List Of Portals](.#getting-the-list-of-portals).
+See [Getting The List Of Portals](#getting-the-list-of-portals).
 
 ### Response
 

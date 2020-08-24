@@ -73,7 +73,7 @@ error will be returned. This timeout is configurable.
 Field | Description
 ----- | -----------
 `path` | The local path where the file should be downloaded to.
-`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](.#uploading-a-directory) for examples.
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](#uploading-a-directory) for examples.
 
 *Browser JS:*
 
@@ -82,7 +82,7 @@ Field | Description
 `skylink` | The skylink that should be downloaded. The skylink can contain an
 optional path. This path can specify a directory or a particular file. If
 specified, only that file or directory will be returned. See [Uploading A
-Directory](.#uploading-a-directory) for examples.
+Directory](#uploading-a-directory) for examples.
 
 ### Additional Options
 
@@ -159,7 +159,7 @@ func main() {
 }
 ```
 
-It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from [Uploading A Directory](.#uploading-a-directory) to illustrate this.
+It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from [Uploading A Directory](#uploading-a-directory) to illustrate this.
 
 ## Getting Metadata
 
@@ -245,7 +245,7 @@ Field | Description
 
 ### Additional Options
 
-See [Downloading A File](.#downloading-a-file).
+See [Downloading A File](#downloading-a-file).
 
 ### Response
 
@@ -427,6 +427,6 @@ If you have a skykey on the portal you can ask the portal to decrypt the
 downloaded content for you. Simply pass the skykey name or ID in the custom
 options when downloading.
 
-See the additional options in [Downloading A File](.#downloading-a-file).
+See the additional options in [Downloading A File](#downloading-a-file).
 
-Also see [Encryption](.#encryption).
+Also see [Encryption](#encryption).

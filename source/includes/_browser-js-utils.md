@@ -24,7 +24,7 @@ to downloading the file.
 
 ### Parameters
 
-See [Downloading A File](.#downloading-a-file).
+See [Downloading A File](#downloading-a-file).
 
 ### Response
 
@@ -49,7 +49,7 @@ Use the client to generate a direct `skylink` url.
 
 ### Parameters
 
-See [Downloading A File](.#downloading-a-file).
+See [Downloading A File](#downloading-a-file).
 
 ### Additional Options
 
@@ -105,4 +105,4 @@ Currently supported string types are:
 
 Field | Description
 ------| -----------
-`skylink` | See [Uploading A File](.#uploading-a-file).
+`skylink` | See [Uploading A File](#uploading-a-file).
