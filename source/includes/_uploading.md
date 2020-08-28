@@ -3,7 +3,7 @@
 ## Uploading A File
 
 ```shell--curl
-curl -X POST "https://siasky.net/skynet/skyfile" -F file=@image.jpg
+curl -L -X POST "https://siasky.net/skynet/skyfile/<siapath>" -F file=@image.jpg
 ```
 
 ```shell--cli
@@ -137,11 +137,11 @@ Note that the SDKs only return the skylink since this is what you want most of t
 ## Uploading A Directory
 
 ```shell--curl
-curl "https://siasky.net/skynet/skyfile" -F files[]=@./images/image1.png -F files[]=@./images/image2.png
+curl -L -X POST "https://siasky.net/skynet/<siapath>?filename=images" -F files[]=@./images/image1.png -F files[]=@./images/image2.png
 ```
 
 ```shell--cli
-skynet upload "source dir path"
+skynet upload "./images"
 ```
 
 ```javascript--browser

@@ -22,12 +22,7 @@ includes:
   - uploading
   - downloading
   - encryption
-  - pinning
   - converting
-  - listing
-  - blocklist
-  - portals
-  - statistics
   - browser-js-utils
 
 search: true
