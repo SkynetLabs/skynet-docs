@@ -308,14 +308,6 @@
               </ul>
           </li>
           <li>
-            <a href="#converting" class="toc-h1 toc-link" data-title="Converting">Converting</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#converting-siafiles-to-skyfiles" class="toc-h2 toc-link" data-title="Converting Siafiles to Skyfiles">Converting Siafiles to Skyfiles</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#browser-js-utilities" class="toc-h1 toc-link" data-title="Browser JS Utilities">Browser JS Utilities</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1722,91 +1714,6 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <p>None</p>
 <h3 id='response-5'>Response</h3>
 <p>List of Skykeys (see <a href="#creating-a-skykey">Creating A Skykey</a>).</p>
-<h1 id='converting'>Converting</h1><h2 id='converting-siafiles-to-skyfiles'>Converting Siafiles to Skyfiles</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
-
-skynet convert <span class="s2">"src/path"</span> <span class="s2">"dest/path"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">srcSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">src/path</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dest/path</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">convertExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">srcSiaPath</span><span class="p">,</span> <span class="nx">destSiaPath</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="nx">skynet</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">srcSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">src/path</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">destSiaPath</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">dest/path</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">skynet</span><span class="p">.</span><span class="nx">convert</span><span class="p">(</span><span class="nx">srcSiaPath</span><span class="p">,</span> <span class="nx">destSiaPath</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Convert successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">srcSiaPath</span> <span class="o">=</span> <span class="s">"src/path"</span>
-<span class="n">destSiaPath</span> <span class="o">=</span> <span class="s">"dest/path"</span>
-
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">srcSiaPath</span><span class="p">,</span> <span class="n">destSiaPath</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Convert successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="k">const</span> <span class="n">srcSiaPath</span> <span class="o">=</span> <span class="s">"src/path"</span>
-    <span class="k">const</span> <span class="n">destSiaPath</span> <span class="o">=</span> <span class="s">"dest/path"</span>
-
-    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Convert</span><span class="p">(</span><span class="n">srcSiaPath</span><span class="p">,</span> <span class="n">destSiaPath</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultConvertOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to convert: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Convert successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>This function creates a skyfile using an existing siafile. The original siafile
-and the skyfile will both need to be kept in order for the file to remain
-available on Skynet.</p>
-<h3 id='parameters'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>srcSiaPath</code></td>
-<td>string</td>
-<td>The source siapath location of this file.</td>
-</tr>
-<tr>
-<td><code>destSiaPath</code></td>
-<td>string</td>
-<td>The destination siapath for this file.</td>
-</tr>
-</tbody></table>
-<h3 id='additional-options'>Additional Options</h3>
-<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
-<h3 id='response'>Response</h3>
-<p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
 <h1 id='browser-js-utilities'>Browser JS Utilities</h1>
 <p>The following are some utilities that only make sense in the browser, and thus
 are only provided by the Browser JS SDK.</p>
