@@ -22,7 +22,6 @@ includes:
   - uploading
   - downloading
   - encryption
-  - converting
   - browser-js-utils
 
 search: true
