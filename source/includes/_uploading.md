@@ -20,7 +20,7 @@ const client = new SkynetClient();
 
 async function uploadExample() {
   try {
-    const { skylink } = await client.upload(file);
+    const { skylink } = await client.uploadFile(file);
   } catch (error) {
     console.log(error)
   }
@@ -30,8 +30,10 @@ async function uploadExample() {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
+
 (async () => {
-	const skylink = await skynet.uploadFile("./image.jpg");
+	const skylink = await client.uploadFile("./image.jpg");
 	console.log(`Upload successful, skylink: ${skylink}`);
 })();
 ```
@@ -39,7 +41,9 @@ const skynet = require('@nebulous/skynet');
 ```python
 import siaskynet as skynet
 
-skylink = skynet.upload_file("image.jpg")
+client = skynet.SkynetClient()
+
+skylink = client.upload_file("image.jpg")
 print("Upload successful, skylink: " + skylink)
 ```
 
@@ -51,8 +55,10 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
+var client = skynet.New()
+
 func main() {
-	skylink, err := skynet.UploadFile("./image.jpg", skynet.DefaultUploadOptions)
+	skylink, err := client.UploadFile("./image.jpg", skynet.DefaultUploadOptions)
 	if err != nil {
 		panic("Unable to upload: " + err.Error())
 	}
@@ -109,7 +115,7 @@ Successfully uploaded file! Skylink: sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_
 ```
 
 ```javascript--browser
-"CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 ```
 
 ```javascript--node
@@ -176,8 +182,10 @@ async function uploadDirectoryExample() {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
+
 (async () => {
-	const url = await skynet.uploadDirectory("./images");
+	const url = await client.uploadDirectory("./images");
 	console.log(`Upload successful, url: ${url}`);
 })();
 ```
@@ -185,7 +193,9 @@ const skynet = require('@nebulous/skynet');
 ```python
 import siaskynet as skynet
 
-url = skynet.upload_directory("./images")
+client = skynet.SkynetClient()
+
+url = client.upload_directory("./images")
 print("Upload successful, url: " + url)
 ```
 
@@ -197,8 +207,10 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
+var client = skynet.New()
+
 func main() {
-	url, err := skynet.UploadDirectory("./images", skynet.DefaultUploadOptions)
+	url, err := client.UploadDirectory("./images", skynet.DefaultUploadOptions)
 	if err != nil {
 		panic("Unable to upload: " + err.Error())
 	}
@@ -269,7 +281,7 @@ Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1
 ```
 
 ```javascript--browser
-"EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
+"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"
 ```
 
 ```javascript--node
@@ -319,8 +331,10 @@ async uploadEncryptionExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
+
 (async () => {
-	const skylink = await skynet.uploadFile(
+	const skylink = await client.uploadFile(
 		"./image.jpg",
 		{ skykeyName: "my-skykey" }
 	);
@@ -333,7 +347,9 @@ const skynet = require('@nebulous/skynet');
 
 import siaskynet as skynet
 
-skylink = skynet.upload_file("image.jpg", { skykeyName: "my-skykey" })
+client = skynet.SkynetClient()
+
+skylink = client.upload_file("image.jpg", { skykeyName: "my-skykey" })
 print("Upload successful, skylink: " + skylink)
 ```
 
@@ -345,10 +361,12 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
+var client = skynet.New()
+
 func main() {
 	opts := skynet.DefaultUploadOptions
 	opts.SkykeyName = "my-skykey"
-	skylink, err := skynet.UploadFile("./image.jpg", opts)
+	skylink, err := client.UploadFile("./image.jpg", opts)
 	if err != nil {
 		panic("Unable to upload: " + err.Error())
 	}

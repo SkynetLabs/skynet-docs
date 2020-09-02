@@ -18,11 +18,13 @@ toc_footers:
 
 includes:
   - gettingstarted
-  - authentication
+  - client
   - uploading
   - downloading
   - encryption
-  - browser-js-utils
+  - handshake
+  - browser-js-api
+  - authentication
 
 search: true
 ---
@@ -64,10 +66,17 @@ differences between the languages -- the idiosyncracies and best practices of
 each -- resulted in differences between the SDKs. We've noted them where
 necessary throughout the documentation.
 
+### Function Parameters
+
+In most of the SDKs the additional options may be left out of the function
+calls, in which case the default options are used. In <b>Go</b> the options must
+always be passed in, as the language does not support optional function
+parameters.
+
 ### Case
 
-In particular, note that the casing of functions and their parameters differs
-between the languages:
+Note that the casing of functions and their parameters differs between the
+languages:
 
 Language | Case
 -------- | ----

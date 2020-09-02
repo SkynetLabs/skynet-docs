@@ -41,10 +41,11 @@ async function createSkykeyExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const name = "testcreateskykey";
 
 (async () => {
-	const skykey = await skynet.createSkykey(name, "private-id");
+	const skykey = await client.createSkykey(name, "private-id");
 })();
 ```
 
@@ -53,9 +54,10 @@ const name = "testcreateskykey";
 
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 name = "testcreateskykey"
 
-skykey = skynet.create_skykey(name, "private-id")
+skykey = client.create_skykey(name, "private-id")
 print("Create skykey successful, skykey: " + skykey)
 ```
 
@@ -67,11 +69,12 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-	const name = "testcreateskykey"
+const name = "testcreateskykey"
+var client = skynet.New()
 
+func main() {
 	fmt.Printf("Creating skykey with name %v...\n", name)
-	skykey, err := skynet.CreateSkykey(name, "private-id", skynet.DefaultCreateSkykeyOptions)
+	skykey, err := client.CreateSkykey(name, "private-id", skynet.DefaultCreateSkykeyOptions)
 	if err != nil {
 		panic("Unable to create skykey: " + err.Error())
 	}
@@ -177,10 +180,11 @@ async function addSkykeyExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
 
 (async () => {
-	await skynet.addSkykey(skykey);
+	await client.addSkykey(skykey);
 })();
 ```
 
@@ -189,9 +193,10 @@ const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDc
 
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
 
-skynet.add_skykey(skykey)
+client.add_skykey(skykey)
 print("Add skykey successful")
 ```
 
@@ -203,11 +208,12 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-	const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
+const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
+var client = skynet.New()
 
+func main() {
 	fmt.Printf("Adding skykey %v...\n", skykey)
-	err := skynet.AddSkykey(skykey, skynet.DefaultAddSkykeyOptions)
+	err := client.AddSkykey(skykey, skynet.DefaultAddSkykeyOptions)
 	if err != nil {
 		panic("Unable to add skykey: " + err.Error())
 	}
@@ -257,10 +263,11 @@ async function getSkykeyByNameExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const name = "testcreateskykey";
 
 (async () => {
-	const skykey = await skynet.getSkykeyByName(name);
+	const skykey = await client.getSkykeyByName(name);
 })();
 ```
 
@@ -269,9 +276,10 @@ const name = "testcreateskykey";
 
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 name = "testcreateskykey"
 
-skykey = skynet.get_skykey_by_name(name)
+skykey = client.get_skykey_by_name(name)
 print("Get skykey successful, skykey: " + skykey)
 ```
 
@@ -283,11 +291,12 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-	const name = "testcreateskykey"
+const name = "testcreateskykey"
+var client = skynet.New()
 
+func main() {
 	fmt.Printf("Getting skykey with name %v...\n", name)
-	skykey, err := skynet.GetSkykeyByName(name, skynet.DefaultGetSkykeyOptions)
+	skykey, err := client.GetSkykeyByName(name, skynet.DefaultGetSkykeyOptions)
 	if err != nil {
 		panic("Unable to get skykey: " + err.Error())
 	}
@@ -338,10 +347,11 @@ async function getSkykeyByIdExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
 
 (async () => {
-	const skykey = await skynet.getSkykeyById(id);
+	const skykey = await client.getSkykeyById(id);
 })();
 ```
 
@@ -350,9 +360,10 @@ const id = "pJAPPfWkWXpss3BvMDCJCw==";
 
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 id = "pJAPPfWkWXpss3BvMDCJCw=="
 
-skykey = skynet.get_skykey_by_id(id)
+skykey = client.get_skykey_by_id(id)
 print("Get skykey successful, skykey: " + skykey)
 ```
 
@@ -361,11 +372,12 @@ package main
 
 import skynet "github.com/NebulousLabs/go-skynet"
 
-func main() {
-	const id = "pJAPPfWkWXpss3BvMDCJCw=="
+const id = "pJAPPfWkWXpss3BvMDCJCw=="
+var client = skynet.New()
 
+func main() {
 	fmt.Printf("Getting skykey with id %v...\n", id)
-	skykey, err := skynet.GetSkykeyByID(id, skynet.DefaultGetSkykeyOptions)
+	skykey, err := client.GetSkykeyByID(id, skynet.DefaultGetSkykeyOptions)
 	if err != nil {
 		panic("Unable to get skykey: " + err.Error())
 	}
@@ -416,8 +428,10 @@ async function getSkykeysExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
+
 (async () => {
-	const skykeys = await skynet.getSkykeys();
+	const skykeys = await client.getSkykeys();
 })();
 ```
 
@@ -426,7 +440,9 @@ const skynet = require('@nebulous/skynet');
 
 import siaskynet as skynet
 
-skykeys = skynet.get_skykeys()
+client = skynet.SkynetClient()
+
+skykeys = client.get_skykeys()
 print("Get skykeys successful, skykeys: " + skykeys)
 ```
 
@@ -438,9 +454,11 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
+var client = skynet.New()
+
 func main() {
 	fmt.Println("Listing skykeys...")
-	skykeys, err := skynet.ListSkykeys(skynet.DefaultListSkykeysOptions)
+	skykeys, err := client.ListSkykeys(skynet.DefaultListSkykeysOptions)
 	if err != nil {
 		panic("Unable to get skykeys: " + err.Error())
 	}

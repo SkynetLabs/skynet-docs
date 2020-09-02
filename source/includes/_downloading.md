@@ -17,8 +17,8 @@ const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  client.download(skylink);
-  // Or client.open(skylink) to open it in a new browser tab.
+  client.downloadFile(skylink);
+  // Or client.openFile(skylink) to open it in a new browser tab.
 } catch (error) {
   console.log(error);
 }
@@ -27,10 +27,11 @@ try {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
-	await skynet.downloadFile("./dst.jpg", skylink);
+	await client.downloadFile("./dst.jpg", skylink);
 	console.log('Download successful');
 })();
 ```
@@ -38,9 +39,10 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 ```python
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
-skynet.download_file("./dst.jpg", skylink)
+client.download_file("./dst.jpg", skylink)
 print("Download successful")
 ```
 
@@ -52,10 +54,11 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+var client = skynet.New()
 
-	err := skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+func main() {
+	err := client.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -79,10 +82,7 @@ Field | Description
 
 Field | Description
 ----- | -----------
-`skylink` | The skylink that should be downloaded. The skylink can contain an
-optional path. This path can specify a directory or a particular file. If
-specified, only that file or directory will be returned. See [Uploading A
-Directory](#uploading-a-directory) for examples.
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](#uploading-a-directory) for examples.
 
 ### Additional Options
 
@@ -123,10 +123,11 @@ try {
 ```javascript--node
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
 (async () => {
-	await skynet.downloadFile("./dst.jpg", skylink);
+	await client.downloadFile("./dst.jpg", skylink);
 	console.log('Download successful');
 })();
 ```
@@ -134,9 +135,10 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 ```python
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
 
-skynet.download_file("./dst.jpg", skylink)
+client.download_file("./dst.jpg", skylink)
 print("Download successful")
 ```
 
@@ -148,10 +150,11 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+var client = skynet.New()
 
-	err := skynet.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+func main() {
+	err := client.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -183,7 +186,7 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 async metadataExample() {
   try {
-    const md = await client.metadata(skylink);
+    const md = await client.getMetadata(skylink);
   } catch (error) {
     console.log(error);
   }
@@ -195,10 +198,11 @@ async metadataExample() {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
-	const md = await skynet.metadata(skylink);
+	const md = await client.getMetadata(skylink);
 	console.log(Get metadata successful');
 })();
 ```
@@ -206,9 +210,10 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 ```python
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
-md = skynet.metadata(skylink)
+md = client.get_metadata(skylink)
 ```
 
 ```go
@@ -221,10 +226,11 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-func main() {
-	const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+var client = skynet.New()
 
-	md, err := skynet.Metadata(skylink, skynet.DefaultMetadataOptions)
+func main() {
+	md, err := client.Metadata(skylink, skynet.DefaultMetadataOptions)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -377,10 +383,11 @@ try {
 
 const skynet = require('@nebulous/skynet');
 
+const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
-	await skynet.downloadFile(
+	await client.downloadFile(
 		"./dst.jpg",
 		skylink,
 		{ skykeyName: "my-skykey" }
@@ -394,9 +401,10 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 import siaskynet as skynet
 
+client = skynet.SkynetClient()
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 
-skynet.download_file("./dst.jpg", skylink, { skykeyName: "my-skykey" })
+client.download_file("./dst.jpg", skylink, { skykeyName: "my-skykey" })
 print("Download successful")
 ```
 
@@ -409,13 +417,14 @@ import (
 )
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+var client = skynet.New()
 
 func main() {
 	// Must have a 'skylink' from an earlier upload.
 
 	opts := skynet.DefaultDownloadOptions
 	opts.SkykeyName = "my-skykey"
-	err := skynet.DownloadFile("./dst.go", skylink, opts)
+	err := client.DownloadFile("./dst.go", skylink, opts)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}

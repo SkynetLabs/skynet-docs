@@ -27,10 +27,12 @@ async function authenticationExample() {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
+
+const client = new SkynetClient();
 
 (async () => {
-	const skylink = await skynet.uploadFile(
+	const skylink = await client.uploadFile(
     "./image.jpg",
     { APIKey: "foobar", customUserAgent: "Sia-Agent" }
   );
@@ -41,7 +43,9 @@ const skynet = require('@nebulous/skynet');
 ```python
 import siaskynet as skynet
 
-skylink = skynet.upload_file(
+client = skynet.SkynetClient();
+
+skylink = client.upload_file(
   "image.jpg",
   {"api_key": "foobar", "custom_user_agent": "Sia-Agent"}
 )
@@ -56,11 +60,13 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
+var client = skynet.New()
+
 func main() {
 	opts := skynet.DefaultUploadOptions
 	opts.APIKey = "foobar"
   opts.CustomUserAgent = "Sia-Agent"
-	skylink, err := skynet.UploadFile("./image.jpg", opts)
+	skylink, err := client.UploadFile("./image.jpg", opts)
 	if err != nil {
 		panic("Unable to upload: " + err.Error())
 	}
@@ -84,7 +90,7 @@ behalf and steal coins.
 
 We want this to be an opt-in for now, so `Sia-Agent` is not currently the
 default. You may change the user agent header by setting the `customUserAgent`
-custom option.
+custom option. See [Setting Additional Options](#setting-additional-options).
 
 ## More Information
 
