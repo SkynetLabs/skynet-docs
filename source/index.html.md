@@ -25,6 +25,7 @@ includes:
   - handshake
   - browser-js-api
   - authentication
+  - updating
 
 search: true
 ---
