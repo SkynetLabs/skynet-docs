@@ -1,9 +1,9 @@
-# Browser JS Utilities
+# Browser JS API
 
-The following are some utilities that only make sense in the browser, and thus
-are only provided by the Browser JS SDK.
+The following are some methods and utilities that only make sense in the
+browser, and thus are only provided by the Browser JS SDK.
 
-## Open
+## Opening A File
 
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
@@ -12,7 +12,7 @@ const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  client.open(skylink);
+  client.openFile(skylink);
 } catch (error) {
   console.log(error);
 }
@@ -39,7 +39,7 @@ const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 try {
-  const url = client.getDownloadUrl(skylink);
+  const url = client.getSkylinkUrl(skylink);
 } catch (error) {
   console.log(error);
 }
@@ -66,6 +66,81 @@ Field | Description | Default
 Field | Description
 ------| -----------
 `url` | The URL for the given skylink on the client portal.
+
+## Getting A Handshake URL
+
+```javascript--browser
+import { SkynetClient } from "skynet-js";
+
+const client = new SkynetClient();
+const domain = "doesn";
+
+try {
+  const url = client.getHnsUrl(domain);
+} catch (error) {
+  console.log(error);
+}
+```
+
+Use the client to generate a direct Handshake url from a Handshake domain.
+
+### Parameters
+
+See [Downloading Handshake Files](#downloading-handshake-files).
+
+### Additional Options
+
+Field | Description | Default
+----- | ----------- | -------
+`download` | Option to include download directive in the url that will force a download when used. | `false`
+
+### Response
+
+```javascript--browser
+"https://siasky.net/hns/doesn"
+```
+
+Field | Description
+------| -----------
+`url` | The URL for the given Handshake domain on the client portal.
+
+## Getting A Handshake Resolver URL
+
+```javascript--browser
+import { SkynetClient } from "skynet-js";
+
+const client = new SkynetClient();
+const domain = "doesn";
+
+try {
+  const url = client.getHnsresUrl(domain);
+} catch (error) {
+  console.log(error);
+}
+```
+
+Use the client to generate a direct Handshake Resolver url from a Handshake
+domain.
+
+### Parameters
+
+See [Resolving Handshake Domains](#resolving-handshake-domains).
+
+### Additional Options
+
+Field | Description | Default
+----- | ----------- | -------
+`download` | Option to include download directive in the url that will force a download when used. | `false`
+
+### Response
+
+```javascript--browser
+"https://siasky.net/hnsres/doesn"
+```
+
+Field | Description
+------| -----------
+`url` | The URL for the given Handshake Resolver domain on the client portal.
 
 ## Parsing Skylinks
 

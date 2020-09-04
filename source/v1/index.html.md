@@ -10,7 +10,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - <a href='https://siasky.net/'>Check out Skynet</a>
+  - <a href='/v2'>Latest version</a>
+  - ---
+  - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
   # - <a href='#'>Sign Up for a Developer Key</a>
   - ---
@@ -28,6 +30,8 @@ search: true
 ---
 
 # Introduction
+
+**Latest version:** <a href='/v2'>v2</a>
 
 Welcome to the Skynet SDK docs!
 
