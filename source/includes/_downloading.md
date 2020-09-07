@@ -3,7 +3,7 @@
 ## Downloading A File
 
 ```shell--curl
-curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+curl -A "Sia-Agent" "https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg" -o dst.jpg
 ```
 
 ```shell--cli
@@ -100,11 +100,11 @@ Empty on success.
 ## Downloading A File From An Uploaded Directory
 
 ```shell--curl
-curl -A "Sia-Agent" "https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+curl -A "Sia-Agent" "https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3" -o dst.jpg
 ```
 
 ```shell--cli
-skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2" "./dst.jpg"
+skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3" "./dst.jpg"
 ```
 
 ```javascript--browser
@@ -114,7 +114,7 @@ const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
 try {
-  client.download(skylink);
+  client.downloadFile(skylink);
 } catch (error) {
   console.log(error);
 }
