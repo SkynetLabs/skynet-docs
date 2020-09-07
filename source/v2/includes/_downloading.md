@@ -25,7 +25,7 @@ try {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -121,7 +121,7 @@ try {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
@@ -196,7 +196,7 @@ async metadataExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
@@ -381,7 +381,7 @@ try {
 ```javascript--node
 // NOTE: this feature has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";

@@ -27,7 +27,7 @@ async function uploadExample() {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 

@@ -28,7 +28,7 @@ async function uploadExample() {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 
@@ -180,7 +180,7 @@ async function uploadDirectoryExample() {
 ```
 
 ```javascript--node
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 
@@ -329,7 +329,7 @@ async uploadEncryptionExample() {
 ```javascript--node
 // NOTE: this feature has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 

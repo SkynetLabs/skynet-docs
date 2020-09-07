@@ -39,7 +39,7 @@ async function createSkykeyExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const name = "testcreateskykey";
@@ -178,7 +178,7 @@ async function addSkykeyExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq";
@@ -261,7 +261,7 @@ async function getSkykeyByNameExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const name = "testcreateskykey";
@@ -345,7 +345,7 @@ async function getSkykeyByIdExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 const id = "pJAPPfWkWXpss3BvMDCJCw==";
@@ -426,7 +426,7 @@ async function getSkykeysExample() {
 ```javascript--node
 // NOTE: this function has not yet been implemented for this SDK.
 
-const skynet = require('@nebulous/skynet');
+const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
 
