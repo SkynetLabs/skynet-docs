@@ -1017,7 +1017,7 @@ options when uploading a file or directory.</p>
 <p>See the additional options in <a href="#uploading-a-file">Uploading A File</a>.</p>
 
 <p>Also see <a href="#encryption">Encryption</a>.</p>
-<h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
+<h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span> <span class="nt">-o</span> dst.jpg
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"./dst.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1129,15 +1129,15 @@ error will be returned. This timeout is configurable.</p>
 </tbody></table>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
-<h2 id='downloading-a-file-from-an-uploaded-directory'>Downloading A File From An Uploaded Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file2"</span> <span class="s2">"./dst.jpg"</span>
+<h2 id='downloading-a-file-from-an-uploaded-directory'>Downloading A File From An Uploaded Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span> <span class="nt">-o</span> dst.jpg
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span> <span class="s2">"./dst.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">}</span>
