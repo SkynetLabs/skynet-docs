@@ -91,7 +91,6 @@ Field | Description
 
 Field | Description | Default
 ----- | ----------- | -------
-`endpointPath` | The relative URL path of the portal endpoint to contact. | `"/skynet/skyfile"`
 `portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed. | `"file"`
 `portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed. | `"files[]"`
 `customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser. | `""`

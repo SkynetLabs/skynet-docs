@@ -109,7 +109,8 @@ Option | Description | Default
 ------ | ----------- | -------
 `endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths. | `""`
 `APIKey` | The API password used for [authentication](#api-authentication). | `""`
-`customUserAgent` | This option is available to change the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
+`customUserAgent` | Allows changing the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
+`query` | Allows passing custom query parameters. Can be used to pass options to an endpoint that are not implemented in the SDK yet. Can also be used in the browser when opening a web app to pass options to the app. | `""`
 
 ## Useful Constants
 
