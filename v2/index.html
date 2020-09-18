@@ -560,7 +560,12 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 </tr>
 <tr>
 <td><code>customUserAgent</code></td>
-<td>This option is available to change the User Agent, as some portals may reject user agents that are not <code>Sia-Agent</code> for security reasons.</td>
+<td>Allows changing the User Agent, as some portals may reject user agents that are not <code>Sia-Agent</code> for security reasons.</td>
+<td><code>&quot;&quot;</code></td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td>Allows passing custom query parameters. Can be used to pass options to an endpoint that are not implemented in the SDK yet. Can also be used in the browser when opening a web app to pass options to the app.</td>
 <td><code>&quot;&quot;</code></td>
 </tr>
 </tbody></table>
@@ -745,11 +750,6 @@ valid.
 <th>Default</th>
 </tr>
 </thead><tbody>
-<tr>
-<td><code>endpointPath</code></td>
-<td>The relative URL path of the portal endpoint to contact.</td>
-<td><code>&quot;/skynet/skyfile&quot;</code></td>
-</tr>
 <tr>
 <td><code>portalFileFieldName</code></td>
 <td>The field name for files on the portal. Usually should not need to be changed.</td>
@@ -1064,7 +1064,7 @@ options when uploading a file or directory.</p>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This function downloads a skylink using http streaming. The call blocks until
+<p>This function downloads a skylink using HTTP streaming. The call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a <code>404</code>
 error will be returned. This timeout is configurable.</p>
@@ -1081,7 +1081,7 @@ error will be returned. This timeout is configurable.</p>
 </tr>
 <tr>
 <td><code>skylink</code></td>
-<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See <a href="#uploading-a-directory">Uploading A Directory</a> for examples.</td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
 
@@ -1095,7 +1095,7 @@ error will be returned. This timeout is configurable.</p>
 </thead><tbody>
 <tr>
 <td><code>skylink</code></td>
-<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See <a href="#uploading-a-directory">Uploading A Directory</a> for examples.</td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
 <h3 id='additional-options'>Additional Options</h3>
@@ -1107,9 +1107,9 @@ error will be returned. This timeout is configurable.</p>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>endpointPath</code></td>
-<td>The relative URL path of the portal endpoint to contact.</td>
-<td><code>&quot;/&quot;</code></td>
+<td><code>path</code></td>
+<td>The path to use after the skylink. See the next section.</td>
+<td><code>&quot;&quot;</code></td>
 </tr>
 <tr>
 <td><code>skykeyName</code></td>
@@ -1134,28 +1134,51 @@ error will be returned. This timeout is configurable.</p>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
 
+<span class="c1">// Using the skylink.</span>
 <span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
   <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Using the path option.</span>
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
+  <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dir2/file3</span><span class="dl">"</span> <span class="p">});</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
 
+<span class="c1">// Using the skylink.</span>
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3</span><span class="dl">"</span><span class="p">;</span>
     <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">})();</span>
+
+<span class="c1">// Using the path option.</span>
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dir2/file3</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})()</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
 
+<span class="c1"># Using the skylink.
+</span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
 <span class="n">client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+
+<span class="c1"># Using the path option.
+</span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+<span class="n">client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="s">"path"</span><span class="p">:</span> <span class="s">"dir2/file3"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1164,18 +1187,42 @@ error will be returned. This timeout is configurable.</p>
     <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
 <span class="p">)</span>
 
-<span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span><span class="p">)</span>
+    <span class="c">// Using the skylink.</span>
+    <span class="n">skylink</span> <span class="o">:=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
+    <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span>
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+
+    <span class="c">// Using the path option.</span>
+    <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="s">"dir2/file3"</span><span class="p">;</span>
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from <a href="#uploading-a-directory">Uploading A Directory</a> to illustrate this.</p>
+<p>It is possible to download files from uploaded directories if their paths
+relative to the uploaded directory are known. There are two ways to do this.</p>
+<h3 id='including-the-path-in-the-skylink'>Including The Path In The Skylink</h3>
+<p>The skylink being passed in can contain an optional path. This path can specify
+a directory or a particular file. If specified, only that file or directory will
+be returned. The examples here use the directory structure from <a href="#uploading-a-directory">Uploading A
+Directory</a> to illustrate this.</p>
+<h3 id='the-path-additional-parameter'>The Path Additional Parameter</h3>
+<p>There is a caveat to the above approach: the skylink is used as-is and any
+special characters in the appended path are not encoded. We recommend using the
+additional option <code>path</code> to let the SDK properly encode it for you.</p>
+
+<p>The <code>path</code> option also is easier to use if you would otherwise have to manually
+append the path to the skylink.</p>
 <h2 id='getting-metadata'>Getting Metadata</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-I</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
 
