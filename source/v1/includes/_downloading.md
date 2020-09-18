@@ -88,7 +88,6 @@ Directory](#uploading-a-directory) for examples.
 
 Field | Description | Default
 ----- | ----------- | -------
-`endpointPath` | The relative URL path of the portal endpoint to contact. | `"/"`
 `skykeyName` | The name of the skykey on the portal used to decrypt the download. | `""`
 `skykeyID` | The ID of the skykey on the portal used to decrypt the download. | `""`
 `timeout_seconds` | The timeout in seconds. | `""`

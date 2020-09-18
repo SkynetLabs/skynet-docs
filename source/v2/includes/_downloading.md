@@ -66,7 +66,7 @@ func main() {
 }
 ```
 
-This function downloads a skylink using http streaming. The call blocks until
+This function downloads a skylink using HTTP streaming. The call blocks until
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a `404`
 error will be returned. This timeout is configurable.
@@ -76,19 +76,19 @@ error will be returned. This timeout is configurable.
 Field | Description
 ----- | -----------
 `path` | The local path where the file should be downloaded to.
-`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](#uploading-a-directory) for examples.
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path.
 
 *Browser JS:*
 
 Field | Description
 ----- | -----------
-`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned. See [Uploading A Directory](#uploading-a-directory) for examples.
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path.
 
 ### Additional Options
 
 Field | Description | Default
 ----- | ----------- | -------
-`endpointPath` | The relative URL path of the portal endpoint to contact. | `"/"`
+`path` | The path to use after the skylink. See the next section.  | `""`
 `skykeyName` | The name of the skykey on the portal used to decrypt the download. | `""`
 `skykeyID` | The ID of the skykey on the portal used to decrypt the download. | `""`
 `timeout_seconds` | The timeout in seconds. | `""`
@@ -111,10 +111,19 @@ skynet download "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3" "./d
 import { SkynetClient } from "skynet-js";
 
 const client = new SkynetClient();
-const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
+// Using the skylink.
 try {
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
   client.downloadFile(skylink);
+} catch (error) {
+  console.log(error);
+}
+
+// Using the path option.
+try {
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+  client.downloadFile(skylink, { path: "dir2/file3" });
 } catch (error) {
   console.log(error);
 }
@@ -124,21 +133,35 @@ try {
 const { SkynetClient } = require('@nebulous/skynet');
 
 const client = new SkynetClient();
-const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 
+// Using the skylink.
 (async () => {
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
 	await client.downloadFile("./dst.jpg", skylink);
 	console.log('Download successful');
 })();
+
+// Using the path option.
+(async () => {
+  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+	await client.downloadFile("./dst.jpg", skylink, { path: "dir2/file3" });
+	console.log('Download successful');
+})()
 ```
 
 ```python
 import siaskynet as skynet
 
 client = skynet.SkynetClient()
-skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
 
+# Using the skylink.
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
 client.download_file("./dst.jpg", skylink)
+print("Download successful")
+
+# Using the path option.
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+client.download_file("./dst.jpg", skylink, { "path": "dir2/file3" })
 print("Download successful")
 ```
 
@@ -150,11 +173,22 @@ import (
 	skynet "github.com/NebulousLabs/go-skynet"
 )
 
-const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
 var client = skynet.New()
 
 func main() {
-	err := client.DownloadFile("./dst.go", skylink, skynet.DefaultDownloadOptions)
+	// Using the skylink.
+	skylink := "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
+	opts := skynet.DefaultDownloadOptions
+	err := client.DownloadFile("./dst.go", skylink, opts)
+	if err != nil {
+		panic("Something went wrong, please try again.\nError: " + err.Error())
+	}
+	fmt.Println("Download successful")
+
+	// Using the path option.
+	skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+	opts.Path = "dir2/file3";
+	err := client.DownloadFile("./dst.go", skylink, opts)
 	if err != nil {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
@@ -162,7 +196,24 @@ func main() {
 }
 ```
 
-It is possible to download files from uploaded directories by appending their paths to the skylink. The examples here use the directory structure from [Uploading A Directory](#uploading-a-directory) to illustrate this.
+It is possible to download files from uploaded directories if their paths
+relative to the uploaded directory are known. There are two ways to do this.
+
+### Including The Path In The Skylink
+
+The skylink being passed in can contain an optional path. This path can specify
+a directory or a particular file. If specified, only that file or directory will
+be returned. The examples here use the directory structure from [Uploading A
+Directory](#uploading-a-directory) to illustrate this.
+
+### The Path Additional Parameter
+
+There is a caveat to the above approach: the skylink is used as-is and any
+special characters in the appended path are not encoded. We recommend using the
+additional option `path` to let the SDK properly encode it for you.
+
+The `path` option also is easier to use if you would otherwise have to manually
+append the path to the skylink.
 
 ## Getting Metadata
 
