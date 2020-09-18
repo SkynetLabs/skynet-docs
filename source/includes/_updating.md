@@ -11,4 +11,5 @@ Users wishing to update their SDK from `v1` to `v2` should note the following:
   2. `upload` was renamed to `uploadFile` and the response was changed to only
      include a skylink. To obtain the full response as in the old `upload`, use
      the new `uploadFileRequest`.
-  3. `getDownloadUrl` has been renamed to `getSkylinkUrl`.
+  3. `uploadFile` and `uploadDirectory` now return skylinks prefixed by `sia:`.
+  4. `getDownloadUrl` has been renamed to `getSkylinkUrl`.
