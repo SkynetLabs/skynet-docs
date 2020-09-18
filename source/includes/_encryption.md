@@ -12,7 +12,7 @@ See also:
 ## Creating A Skykey
 
 ```shell--curl
-curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localhost:9980/skynet/createskykey"
+curl -A "Sia-Agent"  -u "":<apipassword> -d "name=key_to_the_castle" -d "type=private-id" "localhost:9980/skynet/createskykey"
 ```
 
 ```shell--cli
@@ -151,7 +151,7 @@ Field | Type | Description
 ## Adding A Skykey
 
 ```shell--curl
-curl -A "Sia-Agent"  -u "":<apipassword> --data "skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a" "localhost:9980/skynet/addskykey"
+curl -A "Sia-Agent" -u "":<apipassword> -d "skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a" "localhost:9980/skynet/addskykey"
 ```
 
 ```shell--cli
@@ -234,7 +234,8 @@ Error or exception on failure.
 ## Getting A Skykey By Name
 
 ```shell--curl
-curl -A "Sia-Agent"  -u "":<apipassword> --data "name=key_to_the_castle" "localhost:9980/skynet/skykey"
+# -G option is required to send --data (-d) with a GET.
+curl -X GET -G -A "Sia-Agent" -u "":<apipassword> -d "name=key_to_the_castle" "localhost:9980/skynet/skykey"
 ```
 
 ```shell--cli
@@ -318,7 +319,8 @@ See [Creating A Skykey](#creating-a-skykey).
 ### Getting A Skykey By ID
 
 ```shell--curl
-curl -A "Sia-Agent"  -u "":<apipassword> --data "id=gi5z8cf5NWbcvPBaBn0DFQ==" "localhost:9980/skynet/skykey"
+# -G option is required to send --data (-d) with a GET.
+curl -X GET -G -A "Sia-Agent" -u "":<apipassword> -d "id=qwxONTt4agqbEmzPlSywaQ==" "localhost:9980/skynet/skykey"
 ```
 
 ```shell--cli
@@ -400,7 +402,7 @@ See [Creating A Skykey](#creating-a-skykey).
 ## Listing Skykeys
 
 ```shell--curl
-curl -A "Sia-Agent"  -u "":<apipassword> "localhost:9980/skynet/skykeys"
+curl -A "Sia-Agent" -u "":<apipassword> "localhost:9980/skynet/skykeys"
 ```
 
 ```shell--cli
