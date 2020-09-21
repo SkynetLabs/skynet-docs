@@ -1454,7 +1454,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <li><a href="#uploading-with-encryption">Uploading With Encryption</a></li>
 <li><a href="#downloading-with-decryption">Downloading With Decryption</a></li>
 </ul>
-<h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
+<h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"name=key_to_the_castle"</span> <span class="nt">-d</span> <span class="s2">"type=private-id"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey create <span class="s2">"testcreateskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -1584,7 +1584,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 <td>Desired type of the skykey. See above for more information.</td>
 </tr>
 </tbody></table>
-<h2 id='adding-a-skykey'>Adding A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
+<h2 id='adding-a-skykey'>Adding A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey add <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -1651,7 +1651,8 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Error or exception on failure.</p>
-<h2 id='getting-a-skykey-by-name'>Getting A Skykey By Name</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
+<h2 id='getting-a-skykey-by-name'>Getting A Skykey By Name</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># -G option is required to send --data (-d) with a GET.</span>
+curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get name <span class="s2">"testcreateskykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -1719,7 +1720,8 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tbody></table>
 <h3 id='response-3'>Response</h3>
 <p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
-<h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">--data</span> <span class="s2">"id=gi5z8cf5NWbcvPBaBn0DFQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
+<h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># -G option is required to send --data (-d) with a GET.</span>
+curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"id=qwxONTt4agqbEmzPlSywaQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get <span class="nb">id</span> <span class="s2">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -1785,7 +1787,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </tbody></table>
 <h3 id='response-4'>Response</h3>
 <p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
-<h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
+<h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey list
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -2298,6 +2300,7 @@ and <code>defaultPortalUrl</code> is not a function.</li>
 <li><code>upload</code> was renamed to <code>uploadFile</code> and the response was changed to only
 include a skylink. To obtain the full response as in the old <code>upload</code>, use
 the new <code>uploadFileRequest</code>.</li>
+<li><code>uploadFile</code> and <code>uploadDirectory</code> now return skylinks prefixed by <code>sia:</code>.</li>
 <li><code>getDownloadUrl</code> has been renamed to <code>getSkylinkUrl</code>.</li>
 </ol></li>
 </ol>
