@@ -497,7 +497,7 @@ exceptions on failure. The error messages may contain HTTP status codes (see
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -613,7 +613,7 @@ initialization).</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">NewCustom</span><span class="p">(</span><span class="s">"https://some-other-portal.xyz"</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Options</span><span class="p">{})</span>
@@ -646,7 +646,7 @@ options for default portal selection, such as configuration files. Please see
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">NewCustom</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Options</span><span class="p">{</span><span class="n">APIKey</span><span class="o">:</span> <span class="s">"foobar"</span><span class="p">})</span>
@@ -696,7 +696,7 @@ value to <code>""</code>.
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -867,7 +867,7 @@ Note that the SDKs only return the skylink since this is what you want most of t
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -996,7 +996,7 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -1051,7 +1051,7 @@ options when uploading a file or directory.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
@@ -1185,7 +1185,7 @@ error will be returned. This timeout is configurable.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -1265,7 +1265,7 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
@@ -1419,7 +1419,7 @@ would be returned if the request had been a GET request.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
@@ -1494,7 +1494,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
@@ -1624,7 +1624,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
@@ -1692,7 +1692,7 @@ curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
@@ -1759,7 +1759,7 @@ curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">
 <span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
-<span class="k">import</span> <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+<span class="k">import</span> <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 
 <span class="k">const</span> <span class="n">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -1824,7 +1824,7 @@ curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -1892,7 +1892,7 @@ skynet hns download <span class="s2">"doesn"</span> <span class="s2">"./dst.html
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
@@ -1982,7 +1982,7 @@ skynet hns resolve <span class="s2">"doesn"</span>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">const</span> <span class="n">domain</span> <span class="o">=</span> <span class="s">"doesn"</span>
@@ -2252,7 +2252,7 @@ domain.</p>
 
 <span class="k">import</span> <span class="p">(</span>
     <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
