@@ -67,7 +67,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet"
+	skynet "github.com/NebulousLabs/go-skynet/v2"
 )
 
 var client = skynet.New()
@@ -162,7 +162,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet"
+	skynet "github.com/NebulousLabs/go-skynet/v2"
 )
 
 const domain = "doesn"
