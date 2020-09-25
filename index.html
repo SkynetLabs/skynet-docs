@@ -229,6 +229,9 @@
                   <li>
                     <a href="#a-note-about-language-differences" class="toc-h2 toc-link" data-title="A Note About Language Differences">A Note About Language Differences</a>
                   </li>
+                  <li>
+                    <a href="#using-the-shell" class="toc-h2 toc-link" data-title="Using The Shell">Using The Shell</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -377,7 +380,7 @@
 <p>We have SDK support for several languages:</p>
 
 <ul>
-<li>Shell (using curl)</li>
+<li>Shell (using curl). See the <a href="#using-the-shell">Using The Shell</a> section.</li>
 <li><a href="https://github.com/NebulousLabs/skynet-js">Browser JS</a></li>
 <li><a href="https://github.com/NebulousLabs/nodejs-skynet">NodeJS</a></li>
 <li><a href="https://github.com/NebulousLabs/python-skynet">Python</a></li>
@@ -463,6 +466,15 @@ exceptions on failure. The error messages may contain HTTP status codes (see
 <td>Errors are returned and must be checked for explicitly.</td>
 </tr>
 </tbody></table>
+<h2 id='using-the-shell'>Using The Shell</h2><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="k">function </span>skynet<span class="o">()</span> <span class="o">{</span>
+  curl <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="s2">"file=@</span><span class="nv">$1</span><span class="s2">"</span> <span class="se">\</span>
+    | jq <span class="s2">".skylink"</span> | xargs <span class="nt">-I</span> _ <span class="nb">echo</span> <span class="s2">"https://siasky.net/_"</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Our shell examples present only simple curl calls. You may find it helpful to
+write wrappers around these in Bash, or the shell language of your choice, to
+make them more reusable. To the right we have provided a simple example which
+uses <a href="https://stedolan.github.io/jq/"><code>jq</code></a>.</p>
 <h1 id='getting-started'>Getting Started</h1><h2 id='making-your-first-api-call'>Making Your First API Call</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile/&lt;siapath&gt;"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
