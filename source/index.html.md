@@ -38,7 +38,7 @@ Welcome to the Skynet SDK docs!
 
 We have SDK support for several languages:
 
-- Shell (using curl)
+- Shell (using curl). See the [Using The Shell](#using-the-shell) section.
 - [Browser JS](https://github.com/NebulousLabs/skynet-js)
 - [NodeJS](https://github.com/NebulousLabs/nodejs-skynet)
 - [Python](https://github.com/NebulousLabs/python-skynet)
@@ -103,3 +103,17 @@ Language | Failure Mode
 Javascript | Exceptions are raised and must be caught with a `try-catch` block.
 Python | Same as above.
 Go | Errors are returned and must be checked for explicitly.
+
+## Using The Shell
+
+```shell
+function skynet() {
+  curl -X POST "https://siasky.net/skynet/skyfile" -F "file=@$1" \
+    | jq ".skylink" | xargs -I _ echo "https://siasky.net/_"
+}
+```
+
+Our shell examples present only simple curl calls. You may find it helpful to
+write wrappers around these in Bash, or the shell language of your choice, to
+make them more reusable. To the right we have provided a simple example which
+uses [`jq`](https://stedolan.github.io/jq/).
