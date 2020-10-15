@@ -10,18 +10,18 @@ These functions have only been implemented for Browser JS at the moment.
 ## Getting Files From SkyDB
 
 ```javascript--browser
-import { FileType, NewFileID, SkynetClient, User } from "skynet-js";
+import { FileID, FileType, SkynetClient, User } from "skynet-js";
 
 const client = new SkynetClient();
 
 const appID = "SkySkapp";
 const filename = "foo.txt";
 const user = User.New("john.doe@example.com", "supersecret");
-const fileID = NewFileID(appID, FileType.PublicUnencrypted, filename);
+const fileID = new FileID(appID, FileType.PublicUnencrypted, filename);
 
 async function getFileExample() {
   try {
-    getFile(user, fileID);
+    client.getFile(user, fileID);
   } catch (error) {
     console.log(error)
   }
@@ -63,30 +63,30 @@ Enum | Value | Description
 
 ```javascript-browser
 {
-  Tweak: "",
-  Data: "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
-  Revision: 11,
-  Signature: "",
+  tweak: "3b0f02e66373877503325e44b6973279d2e2a9c21e75b17adccb378d05cf40ae",
+  data: "41414333544f713757324a516c6a507567744d6a453555734a676973696b59624538465571677069646659486751",
+  revision: 11,
+  signature: "7a971e1df2ddbb8ef1f8e71e28a5a64ffe1e5dfcb7eebb19e6c238744133ddeefc4f286488dd4500c33610711e3447b49e5a30df2e590e27ad00e56ebf3baf04",
 }
 ```
 
 ## Setting Files On SkyDB
 
 ```javascript--browser
-import { FileType, NewFileID, SkynetClient, SkynetFile, User } from "skynet-js";
+import { FileID, FileType, SkynetClient, SkynetFile, User } from "skynet-js";
 
 const client = new SkynetClient();
 
 const appID = "SkySkapp";
 const filename = "foo.txt";
 const user = User.New("john.doe@example.com", "supersecret");
-const fileID = NewFileID(appID, FileType.PublicUnencrypted, filename);
+const fileID = new FileID(appID, FileType.PublicUnencrypted, filename);
 
 // Must have an existing File object.
 
 async function setFileExample() {
   try {
-    setFile(user, fileID, SkyFile.New(file);
+    client.setFile(user, fileID, SkyFile.New(file);
   } catch (error) {
     console.log(error)
   }
