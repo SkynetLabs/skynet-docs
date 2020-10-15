@@ -23,6 +23,7 @@ includes:
   - client
   - uploading
   - downloading
+  - skydb
   - encryption
   - handshake
   - browser-js-api
