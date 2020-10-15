@@ -4,6 +4,10 @@ SkyDB is a framework that allows Skynet users to create decentralized accounts
 and store mutable files in those accounts.
 
 <aside class="warning">
+These functions are in beta and may change in the coming weeks.
+</aside>
+
+<aside class="warning">
 These functions have only been implemented for Browser JS at the moment.
 </aside>
 
