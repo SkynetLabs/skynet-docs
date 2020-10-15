@@ -300,6 +300,17 @@
               </ul>
           </li>
           <li>
+            <a href="#skydb" class="toc-h1 toc-link" data-title="SkyDB">SkyDB</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#getting-files-from-skydb" class="toc-h2 toc-link" data-title="Getting Files From SkyDB">Getting Files From SkyDB</a>
+                  </li>
+                  <li>
+                    <a href="#setting-files-on-skydb" class="toc-h2 toc-link" data-title="Setting Files On SkyDB">Setting Files On SkyDB</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#encryption" class="toc-h1 toc-link" data-title="Encryption">Encryption</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1456,6 +1467,154 @@ options when downloading.</p>
 <p>See the additional options in <a href="#downloading-a-file">Downloading A File</a>.</p>
 
 <p>Also see <a href="#encryption">Encryption</a>.</p>
+<h1 id='skydb'>SkyDB</h1>
+<p>SkyDB is a framework that allows Skynet users to create decentralized accounts
+and store mutable files in those accounts.</p>
+
+<aside class="warning">
+These functions have only been implemented for Browser JS at the moment.
+</aside>
+<h2 id='getting-files-from-skydb'>Getting Files From SkyDB</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileType</span><span class="p">,</span> <span class="nx">NewFileID</span><span class="p">,</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">User</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">appID</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SkySkapp</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo.txt</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">User</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="dl">"</span><span class="s2">john.doe@example.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">supersecret</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fileID</span> <span class="o">=</span> <span class="nx">NewFileID</span><span class="p">(</span><span class="nx">appID</span><span class="p">,</span> <span class="nx">FileType</span><span class="p">.</span><span class="nx">PublicUnencrypted</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getFileExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">getFile</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">fileID</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td><code>User</code></td>
+<td>User&#39;s public key, as a hex-encoded string (see below).</td>
+</tr>
+<tr>
+<td><code>fileID</code></td>
+<td><code>FileID</code></td>
+<td>The file identification object (see below).</td>
+</tr>
+</tbody></table>
+<h3 id='user'>User</h3>
+<p>User&#39;s public key, as a hex-encoded string. See the examples for calculating this string from a username and password.</p>
+<h3 id='fileid'>FileID</h3>
+<p>FileID identifies a file.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>version</code></td>
+<td>number</td>
+<td>The version of the <code>fileID</code> object being used. Currently <code>1</code> is expected.</td>
+</tr>
+<tr>
+<td><code>applicationID</code></td>
+<td>string</td>
+<td>The application ID.</td>
+</tr>
+<tr>
+<td><code>fileType</code></td>
+<td><code>FileType</code></td>
+<td>The type of the file (see below).</td>
+</tr>
+<tr>
+<td><code>filename</code></td>
+<td>string</td>
+<td>The filename.</td>
+</tr>
+</tbody></table>
+<h3 id='filetype'>FileType</h3>
+<p><code>FileType</code> is an enum denoting the type of the file.</p>
+
+<table><thead>
+<tr>
+<th>Enum</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Invalid</code></td>
+<td><code>0</code></td>
+<td>Invalid file type.</td>
+</tr>
+<tr>
+<td><code>PublicUnencrypted</code></td>
+<td><code>1</code></td>
+<td>Public unencrypted file.</td>
+</tr>
+</tbody></table>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+  Tweak: "",
+  Data: "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg",
+  Revision: 11,
+  Signature: "",
+}
+</code></pre></div><h2 id='setting-files-on-skydb'>Setting Files On SkyDB</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">FileType</span><span class="p">,</span> <span class="nx">NewFileID</span><span class="p">,</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">SkynetFile</span><span class="p">,</span> <span class="nx">User</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+
+<span class="kd">const</span> <span class="nx">appID</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">SkySkapp</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">filename</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo.txt</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="nx">User</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="dl">"</span><span class="s2">john.doe@example.com</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">supersecret</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">fileID</span> <span class="o">=</span> <span class="nx">NewFileID</span><span class="p">(</span><span class="nx">appID</span><span class="p">,</span> <span class="nx">FileType</span><span class="p">.</span><span class="nx">PublicUnencrypted</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+
+<span class="c1">// Must have an existing File object.</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">setFileExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="nx">setFile</span><span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">fileID</span><span class="p">,</span> <span class="nx">SkyFile</span><span class="p">.</span><span class="nx">New</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user</code></td>
+<td>string</td>
+<td>User&#39;s public key, as a hex-encoded string. See <a href="#getting-files-from-skydb">Getting A File From SkyDB</a>.</td>
+</tr>
+<tr>
+<td><code>fileID</code></td>
+<td><code>FileID</code></td>
+<td>The file identification object. See <a href="#getting-files-from-skydb">Getting A File From SkyDB</a>.</td>
+</tr>
+<tr>
+<td><code>file</code></td>
+<td><code>SkyFile</code></td>
+<td>The file to set (see below).</td>
+</tr>
+</tbody></table>
+<h3 id='skyfile'>SkyFile</h3>
+<p>At the moment, a simple wrapper around regular <code>File</code>s. See the examples.</p>
+<h3 id='response-2'>Response</h3>
+<p>None on success.</p>
 <h1 id='encryption'>Encryption</h1>
 <p>Encryption and decryption in Skynet are performed using <em>skykeys</em>. Skykeys can
 be created and queried using the functions in this section. The name or ID of a
