@@ -250,97 +250,97 @@ See [Downloading A File](#downloading-a-file).
 
 ```shell--curl
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
 ```shell--cli
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
 ```javascript--browser
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
 ```javascript--node
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
 ```python
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
 ```go
 {
-"mode":     640,
-"filename": "folder",
-"subfiles": [
-  {
-  "mode":         640,
-  "filename":     "folder/file1.txt",
-  "contenttype":  "text/plain",
-  "offset":       0,
-  "len":          6
+  "mode":     640,
+  "filename": "folder",
+  "subfiles": {
+    "folder/file1.txt": {
+    "mode":         640,
+    "filename":     "folder/file1.txt",
+    "contenttype":  "text/plain",
+    "offset":       0,
+    "len":          6
+    }
   }
-]
 }
 ```
 
