@@ -312,11 +312,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
@@ -328,11 +328,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
@@ -344,11 +344,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
@@ -360,11 +360,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
@@ -376,11 +376,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
@@ -392,11 +392,11 @@ See [Downloading A File](#downloading-a-file).
   "filename": "folder",
   "subfiles": {
     "folder/file1.txt": {
-    "mode":         640,
-    "filename":     "folder/file1.txt",
-    "contenttype":  "text/plain",
-    "offset":       0,
-    "len":          6
+      "mode":         640,
+      "filename":     "folder/file1.txt",
+      "contenttype":  "text/plain",
+      "offset":       0,
+      "len":          6
     }
   }
 }
