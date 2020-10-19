@@ -1321,82 +1321,82 @@ would be returned if the request had been a GET request.</p>
 <h3 id='additional-options-2'>Additional Options</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
-<span class="s2">"mode"</span>:     640,
-<span class="s2">"filename"</span>: <span class="s2">"folder"</span>,
-<span class="s2">"subfiles"</span>: <span class="o">[</span>
-  <span class="o">{</span>
-  <span class="s2">"mode"</span>:         640,
-  <span class="s2">"filename"</span>:     <span class="s2">"folder/file1.txt"</span>,
-  <span class="s2">"contenttype"</span>:  <span class="s2">"text/plain"</span>,
-  <span class="s2">"offset"</span>:       0,
-  <span class="s2">"len"</span>:          6
+  <span class="s2">"mode"</span>:     640,
+  <span class="s2">"filename"</span>: <span class="s2">"folder"</span>,
+  <span class="s2">"subfiles"</span>: <span class="o">{</span>
+    <span class="s2">"folder/file1.txt"</span>: <span class="o">{</span>
+      <span class="s2">"mode"</span>:         640,
+      <span class="s2">"filename"</span>:     <span class="s2">"folder/file1.txt"</span>,
+      <span class="s2">"contenttype"</span>:  <span class="s2">"text/plain"</span>,
+      <span class="s2">"offset"</span>:       0,
+      <span class="s2">"len"</span>:          6
+    <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="o">{</span>
-<span class="s2">"mode"</span>:     640,
-<span class="s2">"filename"</span>: <span class="s2">"folder"</span>,
-<span class="s2">"subfiles"</span>: <span class="o">[</span>
-  <span class="o">{</span>
-  <span class="s2">"mode"</span>:         640,
-  <span class="s2">"filename"</span>:     <span class="s2">"folder/file1.txt"</span>,
-  <span class="s2">"contenttype"</span>:  <span class="s2">"text/plain"</span>,
-  <span class="s2">"offset"</span>:       0,
-  <span class="s2">"len"</span>:          6
+  <span class="s2">"mode"</span>:     640,
+  <span class="s2">"filename"</span>: <span class="s2">"folder"</span>,
+  <span class="s2">"subfiles"</span>: <span class="o">{</span>
+    <span class="s2">"folder/file1.txt"</span>: <span class="o">{</span>
+      <span class="s2">"mode"</span>:         640,
+      <span class="s2">"filename"</span>:     <span class="s2">"folder/file1.txt"</span>,
+      <span class="s2">"contenttype"</span>:  <span class="s2">"text/plain"</span>,
+      <span class="s2">"offset"</span>:       0,
+      <span class="s2">"len"</span>:          6
+    <span class="o">}</span>
   <span class="o">}</span>
-<span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
-<span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">folder</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">subfiles</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">contenttype</span><span class="dl">"</span><span class="p">:</span>  <span class="dl">"</span><span class="s2">text/plain</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">offset</span><span class="dl">"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">len</span><span class="dl">"</span><span class="p">:</span>          <span class="mi">6</span>
+  <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">folder</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">subfiles</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">contenttype</span><span class="dl">"</span><span class="p">:</span>  <span class="dl">"</span><span class="s2">text/plain</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">offset</span><span class="dl">"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">len</span><span class="dl">"</span><span class="p">:</span>          <span class="mi">6</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
-<span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">folder</span><span class="dl">"</span><span class="p">,</span>
-<span class="dl">"</span><span class="s2">subfiles</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="p">{</span>
-  <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">contenttype</span><span class="dl">"</span><span class="p">:</span>  <span class="dl">"</span><span class="s2">text/plain</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">offset</span><span class="dl">"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">len</span><span class="dl">"</span><span class="p">:</span>          <span class="mi">6</span>
+  <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">folder</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">subfiles</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">mode</span><span class="dl">"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">filename</span><span class="dl">"</span><span class="p">:</span>     <span class="dl">"</span><span class="s2">folder/file1.txt</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">contenttype</span><span class="dl">"</span><span class="p">:</span>  <span class="dl">"</span><span class="s2">text/plain</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">offset</span><span class="dl">"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">len</span><span class="dl">"</span><span class="p">:</span>          <span class="mi">6</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="p">{</span>
-<span class="s">"mode"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
-<span class="s">"filename"</span><span class="p">:</span> <span class="s">"folder"</span><span class="p">,</span>
-<span class="s">"subfiles"</span><span class="p">:</span> <span class="p">[</span>
-  <span class="p">{</span>
-  <span class="s">"mode"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
-  <span class="s">"filename"</span><span class="p">:</span>     <span class="s">"folder/file1.txt"</span><span class="p">,</span>
-  <span class="s">"contenttype"</span><span class="p">:</span>  <span class="s">"text/plain"</span><span class="p">,</span>
-  <span class="s">"offset"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
-  <span class="s">"len"</span><span class="p">:</span>          <span class="mi">6</span>
+  <span class="s">"mode"</span><span class="p">:</span>     <span class="mi">640</span><span class="p">,</span>
+  <span class="s">"filename"</span><span class="p">:</span> <span class="s">"folder"</span><span class="p">,</span>
+  <span class="s">"subfiles"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">"folder/file1.txt"</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">"mode"</span><span class="p">:</span>         <span class="mi">640</span><span class="p">,</span>
+      <span class="s">"filename"</span><span class="p">:</span>     <span class="s">"folder/file1.txt"</span><span class="p">,</span>
+      <span class="s">"contenttype"</span><span class="p">:</span>  <span class="s">"text/plain"</span><span class="p">,</span>
+      <span class="s">"offset"</span><span class="p">:</span>       <span class="mi">0</span><span class="p">,</span>
+      <span class="s">"len"</span><span class="p">:</span>          <span class="mi">6</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="p">{</span>
-<span class="s">"mode"</span><span class="o">:</span>     <span class="m">640</span><span class="p">,</span>
-<span class="s">"filename"</span><span class="o">:</span> <span class="s">"folder"</span><span class="p">,</span>
-<span class="s">"subfiles"</span><span class="o">:</span> <span class="p">[</span>
-  <span class="p">{</span>
-  <span class="s">"mode"</span><span class="o">:</span>         <span class="m">640</span><span class="p">,</span>
-  <span class="s">"filename"</span><span class="o">:</span>     <span class="s">"folder/file1.txt"</span><span class="p">,</span>
-  <span class="s">"contenttype"</span><span class="o">:</span>  <span class="s">"text/plain"</span><span class="p">,</span>
-  <span class="s">"offset"</span><span class="o">:</span>       <span class="m">0</span><span class="p">,</span>
-  <span class="s">"len"</span><span class="o">:</span>          <span class="m">6</span>
+  <span class="s">"mode"</span><span class="o">:</span>     <span class="m">640</span><span class="p">,</span>
+  <span class="s">"filename"</span><span class="o">:</span> <span class="s">"folder"</span><span class="p">,</span>
+  <span class="s">"subfiles"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s">"folder/file1.txt"</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s">"mode"</span><span class="o">:</span>         <span class="m">640</span><span class="p">,</span>
+      <span class="s">"filename"</span><span class="o">:</span>     <span class="s">"folder/file1.txt"</span><span class="p">,</span>
+      <span class="s">"contenttype"</span><span class="o">:</span>  <span class="s">"text/plain"</span><span class="p">,</span>
+      <span class="s">"offset"</span><span class="o">:</span>       <span class="m">0</span><span class="p">,</span>
+      <span class="s">"len"</span><span class="o">:</span>          <span class="m">6</span>
+    <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Coming Soon</p>
