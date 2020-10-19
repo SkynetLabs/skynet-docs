@@ -2,7 +2,7 @@
 
 ```shell--curl
 curl -X POST -A "Sia-Agent" --user "":"foobar" \
-  "https://siasky.net/skynet/skyfile" -F file=@image.jpg
+  "https://siasky.net/skynet/skyfile" -F 'file=@image.jpg'
 ```
 
 ```shell--cli

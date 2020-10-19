@@ -3,7 +3,7 @@
 ## Making Your First API Call
 
 ```shell--curl
-curl -L -X POST "https://siasky.net/skynet/skyfile/<siapath>" -F file=@image.jpg
+curl -L -X POST "https://siasky.net/skynet/skyfile/<siapath>" -F 'file=@image.jpg'
 ```
 
 ```shell--cli
