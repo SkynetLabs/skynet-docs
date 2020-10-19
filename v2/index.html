@@ -486,7 +486,7 @@ exceptions on failure. The error messages may contain HTTP status codes (see
 write wrappers around these in Bash, or the shell language of your choice, to
 make them more reusable. To the right we have provided a simple example which
 uses <a href="https://stedolan.github.io/jq/"><code>jq</code></a>.</p>
-<h1 id='getting-started'>Getting Started</h1><h2 id='making-your-first-api-call'>Making Your First API Call</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile/&lt;siapath&gt;"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
+<h1 id='getting-started'>Getting Started</h1><h2 id='making-your-first-api-call'>Making Your First API Call</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile/&lt;siapath&gt;"</span> <span class="nt">-F</span> <span class="s1">'file=@image.jpg'</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -685,7 +685,7 @@ call.</p>
 To set custom connection options while using the default portal, set the portal
 value to <code>""</code>.
 </aside>
-<h1 id='uploading-to-skynet'>Uploading To Skynet</h1><h2 id='uploading-a-file'>Uploading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile/&lt;siapath&gt;"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
+<h1 id='uploading-to-skynet'>Uploading To Skynet</h1><h2 id='uploading-a-file'>Uploading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/skyfile/&lt;siapath&gt;"</span> <span class="nt">-F</span> <span class="s1">'file=@image.jpg'</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -844,7 +844,7 @@ valid.
 <aside class="warning">
 Note that the SDKs only return the skylink since this is what you want most of the time. We are still working on ways to access more information from the result without complicating the main use case.
 </aside>
-<h2 id='uploading-a-directory'>Uploading A Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/&lt;siapath&gt;?filename=images"</span> <span class="nt">-F</span> files[]<span class="o">=</span>@./images/image1.png <span class="nt">-F</span> files[]<span class="o">=</span>@./images/image2.png
+<h2 id='uploading-a-directory'>Uploading A Directory</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="s2">"https://siasky.net/skynet/&lt;siapath&gt;?filename=images"</span> <span class="nt">-F</span> <span class="s1">'files[]=@./images/image1.png'</span> <span class="nt">-F</span> <span class="s1">'files[]=@./images/image2.png'</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./images"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getRelativeFilePath</span><span class="p">,</span> <span class="nx">getRootDirectory</span><span class="p">,</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -2387,7 +2387,7 @@ domain.</p>
 </tr>
 </tbody></table>
 <h1 id='api-authentication'>API Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:<span class="s2">"foobar"</span> <span class="se">\</span>
-  <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="nv">file</span><span class="o">=</span>@image.jpg
+  <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="s1">'file=@image.jpg'</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--api-key</span> <span class="s2">"foobar"</span> <span class="nt">--custom-user-agent</span> <span class="s2">"Sia-Agent"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
