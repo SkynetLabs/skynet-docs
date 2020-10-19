@@ -19,7 +19,7 @@ const client = new SkynetClient();
 
 async function uploadExample() {
   try {
-    const { skylink } = await client.uploadFile(file);
+    const skylink = await client.uploadFile(file);
     console.log(`Upload successful, skylink: ${skylink}`);
   } catch (error) {
     console.log(error)
