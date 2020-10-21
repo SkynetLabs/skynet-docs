@@ -573,11 +573,6 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 </tr>
 </thead><tbody>
 <tr>
-<td><code>endpointPath</code></td>
-<td>The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
 <td><code>APIKey</code></td>
 <td>The API password used for <a href="#api-authentication">authentication</a>.</td>
 <td><code>&quot;&quot;</code></td>
@@ -588,9 +583,9 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 <td><code>&quot;&quot;</code></td>
 </tr>
 <tr>
-<td><code>query</code></td>
-<td>Allows passing custom query parameters. Can be used to pass options to an endpoint that are not implemented in the SDK yet. Can also be used in the browser when opening a web app to pass options to the app.</td>
-<td><code>&quot;&quot;</code></td>
+<td><code>onUploadProgress</code></td>
+<td>Optional callback to track upload progress.</td>
+<td>undefined</td>
 </tr>
 </tbody></table>
 <h2 id='useful-constants'>Useful Constants</h2>
@@ -604,7 +599,7 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 </tr>
 </thead><tbody>
 <tr>
-<td><code>defaultPortalUrl</code></td>
+<td><code>defaultSkynetPortalUrl</code></td>
 <td>The default Skynet portal to use, if one is not provided.</td>
 <td><code>&quot;https://siasky.net&quot;</code></td>
 </tr>
