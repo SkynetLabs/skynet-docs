@@ -108,10 +108,9 @@ Every function accepts the following common options:
 
 Option | Description | Default
 ------ | ----------- | -------
-`endpointPath` | The relative path on the portal where the endpoint may be found for the function being called. Some portals, for example, may offer alternate download paths. | `""`
 `APIKey` | The API password used for [authentication](#api-authentication). | `""`
 `customUserAgent` | Allows changing the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
-`query` | Allows passing custom query parameters. Can be used to pass options to an endpoint that are not implemented in the SDK yet. Can also be used in the browser when opening a web app to pass options to the app. | `""`
+`onUploadProgress` | Optional callback to track upload progress. | undefined
 
 ## Useful Constants
 
@@ -119,5 +118,5 @@ Here are some constants exported by the SDKs which may be of use in applications
 
 Constant | Description | Default
 -------- | ----------- | -------
-`defaultPortalUrl` | The default Skynet portal to use, if one is not provided. | `"https://siasky.net"`
+`defaultSkynetPortalUrl` | The default Skynet portal to use, if one is not provided. | `"https://siasky.net"`
 `uriSkynetPrefix` | The Skynet URI prefix. | `"sia://"`
