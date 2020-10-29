@@ -1,12 +1,14 @@
 # Registry
 
-The registry is the low-level technology that provides the foundation for
-[SkyDB](#skydb). It allows getting and setting registry entries with a user's
-key and a data key (e.g. the name of an app). Registry entries contain data, the
-data key, and a revision number, which is incremented by 1 every time the
-registry entry is changed. The latest revision number is required when running
-`setEntry`. Because data at a given revision number cannot be modified, the
-registry effectively provides versioned, immutable data.
+The registry is the low-level host functionality that provides the foundation
+for [SkyDB](#skydb). It allows getting and setting registry entries with a
+user's key and a data key (e.g. the name of an app).
+
+Registry entries contain data, the data key, and a revision number. The revision
+number is incremented by 1 every time the registry entry is changed. The latest
+revision number, plus one, is required when running `setEntry`. Because data at
+a given revision number cannot be modified, the registry effectively provides
+versioned, immutable data.
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.

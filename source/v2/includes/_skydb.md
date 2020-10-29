@@ -34,7 +34,7 @@ async function getJSONExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`publicKey` | `Buffer or Uint8Array` | User's public key. Can be generated with the `keyPairFromSeed` function.
+`publicKey` | `Buffer` or `Uint8Array` | User's public key. Can be generated with the `keyPairFromSeed` function.
 `dataKey` | `string` | The key of the data to fetch for the given user.
 
 ### Response
@@ -76,7 +76,7 @@ async function setJSONExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`privateKey` | `Buffer or Uint8Array` | User's private key. Can be generated with the `keyPairFromSeed` function.
+`privateKey` | `Buffer` or `Uint8Array` | User's private key. Can be generated with the `keyPairFromSeed` function.
 `dataKey` | `string` | The key of the data to fetch for the given user.
 `json` | `object` | The JSON object to set for the given private key and data key.
 
