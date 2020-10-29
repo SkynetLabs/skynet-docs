@@ -24,6 +24,7 @@ includes:
   - uploading
   - downloading
   - skydb
+  - registry
   - encryption
   - handshake
   - browser-js-api
