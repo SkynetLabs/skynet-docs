@@ -1625,14 +1625,14 @@ These functions have only been implemented for Browser JS at the moment.
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">keyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">datakey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">datakey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setEntryExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">datakey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
