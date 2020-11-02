@@ -64,14 +64,14 @@ import { SkynetClient, keyPairFromSeed } from "skynet-js";
 const client = new SkynetClient();
 const { publicKey, privateKey } = keyPairFromSeed("this seed should be fairly long for security");
 
-const dataKey = "foo";
+const datakey = "foo";
 const data = "bar";
 const revision = 0;
 const entry = { datakey, data, revision };
 
 async function setEntryExample() {
   try {
-    await client.registry.setEntry(privateKey, dataKey, entry);
+    await client.registry.setEntry(privateKey, datakey, entry);
   } catch (error) {
     console.log(error);
   }
