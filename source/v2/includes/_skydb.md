@@ -9,6 +9,10 @@ These functions have only been implemented for Browser JS at the moment.
 
 ## Getting Data From SkyDB
 
+```shell--curl
+# There are no API endpoints for SkyDB -- you must use the registry directly.
+```
+
 ```javascript--browser
 import { SkynetClient, keyPairFromSeed } from "skynet-js";
 
@@ -49,6 +53,10 @@ Field | Type | Description
 ```
 
 ## Setting Data On SkyDB
+
+```shell--curl
+# There are no API endpoints for SkyDB -- you must use the registry directly.
+```
 
 ```javascript--browser
 import { SkynetClient, keyPairFromSeed } from "skynet-js";
