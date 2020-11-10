@@ -20,10 +20,10 @@ curl -X GET -G -A "Sia-Agent" -u "":<apipassword> -d "publickey=ed25519%3Ab4f9e4
 ```
 
 ```javascript--browser
-import { SkynetClient, keyPairFromSeed } from "skynet-js";
+import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
 
 const client = new SkynetClient();
-const { publicKey, privateKey } = keyPairFromSeed("this seed should be fairly long for security");
+const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for security");
 
 const dataKey = "foo";
 
@@ -44,7 +44,7 @@ async function getEntryExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`publicKey` | `Buffer` or `Uint8Array` | User's public key. Can be generated with the `keyPairFromSeed` function.
+`publicKey` | `Buffer` or `Uint8Array` | User's public key. Can be generated with the `genKeyPairFromSeed` function.
 `dataKey` | `string` | The key of the data to fetch for the given user.
 
 ### Response
@@ -67,10 +67,10 @@ curl -L -X POST -d '{"publickey":{"algorithm":"ed25519","key":[180,249,228,49,12
 ```
 
 ```javascript--browser
-import { SkynetClient, keyPairFromSeed } from "skynet-js";
+import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
 
 const client = new SkynetClient();
-const { publicKey, privateKey } = keyPairFromSeed("this seed should be fairly long for security");
+const { privateKey } = genKeyPairFromSeed("this seed should be fairly long for security");
 
 const dataKey = "foo";
 const data = "bar";
@@ -94,8 +94,7 @@ async function setEntryExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`privateKey` | `Buffer` or `Uint8Array` | User's private key. Can be generated with the `keyPairFromSeed` function or with PKI in the node-forge library on NPM. Should be kept secret.
-`dataKey` | `string` | The key of the data to fetch for the given user.
+`privateKey` | `Buffer` or `Uint8Array` | User's private key. Can be generated with the `genKeyPairFromSeed` function or with PKI in the node-forge library on NPM. Should be kept secret.
 `entry` | `RegistryEntry` | The registry entry to set. See below.
 
 ### `RegistryEntry`
