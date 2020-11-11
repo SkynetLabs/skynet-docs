@@ -44,7 +44,7 @@ async function getEntryExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`publicKey` | `Buffer` or `Uint8Array` | User's public key. Can be generated with the `genKeyPairFromSeed` function.
+`publicKey` | `string` | User's public key as a hex-encoded string. Can be generated with the `genKeyPairFromSeed` function.
 `dataKey` | `string` | The key of the data to fetch for the given user.
 
 ### Response
@@ -94,7 +94,7 @@ async function setEntryExample() {
 
 Field | Type | Description
 ----- | ---- | -----------
-`privateKey` | `Buffer` or `Uint8Array` | User's private key. Can be generated with the `genKeyPairFromSeed` function or with PKI in the node-forge library on NPM. Should be kept secret.
+`privateKey` | `string` | User's private key as a hex-encoded string. Can be generated with the `genKeyPairFromSeed` function or with PKI in the node-forge library on NPM. Should be kept secret.
 `entry` | `RegistryEntry` | The registry entry to set. See below.
 
 ### `RegistryEntry`
