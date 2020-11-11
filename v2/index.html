@@ -311,6 +311,9 @@
                   <li>
                     <a href="#setting-data-on-skydb" class="toc-h2 toc-link" data-title="Setting Data On SkyDB">Setting Data On SkyDB</a>
                   </li>
+                  <li>
+                    <a href="#getting-the-entry-url" class="toc-h2 toc-link" data-title="Getting The Entry URL">Getting The Entry URL</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -321,6 +324,20 @@
                   </li>
                   <li>
                     <a href="#setting-data-on-the-registry" class="toc-h2 toc-link" data-title="Setting Data On The Registry">Setting Data On The Registry</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#crypto-utilities" class="toc-h1 toc-link" data-title="Crypto Utilities">Crypto Utilities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#generating-key-pairs-and-seeds" class="toc-h2 toc-link" data-title="Generating Key Pairs And Seeds">Generating Key Pairs And Seeds</a>
+                  </li>
+                  <li>
+                    <a href="#generating-key-pairs-from-seeds" class="toc-h2 toc-link" data-title="Generating Key Pairs From Seeds">Generating Key Pairs From Seeds</a>
+                  </li>
+                  <li>
+                    <a href="#deriving-child-seeds" class="toc-h2 toc-link" data-title="Deriving Child Seeds">Deriving Child Seeds</a>
                   </li>
               </ul>
           </li>
@@ -1488,10 +1505,10 @@ and store mutable files in those accounts. It is built on top of the <a href="#r
 These functions have only been implemented for Browser JS at the moment.
 </aside>
 <h2 id='getting-data-from-skydb'>Getting Data From SkyDB</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># There are no API endpoints for SkyDB -- you must use the registry directly.</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">keyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">keyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">myApp</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1515,7 +1532,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>publicKey</code></td>
 <td><code>Buffer</code> or <code>Uint8Array</code></td>
-<td>User&#39;s public key. Can be generated with the <code>keyPairFromSeed</code> function.</td>
+<td>User&#39;s public key. Can be generated with the <code>genKeyPairFromSeed</code> function.</td>
 </tr>
 <tr>
 <td><code>dataKey</code></td>
@@ -1530,10 +1547,10 @@ These functions have only been implemented for Browser JS at the moment.
   revision: 11
 }
 </code></pre></div><h2 id='setting-data-on-skydb'>Setting Data On SkyDB</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># There are no API endpoints for SkyDB -- you must use the registry directly.</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">keyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">keyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">myApp</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span> <span class="p">};</span>
@@ -1558,7 +1575,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>privateKey</code></td>
 <td><code>Buffer</code> or <code>Uint8Array</code></td>
-<td>User&#39;s private key. Can be generated with the <code>keyPairFromSeed</code> function.</td>
+<td>User&#39;s private key. Can be generated with the <code>genKeyPairFromSeed</code> function.</td>
 </tr>
 <tr>
 <td><code>dataKey</code></td>
@@ -1573,7 +1590,26 @@ These functions have only been implemented for Browser JS at the moment.
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
-<h1 id='registry'>Registry</h1>
+<h2 id='getting-the-entry-url'>Getting The Entry URL</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">getEntryExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='function-3'>Function</h3>
+<p><code>getEntryUrl</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<p>See <a href="#getting-data-from-the-registry">Getting Data From The Registry</a>.</p>
+<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>"https://siasky.net/skynet/registry?publickey=ed25519%3Ac1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c&amp;datakey=7c96a0537ab2aaac9cfe0eca217732f4e10791625b4ab4c17e4d91c8078713b9"
+</code></pre></div><h1 id='registry'>Registry</h1>
 <p>The registry allows getting and setting registry entries with a user&#39;s key and a
 data key (e.g. the name of an app).</p>
 
@@ -1587,10 +1623,10 @@ modified, the registry effectively provides versioned, immutable data.</p>
 These functions have only been implemented for Browser JS at the moment.
 </aside>
 <h2 id='getting-data-from-the-registry'>Getting Data From The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"publickey=ed25519%3Ab4f9e43178222cf33bd4432dc1eca49499397ecd1f7de23b568f3fa1e72e5c7c"</span> <span class="nt">-d</span> <span class="s2">"datakey=79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d"</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">keyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">keyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1614,7 +1650,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>publicKey</code></td>
 <td><code>Buffer</code> or <code>Uint8Array</code></td>
-<td>User&#39;s public key. Can be generated with the <code>keyPairFromSeed</code> function.</td>
+<td>User&#39;s public key. Can be generated with the <code>genKeyPairFromSeed</code> function.</td>
 </tr>
 <tr>
 <td><code>dataKey</code></td>
@@ -1631,10 +1667,10 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div><h2 id='setting-data-on-the-registry'>Setting Data On The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{"publickey":{"algorithm":"ed25519","key":[180,249,228,49,120,34,44,243,59,212,67,45,193,236,164,148,153,57,126,205,31,125,226,59,86,143,63,161,231,46,92,124]},"datakey":"79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d","revision":7,"data":[65,65,65,118,74,68,105,95,101,102,75,76,101,99,83,65,112,78,56,110,89,113,84,110,122,83,106,76,116,102,66,55,80,99,69,110,81,112,75,75,101,79,88,100,54,119],"signature":[2,105,4,22,162,190,49,191,180,70,89,91,4,177,81,87,79,175,225,40,224,69,173,193,113,227,225,106,48,121,221,1,119,92,253,115,198,90,142,167,2,108,245,249,217,99,112,174,87,117,213,5,105,162,191,242,129,103,244,126,136,68,33,11]}'</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">keyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">keyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
@@ -1661,12 +1697,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>privateKey</code></td>
 <td><code>Buffer</code> or <code>Uint8Array</code></td>
-<td>User&#39;s private key. Can be generated with the <code>keyPairFromSeed</code> function or with PKI in the node-forge library on NPM. Should be kept secret.</td>
-</tr>
-<tr>
-<td><code>dataKey</code></td>
-<td><code>string</code></td>
-<td>The key of the data to fetch for the given user.</td>
+<td>User&#39;s private key. Can be generated with the <code>genKeyPairFromSeed</code> function or with PKI in the node-forge library on NPM. Should be kept secret.</td>
 </tr>
 <tr>
 <td><code>entry</code></td>
@@ -1702,7 +1733,86 @@ These functions have only been implemented for Browser JS at the moment.
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
-<h1 id='encryption'>Encryption</h1>
+<h1 id='crypto-utilities'>Crypto Utilities</h1>
+<p>This page documents cryptographic utilities for generating public and private
+keys as well as secure seeds. Private keys should, as the name implies, be kept
+private. The seeds should also be handled carefully as they can be used to
+derive public/private key pairs.</p>
+<h2 id='generating-key-pairs-and-seeds'>Generating Key Pairs And Seeds</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">genKeyPairAndSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">,</span> <span class="nx">seed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairAndSeed</span><span class="p">();</span>
+</code></pre></div>
+<p>If you do not yet have a seed, you can generate one with this function and it
+will also generate an associated key pair. The seed is generated using strong,
+cryptographic-grade randomness. It is recommended that you only store the seed
+for later use and re-derive the key pair with <code>genKeyPairFromSeed</code>, and that you
+store it securely.</p>
+<h3 id='function'>Function</h3>
+<p><code>genKeyPairAndSeed</code></p>
+<h3 id='parameters'>Parameters</h3>
+<p>None</p>
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+  publicKey: "f8a7da8324fabb9d57bb32c59c48d4ba304d08ee5f1297a46836cf841da71c80",
+  privateKey: "c404ff07fba961000dfb25ece7477f45b109b50a5169a45f3fb239343002c1cff8a7da8324fabb9d57bb32c59c48d4ba304d08ee5f1297a46836cf841da71c80",
+  seed: "c1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c"
+}
+</code></pre></div><h2 id='generating-key-pairs-from-seeds'>Generating Key Pairs From Seeds</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>
+<p>If you already have a seed (e.g. from a previous call to <code>genKeyPairAndSeed</code>) you
+can deterministically derive the same keypair.</p>
+<h3 id='function-2'>Function</h3>
+<p><code>genKeyPairFromSeed</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>seed</code></td>
+<td><code>string</code></td>
+<td>The seed that should be used to generate a deterministic keypair. Can be a long and secure passphrase.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
+  publicKey: "f8a7da8324fabb9d57bb32c59c48d4ba304d08ee5f1297a46836cf841da71c80",
+  privateKey: "c404ff07fba961000dfb25ece7477f45b109b50a5169a45f3fb239343002c1cff8a7da8324fabb9d57bb32c59c48d4ba304d08ee5f1297a46836cf841da71c80",
+}
+</code></pre></div><h2 id='deriving-child-seeds'>Deriving Child Seeds</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">deriveChildSeed</span><span class="p">,</span> <span class="nx">genKeyPairAndSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span><span class="p">,</span> <span class="nx">privateKey</span><span class="p">,</span> <span class="nx">masterSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairAndSeed</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">childSeed</span> <span class="o">=</span> <span class="nx">deriveChildSeed</span><span class="p">(</span><span class="nx">masterSeed</span><span class="p">,</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div>
+<p>This function can be used to derive a child seed from a given master seed and
+subseed. For example, the master seed can be a long and secure passphrase while
+the subseed can be the name of an application.</p>
+<h3 id='function-3'>Function</h3>
+<p><code>deriveChildSeed</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>masterSeed</code></td>
+<td><code>string</code></td>
+<td>The master seed that should be used to generate a deterministic keypair. Can be a long and secure passphrase.</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td><code>string</code></td>
+<td>The subseed that, in combination with the master seed, results in a deterministic keypair.</td>
+</tr>
+</tbody></table>
+<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>"f79cd29b92124c80a662f3085bba98955f7defbaed6e58ea891b901dc99aafc0"
+</code></pre></div><h1 id='encryption'>Encryption</h1>
 <p>Encryption and decryption in Skynet are performed using <em>skykeys</em>. Skykeys can
 be created and queried using the functions in this section. The name or ID of a
 skykey must be provided when uploading or downloading with encryption.</p>
