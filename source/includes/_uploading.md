@@ -171,7 +171,7 @@ async function uploadDirectoryExample() {
       return { ...accumulator, [path]: file };
     }, {});
 
-    const { skylink } = await client.uploadDirectory(directory, filename);
+    const skylink = await client.uploadDirectory(directory, filename);
   } catch (error) {
     console.log(error);
   }
