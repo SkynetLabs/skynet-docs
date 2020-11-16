@@ -171,7 +171,7 @@ async function uploadDirectoryExample() {
       return { ...accumulator, [path]: file };
     }, {});
 
-    const { skylink } = await client.uploadDirectory(directory, filename);
+    const skylink = await client.uploadDirectory(directory, filename);
   } catch (error) {
     console.log(error);
   }
@@ -318,7 +318,7 @@ const client = new SkynetClient();
 
 async uploadEncryptionExample() {
   try {
-    const { skylink } = await client.upload(file, { skykeyName: "my-skykey" });
+    const skylink = await client.uploadFile(file, { skykeyName: "my-skykey" });
   } catch (error) {
     console.log(error)
   }
