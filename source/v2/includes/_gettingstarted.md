@@ -69,7 +69,13 @@ func main() {
 The SDKs are set up to be as simple as possible. Despite the many options for
 configuration, most users will be able to get started with a single API call. In
 the example on the right, we upload the file `image.jpg` to the default Skynet
-portal, `https://siasky.net`.
+portal (which in Browser JS is the portal running the code and in other SDKs is
+`https://siasky.net`).
+
+**Note:** If you are testing or running a Browser JS app locally, you will
+either have to run a Skynet portal locally or initialize the Skynet Client to
+connect to an existing portal such as `https://siasky.net`. See [Portal
+Selection](#portal-selection) below.
 
 ## Skynet Client
 
