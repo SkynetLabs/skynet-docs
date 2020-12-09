@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VERSION=v3
+
 if [ "$(git branch --show-current)" != "gh-pages" ]; then
-  cp -R ./source/includes/ ./source/v2/includes && cp ./source/index.html.md ./source/v2
+  cp -R ./source/includes/ ./source/$VERSION/includes && cp ./source/index.html.md ./source/$VERSION
 fi
