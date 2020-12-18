@@ -26,6 +26,7 @@ includes:
   - skydb
   - registry
   - crypto-utilities
+  - encryption
   - handshake
   - browser-js-api
   - authentication
