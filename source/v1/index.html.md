@@ -11,7 +11,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - "Version: v1"
-  - <a href='/v3-beta'>Latest version</a>
+  - <a href='../v3-beta'>Latest version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
@@ -32,7 +32,7 @@ search: true
 
 # Introduction
 
-**Latest version:** <a href='/v3-beta'>v3-beta</a>
+**Latest version:** <a href='../v3-beta'>v3-beta</a>
 
 Welcome to the Skynet SDK docs!
 

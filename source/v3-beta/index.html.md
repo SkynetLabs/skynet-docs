@@ -11,7 +11,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - "Version: v3-beta"
-  - <a href='/v2'>Previous version</a>
+  - <a href='../v2'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
