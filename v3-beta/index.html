@@ -196,20 +196,20 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-949a6d2c.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-4910022a.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-c5541673.js"></script>
+    <link href="../stylesheets/screen-949a6d2c.css" rel="stylesheet" media="screen" />
+    <link href="../stylesheets/print-4910022a.css" rel="stylesheet" media="print" />
+      <script src="../javascripts/all-c5541673.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell--curl&quot;,&quot;shell--cli&quot;,&quot;javascript--browser&quot;,&quot;javascript--node&quot;,&quot;python&quot;,&quot;go&quot;]">
+  <body class="v3-beta v3-beta_index" data-languages="[&quot;shell--curl&quot;,&quot;shell--cli&quot;,&quot;javascript--browser&quot;,&quot;javascript--node&quot;,&quot;python&quot;,&quot;go&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar-cad8cdcb.png" alt="" />
+        <img src="../images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-42407883.png" class="logo" alt="" />
+      <img src="../images/logo-42407883.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell--curl">curl</a>
               <a href="#" data-language-name="shell--cli">CLI</a>
@@ -280,9 +280,6 @@
                   <li>
                     <a href="#uploading-a-directory" class="toc-h2 toc-link" data-title="Uploading A Directory">Uploading A Directory</a>
                   </li>
-                  <li>
-                    <a href="#uploading-with-encryption" class="toc-h2 toc-link" data-title="Uploading With Encryption">Uploading With Encryption</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -296,9 +293,6 @@
                   </li>
                   <li>
                     <a href="#getting-metadata" class="toc-h2 toc-link" data-title="Getting Metadata">Getting Metadata</a>
-                  </li>
-                  <li>
-                    <a href="#downloading-with-decryption" class="toc-h2 toc-link" data-title="Downloading With Decryption">Downloading With Decryption</a>
                   </li>
               </ul>
           </li>
@@ -401,14 +395,23 @@
               </ul>
           </li>
           <li>
-            <a href="#updating-from-v1" class="toc-h1 toc-link" data-title="Updating From v1">Updating From v1</a>
+            <a href="#updating-from-v2" class="toc-h1 toc-link" data-title="Updating From v2">Updating From v2</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#breaking-changes" class="toc-h2 toc-link" data-title="Breaking Changes">Breaking Changes</a>
+                  </li>
+                  <li>
+                    <a href="#other-changes" class="toc-h2 toc-link" data-title="Other Changes">Other Changes</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>Version: v2</li>
-            <li><a href='/v3-beta'>Latest version</a></li>
-            <li><a href='/v2'>Permalink to this version</a></li>
-            <li><a href='/v1'>Previous version</a></li>
+            <li>Version: v3-beta</li>
+            <li><a href='/v2'>Previous version</a></li>
             <li>---</li>
             <li><a href='https://siasky.net/'>Check out Skynet!</a></li>
             <li><a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a></li>
@@ -420,7 +423,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest version (beta):</strong> <a href='/v3-beta'>v3-beta</a> (<a href="v3-beta#updating-from-v2">Update Guide</a>)</p>
+<p><strong>This is a beta version and is subject to change.</strong></p>
+
+<p><strong>Installation:</strong> This beta version is released on the <code>beta</code> stream. It can be installed with <code>npm install skynet-js@beta</code>.</p>
 
 <p>Welcome to the Skynet SDK docs!</p>
 
@@ -836,16 +841,6 @@ valid.
 <td><code>&quot;&quot;</code></td>
 </tr>
 <tr>
-<td><code>skykeyName</code></td>
-<td>The name of the skykey on the portal used to encrypt the upload.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
-<td><code>skykeyID</code></td>
-<td>The ID of the skykey on the portal used to encrypt the upload.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
 <td><code>timeout_seconds</code></td>
 <td>The timeout in seconds.</td>
 <td><code>&quot;&quot;</code></td>
@@ -1018,70 +1013,6 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
 </code></pre></div>
 <p>See <a href="#uploading-a-file">Uploading A File</a>.</p>
-<h2 id='uploading-with-encryption'>Uploading With Encryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this feature has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-
-<span class="c1">// Assume we have a file from an input form.</span>
-
-<span class="k">async</span> <span class="nx">uploadEncryptionExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this feature has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span>
-        <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">}</span>
-    <span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">');
-})();
-</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this feature has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span>
-    <span class="n">opts</span><span class="o">.</span><span class="n">SkykeyName</span> <span class="o">=</span> <span class="s">"my-skykey"</span>
-    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">UploadFile</span><span class="p">(</span><span class="s">"./image.jpg"</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to upload: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>If you have a skykey on the portal you can ask the portal to encrypt the
-uploaded content for you. Simply pass the skykey name or ID in the custom
-options when uploading a file or directory.</p>
-
-<p>See the additional options in <a href="#uploading-a-file">Uploading A File</a>.</p>
-
-<p>Also see <a href="#encryption">Encryption</a>.</p>
 <h1 id='downloading-from-skynet'>Downloading From Skynet</h1><h2 id='downloading-a-file'>Downloading A File</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="s2">"https://siasky.net/CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span> <span class="nt">-o</span> dst.jpg
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span> <span class="s2">"./dst.jpg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -1174,16 +1105,6 @@ error will be returned. This timeout is configurable.</p>
 <tr>
 <td><code>path</code></td>
 <td>The path to use after the skylink. See the next section.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
-<td><code>skykeyName</code></td>
-<td>The name of the skykey on the portal used to decrypt the download.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
-<td><code>skykeyID</code></td>
-<td>The ID of the skykey on the portal used to decrypt the download.</td>
 <td><code>&quot;&quot;</code></td>
 </tr>
 <tr>
@@ -1441,73 +1362,6 @@ would be returned if the request had been a GET request.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Coming Soon</p>
-<h2 id='downloading-with-decryption'>Downloading With Decryption</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet download <span class="o">[</span>skylink] <span class="o">[</span>destination] <span class="nt">--skykey-name</span> <span class="s2">"my-skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this feature has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">try</span> <span class="p">{</span>
-  <span class="nx">client</span><span class="p">.</span><span class="nx">download</span><span class="p">(</span><span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">});</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this feature has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span>
-        <span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span>
-        <span class="nx">skylink</span><span class="p">,</span>
-        <span class="p">{</span> <span class="na">skykeyName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-skykey</span><span class="dl">"</span> <span class="p">}</span>
-    <span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this feature has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/NebulousLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">const</span> <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c">// Must have a 'skylink' from an earlier upload.</span>
-
-    <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultDownloadOptions</span>
-    <span class="n">opts</span><span class="o">.</span><span class="n">SkykeyName</span> <span class="o">=</span> <span class="s">"my-skykey"</span>
-    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>If you have a skykey on the portal you can ask the portal to decrypt the
-downloaded content for you. Simply pass the skykey name or ID in the custom
-options when downloading.</p>
-
-<p>See the additional options in <a href="#downloading-a-file">Downloading A File</a>.</p>
-
-<p>Also see <a href="#encryption">Encryption</a>.</p>
 <h1 id='skydb'>SkyDB</h1>
 <p>SkyDB is a framework that allows Skynet users to create decentralized accounts
 and store mutable files in those accounts. It is built on top of the <a href="#registry">Registry</a>, where every SkyDB entry in the Registry is a skylink that contains the full data.</p>
@@ -2665,25 +2519,186 @@ custom option. See <a href="#setting-additional-options">Setting Additional Opti
 <h2 id='more-information'>More Information</h2>
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
-<h1 id='updating-from-v1'>Updating From v1</h1>
-<p>Users wishing to update their SDK from <code>v1</code> to <code>v2</code> should note the following:</p>
+<h1 id='updating-from-v2'>Updating From v2</h1>
+<aside class="warning">
+This is a beta version and is subject to change.
+</aside>
 
-<ol>
-<li>All SDKs have been updated to match Browser JS and require a client. You will
-first need to create a client and then make all API calls from this client.</li>
-<li>The <code>defaultPortalUrl</code> string has been renamed to <code>defaultSkynetPortalUrl</code>
-and <code>defaultPortalUrl</code> is not a function.</li>
-<li>Browser JS has had the following updates:
+<p><a href="https://github.com/NebulousLabs/skynet-js/blob/master/CHANGELOG.md">Changelog</a></p>
 
-<ol>
-<li><code>download</code> and <code>open</code> were renamed to <code>downloadFile</code> and <code>openFile</code>.</li>
-<li><code>upload</code> was renamed to <code>uploadFile</code> and the response was changed to only
-include a skylink. To obtain the full response as in the old <code>upload</code>, use
-the new <code>uploadFileRequest</code>.</li>
-<li><code>uploadFile</code> and <code>uploadDirectory</code> now return skylinks prefixed by <code>sia:</code>.</li>
-<li><code>getDownloadUrl</code> has been renamed to <code>getSkylinkUrl</code>.</li>
-</ol></li>
-</ol>
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+
+<p><strong>Table of Contents</strong></p>
+
+<ul>
+<li><a href="#updating-from-v2">Updating From v2</a>
+
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#breaking-changes">Breaking Changes</a>
+
+<ul>
+<li><a href="#entry-revisions-are-now-bigint">Entry Revisions Are Now bigint</a></li>
+<li><a href="#upload-methods-return-an-object">Upload Methods Return An Object</a></li>
+<li><a href="#upload-request-methods-were-removed">Upload Request Methods Were Removed</a></li>
+<li><a href="#getmetadata-returns-an-object-containing-metadata-in-a-subfield">getMetadata Returns An Object Containing Metadata In A Subfield</a></li>
+<li><a href="#executerequest-was-removed">executeRequest Was Removed</a></li>
+<li><a href="#the-registry-timeout-has-changed">The Registry Timeout Has Changed</a></li>
+<li><a href="#getjson-can-return-destructured-nulls-instead-of-null">getJSON Can Return Destructured Nulls Instead Of Null</a></li>
+<li><a href="#getentry-only-returns-null-on-entry-not-found">getEntry Only Returns Null On Entry-Not-Found</a></li>
+</ul></li>
+<li><a href="#other-changes">Other Changes</a>
+
+<ul>
+<li><a href="#getfilecontent">getFileContent</a></li>
+<li><a href="#more-typechecking">More Typechecking</a></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<!-- markdown-toc end -->
+
+<p>We recently made a breaking change from <code>v2</code> of the SDK to the newest version,
+<code>v3</code>. We needed to change the data type of revision numbers in order to support
+the full range of possible values. Since this was already a compatibility break,
+we additionally implemented many improvements that should make the SDK easier to
+use and more consistent.</p>
+
+<p>We appreciate that updating your code to accommodate breaking changes is an
+inconvenience, so we put together this guide which we hope will be helpful.</p>
+<h2 id='installation'>Installation</h2>
+<p>This beta version is released on the <code>beta</code> stream. It can be installed with <code>npm install skynet-js@beta</code>.</p>
+<h2 id='breaking-changes'>Breaking Changes</h2><h3 id='entry-revisions-are-now-bigint'>Entry Revisions Are Now bigint</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nx">revision</span> <span class="o">=</span> <span class="nx">revision</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">,</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="nx">revision</span> <span class="o">=</span> <span class="nx">revision</span> <span class="o">+</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</code></pre></div>
+<p>Entry revisions are now <code>bigint</code> instead of <code>number</code>, since <code>number</code> did not
+cover the full range of available revisions.</p>
+
+<p><strong>Note:</strong> setting a revision to the maximum 64-bit value can be done to prevent
+changes to the entry; this was not possible by using the SDK before this change.</p>
+<h4 id='required-code-changes'>Required code changes</h4>
+<p>Any explicit revision numbers must be changed from <code>number</code> to <code>bigint</code>. For
+example, instead of <code>0</code> use <code>BigInt(0)</code>.</p>
+
+<p>Since you cannot add <code>bigint</code>s and <code>number</code>s, any arithmetic must be fully
+converted (see right).</p>
+<h3 id='upload-methods-return-an-object'>Upload Methods Return An Object</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span><span class="p">,</span> <span class="nx">merkleroot</span><span class="p">,</span> <span class="nx">bitfield</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+</code></pre></div>
+<p>The <code>uploadFile</code> and <code>uploadDirectory</code> methods now return an object instead of
+only a skylink. This allowed us to remove the upload request methods (see
+below), which we hope this will simplify the API while allowing us to
+potentially return more information in the object in the future, without a
+breaking change.</p>
+<h4 id='required-code-changes-2'>Required code changes</h4>
+<p>Change all calls to <code>uploadFile</code> and <code>uploadDirectory</code>. See right.</p>
+<h3 id='upload-request-methods-were-removed'>Upload Request Methods Were Removed</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFileRequest</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">merkleroot</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">merkleroot</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">merkleroot</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+</code></pre></div>
+<p>We are no longer exposing request methods and are instead returning more
+information from <code>uploadFile</code> and <code>uploadDirectory</code> (see above).</p>
+<h4 id='required-code-changes-3'>Required code changes</h4>
+<p>Change all calls to <code>uploadFileRequest</code> to <code>uploadFile</code> and <code>uploadDirectoryRequest</code> to
+<code>uploadDirectory</code>.</p>
+<h3 id='getmetadata-returns-an-object-containing-metadata-in-a-subfield'>getMetadata Returns An Object Containing Metadata In A Subfield</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">metadata</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">metadata</span><span class="p">,</span> <span class="nx">contentType</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+</code></pre></div>
+<p>The <code>getMetadata</code> method now returns an object instead of only the metadata.</p>
+<h4 id='required-code-changes-4'>Required code changes</h4>
+<p>Change all calls to <code>getMetadata</code>. See right.</p>
+<h3 id='executerequest-was-removed'>executeRequest Was Removed</h3>
+<p>The <code>executeRequest</code> method is no longer available on the client. It was not
+intended to be exported.</p>
+<h4 id='required-code-changes-5'>Required code changes</h4>
+<p>A possible use case was getting the raw contents of a file -- you may now
+achieve this with <code>getFileContent</code>.</p>
+<h3 id='the-registry-timeout-has-changed'>The Registry Timeout Has Changed</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">60</span><span class="nx">_000</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">60</span> <span class="p">});</span>
+</code></pre></div>
+<p>The registry <code>timeout</code> parameter was previously interpreted as milliseconds. It
+has been changed to seconds, as the timeout is now passed to <code>siad</code> which
+accepts seconds.</p>
+
+<p>It was also possible to set the timeout for all API requests, but now it is only
+accepted by <code>registry.getEntry</code> and <code>db.getJSON</code>.</p>
+<h4 id='required-code-changes-6'>Required code changes</h4>
+<p>Any explicit timeout specified should be changed from milliseconds to seconds.
+Note that an error will be thrown if the timeout value is greater than the
+maximum accepted by <code>siad</code> (300 seconds).</p>
+
+<p>If you were passing <code>timeout</code> to other API calls, it will no longer have any
+effect. This was not an intended usage and we don&#39;t anticipate many users being
+affected by this change.</p>
+<h3 id='getjson-can-return-destructured-nulls-instead-of-null'>getJSON Can Return Destructured Nulls Instead Of Null</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">revision</span><span class="p">;</span>
+  <span class="cm">/* Do something with the result */</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">60</span> <span class="p">});</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* Do something with the result */</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Instead of returning either an object or <code>null</code>, <code>db.getJSON</code> now always returns
+an object, whose elements may be <code>null</code>. This means you can always destructure
+the result without worrying about errors in the null-case. This matches the
+existing behavior of <code>registry.getEntry</code>.</p>
+<h4 id='required-code-changes-7'>Required code changes</h4>
+<p>It is probably easiest to demonstrate this with an example -- see right.</p>
+<h3 id='getentry-only-returns-null-on-entry-not-found'>getEntry Only Returns Null On Entry-Not-Found</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/* Handle the error */</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Previously, <code>registry.getEntry</code> would return null when any error had occurred.
+Now, it will only return null when the error from <code>siad</code> was <code>404</code>, meaning the
+registry entry was not found.</p>
+<h4 id='required-code-changes-8'>Required code changes</h4>
+<p>You may wish to catch any errors from <code>getEntry</code> or <code>getJSON</code>, as they are
+likely due to a deeper issue. Previously these errors were not caught, so
+entries that actually existed may have appeared not to exist (since <code>null</code> was
+returned).</p>
+<h2 id='other-changes'>Other Changes</h2><h3 id='getfilecontent'>getFileContent</h3>
+<p>A <code>getFileContent</code> method has been added for getting the content of a file from
+a skylink without downloading the file in-browser.</p>
+<h3 id='more-typechecking'>More Typechecking</h3>
+<p>Be aware that almost every API method now has the potential to throw. A common
+cause would be wrongly-typed inputs to a method, which are now checked. You may
+or may not want to manually catch thrown errors, depending on your application.</p>
 
       </div>
       <div class="dark-box">
