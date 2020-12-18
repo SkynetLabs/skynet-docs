@@ -10,6 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
+  - "Version: v2"
   - <a href='/v3-beta'>Latest version</a>
   - <a href='/v2'>Permalink to this version</a>
   - <a href='/v1'>Previous version</a>

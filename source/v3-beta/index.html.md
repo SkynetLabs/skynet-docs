@@ -10,6 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
+  - "Version: v3-beta"
   - <a href='/v2'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
