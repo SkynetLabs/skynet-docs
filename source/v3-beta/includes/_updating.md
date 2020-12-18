@@ -1,11 +1,16 @@
 # Updating From v2
 
+<aside class="warning">
+This is a beta version and is subject to change.
+</aside>
+
 [Changelog](https://github.com/NebulousLabs/skynet-js/blob/master/CHANGELOG.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
 
 - [Updating From v2](#updating-from-v2)
+    - [Installation](#installation)
     - [Breaking Changes](#breaking-changes)
         - [Entry Revisions Are Now bigint](#entry-revisions-are-now-bigint)
         - [Upload Methods Return An Object](#upload-methods-return-an-object)
@@ -29,6 +34,10 @@ use and more consistent.
 
 We appreciate that updating your code to accommodate breaking changes is an
 inconvenience, so we put together this guide which we hope will be helpful.
+
+## Installation
+
+This beta version is released on the `beta` stream. It can be installed with `npm install skynet-js@beta`.
 
 ## Breaking Changes
 

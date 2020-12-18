@@ -40,6 +40,8 @@ search: true
 
 **This is a beta version and is subject to change.**
 
+**Installation:** This beta version is released on the `beta` stream. It can be installed with `npm install skynet-js@beta`.
+
 Welcome to the Skynet SDK docs!
 
 We have SDK support for several languages:
