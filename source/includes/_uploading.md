@@ -95,6 +95,8 @@ Field | Description | Default
 `portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed. | `"files[]"`
 `customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser. | `""`
 `customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default. | `""`
+`skykeyName` | The name of the skykey on the portal used to encrypt the upload. | `""`
+`skykeyID` | The ID of the skykey on the portal used to encrypt the upload. | `""`
 `timeout_seconds` | The timeout in seconds. | `""`
 
 ### Response
@@ -294,3 +296,87 @@ Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1
 ```
 
 See [Uploading A File](#uploading-a-file).
+
+## Uploading With Encryption
+
+```shell--curl
+Coming Soon
+```
+
+```shell--cli
+skynet upload "./image.jpg" --skykey-name "my-skykey"
+```
+
+```javascript--browser
+// NOTE: this feature has not yet been implemented for this SDK.
+
+import { SkynetClient } from "skynet-js";
+
+const client = new SkynetClient();
+
+// Assume we have a file from an input form.
+
+async uploadEncryptionExample() {
+  try {
+    const skylink = await client.uploadFile(file, { skykeyName: "my-skykey" });
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+```javascript--node
+// NOTE: this feature has not yet been implemented for this SDK.
+
+const { SkynetClient } = require('@nebulous/skynet');
+
+const client = new SkynetClient();
+
+(async () => {
+	const skylink = await client.uploadFile(
+		"./image.jpg",
+		{ skykeyName: "my-skykey" }
+	);
+	console.log(`Upload successful, skylink: ${skylink}');
+})();
+```
+
+```python
+# NOTE: this feature has not yet been implemented for this SDK.
+
+import siaskynet as skynet
+
+client = skynet.SkynetClient()
+
+skylink = client.upload_file("image.jpg", { skykeyName: "my-skykey" })
+print("Upload successful, skylink: " + skylink)
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet/v2"
+)
+
+var client = skynet.New()
+
+func main() {
+	opts := skynet.DefaultUploadOptions
+	opts.SkykeyName = "my-skykey"
+	skylink, err := client.UploadFile("./image.jpg", opts)
+	if err != nil {
+		panic("Unable to upload: " + err.Error())
+	}
+	fmt.Printf("Upload successful, skylink: %v\n", skylink)
+}
+```
+
+If you have a skykey on the portal you can ask the portal to encrypt the
+uploaded content for you. Simply pass the skykey name or ID in the custom
+options when uploading a file or directory.
+
+See the additional options in [Uploading A File](#uploading-a-file).
+
+Also see [Encryption](#encryption).

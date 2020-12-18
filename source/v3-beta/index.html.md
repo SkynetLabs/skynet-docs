@@ -10,7 +10,6 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - <a href='/v3'>Permalink to this version</a>
   - <a href='/v2'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
@@ -36,6 +35,8 @@ search: true
 ---
 
 # Introduction
+
+**This is a beta version and is subject to change.**
 
 Welcome to the Skynet SDK docs!
 

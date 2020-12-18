@@ -10,8 +10,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - <a href='/v3'>Permalink to this version</a>
-  - <a href='/v2'>Previous version</a>
+  - <a href='/v3-beta'>Latest version</a>
+  - <a href='/v2'>Permalink to this version</a>
+  - <a href='/v1'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
@@ -27,6 +28,7 @@ includes:
   - skydb
   - registry
   - crypto-utilities
+  - encryption
   - handshake
   - browser-js-api
   - authentication
@@ -36,6 +38,8 @@ search: true
 ---
 
 # Introduction
+
+**Latest version (beta):** <a href='/v3-beta'>v3-beta</a> ([Update Guide](v3-beta#updating-from-v2))
 
 Welcome to the Skynet SDK docs!
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=v3
+VERSION=v2
 
 if [ "$(git branch --show-current)" != "gh-pages" ]; then
   cp -R ./source/includes/ ./source/$VERSION/includes && cp ./source/index.html.md ./source/$VERSION

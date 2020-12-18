@@ -89,6 +89,8 @@ Field | Description
 Field | Description | Default
 ----- | ----------- | -------
 `path` | The path to use after the skylink. See the next section.  | `""`
+`skykeyName` | The name of the skykey on the portal used to decrypt the download. | `""`
+`skykeyID` | The ID of the skykey on the portal used to decrypt the download. | `""`
 `timeout_seconds` | The timeout in seconds. | `""`
 
 ### Response
@@ -401,3 +403,90 @@ See [Downloading A File](#downloading-a-file).
 ```
 
 Coming Soon
+
+## Downloading With Decryption
+
+```shell--curl
+Coming Soon
+```
+
+```shell--cli
+skynet download [skylink] [destination] --skykey-name "my-skykey"
+```
+
+```javascript--browser
+// NOTE: this feature has not yet been implemented for this SDK.
+
+import { SkynetClient } from "skynet-js";
+
+const client = new SkynetClient();
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+
+try {
+  client.download(skylink, { skykeyName: "my-skykey" });
+} catch (error) {
+  console.log(error);
+}
+```
+
+```javascript--node
+// NOTE: this feature has not yet been implemented for this SDK.
+
+const { SkynetClient } = require('@nebulous/skynet');
+
+const client = new SkynetClient();
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+
+(async () => {
+	await client.downloadFile(
+		"./dst.jpg",
+		skylink,
+		{ skykeyName: "my-skykey" }
+	);
+	console.log('Download successful');
+})();
+```
+
+```python
+# NOTE: this feature has not yet been implemented for this SDK.
+
+import siaskynet as skynet
+
+client = skynet.SkynetClient()
+skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+
+client.download_file("./dst.jpg", skylink, { skykeyName: "my-skykey" })
+print("Download successful")
+```
+
+```go
+package main
+
+import (
+	"fmt"
+	skynet "github.com/NebulousLabs/go-skynet/v2"
+)
+
+const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
+var client = skynet.New()
+
+func main() {
+	// Must have a 'skylink' from an earlier upload.
+
+	opts := skynet.DefaultDownloadOptions
+	opts.SkykeyName = "my-skykey"
+	err := client.DownloadFile("./dst.go", skylink, opts)
+	if err != nil {
+		panic("Something went wrong, please try again.\nError: " + err.Error())
+	}
+	fmt.Println("Download successful")
+}
+```
+
+If you have a skykey on the portal you can ask the portal to decrypt the
+downloaded content for you. Simply pass the skykey name or ID in the custom
+options when downloading.
+
+See the additional options in [Downloading A File](#downloading-a-file).
+
+Also see [Encryption](#encryption).

@@ -74,7 +74,7 @@ const { skylink, merkleroot, bitfield } = await client.uploadFile(file);
 
 The `uploadFile` and `uploadDirectory` methods now return an object instead of
 only a skylink. This allowed us to remove the upload request methods (see
-below), which we hope that this will simplify the API while allowing us to
+below), which we hope this will simplify the API while allowing us to
 potentially return more information in the object in the future, without a
 breaking change.
 
@@ -100,8 +100,8 @@ information from `uploadFile` and `uploadDirectory` (see above).
 
 #### Required code changes
 
-Change all calls to `uploadFileRequest` to `uploadFile` and `uploadDirectory` to
-`uploadDirectoryRequest`.
+Change all calls to `uploadFileRequest` to `uploadFile` and `uploadDirectoryRequest` to
+`uploadDirectory`.
 
 ### getMetadata Returns An Object Containing Metadata In A Subfield
 
