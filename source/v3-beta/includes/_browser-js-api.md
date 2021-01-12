@@ -40,7 +40,7 @@ const skylink = "AACJjVpOpsZ6c9PBwOYvxTtDc_nmrGxTTEomHDBEEfvRhA"; // JSON File
 let skyfile = {}
 
 try {
-  skyfile = await client.getFileContent(skylink);
+  const { data } = await client.getFileContent(skylink);
   console.log(skyfile.data.fruit) //prints 'Apple'
 } catch (error) {
   console.log(error);
