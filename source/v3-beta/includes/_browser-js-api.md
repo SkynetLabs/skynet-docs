@@ -72,7 +72,7 @@ Field | Description
 
 Field | Description
 ------| -----------
-`data` | Data returned in the request body when doing a GET request for the skylink.
+`data` | Data returned in the response body when doing a GET request for the skylink.
 `skylink` | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
 `contentType` | String representing the file's content type.
 `metadata` | Object returned in the `skynet-metadata` header when accessing the file 
