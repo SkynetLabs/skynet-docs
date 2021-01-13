@@ -370,6 +370,9 @@
                     <a href="#opening-a-file" class="toc-h2 toc-link" data-title="Opening A File">Opening A File</a>
                   </li>
                   <li>
+                    <a href="#loading-a-file-39-s-contents" class="toc-h2 toc-link" data-title="Loading A File's Contents">Loading A File's Contents</a>
+                  </li>
+                  <li>
                     <a href="#getting-the-download-url" class="toc-h2 toc-link" data-title="Getting The Download URL">Getting The Download URL</a>
                   </li>
                   <li>
@@ -2274,6 +2277,69 @@ to downloading the file.</p>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response'>Response</h3>
 <p>Empty on success.</p>
+<h2 id='loading-a-file-39-s-contents'>Loading A File&#39;s Contents</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">AACJjVpOpsZ6c9PBwOYvxTtDc_nmrGxTTEomHDBEEfvRhA</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// JSON File</span>
+
+<span class="k">try</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFileContent</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruit</span><span class="p">)</span> <span class="c1">//prints 'Apple'</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Use the client to load a skylink&#39;s content for use by application.</p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>skylink</code></td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
+</tr>
+</tbody></table>
+<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span> <span class="nl">fruit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="nx">size</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Large</span><span class="dl">'</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Red</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="nx">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+  <span class="nx">metadata</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">example_1.json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="nx">length</span><span class="p">:</span> <span class="mi">65</span><span class="p">,</span>
+    <span class="nx">subfiles</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">example_1.json</span><span class="dl">'</span><span class="p">:</span> <span class="p">[</span><span class="nb">Object</span><span class="p">]</span> <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">skylink</span><span class="p">:</span> <span class="dl">'</span><span class="s1">sia:AACJjVpOpsZ6c9PBwOYvxTtDc_nmrGxTTEomHDBEEfvRhA</span><span class="dl">'</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>data</code></td>
+<td>Data returned in the response body when doing a GET request for the skylink.</td>
+</tr>
+<tr>
+<td><code>skylink</code></td>
+<td>This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.</td>
+</tr>
+<tr>
+<td><code>contentType</code></td>
+<td>String representing the file&#39;s content type.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>Object returned in the <code>skynet-metadata</code> header when accessing the file</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+There are no checks in place for this method, and it is not advised to try and load the contents of excessively large files. You may want to run `getMetadata` first to check a file's size before running this method.
+</aside>
 <h2 id='getting-the-download-url'>Getting The Download URL</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
@@ -2286,7 +2352,7 @@ to downloading the file.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Use the client to generate a direct <code>skylink</code> url.</p>
-<h3 id='parameters-2'>Parameters</h3>
+<h3 id='parameters-3'>Parameters</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='additional-options'>Additional Options</h3>
 <table><thead>
@@ -2302,7 +2368,7 @@ to downloading the file.</p>
 <td><code>false</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span>
+<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -2327,7 +2393,7 @@ to downloading the file.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Use the client to generate a direct Handshake url from a Handshake domain.</p>
-<h3 id='parameters-3'>Parameters</h3>
+<h3 id='parameters-4'>Parameters</h3>
 <p>See <a href="#downloading-handshake-files">Downloading Handshake Files</a>.</p>
 <h3 id='additional-options-2'>Additional Options</h3>
 <table><thead>
@@ -2343,7 +2409,7 @@ to downloading the file.</p>
 <td><code>false</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/hns/doesn</span><span class="dl">"</span>
+<h3 id='response-4'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/hns/doesn</span><span class="dl">"</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -2369,7 +2435,7 @@ to downloading the file.</p>
 </code></pre></div>
 <p>Use the client to generate a direct Handshake Resolver url from a Handshake
 domain.</p>
-<h3 id='parameters-4'>Parameters</h3>
+<h3 id='parameters-5'>Parameters</h3>
 <p>See <a href="#resolving-handshake-domains">Resolving Handshake Domains</a>.</p>
 <h3 id='additional-options-3'>Additional Options</h3>
 <table><thead>
@@ -2385,7 +2451,7 @@ domain.</p>
 <td><code>false</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-4'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/hnsres/doesn</span><span class="dl">"</span>
+<h3 id='response-5'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/hnsres/doesn</span><span class="dl">"</span>
 </code></pre></div>
 <table><thead>
 <tr>
@@ -2410,7 +2476,7 @@ domain.</p>
 <span class="p">}</span>
 </code></pre></div>
 <p>Extract a skylink from a string.</p>
-<h3 id='parameters-5'>Parameters</h3>
+<h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2431,7 +2497,7 @@ domain.</p>
 <li><code>sia://</code> prefixed string, for example <code>&quot;sia://XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg&quot;</code></li>
 <li>skylink from url, for example <code>&quot;https://siasky.net/XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg&quot;</code></li>
 </ul>
-<h3 id='response-5'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+<h3 id='response-6'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 </code></pre></div>
 <table><thead>
 <tr>
