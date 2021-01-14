@@ -110,6 +110,29 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 
 ### Common Options
 
+```javascript--browser
+import { SkynetClient } from "skynet-js";
+
+// Set a custom user agent.
+const customUserAgent = "Sia-Agent";
+
+// Set an upload progress tracker.
+const onUploadProgress = (progress, { loaded, total }) => {
+  console.info(`Progress ${Math.round(progress * 100)}%`);
+};
+
+// Initialize the client.
+const client = new SkynetClient("https://siasky.net", { customUserAgent, onUploadProgress });
+
+async function uploadExample() {
+  try {
+    const skylink = await client.uploadFile(file);
+  } catch (error) {
+    console.log(error);
+  }
+}
+```
+
 Every function accepts the following common options:
 
 Option | Description | Default
