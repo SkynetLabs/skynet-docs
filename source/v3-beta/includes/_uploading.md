@@ -20,7 +20,7 @@ const client = new SkynetClient();
 
 async function uploadExample() {
   try {
-    const skylink = await client.uploadFile(file);
+    const { skylink } = await client.uploadFile(file);
   } catch (error) {
     console.log(error)
   }
@@ -130,8 +130,8 @@ Successfully uploaded file! Skylink: sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_
 Field | Description
 ------| -----------
 `skylink` | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content.
-`merkleroot` | (`curl` only) This is the hash that is encoded into the skylink.
-`bitfield` | (`curl` only) This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
+`merkleroot` | This is the hash that is encoded into the skylink.
+`bitfield` | This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.
 
 <aside class="warning">
 Note that the SDKs only return the skylink since this is what you want most of the time. We are still working on ways to access more information from the result without complicating the main use case.
@@ -169,7 +169,7 @@ async function uploadDirectoryExample() {
       return { ...accumulator, [path]: file };
     }, {});
 
-    const skylink = await client.uploadDirectory(directory, filename);
+    const { skylink } = await client.uploadDirectory(directory, filename);
   } catch (error) {
     console.log(error);
   }

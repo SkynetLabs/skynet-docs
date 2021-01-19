@@ -39,8 +39,8 @@ const client = new SkynetClient();
 const skylink = "AACJjVpOpsZ6c9PBwOYvxTtDc_nmrGxTTEomHDBEEfvRhA"; // JSON File
 
 try {
-  const { data } = await client.getFileContent(skylink);
-  console.log(data.fruit) //prints 'Apple'
+  const { data, contentType, metadata, skylink } = await client.getFileContent(skylink);
+  console.log(data.fruit) // prints 'Apple'
 } catch (error) {
   console.log(error);
 }
@@ -69,12 +69,12 @@ Use the client to load a skylink's content for use by application.
 }
 ```
 
-| Field         | Description                                                                                                                                                                                                                                                      |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`        | Data returned in the response body when doing a GET request for the skylink.                                                                                                                                                                                     |
-| `skylink`     | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content. |
-| `contentType` | String representing the file's content type.                                                                                                                                                                                                                     |
-| `metadata`    | Object returned in the `skynet-metadata` header when accessing the file                                                                                                                                                                                          |
+| Field | Description |
+| --- | --- |
+| `data` | Data returned in the response body when doing a GET request for the skylink. |
+| `skylink` | This is the skylink that can be used when downloading to retrieve the file that has been uploaded. It is a 46-character base64 encoded string that consists of the merkle root, offset, fetch size, and Skylink version which can be used to access the content. |
+| `contentType` | String representing the file's content type. |
+| `metadata` | Object returned in the `skynet-metadata` header when accessing the file |
 
 <aside class="warning">
 There are no checks in place for this method, and it is not advised to try and load the contents of excessively large files. You may want to run `getMetadata` first to check a file's size before running this method.
