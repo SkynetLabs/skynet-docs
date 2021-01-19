@@ -89,6 +89,8 @@ Field | Description
 
 ### Additional Options
 
+Note that you can set [common options](#common-options) for individual method calls as well, including `onUploadProgress`.
+
 Field | Description | Default
 ----- | ----------- | -------
 `portalFileFieldName` | The field name for files on the portal. Usually should not need to be changed. | `"file"`
