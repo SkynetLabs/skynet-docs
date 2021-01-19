@@ -544,7 +544,7 @@ uses <a href="https://stedolan.github.io/jq/"><code>jq</code></a>.</p>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">uploadExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
@@ -745,7 +745,7 @@ value to <code>""</code>.
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">uploadExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
@@ -872,11 +872,11 @@ valid.
 </tr>
 <tr>
 <td><code>merkleroot</code></td>
-<td>(<code>curl</code> only) This is the hash that is encoded into the skylink.</td>
+<td>This is the hash that is encoded into the skylink.</td>
 </tr>
 <tr>
 <td><code>bitfield</code></td>
-<td>(<code>curl</code> only) This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.</td>
+<td>This is the bitfield that gets encoded into the skylink. The bitfield contains a version, an offset and a length in a heavily compressed and optimized format.</td>
 </tr>
 </tbody></table>
 
@@ -906,7 +906,7 @@ Note that the SDKs only return the skylink since this is what you want most of t
       <span class="k">return</span> <span class="p">{</span> <span class="p">...</span><span class="nx">accumulator</span><span class="p">,</span> <span class="p">[</span><span class="nx">path</span><span class="p">]:</span> <span class="nx">file</span> <span class="p">};</span>
     <span class="p">},</span> <span class="p">{});</span>
 
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadDirectory</span><span class="p">(</span><span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadDirectory</span><span class="p">(</span><span class="nx">directory</span><span class="p">,</span> <span class="nx">filename</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
@@ -1225,7 +1225,7 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 
 <span class="k">async</span> <span class="nx">metadataExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">md</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">metadata</span><span class="p">,</span> <span class="nx">contentType</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
@@ -1281,6 +1281,14 @@ would be returned if the request had been a GET request.</p>
 <tr>
 <td><code>skylink</code></td>
 <td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
+</tr>
+<tr>
+<td><code>contentType</code></td>
+<td>String representing the file&#39;s content type.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>Object returned in the <code>skynet-metadata</code> header when accessing the file</td>
 </tr>
 </tbody></table>
 <h3 id='additional-options-2'>Additional Options</h3>
@@ -2283,8 +2291,8 @@ to downloading the file.</p>
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">AACJjVpOpsZ6c9PBwOYvxTtDc_nmrGxTTEomHDBEEfvRhA</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// JSON File</span>
 
 <span class="k">try</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFileContent</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruit</span><span class="p">)</span> <span class="c1">//prints 'Apple'</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">contentType</span><span class="p">,</span> <span class="nx">metadata</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFileContent</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">fruit</span><span class="p">)</span> <span class="c1">// prints 'Apple'</span>
 <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">}</span>
@@ -2519,7 +2527,7 @@ domain.</p>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">authenticationExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span>
       <span class="nx">file</span><span class="p">,</span>
       <span class="p">{</span> <span class="na">APIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span><span class="p">,</span> <span class="na">customUserAgent</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sia-Agent</span><span class="dl">"</span> <span class="p">}</span>
     <span class="p">);</span>
