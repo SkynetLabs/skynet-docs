@@ -616,7 +616,27 @@ has been implemented in every SDK.
 The additional options object is optional in most SDKs but mandatory in Go. See
 <a href="#function-parameters">Function Parameters</a>.
 </aside>
-<h3 id='common-options'>Common Options</h3>
+<h3 id='common-options'>Common Options</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Set a custom user agent.</span>
+<span class="kd">const</span> <span class="nx">customUserAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Sia-Agent</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Set an upload progress tracker.</span>
+<span class="kd">const</span> <span class="nx">onUploadProgress</span> <span class="o">=</span> <span class="p">(</span><span class="nx">progress</span><span class="p">,</span> <span class="p">{</span> <span class="nx">loaded</span><span class="p">,</span> <span class="nx">total</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">`Progress </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">progress</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)}</span><span class="s2">%`</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// Initialize the client.</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">customUserAgent</span><span class="p">,</span> <span class="nx">onUploadProgress</span> <span class="p">});</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">uploadExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>Every function accepts the following common options:</p>
 
 <table><thead>
@@ -816,6 +836,8 @@ valid.
 </tr>
 </tbody></table>
 <h3 id='additional-options'>Additional Options</h3>
+<p>Note that you can set <a href="#common-options">common options</a> for individual method calls as well, including <code>onUploadProgress</code>.</p>
+
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1216,9 +1238,7 @@ append the path to the skylink.</p>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code><span class="c"># NOTE: this function has not yet been implemented for this SDK.</span>
 
 skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
@@ -2310,6 +2330,8 @@ to downloading the file.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
+<h3 id='additional-options'>Additional Options</h3>
+<p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span> <span class="nl">fruit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="nx">size</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Large</span><span class="dl">'</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Red</span><span class="dl">'</span> <span class="p">},</span>
   <span class="nx">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
@@ -2362,7 +2384,7 @@ There are no checks in place for this method, and it is not advised to try and l
 <p>Use the client to generate a direct <code>skylink</code> url.</p>
 <h3 id='parameters-3'>Parameters</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
-<h3 id='additional-options'>Additional Options</h3>
+<h3 id='additional-options-2'>Additional Options</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2403,7 +2425,7 @@ There are no checks in place for this method, and it is not advised to try and l
 <p>Use the client to generate a direct Handshake url from a Handshake domain.</p>
 <h3 id='parameters-4'>Parameters</h3>
 <p>See <a href="#downloading-handshake-files">Downloading Handshake Files</a>.</p>
-<h3 id='additional-options-2'>Additional Options</h3>
+<h3 id='additional-options-3'>Additional Options</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2445,7 +2467,7 @@ There are no checks in place for this method, and it is not advised to try and l
 domain.</p>
 <h3 id='parameters-5'>Parameters</h3>
 <p>See <a href="#resolving-handshake-domains">Resolving Handshake Domains</a>.</p>
-<h3 id='additional-options-3'>Additional Options</h3>
+<h3 id='additional-options-4'>Additional Options</h3>
 <table><thead>
 <tr>
 <th>Field</th>
