@@ -16,7 +16,7 @@ const client = new SkynetClient();
 
 async function authenticationExample() {
   try {
-    const skylink = await client.uploadFile(
+    const { skylink } = await client.uploadFile(
       file,
       { APIKey: "foobar", customUserAgent: "Sia-Agent" }
     );
