@@ -50,9 +50,13 @@ Use the client to load a skylink's content for use by application.
 
 ### Parameters
 
-| Field     | Description                                                                      |
-| --------- | -------------------------------------------------------------------------------- |
+| Field | Description |
+| --- | --- |
 | `skylink` | The skylink that should be downloaded. The skylink can contain an optional path. |
+
+### Additional Options
+
+See [Downloading A File](#downloading-a-file).
 
 ### Response
 

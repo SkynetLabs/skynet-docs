@@ -226,8 +226,6 @@ skynet metadata "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
 ```
 
 ```javascript--browser
-// NOTE: this function has not yet been implemented for this SDK.
-
 import { SkynetClient } from "skynet-js";
 
 const client = new SkynetClient();
