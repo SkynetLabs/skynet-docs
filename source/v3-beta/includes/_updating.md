@@ -32,12 +32,13 @@ the full range of possible values. Since this was already a compatibility break,
 we additionally implemented many improvements that should make the SDK easier to
 use and more consistent.
 
-We appreciate that updating your code to accommodate breaking changes is an
-inconvenience, so we put together this guide which we hope will be helpful.
+We understand that updating your code to accommodate breaking changes is
+inconvenient, so we put together this guide which we hope will be helpful.
 
 ## Installation
 
-This beta version is released on the `beta` stream. It can be installed with `npm install skynet-js@beta`.
+This beta version is released on the `beta` stream. It can be installed with
+`npm install skynet-js@beta`.
 
 ## Breaking Changes
 
@@ -229,11 +230,15 @@ returned).
 
 ### getFileContent
 
-A `getFileContent` method has been added for getting the content of a file from
-a skylink without downloading the file in-browser.
+A `getFileContent` [method](#loading-a-file-39-s-contents) has been added for
+getting the content of a file from a skylink without downloading the file
+in-browser.
 
 ### More Typechecking
 
 Be aware that almost every API method now has the potential to throw. A common
 cause would be wrongly-typed inputs to a method, which are now checked. You may
 or may not want to manually catch thrown errors, depending on your application.
+
+Writing your application in Typescript is a good way to prevent type errors from
+being thrown at runtime.
