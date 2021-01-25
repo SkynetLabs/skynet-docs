@@ -2660,10 +2660,11 @@ the full range of possible values. Since this was already a compatibility break,
 we additionally implemented many improvements that should make the SDK easier to
 use and more consistent.</p>
 
-<p>We appreciate that updating your code to accommodate breaking changes is an
-inconvenience, so we put together this guide which we hope will be helpful.</p>
+<p>We understand that updating your code to accommodate breaking changes is
+inconvenient, so we put together this guide which we hope will be helpful.</p>
 <h2 id='installation'>Installation</h2>
-<p>This beta version is released on the <code>beta</code> stream. It can be installed with <code>npm install skynet-js@beta</code>.</p>
+<p>This beta version is released on the <code>beta</code> stream. It can be installed with
+<code>npm install skynet-js@beta</code>.</p>
 <h2 id='breaking-changes'>Breaking Changes</h2><h3 id='entry-revisions-are-now-bigint'>Entry Revisions Are Now bigint</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="nx">revision</span> <span class="o">=</span> <span class="nx">revision</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 </code></pre></div>
@@ -2789,12 +2790,16 @@ likely due to a deeper issue. Previously these errors were not caught, so
 entries that actually existed may have appeared not to exist (since <code>null</code> was
 returned).</p>
 <h2 id='other-changes'>Other Changes</h2><h3 id='getfilecontent'>getFileContent</h3>
-<p>A <code>getFileContent</code> method has been added for getting the content of a file from
-a skylink without downloading the file in-browser.</p>
+<p>A <code>getFileContent</code> <a href="#loading-a-file-39-s-contents">method</a> has been added for
+getting the content of a file from a skylink without downloading the file
+in-browser.</p>
 <h3 id='more-typechecking'>More Typechecking</h3>
 <p>Be aware that almost every API method now has the potential to throw. A common
 cause would be wrongly-typed inputs to a method, which are now checked. You may
 or may not want to manually catch thrown errors, depending on your application.</p>
+
+<p>Writing your application in Typescript is a good way to prevent type errors from
+being thrown at runtime.</p>
 
       </div>
       <div class="dark-box">
