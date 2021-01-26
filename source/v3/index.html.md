@@ -10,13 +10,12 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - "Version: v3-beta"
-  - <a href='../v3'>Latest version</a>
+  - "Version: v3"
+  #- <a href='v3'>Permalink to this version</a>
   - <a href='../v2'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
-  # - <a href='#'>Sign Up for a Developer Key</a>
   - ---
   - <a href='https://github.com/slatedocs/slate'>Powered by Slate</a>
 
@@ -38,10 +37,6 @@ search: true
 ---
 
 # Introduction
-
-**This is a beta version and is subject to change.**
-
-**Installation:** This beta version is released on the `beta` stream. It can be installed with `npm install skynet-js@beta`.
 
 Welcome to the Skynet SDK docs!
 
@@ -76,6 +71,11 @@ the level of feature support for each language.
 We have a detailed tutorial for [Creating Your First Webapp On
 Skynet](https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f)
 on our tech blog. Check it out if you are just starting out!
+
+## Using the Beta
+
+We are releasing new features and fixes first on the `beta` stream. The latest
+beta version can be installed with `npm install skynet-js@beta`.
 
 ## A Note About Language Differences
 
