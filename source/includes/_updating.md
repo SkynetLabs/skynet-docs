@@ -6,7 +6,7 @@
 **Table of Contents**
 
 - [Updating From v2](#updating-from-v2)
-    - [Installation](#installation)
+    - [Upgrading](#upgrading)
     - [Breaking Changes](#breaking-changes)
         - [Entry Revisions Are Now bigint](#entry-revisions-are-now-bigint)
         - [Upload Methods Return An Object](#upload-methods-return-an-object)
@@ -30,6 +30,18 @@ use and more consistent.
 
 We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.
+
+## Upgrading
+
+To upgrade to v3:
+
+```sh
+npm install skynet-js@3
+```
+
+Note that just `npm install` will not work. This is by design: you must
+explicitly opt-in to new major versions as they contain breaking changes, by
+definition.
 
 ## Breaking Changes
 
