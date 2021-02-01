@@ -148,4 +148,4 @@ Here are some constants exported by the SDKs which may be of use in applications
 Constant | Description | Default
 -------- | ----------- | -------
 `defaultSkynetPortalUrl` | The default Skynet portal to use, if one is not provided. | `"https://siasky.net"`
-`uriSkynetPrefix` | The Skynet URI prefix. | `"sia://"`
+`uriSkynetPrefix` | The Skynet URI prefix. | `"sia://"` (*Browser JS*: `"sia:"`)
