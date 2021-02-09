@@ -4,10 +4,10 @@ The registry allows getting and setting registry entries with a user's key and a
 data key (e.g. the name of an app).
 
 Registry entries contain data (currently capped at 113 bytes), the data key, and
-a revision number. The revision number is incremented by 1 every time the
-registry entry is changed. The latest revision number, plus one, is required
-when running `setEntry`. Because data at a given revision number cannot be
-modified, the registry effectively provides versioned, immutable data.
+a revision number. The revision number increases every time the registry entry
+is changed. The latest revision number, plus at least one, is required when
+calling `setEntry`. Previous revisions are not accessible once an entry has been
+overwritten with a higher revision number.
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.
@@ -105,7 +105,7 @@ Field | Type | Description
 ----- | ---- | -----------
 `datakey` | `string` | The key of the data for the given entry.
 `data` | `string` | The data for this entry. Capped at 113 bytes, but can be a skylink or an HNS domain.
-`revision` | `number` | The revision number of this entry. It must be 1 more than the latest revision number, or 0 if the entry doesn't exist.
+`revision` | `number` | The revision number of this entry. It must be at least 1 more than the latest revision number, or 0 if the entry doesn't exist.
 
 ### Response
 
