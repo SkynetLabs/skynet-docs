@@ -685,7 +685,7 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 <tr>
 <td><code>uriSkynetPrefix</code></td>
 <td>The Skynet URI prefix.</td>
-<td><code>&quot;sia://&quot;</code></td>
+<td><code>&quot;sia://&quot;</code> (<em>Browser JS</em>: <code>&quot;sia:&quot;</code>)</td>
 </tr>
 </tbody></table>
 <h1 id='using-the-skynet-client'>Using The Skynet Client</h1>
@@ -882,7 +882,7 @@ valid.
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded file! Skylink: sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia:CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"</span>
@@ -1037,7 +1037,7 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
   <span class="s2">"bitfield"</span>: 2048
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Successfully uploaded directory! Skylink: sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">sia:EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg</span><span class="dl">"</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="s">"sia://EAAV-eT8wBIF1EPgT6WQkWWsb3mYyEO1xz9iFueK5zCtqg"</span>
@@ -1515,10 +1515,10 @@ These functions have only been implemented for Browser JS at the moment.
 data key (e.g. the name of an app).</p>
 
 <p>Registry entries contain data (currently capped at 113 bytes), the data key, and
-a revision number. The revision number is incremented by 1 every time the
-registry entry is changed. The latest revision number, plus one, is required
-when running <code>setEntry</code>. Because data at a given revision number cannot be
-modified, the registry effectively provides versioned, immutable data.</p>
+a revision number. The revision number increases every time the registry entry
+is changed. The latest revision number, plus at least one, is required when
+calling <code>setEntry</code>. Previous revisions are not accessible once an entry has been
+overwritten with a higher revision number.</p>
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.
@@ -1629,7 +1629,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>revision</code></td>
 <td><code>number</code></td>
-<td>The revision number of this entry. It must be 1 more than the latest revision number, or 0 if the entry doesn&#39;t exist.</td>
+<td>The revision number of this entry. It must be at least 1 more than the latest revision number, or 0 if the entry doesn&#39;t exist.</td>
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>

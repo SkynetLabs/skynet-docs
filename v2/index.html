@@ -1644,10 +1644,10 @@ These functions have only been implemented for Browser JS at the moment.
 data key (e.g. the name of an app).</p>
 
 <p>Registry entries contain data (currently capped at 113 bytes), the data key, and
-a revision number. The revision number is incremented by 1 every time the
-registry entry is changed. The latest revision number, plus one, is required
-when running <code>setEntry</code>. Because data at a given revision number cannot be
-modified, the registry effectively provides versioned, immutable data.</p>
+a revision number. The revision number increases every time the registry entry
+is changed. The latest revision number, plus at least one, is required when
+calling <code>setEntry</code>. Previous revisions are not accessible once an entry has been
+overwritten with a higher revision number.</p>
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.
@@ -1758,7 +1758,7 @@ These functions have only been implemented for Browser JS at the moment.
 <tr>
 <td><code>revision</code></td>
 <td><code>number</code></td>
-<td>The revision number of this entry. It must be 1 more than the latest revision number, or 0 if the entry doesn&#39;t exist.</td>
+<td>The revision number of this entry. It must be at least 1 more than the latest revision number, or 0 if the entry doesn&#39;t exist.</td>
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
