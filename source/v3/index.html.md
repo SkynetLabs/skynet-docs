@@ -38,7 +38,7 @@ search: true
 
 # Introduction
 
-Welcome to the Skynet SDK docs!
+Welcome to the Skynet SDK docs! To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
 
 We have SDK support for several languages:
 
