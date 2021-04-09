@@ -1,6 +1,6 @@
 # Updating From v3
 
-[Changelog](https://github.com/NebulousLabs/skynet-js/blob/master/CHANGELOG-BETA.md)
+[Changelog](https://github.com/SkynetHQ/skynet-js/blob/master/CHANGELOG-BETA.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -26,11 +26,11 @@ inconvenient, so we put together this guide which we hope will be helpful.
 
 ## Upgrading
 
-To upgrade to v4:
-
 ```sh
 npm install skynet-js@4.0.0-beta
 ```
+
+To upgrade to v4 (see right):
 
 Note that just `npm install` will not work. This is by design: you must
 explicitly opt-in to new major versions as they contain breaking changes.
@@ -41,11 +41,11 @@ To use MySky to its fullest potential you may additionally want to install a
 DAC. These are used through libraries which can be installed and imported from
 like regular libraries.
 
-For example, to install SkynetHQ's official Content Record DAC:
-
 ```sh
 npm install @skynethq/content-record-library
 ```
+
+For example, to install SkynetHQ's official Content Record DAC (see right):
 
 Usage instructions can be found [here](https://github.com/SkynetHQ/content-record-library).
 
