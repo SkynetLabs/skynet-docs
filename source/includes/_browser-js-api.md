@@ -11,11 +11,13 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
-try {
-  client.openFile(skylink);
-} catch (error) {
-  console.log(error);
-}
+(async () => {
+  try {
+    await client.openFile(skylink);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 
 Use the client to open a skylink in a new browser tab. Browsers support opening
@@ -92,11 +94,13 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
-try {
-  const url = client.getSkylinkUrl(skylink);
-} catch (error) {
-  console.log(error);
-}
+(async () => {
+  try {
+    const url = await client.getSkylinkUrl(skylink);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 
 Use the client to generate a direct `skylink` url.
@@ -129,11 +133,13 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const domain = "doesn";
 
-try {
-  const url = client.getHnsUrl(domain);
-} catch (error) {
-  console.log(error);
-}
+(async () {
+  try {
+    const url = await client.getHnsUrl(domain);
+  } catch (error) {
+    console.log(error);
+  }
+}();
 ```
 
 Use the client to generate a direct Handshake url from a Handshake domain.
@@ -166,11 +172,13 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const domain = "doesn";
 
-try {
-  const url = client.getHnsresUrl(domain);
-} catch (error) {
-  console.log(error);
-}
+(async () {
+  try {
+    const url = await client.getHnsresUrl(domain);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 
 Use the client to generate a direct Handshake Resolver url from a Handshake

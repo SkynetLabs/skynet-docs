@@ -23,7 +23,7 @@ const dataKey = "myApp";
 
 async function getJSONExample() {
   try {
-    const { data, revision } = await client.db.getJSON(publicKey, dataKey);
+    const { data, skylink } = await client.db.getJSON(publicKey, dataKey);
   } catch (error) {
     console.log(error);
   }
@@ -48,7 +48,7 @@ Field | Type | Description
   data: {
     example: "This is some example JSON data."
   },
-  revision: 11
+  skylinke: "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 }
 ```
 

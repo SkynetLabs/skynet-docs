@@ -16,12 +16,14 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
-try {
-  client.downloadFile(skylink);
-  // Or client.openFile(skylink) to open it in a new browser tab.
-} catch (error) {
-  console.log(error);
-}
+(async () => {
+  try {
+    await client.downloadFile(skylink);
+    // Or client.openFile(skylink) to open it in a new browser tab.
+  } catch (error) {
+    console.log(error);
+  }
+}();
 ```
 
 ```javascript--node
@@ -111,20 +113,24 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 
 // Using the skylink.
-try {
-  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
-  client.downloadFile(skylink);
-} catch (error) {
-  console.log(error);
-}
+(async () => {
+  try {
+    const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
+    await client.downloadFile(skylink);
+  } catch (error) {
+    console.log(error);
+  }
+})();
 
 // Using the path option.
-try {
-  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
-  client.downloadFile(skylink, { path: "dir2/file3" });
-} catch (error) {
-  console.log(error);
-}
+(async () => {
+  try {
+    const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
+    client.downloadFile(skylink, { path: "dir2/file3" });
+  } catch (error) {
+    console.log(error);
+  }
+})();
 ```
 
 ```javascript--node
@@ -135,8 +141,8 @@ const client = new SkynetClient();
 // Using the skylink.
 (async () => {
   const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3";
-	await client.downloadFile("./dst.jpg", skylink);
-	console.log('Download successful');
+  await client.downloadFile("./dst.jpg", skylink);
+  console.log('Download successful');
 })();
 
 // Using the path option.
