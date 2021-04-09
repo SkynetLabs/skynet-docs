@@ -53,7 +53,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet"
+	skynet "github.com/SkynetHQ/go-skynet"
 )
 
 func main() {

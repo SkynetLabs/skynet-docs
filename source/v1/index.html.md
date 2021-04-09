@@ -14,7 +14,7 @@ toc_footers:
   - <a href='../v4'>Latest version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
-  - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
+  - <a href='https://github.com/SkynetHQ/skynet-docs'>Contribute to the docs</a>
   # - <a href='#'>Sign Up for a Developer Key</a>
   - ---
   - <a href='https://github.com/slatedocs/slate'>Powered by Slate</a>
@@ -39,12 +39,12 @@ Welcome to the Skynet SDK docs!
 We have SDK support for several languages:
 
 - Shell (using curl)
-- [Browser JS](https://github.com/NebulousLabs/skynet-js)
-- [NodeJS](https://github.com/NebulousLabs/nodejs-skynet)
-- [Python](https://github.com/NebulousLabs/python-skynet)
-- [Go](https://github.com/NebulousLabs/go-skynet)
+- [Browser JS](https://github.com/SkynetHQ/skynet-js)
+- [NodeJS](https://github.com/SkynetHQ/nodejs-skynet)
+- [Python](https://github.com/SkynetHQ/python-skynet)
+- [Go](https://github.com/SkynetHQ/go-skynet)
 
-as well as the [Skynet CLI](https://github.com/NebulousLabs/skynet-cli) (written
+as well as the [Skynet CLI](https://github.com/SkynetHQ/skynet-cli) (written
 in Go).
 
 These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints.

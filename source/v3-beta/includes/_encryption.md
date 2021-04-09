@@ -66,7 +66,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetHQ/go-skynet/v2"
 )
 
 const name = "testcreateskykey"
@@ -205,7 +205,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetHQ/go-skynet/v2"
 )
 
 const skykey = "skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"
@@ -289,7 +289,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetHQ/go-skynet/v2"
 )
 
 const name = "testcreateskykey"
@@ -372,7 +372,7 @@ print("Get skykey successful, skykey: " + skykey)
 ```go
 package main
 
-import skynet "github.com/NebulousLabs/go-skynet/v2"
+import skynet "github.com/SkynetHQ/go-skynet/v2"
 
 const id = "pJAPPfWkWXpss3BvMDCJCw=="
 var client = skynet.New()
@@ -453,7 +453,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetHQ/go-skynet/v2"
 )
 
 var client = skynet.New()
