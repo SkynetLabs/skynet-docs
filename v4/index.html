@@ -2621,7 +2621,7 @@ custom option. See <a href="#setting-additional-options">Setting Additional Opti
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='updating-from-v3'>Updating From v3</h1>
-<p><a href="https://github.com/NebulousLabs/skynet-js/blob/master/CHANGELOG-BETA.md">Changelog</a></p>
+<p><a href="https://github.com/SkynetHQ/skynet-js/blob/master/CHANGELOG-BETA.md">Changelog</a></p>
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
@@ -2653,20 +2653,20 @@ MySky and Data Access Controllers (DACs).</p>
 
 <p>We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.</p>
-<h2 id='upgrading'>Upgrading</h2>
-<p>To upgrade to v4:</p>
-<div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js@4.0.0-beta
+<h2 id='upgrading'>Upgrading</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js@4.0.0-beta
 </code></pre></div>
+<p>To upgrade to v4 (see right):</p>
+
 <p>Note that just <code>npm install</code> will not work. This is by design: you must
 explicitly opt-in to new major versions as they contain breaking changes.</p>
 <h2 id='installing-a-dac'>Installing a DAC</h2>
 <p>To use MySky to its fullest potential you may additionally want to install a
 DAC. These are used through libraries which can be installed and imported from
 like regular libraries.</p>
-
-<p>For example, to install SkynetHQ&#39;s official Content Record DAC:</p>
 <div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install</span> @skynethq/content-record-library
 </code></pre></div>
+<p>For example, to install SkynetHQ&#39;s official Content Record DAC (see right):</p>
+
 <p>Usage instructions can be found <a href="https://github.com/SkynetHQ/content-record-library">here</a>.</p>
 <h2 id='breaking-changes'>Breaking Changes</h2><h3 id='skydb-getjson-returns-a-skylink-instead-of-a-revision-number'>SkyDB getJSON returns a skylink instead of a revision number</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 </code></pre></div>
