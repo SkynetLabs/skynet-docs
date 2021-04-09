@@ -10,9 +10,9 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - "Version: v3"
-  - <a href='v3'>Permalink to this version</a>
-  - <a href='v2'>Previous version</a>
+  - "Version: v4"
+  - <a href='v4'>Permalink to this version</a>
+  - <a href='v3'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
@@ -38,7 +38,7 @@ search: true
 
 # Introduction
 
-**Latest version:** <a href='v3'>v3</a> ([Update Guide](v3#updating-from-v2))
+**Latest version:** <a href='v4'>v4</a> ([Update Guide](v4#updating-from-v3))
 
 Welcome to the Skynet SDK docs! To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
 

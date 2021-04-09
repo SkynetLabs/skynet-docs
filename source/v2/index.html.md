@@ -11,7 +11,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - "Version: v2"
-  - <a href='../v3'>Latest version</a>
+  - <a href='../v4'>Latest version</a>
   - <a href='../v1'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
@@ -39,7 +39,7 @@ search: true
 
 # Introduction
 
-**Latest version:** <a href='../v3'>v3</a> ([Update Guide](../v3#updating-from-v2))
+**Latest version:** <a href='../v4'>v4</a>
 
 Welcome to the Skynet SDK docs!
 

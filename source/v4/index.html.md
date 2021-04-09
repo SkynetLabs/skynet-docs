@@ -10,35 +10,41 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - "Version: v1"
-  - <a href='../v4'>Latest version</a>
+  - "Version: v4"
+  - <a href='../v4'>Permalink to this version</a>
+  - <a href='../v3'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/NebulousLabs/skynet-docs'>Contribute to the docs</a>
-  # - <a href='#'>Sign Up for a Developer Key</a>
   - ---
   - <a href='https://github.com/slatedocs/slate'>Powered by Slate</a>
 
 includes:
   - gettingstarted
-  - authentication
+  - client
   - uploading
   - downloading
+  - skydb
+  - registry
+  - crypto-utilities
   - encryption
-  - browser-js-utils
+  - handshake
+  - browser-js-api
+  - authentication
+  - updating
 
 search: true
 ---
 
 # Introduction
 
-**Latest version:** <a href='../v4'>v4</a>
+**Latest version:** <a href='../v4'>v4</a> ([Update Guide](../v4#updating-from-v3))
 
-Welcome to the Skynet SDK docs!
+Welcome to the Skynet SDK docs! To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
 
 We have SDK support for several languages:
 
-- Shell (using curl)
+- Shell (using curl). See the [Using The Shell](#using-the-shell) section.
 - [Browser JS](https://github.com/NebulousLabs/skynet-js)
 - [NodeJS](https://github.com/NebulousLabs/nodejs-skynet)
 - [Python](https://github.com/NebulousLabs/python-skynet)
@@ -62,6 +68,17 @@ href="https://hackmd.io/BFPWYyDfT6yalz0o_gipyw?view">status</a> document to see
 the level of feature support for each language.
 </aside>
 
+## Tutorial
+
+We have a detailed tutorial for [Creating Your First Webapp On
+Skynet](https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f)
+on our tech blog. Check it out if you are just starting out!
+
+## Using the Beta
+
+We are releasing new features and fixes first on the `beta` stream. The latest
+beta version can be installed with `npm install skynet-js@beta`.
+
 ## A Note About Language Differences
 
 Though we tried to keep the SDKs as similar to each other as possible in usage,
@@ -69,10 +86,17 @@ differences between the languages -- the idiosyncracies and best practices of
 each -- resulted in differences between the SDKs. We've noted them where
 necessary throughout the documentation.
 
+### Function Parameters
+
+In most of the SDKs the additional options may be left out of the function
+calls, in which case the default options are used. In <b>Go</b> the options must
+always be passed in, as the language does not support optional function
+parameters.
+
 ### Case
 
-In particular, note that the casing of functions and their parameters differs
-between the languages:
+Note that the casing of functions and their parameters differs between the
+languages:
 
 Language | Case
 -------- | ----
@@ -96,3 +120,17 @@ Language | Failure Mode
 Javascript | Exceptions are raised and must be caught with a `try-catch` block.
 Python | Same as above.
 Go | Errors are returned and must be checked for explicitly.
+
+## Using The Shell
+
+```shell
+function skynet() {
+  curl -X POST "https://siasky.net/skynet/skyfile" -F "file=@$1" \
+    | jq ".skylink" | xargs -I _ echo "https://siasky.net/_"
+}
+```
+
+Our shell examples present only simple curl calls. You may find it helpful to
+write wrappers around these in Bash, or the shell language of your choice, to
+make them more reusable. To the right we have provided a simple example which
+uses [`jq`](https://stedolan.github.io/jq/).
