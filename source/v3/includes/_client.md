@@ -34,7 +34,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 var client = skynet.NewCustom("https://some-other-portal.xyz", skynet.Options{})
@@ -55,7 +55,7 @@ keeps friction for new developers low.
 
 In the future the default selection will be smarter and there will be more
 options for default portal selection, such as configuration files. Please see
-[this issue](https://github.com/NebulousLabs/skynet-docs/issues/21).
+[this issue](https://github.com/SkynetLabs/skynet-docs/issues/5).
 
 ## Setting Connection Options
 
@@ -83,7 +83,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 var client = skynet.NewCustom("", skynet.Options{APIKey: "foobar"})

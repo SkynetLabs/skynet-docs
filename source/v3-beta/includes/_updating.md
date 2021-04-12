@@ -4,7 +4,7 @@
 This is a beta version and is subject to change.
 </aside>
 
-[Changelog](https://github.com/NebulousLabs/skynet-js/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**

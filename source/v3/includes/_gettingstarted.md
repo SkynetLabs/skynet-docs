@@ -52,7 +52,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 var client = skynet.New()

@@ -51,7 +51,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
@@ -168,7 +168,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 var client = skynet.New()
@@ -270,7 +270,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/NebulousLabs/go-skynet/v2"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
 const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"

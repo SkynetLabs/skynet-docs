@@ -3,12 +3,12 @@
 Documentation for the Skynet SDKs in various languages:
 
 - Shell (using curl)
-- [Browser JS](https://github.com/NebulousLabs/skynet-js)
-- [NodeJS](https://github.com/NebulousLabs/nodejs-skynet)
-- [Python](https://github.com/NebulousLabs/python-skynet)
-- [Go](https://github.com/NebulousLabs/go-skynet)
+- [Browser JS](https://github.com/SkynetLabs/skynet-js)
+- [NodeJS](https://github.com/SkynetLabs/nodejs-skynet)
+- [Python](https://github.com/SkynetLabs/python-skynet)
+- [Go](https://github.com/SkynetLabs/go-skynet)
 
-as well as the [Skynet CLI](https://github.com/NebulousLabs/skynet-cli) (written in Go).
+as well as the [Skynet CLI](https://github.com/SkynetLabs/skynet-cli) (written in Go).
 
 Unofficial SDKs are not documented here.
 
