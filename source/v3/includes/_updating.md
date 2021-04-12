@@ -1,6 +1,6 @@
 # Updating From v2
 
-[Changelog](https://github.com/SkynetHQ/skynet-js/blob/master/CHANGELOG.md)
+[Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**

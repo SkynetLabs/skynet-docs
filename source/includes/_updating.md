@@ -1,6 +1,6 @@
 # Updating From v3
 
-[Changelog](https://github.com/SkynetHQ/skynet-js/blob/master/CHANGELOG-BETA.md)
+[Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG-BETA.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -45,9 +45,9 @@ like regular libraries.
 npm install @skynethq/content-record-library
 ```
 
-For example, to install SkynetHQ's official Content Record DAC (see right):
+For example, to install SkynetLabs's official Content Record DAC (see right):
 
-Usage instructions can be found [here](https://github.com/SkynetHQ/content-record-library).
+Usage instructions can be found [here](https://github.com/SkynetLabs/content-record-library).
 
 ## Breaking Changes
 

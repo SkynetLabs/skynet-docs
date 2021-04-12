@@ -64,7 +64,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/SkynetHQ/go-skynet"
+	skynet "github.com/SkynetLabs/go-skynet"
 )
 
 func main() {
@@ -200,7 +200,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/SkynetHQ/go-skynet"
+	skynet "github.com/SkynetLabs/go-skynet"
 )
 
 func main() {
@@ -280,7 +280,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/SkynetHQ/go-skynet"
+	skynet "github.com/SkynetLabs/go-skynet"
 )
 
 func main() {
@@ -359,7 +359,7 @@ print("Get skykey successful, skykey: " + skykey)
 ```go
 package main
 
-import skynet "github.com/SkynetHQ/go-skynet"
+import skynet "github.com/SkynetLabs/go-skynet"
 
 func main() {
 	const id = "pJAPPfWkWXpss3BvMDCJCw=="
@@ -435,7 +435,7 @@ package main
 
 import (
 	"fmt"
-	skynet "github.com/SkynetHQ/go-skynet"
+	skynet "github.com/SkynetLabs/go-skynet"
 )
 
 func main() {
