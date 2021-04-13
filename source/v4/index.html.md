@@ -26,6 +26,7 @@ includes:
   - downloading
   - skydb
   - registry
+  - mysky
   - crypto-utilities
   - encryption
   - handshake
