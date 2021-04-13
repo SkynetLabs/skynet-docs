@@ -325,6 +325,41 @@
               </ul>
           </li>
           <li>
+            <a href="#mysky" class="toc-h1 toc-link" data-title="MySky">MySky</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#initializing-mysky" class="toc-h2 toc-link" data-title="Initializing MySky">Initializing MySky</a>
+                  </li>
+                  <li>
+                    <a href="#additional-options" class="toc-h2 toc-link" data-title="Additional Options">Additional Options</a>
+                  </li>
+                  <li>
+                    <a href="#adding-dacs" class="toc-h2 toc-link" data-title="Adding DACs">Adding DACs</a>
+                  </li>
+                  <li>
+                    <a href="#adding-custom-permissions" class="toc-h2 toc-link" data-title="Adding Custom Permissions">Adding Custom Permissions</a>
+                  </li>
+                  <li>
+                    <a href="#logging-in" class="toc-h2 toc-link" data-title="Logging In">Logging In</a>
+                  </li>
+                  <li>
+                    <a href="#silent-login" class="toc-h2 toc-link" data-title="Silent Login">Silent Login</a>
+                  </li>
+                  <li>
+                    <a href="#popup-login" class="toc-h2 toc-link" data-title="Popup Login">Popup Login</a>
+                  </li>
+                  <li>
+                    <a href="#getting-and-setting-user-data" class="toc-h2 toc-link" data-title="Getting And Setting User Data">Getting And Setting User Data</a>
+                  </li>
+                  <li>
+                    <a href="#getting-discoverable-json" class="toc-h2 toc-link" data-title="Getting Discoverable JSON">Getting Discoverable JSON</a>
+                  </li>
+                  <li>
+                    <a href="#setting-discoverable-json" class="toc-h2 toc-link" data-title="Setting Discoverable JSON">Setting Discoverable JSON</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#crypto-utilities" class="toc-h1 toc-link" data-title="Crypto Utilities">Crypto Utilities</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1640,6 +1675,124 @@ These functions have only been implemented for Browser JS at the moment.
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
+<h1 id='mysky'>MySky</h1>
+<p>MySky is a decentralized identity protocol that gives users their own empire of
+data within Skynet. Everything that happens inside of that empire is under the
+control of the user, but it can also be visited by anyone else and shared around
+freely.</p>
+
+<p>MySky provides a standard for declaring data in a way that makes it easy for
+anyone in the world to discover that data. At the same time, it provides
+standards for protecting that data, ensuring only data which is meant to be
+found is discoverable by others.</p>
+
+<p>MySky also provides simple yet powerful tooling that enables applications to
+make use of the same data. For example, the profile information of a user like
+their preferred name and avatar can be placed in a shared folder, and then
+safely used and updated by all of the user’s applications. This tooling extends
+to any type of data.</p>
+
+<p>See <a href="https://blog.sia.tech/mysky-your-home-on-the-global-operating-system-of-the-future-5a288f89825c">this blog
+post</a>
+for more information!</p>
+<h2 id='initializing-mysky'>Initializing MySky</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">hostApp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">host-app.hns</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">mySky</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">loadMySky</span><span class="p">(</span><span class="nx">hostApp</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>MySky can be initialized using the client. This creates the MySky iframe which
+connects to the MySky handshake domain and takes care of operations such as
+logging in silently, signing registry entries, getting the user ID, and logging
+out.</p>
+
+<aside class="warning">
+Note that an initialized MySky instance does <b>not</b> have a logged-in user
+yet! See the section below on how to log in the user.
+</aside>
+<h3 id='parameters'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>skappDomain</code></td>
+<td>(Optional) The data domain for the skapp. MySky will automatically request permissions for this domain.</td>
+</tr>
+</tbody></table>
+
+<aside class="success">
+If the skapp domain matches the requestor domain (e.g. the `skappDomain` is
+"app.hns" and your skapp is located at "app.hns") permission will be granted
+automatically, by default.
+</aside>
+<h2 id='additional-options'>Additional Options</h2>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dev</code></td>
+<td>Whether to run MySky in dev mode (all requested permissions are granted by default, but production MySky data is not accessible).</td>
+<td><code>false</code></td>
+</tr>
+<tr>
+<td><code>debug</code></td>
+<td>Whether to run MySky and all DACs with debugging messages enabled. DACs will run with the <code>?debug=true</code> query parameter set which they can use for their own purposes.</td>
+<td><code>false</code></td>
+</tr>
+</tbody></table>
+<h2 id='adding-dacs'>Adding DACs</h2>
+<p>TODO</p>
+<h2 id='adding-custom-permissions'>Adding Custom Permissions</h2>
+<p>TODO</p>
+<h2 id='logging-in'>Logging In</h2>
+<p>In order to actually use MySky the user will need to be logged in to a MySky
+account. Most of the time, the user should already be logged in -- a single
+sign-in should log a user into all MySky-compatible apps across the Skynet
+ecosystem.</p>
+
+<p>For that reason, your app should first attempt a silent login. If that fails,
+you can initiate a popup login, where the user has the chance to enter his login
+details or sign up. Note that this must be done <em>only</em> on button click, or the
+popup window will be blocked by most popup blockers!</p>
+<h2 id='silent-login'>Silent Login</h2>
+<p>TODO</p>
+<h2 id='popup-login'>Popup Login</h2>
+<aside class="warning">
+Note that this must be done *only* on button click, or the popup window will be
+blocked by most popup blockers!
+</aside>
+
+<p>TODO</p>
+<h2 id='getting-and-setting-user-data'>Getting And Setting User Data</h2>
+<p>Once a user is logged in, the app will be able to get and set data in their
+filesystem, as long as it has permissions for the filepath it is trying to
+access as well as for the type of data (Discoverable or Hidden) being read or
+written.</p>
+
+<aside class="success">
+MySky enforces that apps trying to access a user's filesystem have permission by
+looking at the <i>referrer</i> for requests. The permissions provider will
+determine whether permission had previously been granted to that requestor for
+the requested filepath.
+</aside>
+<h2 id='getting-discoverable-json'>Getting Discoverable JSON</h2>
+<p>TODO</p>
+<h2 id='setting-discoverable-json'>Setting Discoverable JSON</h2>
+<p>TODO</p>
 <h1 id='crypto-utilities'>Crypto Utilities</h1>
 <p>This page documents cryptographic utilities for generating public and private
 keys as well as secure seeds. Private keys should, as the name implies, be kept
