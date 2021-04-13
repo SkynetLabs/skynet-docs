@@ -42,7 +42,7 @@ DAC. These are used through libraries which can be installed and imported from
 like regular libraries.
 
 ```sh
-npm install @skynethq/content-record-library
+npm install @skynetlabs/content-record-library
 ```
 
 For example, to install SkynetLabs's official Content Record DAC (see right):
