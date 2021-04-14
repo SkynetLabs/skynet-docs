@@ -343,10 +343,10 @@
                     <a href="#logging-in" class="toc-h2 toc-link" data-title="Logging In">Logging In</a>
                   </li>
                   <li>
-                    <a href="#silent-login" class="toc-h2 toc-link" data-title="Silent Login">Silent Login</a>
+                    <a href="#check-login-silent-login" class="toc-h2 toc-link" data-title="Check Login (Silent Login)">Check Login (Silent Login)</a>
                   </li>
                   <li>
-                    <a href="#popup-login" class="toc-h2 toc-link" data-title="Popup Login">Popup Login</a>
+                    <a href="#request-login-access-popup-login" class="toc-h2 toc-link" data-title="Request Login Access (Popup Login)">Request Login Access (Popup Login)</a>
                   </li>
                   <li>
                     <a href="#getting-and-setting-user-data" class="toc-h2 toc-link" data-title="Getting And Setting User Data">Getting And Setting User Data</a>
@@ -1461,7 +1461,7 @@ These functions have only been implemented for Browser JS at the moment.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='function'>Function</h3>
+</code></pre></div><h3 id='method'>Method</h3>
 <p><code>getJSON</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
@@ -1504,7 +1504,7 @@ These functions have only been implemented for Browser JS at the moment.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='function-2'>Function</h3>
+</code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setJSON</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
@@ -1546,7 +1546,7 @@ These functions have only been implemented for Browser JS at the moment.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='function-3'>Function</h3>
+</code></pre></div><h3 id='method-3'>Method</h3>
 <p><code>getEntryUrl</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <p>See <a href="#getting-data-from-the-registry">Getting Data From The Registry</a>.</p>
@@ -1579,7 +1579,7 @@ These functions have only been implemented for Browser JS at the moment.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='function'>Function</h3>
+</code></pre></div><h3 id='method'>Method</h3>
 <p><code>getEntry</code></p>
 <h3 id='parameters'>Parameters</h3>
 <table><thead>
@@ -1599,6 +1599,30 @@ These functions have only been implemented for Browser JS at the moment.
 <td><code>string</code></td>
 <td>The key of the data to fetch for the given user.</td>
 </tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endpointGetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+<tr>
+<td><code>hashedDataKeyHex</code></td>
+<td>Whether the data key is already hashed and in hex format. If not, we hash the data key.</td>
+<td><code>false</code></td>
+</tr>
 </tbody></table>
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
@@ -1617,16 +1641,16 @@ These functions have only been implemented for Browser JS at the moment.
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="na">datakey</span><span class="p">:</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setEntryExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
+    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='function-2'>Function</h3>
+</code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setEntry</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
@@ -1645,6 +1669,30 @@ These functions have only been implemented for Browser JS at the moment.
 <td><code>entry</code></td>
 <td><code>RegistryEntry</code></td>
 <td>The registry entry to set. See below.</td>
+</tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters-2'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endpointSetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+<tr>
+<td><code>hashedDataKeyHex</code></td>
+<td>Whether the data key is already hashed and in hex format. If not, we hash the data key.</td>
+<td><code>false</code></td>
 </tr>
 </tbody></table>
 <h3 id='registryentry'><code>RegistryEntry</code></h3>
@@ -1761,7 +1809,7 @@ automatically, by default.
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">hostApp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">host-app.hns</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">loadDacsExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">mySky</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">loadMySky</span><span class="p">(</span><span class="nx">hostApp</span><span class="p">);</span>
 
@@ -1773,12 +1821,38 @@ automatically, by default.
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>TODO</p>
+<p>This method loads the given DACs. They must have been instantiated previously
+using the DAC library&#39;s constructor, which creates the iframe for the DAC. DACs
+must also be loaded before they are ready to use.</p>
+
+<p>Loading a DAC automatically adds its requested permissions to the permissions
+list, so we do not need to add permissions for it manually. The user may have to
+approve the DAC&#39;s permissions if it requests nonstandard permissions.</p>
+
+<p>For an example of a DAC and its usage, see the
+<a href="https://github.com/SkynetLabs/content-record-library">content-record</a> DAC
+library provided by SkynetLabs.</p>
+<h3 id='method'>Method</h3>
+<p><code>mysky.loadDacs</code></p>
+<h3 id='parameters-2'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>...dacs</code></td>
+<td><code>...DacLibrary[]</code></td>
+<td>One or more DACs. If you have an array, you can pass it in like <code>...dacsArray</code>.</td>
+</tr>
+</tbody></table>
 <h2 id='adding-custom-permissions'>Adding Custom Permissions</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">Permission</span><span class="p">,</span> <span class="nx">PermCategory</span><span class="p">,</span> <span class="nx">PermType</span><span class="p">,</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">addPermissionsExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">mySky</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">loadMySky</span><span class="p">();</span>
 
@@ -1790,7 +1864,107 @@ automatically, by default.
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>TODO</p>
+<p>This method lets you add one or more custom permissions, which are then
+requested on login and must be approved by the user. It is useful to call this
+if you want access to e.g. the data domain of skapp other than your own.</p>
+
+<p>Note that the requestor must be set manually in the <code>Permission</code> object.</p>
+<h3 id='method-2'>Method</h3>
+<p><code>mysky.addPermissions</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>...permissions</code></td>
+<td><code>...Permission[]</code></td>
+<td>One or more permissions. If you have an array, you can pass it in like <code>...permsArray</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='permission'><code>Permission</code></h3>
+<p>This object corresponds to a permission for a given requestor domain for the given path.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>requestor</code></td>
+<td><code>string</code></td>
+<td>The requestor domain.</td>
+</tr>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>The path to grant permission for. Can be a directory or a root domain to grant permissions to all subpaths.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><code>PermCategory</code></td>
+<td>The permission category (see below).</td>
+</tr>
+<tr>
+<td><code>permType</code></td>
+<td><code>PermType</code></td>
+<td>The permission type (see below).</td>
+</tr>
+</tbody></table>
+<h3 id='permcategory'><code>PermCategory</code></h3>
+<p>Permission category enum. All values are numbers. If you&#39;re not using
+Typescript, you can use the provided constant instead of the enum value.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Constant</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>PermCategory.Discoverable</code></td>
+<td>Permission for discoverable files.</td>
+<td><code>PermDiscoverable</code></td>
+</tr>
+<tr>
+<td><code>PermCategory.Hidden</code></td>
+<td>Permission for hidden files.</td>
+<td><code>PermHidden</code></td>
+</tr>
+<tr>
+<td><code>PermCategory.LegacySkyID</code></td>
+<td>Permission for legacy SkyID files.</td>
+<td><code>PermLegacySkyID</code></td>
+</tr>
+</tbody></table>
+<h3 id='permtype'><code>PermType</code></h3>
+<p>Permission type enum. All values are numbers. If you&#39;re not using Typescript,
+you can use the provided constant instead of the enum value.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+<th>Constant</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>PermType.Read</code></td>
+<td>Permission for reading.</td>
+<td><code>PermRead</code></td>
+</tr>
+<tr>
+<td><code>PermType.Write</code></td>
+<td>Permission for writing.</td>
+<td><code>PermWrite</code></td>
+</tr>
+</tbody></table>
 <h2 id='logging-in'>Logging In</h2>
 <p>In order to actually use MySky the user will need to be logged in to a MySky
 account. Most of the time, the user should already be logged in -- a single
@@ -1801,12 +1975,12 @@ ecosystem.</p>
 you can initiate a popup login, where the user has the chance to enter his login
 details or sign up. Note that this must be done <em>only</em> on button click, or the
 popup window will be blocked by most popup blockers!</p>
-<h2 id='silent-login'>Silent Login</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+<h2 id='check-login-silent-login'>Check Login (Silent Login)</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">hostApp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">host-app.hns</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">checkLoginExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">mySky</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">loadMySky</span><span class="p">(</span><span class="nx">hostApp</span><span class="p">);</span>
 
@@ -1817,13 +1991,17 @@ popup window will be blocked by most popup blockers!</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>TODO</p>
-<h2 id='popup-login'>Popup Login</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+<p>Makes an initial silent login attempt with the previously set permissions.</p>
+<h3 id='method-3'>Method</h3>
+<p><code>mysky.checkLogin</code></p>
+<h3 id='parameters-4'>Parameters</h3>
+<p>None. Any requested permissions should be set earlier through <code>mysky.addPermissions</code>.</p>
+<h2 id='request-login-access-popup-login'>Request Login Access (Popup Login)</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="nx">hostApp</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">host-app.hns</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">requestLoginAccessExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">mySky</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">loadMySky</span><span class="p">(</span><span class="nx">hostApp</span><span class="p">);</span>
 
@@ -1840,12 +2018,16 @@ popup window will be blocked by most popup blockers!</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p>Popup login method to call if the silent login failed.</p>
+
 <aside class="warning">
 Note that this must be done *only* on button click, or the popup window will be
 blocked by most popup blockers!
 </aside>
-
-<p>TODO</p>
+<h3 id='method-4'>Method</h3>
+<p><code>mysky.requestLoginAccess</code></p>
+<h3 id='parameters-5'>Parameters</h3>
+<p>None. Any requested permissions should be set earlier through <code>mysky.addPermissions</code>.</p>
 <h2 id='getting-and-setting-user-data'>Getting And Setting User Data</h2>
 <p>Once a user is logged in, the app will be able to get and set data in the user&#39;s
 filesystem, as long as the app has permissions for the filepath it is trying to
@@ -1860,7 +2042,7 @@ the requested filepath.
 </aside>
 <h2 id='getting-discoverable-json'>Getting Discoverable JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getJSONExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="c1">// Get discoverable JSON data from the given path.</span>
     <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mysky</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">);</span>
@@ -1868,11 +2050,44 @@ the requested filepath.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>TODO</p>
+</code></pre></div><h3 id='method-5'>Method</h3>
+<p><code>mysky.getJSON</code></p>
+<h3 id='parameters-6'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>The data path.</td>
+</tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endpointGetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+</tbody></table>
 <h2 id='setting-discoverable-json'>Setting Discoverable JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
 
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">mySkyExample</span><span class="p">()</span> <span class="p">{</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">setJSONExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="c1">// Set discoverable JSON data at the given path. The return type is the same as getJSON.</span>
     <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mysky</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">});</span>
@@ -1880,8 +2095,51 @@ the requested filepath.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>TODO</p>
+</code></pre></div><h3 id='method-6'>Method</h3>
+<p><code>mysky.setJSON</code></p>
+<h3 id='parameters-7'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>The data path.</td>
+</tr>
+<tr>
+<td><code>json</code></td>
+<td><code>Object</code></td>
+<td>The data to set.</td>
+</tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters-2'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endpointGetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+<tr>
+<td><code>endpointSetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+</tbody></table>
 <h1 id='crypto-utilities'>Crypto Utilities</h1>
 <p>This page documents cryptographic utilities for generating public and private
 keys as well as secure seeds. Private keys should, as the name implies, be kept
