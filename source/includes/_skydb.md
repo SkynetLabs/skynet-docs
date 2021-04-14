@@ -30,7 +30,7 @@ async function getJSONExample() {
 }
 ```
 
-### Function
+### Method
 
 `getJSON`
 
@@ -76,7 +76,7 @@ async function setJSONExample() {
 }
 ```
 
-### Function
+### Method
 
 `setJSON`
 
@@ -111,7 +111,7 @@ function getEntryExample() {
 }
 ```
 
-### Function
+### Method
 
 `getEntryUrl`
 

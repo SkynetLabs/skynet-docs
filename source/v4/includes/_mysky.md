@@ -76,7 +76,7 @@ import { ContentRecordDAC } from "@skynetlabs/content-record-library";
 const client = new SkynetClient();
 const hostApp = "host-app.hns";
 
-async function mySkyExample() {
+async function loadDacsExample() {
   try {
     const mySky = await client.loadMySky(hostApp);
 
@@ -89,7 +89,27 @@ async function mySkyExample() {
 }
 ```
 
-TODO
+This method loads the given DACs. They must have been instantiated previously
+using the DAC library's constructor, which creates the iframe for the DAC. DACs
+must also be loaded before they are ready to use.
+
+Loading a DAC automatically adds its requested permissions to the permissions
+list, so we do not need to add permissions for it manually. The user may have to
+approve the DAC's permissions if it requests nonstandard permissions.
+
+For an example of a DAC and its usage, see the
+[content-record](https://github.com/SkynetLabs/content-record-library) DAC
+library provided by SkynetLabs.
+
+### Method
+
+`mysky.loadDacs`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`...dacs` | `...DacLibrary[]` | One or more DACs. If you have an array, you can pass it in like `...dacsArray`.
 
 ## Adding Custom Permissions
 
@@ -98,7 +118,7 @@ import { Permission, PermCategory, PermType, SkynetClient } from "skynet-js";
 
 const client = new SkynetClient();
 
-async function mySkyExample() {
+async function addPermissionsExample() {
   try {
     const mySky = await client.loadMySky();
 
@@ -111,7 +131,53 @@ async function mySkyExample() {
 }
 ```
 
-TODO
+This method lets you add one or more custom permissions, which are then
+requested on login and must be approved by the user. It is useful to call this
+if you want access to e.g. the data domain of skapp other than your own.
+
+Note that the requestor must be set manually in the `Permission` object.
+
+### Method
+
+`mysky.addPermissions`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`...permissions` | `...Permission[]` | One or more permissions. If you have an array, you can pass it in like `...permsArray`.
+
+### `Permission`
+
+This object corresponds to a permission for a given requestor domain for the given path.
+
+Field | Type | Description
+----- | ---- | -----------
+`requestor` | `string` | The requestor domain.
+`path` | `string` | The path to grant permission for. Can be a directory or a root domain to grant permissions to all subpaths.
+`category` | `PermCategory` | The permission category (see below).
+`permType` | `PermType` | The permission type (see below).
+
+### `PermCategory`
+
+Permission category enum. All values are numbers. If you're not using
+Typescript, you can use the provided constant instead of the enum value.
+
+Value | Description | Constant
+----- | ----------- | --------
+`PermCategory.Discoverable` | Permission for discoverable files. | `PermDiscoverable`
+`PermCategory.Hidden` | Permission for hidden files. | `PermHidden`
+`PermCategory.LegacySkyID` | Permission for legacy SkyID files. | `PermLegacySkyID`
+
+### `PermType`
+
+Permission type enum. All values are numbers. If you're not using Typescript,
+you can use the provided constant instead of the enum value.
+
+Value | Description | Constant
+----- | ----------- | --------
+`PermType.Read` | Permission for reading. | `PermRead`
+`PermType.Write` | Permission for writing. | `PermWrite`
 
 ## Logging In
 
@@ -125,7 +191,7 @@ you can initiate a popup login, where the user has the chance to enter his login
 details or sign up. Note that this must be done *only* on button click, or the
 popup window will be blocked by most popup blockers!
 
-## Silent Login
+## Check Login (Silent Login)
 
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
@@ -133,7 +199,7 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const hostApp = "host-app.hns";
 
-async function mySkyExample() {
+async function checkLoginExample() {
   try {
     const mySky = await client.loadMySky(hostApp);
 
@@ -145,9 +211,17 @@ async function mySkyExample() {
 }
 ```
 
-TODO
+Makes an initial silent login attempt with the previously set permissions.
 
-## Popup Login
+### Method
+
+`mysky.checkLogin`
+
+### Parameters
+
+None. Any requested permissions should be set earlier through `mysky.addPermissions`.
+
+## Request Login Access (Popup Login)
 
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
@@ -155,7 +229,7 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 const hostApp = "host-app.hns";
 
-async function mySkyExample() {
+async function requestLoginAccessExample() {
   try {
     const mySky = await client.loadMySky(hostApp);
 
@@ -173,12 +247,20 @@ async function mySkyExample() {
 }
 ```
 
+Popup login method to call if the silent login failed.
+
 <aside class="warning">
 Note that this must be done *only* on button click, or the popup window will be
 blocked by most popup blockers!
 </aside>
 
-TODO
+### Method
+
+`mysky.requestLoginAccess`
+
+### Parameters
+
+None. Any requested permissions should be set earlier through `mysky.addPermissions`.
 
 ## Getting And Setting User Data
 
@@ -199,7 +281,7 @@ the requested filepath.
 ```javascript--browser
 // Assume we have a logged-in mysky instance from above
 
-async function mySkyExample() {
+async function getJSONExample() {
   try {
     // Get discoverable JSON data from the given path.
     const { data, skylink } = await mysky.getJSON("app.hns/path/file.json");
@@ -209,14 +291,29 @@ async function mySkyExample() {
 }
 ```
 
-TODO
+### Method
+
+`mysky.getJSON`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`path` | `string` | The data path.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
 
 ## Setting Discoverable JSON
 
 ```javascript--browser
 // Assume we have a logged-in mysky instance from above
 
-async function mySkyExample() {
+async function setJSONExample() {
   try {
     // Set discoverable JSON data at the given path. The return type is the same as getJSON.
     const { data, skylink } = await mysky.setJSON("app.hns/path/file.json", { message: "hello" });
@@ -226,4 +323,21 @@ async function mySkyExample() {
 }
 ```
 
-TODO
+### Method
+
+`mysky.setJSON`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`path` | `string` | The data path.
+`json` | `Object` | The data to set.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+`endpointSetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`

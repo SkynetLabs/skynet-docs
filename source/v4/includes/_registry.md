@@ -36,7 +36,7 @@ async function getEntryExample() {
 }
 ```
 
-### Function
+### Method
 
 `getEntry`
 
@@ -46,6 +46,14 @@ Field | Type | Description
 ----- | ---- | -----------
 `publicKey` | `string` | User's public key as a hex-encoded string. Can be generated with the `genKeyPairFromSeed` function.
 `dataKey` | `string` | The key of the data to fetch for the given user.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+`hashedDataKeyHex` | Whether the data key is already hashed and in hex format. If not, we hash the data key. | `false`
 
 ### Response
 
@@ -75,18 +83,18 @@ const { privateKey } = genKeyPairFromSeed("this seed should be fairly long for s
 const dataKey = "foo";
 const data = "bar";
 const revision = 0;
-const entry = { datakey: dataKey, data, revision };
+const entry = { dataKey, data, revision };
 
 async function setEntryExample() {
   try {
-    await client.registry.setEntry(privateKey, dataKey, entry);
+    await client.registry.setEntry(privateKey, entry);
   } catch (error) {
     console.log(error);
   }
 }
 ```
 
-### Function
+### Method
 
 `setEntry`
 
@@ -96,6 +104,14 @@ Field | Type | Description
 ----- | ---- | -----------
 `privateKey` | `string` | User's private key as a hex-encoded string. Can be generated with the `genKeyPairFromSeed` function or with PKI in the node-forge library on NPM. Should be kept secret.
 `entry` | `RegistryEntry` | The registry entry to set. See below.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`endpointSetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+`hashedDataKeyHex` | Whether the data key is already hashed and in hex format. If not, we hash the data key. | `false`
 
 ### `RegistryEntry`
 
