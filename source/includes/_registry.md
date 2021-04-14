@@ -75,7 +75,7 @@ const { privateKey } = genKeyPairFromSeed("this seed should be fairly long for s
 const dataKey = "foo";
 const data = "bar";
 const revision = 0;
-const entry = { datakey, data, revision };
+const entry = { datakey: dataKey, data, revision };
 
 async function setEntryExample() {
   try {

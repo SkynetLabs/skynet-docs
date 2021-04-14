@@ -182,8 +182,8 @@ TODO
 
 ## Getting And Setting User Data
 
-Once a user is logged in, the app will be able to get and set data in their
-filesystem, as long as it has permissions for the filepath it is trying to
+Once a user is logged in, the app will be able to get and set data in the user's
+filesystem, as long as the app has permissions for the filepath it is trying to
 access as well as for the type of data (Discoverable or Hidden) being read or
 written.
 
