@@ -1617,7 +1617,7 @@ These functions have only been implemented for Browser JS at the moment.
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">datakey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="na">datakey</span><span class="p">:</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setEntryExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -1847,8 +1847,8 @@ blocked by most popup blockers!
 
 <p>TODO</p>
 <h2 id='getting-and-setting-user-data'>Getting And Setting User Data</h2>
-<p>Once a user is logged in, the app will be able to get and set data in their
-filesystem, as long as it has permissions for the filepath it is trying to
+<p>Once a user is logged in, the app will be able to get and set data in the user&#39;s
+filesystem, as long as the app has permissions for the filepath it is trying to
 access as well as for the type of data (Discoverable or Hidden) being read or
 written.</p>
 
