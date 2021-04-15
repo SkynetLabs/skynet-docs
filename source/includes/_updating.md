@@ -29,7 +29,7 @@ inconvenient, so we put together this guide which we hope will be helpful.
 ## Upgrading
 
 ```sh
-npm install skynet-js@4.0.0-beta
+npm install skynet-js@4.0.1-beta
 ```
 
 To upgrade to v4 (see right):
