@@ -3153,7 +3153,9 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <li><a href="#skydb-getjson-returns-a-skylink-instead-of-a-revision-number">SkyDB getJSON returns a skylink instead of a revision number</a></li>
 <li><a href="#skydb-setjson-no-longer-accepts-an-optional-revision-number">SkyDB setJSON no longer accepts an optional revision number</a></li>
 <li><a href="#getskylinkurl-downloadfile-openfile-and-the-hns-equivalents-are-all-now-async">getSkylinkUrl, downloadFile, openFile, and the HNS equivalents are all now async</a></li>
-<li><a href="#clientportalurl-is-now-an-async-method-instead-of-a-variable">client.portalUrl is now an async method instead of a variable</a></li>
+<li><a href="#portalurl-is-now-an-async-method-instead-of-a-variable">portalUrl is now an async method instead of a variable</a></li>
+<li><a href="#renamed-registryentry-datakey-to-datakey-for-consistency">Renamed RegistryEntry datakey to dataKey for consistency</a></li>
+<li><a href="#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect">The getEntry timeout option has been removed as it no longer has an effect.</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -3226,7 +3228,7 @@ must be async.</p>
 <h4 id='required-code-changes-3'>Required code changes</h4>
 <p>Please do a search for affected functions in your code and make sure you prepend
 <code>async</code> if you expect the functions to be blocking.</p>
-<h3 id='client-portalurl-is-now-an-async-method-instead-of-a-variable'>client.portalUrl is now an async method instead of a variable</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">portalUrl</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">portalUrl</span><span class="p">;</span>
+<h3 id='portalurl-is-now-an-async-method-instead-of-a-variable'>portalUrl is now an async method instead of a variable</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">portalUrl</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">portalUrl</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>=&gt;</p>
@@ -3238,6 +3240,29 @@ will make a request for the portal API URL the first time it is called.</p>
 <h4 id='required-code-changes-4'>Required code changes</h4>
 <p>Please do a search for where you may be using <code>client.portalUrl</code> in your code
 and make the necessary changes, as shown on the right.</p>
+<h3 id='renamed-registryentry-datakey-to-datakey-for-consistency'>Renamed RegistryEntry datakey to dataKey for consistency</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">abcd</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="na">datakey</span><span class="p">:</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">abcd</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+</code></pre></div>
+<p>The <code>RegistryEntry</code> &quot;datakey&quot; field has been renamed to &quot;dataKey&quot; for
+consistency with the rest of the codebase.</p>
+<h4 id='required-code-changes-5'>Required code changes</h4>
+<p>Please do a search for any instance of <code>datakey</code> (case-sensitive) in your code
+and replace it with <code>dataKey</code>.</p>
+<h3 id='the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect'>The getEntry timeout option has been removed as it no longer has an effect.</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">10</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+</code></pre></div><h4 id='required-code-changes-6'>Required code changes</h4>
+<p>Please do a search for &quot;timeout&quot; in your code and remove it if using as an
+option to <code>getEntry</code>. You will get a runtime error if you don&#39;t make the change.</p>
 
       </div>
       <div class="dark-box">
