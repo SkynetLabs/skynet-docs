@@ -12,7 +12,9 @@
         - [SkyDB getJSON returns a skylink instead of a revision number](#skydb-getjson-returns-a-skylink-instead-of-a-revision-number)
         - [SkyDB setJSON no longer accepts an optional revision number](#skydb-setjson-no-longer-accepts-an-optional-revision-number)
         - [getSkylinkUrl, downloadFile, openFile, and the HNS equivalents are all now async](#getskylinkurl-downloadfile-openfile-and-the-hns-equivalents-are-all-now-async)
-        - [client.portalUrl is now an async method instead of a variable](#clientportalurl-is-now-an-async-method-instead-of-a-variable)
+        - [portalUrl is now an async method instead of a variable](#portalurl-is-now-an-async-method-instead-of-a-variable)
+        - [Renamed RegistryEntry datakey to dataKey for consistency](#renamed-registryentry-datakey-to-datakey-for-consistency)
+        - [The getEntry timeout option has been removed as it no longer has an effect.](#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect)
 
 <!-- markdown-toc end -->
 
@@ -119,7 +121,7 @@ must be async.
 Please do a search for affected functions in your code and make sure you prepend
 `async` if you expect the functions to be blocking.
 
-### client.portalUrl is now an async method instead of a variable
+### portalUrl is now an async method instead of a variable
 
 ```javascript
 const portalUrl = client.portalUrl;
@@ -138,3 +140,42 @@ will make a request for the portal API URL the first time it is called.
 
 Please do a search for where you may be using `client.portalUrl` in your code
 and make the necessary changes, as shown on the right.
+
+### Renamed RegistryEntry datakey to dataKey for consistency
+
+```javascript
+const dataKey = "abcd";
+const entry = { datakey: dataKey, data, revision };
+```
+
+> =>
+
+```javascript
+const dataKey = "abcd";
+const entry = { dataKey, data, revision };
+```
+
+The `RegistryEntry` "datakey" field has been renamed to "dataKey" for
+consistency with the rest of the codebase.
+
+#### Required code changes
+
+Please do a search for any instance of `datakey` (case-sensitive) in your code
+and replace it with `dataKey`.
+
+### The getEntry timeout option has been removed as it no longer has an effect.
+
+```javascript
+await client.registry.getEntry(publicKey, dataKey, { timeout: 10 });
+```
+
+> =>
+
+```javascript
+await client.registry.getEntry(publicKey, dataKey);
+```
+
+#### Required code changes
+
+Please do a search for "timeout" in your code and remove it if using as an
+option to `getEntry`. You will get a runtime error if you don't make the change.
