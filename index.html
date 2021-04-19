@@ -1833,7 +1833,7 @@ approve the DAC&#39;s permissions if it requests nonstandard permissions.</p>
 <a href="https://github.com/SkynetLabs/content-record-library">content-record</a> DAC
 library provided by SkynetLabs.</p>
 <h3 id='method'>Method</h3>
-<p><code>mysky.loadDacs</code></p>
+<p><code>mySky.loadDacs</code></p>
 <h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1870,7 +1870,7 @@ if you want access to e.g. the data domain of skapp other than your own.</p>
 
 <p>Note that the requestor must be set manually in the <code>Permission</code> object.</p>
 <h3 id='method-2'>Method</h3>
-<p><code>mysky.addPermissions</code></p>
+<p><code>mySky.addPermissions</code></p>
 <h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
@@ -1993,9 +1993,9 @@ popup window will be blocked by most popup blockers!</p>
 </code></pre></div>
 <p>Makes an initial silent login attempt with the previously set permissions.</p>
 <h3 id='method-3'>Method</h3>
-<p><code>mysky.checkLogin</code></p>
+<p><code>mySky.checkLogin</code></p>
 <h3 id='parameters-4'>Parameters</h3>
-<p>None. Any requested permissions should be set earlier through <code>mysky.addPermissions</code>.</p>
+<p>None. Any requested permissions should be set earlier through <code>mySky.addPermissions</code>.</p>
 <h2 id='request-login-access-popup-login'>Request Login Access (Popup Login)</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
@@ -2025,9 +2025,9 @@ Note that this must be done *only* on button click, or the popup window will be
 blocked by most popup blockers!
 </aside>
 <h3 id='method-4'>Method</h3>
-<p><code>mysky.requestLoginAccess</code></p>
+<p><code>mySky.requestLoginAccess</code></p>
 <h3 id='parameters-5'>Parameters</h3>
-<p>None. Any requested permissions should be set earlier through <code>mysky.addPermissions</code>.</p>
+<p>None. Any requested permissions should be set earlier through <code>mySky.addPermissions</code>.</p>
 <h2 id='getting-and-setting-user-data'>Getting And Setting User Data</h2>
 <p>Once a user is logged in, the app will be able to get and set data in the user&#39;s
 filesystem, as long as the app has permissions for the filepath it is trying to
@@ -2045,13 +2045,13 @@ the requested filepath.
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getJSONExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="c1">// Get discoverable JSON data from the given path.</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mysky</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mySky</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">);</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method-5'>Method</h3>
-<p><code>mysky.getJSON</code></p>
+<p><code>mySky.getJSON</code></p>
 <h3 id='parameters-6'>Parameters</h3>
 <table><thead>
 <tr>
@@ -2090,13 +2090,13 @@ the requested filepath.
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setJSONExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
     <span class="c1">// Set discoverable JSON data at the given path. The return type is the same as getJSON.</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mysky</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mySky</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">});</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method-6'>Method</h3>
-<p><code>mysky.setJSON</code></p>
+<p><code>mySky.setJSON</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
 <tr>
