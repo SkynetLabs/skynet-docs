@@ -103,7 +103,7 @@ library provided by SkynetLabs.
 
 ### Method
 
-`mysky.loadDacs`
+`mySky.loadDacs`
 
 ### Parameters
 
@@ -139,7 +139,7 @@ Note that the requestor must be set manually in the `Permission` object.
 
 ### Method
 
-`mysky.addPermissions`
+`mySky.addPermissions`
 
 ### Parameters
 
@@ -215,11 +215,11 @@ Makes an initial silent login attempt with the previously set permissions.
 
 ### Method
 
-`mysky.checkLogin`
+`mySky.checkLogin`
 
 ### Parameters
 
-None. Any requested permissions should be set earlier through `mysky.addPermissions`.
+None. Any requested permissions should be set earlier through `mySky.addPermissions`.
 
 ## Request Login Access (Popup Login)
 
@@ -256,11 +256,11 @@ blocked by most popup blockers!
 
 ### Method
 
-`mysky.requestLoginAccess`
+`mySky.requestLoginAccess`
 
 ### Parameters
 
-None. Any requested permissions should be set earlier through `mysky.addPermissions`.
+None. Any requested permissions should be set earlier through `mySky.addPermissions`.
 
 ## Getting And Setting User Data
 
@@ -284,7 +284,7 @@ the requested filepath.
 async function getJSONExample() {
   try {
     // Get discoverable JSON data from the given path.
-    const { data, skylink } = await mysky.getJSON("app.hns/path/file.json");
+    const { data, skylink } = await mySky.getJSON("app.hns/path/file.json");
   } catch (error) {
     console.log(error)
   }
@@ -293,7 +293,7 @@ async function getJSONExample() {
 
 ### Method
 
-`mysky.getJSON`
+`mySky.getJSON`
 
 ### Parameters
 
@@ -316,7 +316,7 @@ Field | Description | Default
 async function setJSONExample() {
   try {
     // Set discoverable JSON data at the given path. The return type is the same as getJSON.
-    const { data, skylink } = await mysky.setJSON("app.hns/path/file.json", { message: "hello" });
+    const { data, skylink } = await mySky.setJSON("app.hns/path/file.json", { message: "hello" });
   } catch (error) {
     console.log(error)
   }
@@ -325,7 +325,7 @@ async function setJSONExample() {
 
 ### Method
 
-`mysky.setJSON`
+`mySky.setJSON`
 
 ### Parameters
 
