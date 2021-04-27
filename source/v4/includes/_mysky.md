@@ -238,7 +238,7 @@ async function requestLoginAccessExample() {
     // Add button action for login.
     if (!loggedIn) {
       document
-        .getObjectByID("login-button")
+        .getElementById("login-button")
         .addEventListener("click", mySky.requestLoginAccess());
     }
   } catch (error) {
