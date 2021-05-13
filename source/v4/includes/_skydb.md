@@ -48,7 +48,7 @@ Field | Type | Description
   data: {
     example: "This is some example JSON data."
   },
-  skylinke: "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+  skylink: "CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
 }
 ```
 
