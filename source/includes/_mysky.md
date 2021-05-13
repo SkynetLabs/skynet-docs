@@ -221,6 +221,12 @@ Makes an initial silent login attempt with the previously set permissions.
 
 None. Any requested permissions should be set earlier through `mySky.addPermissions`.
 
+### Response
+
+```javascript-browser
+true
+```
+
 ## Request Login Access (Popup Login)
 
 ```javascript--browser
@@ -262,6 +268,10 @@ blocked by most popup blockers!
 
 None. Any requested permissions should be set earlier through `mySky.addPermissions`.
 
+```javascript-browser
+true
+```
+
 ## Getting And Setting User Data
 
 Once a user is logged in, the app will be able to get and set data in the user's
@@ -284,7 +294,7 @@ the requested filepath.
 async function getJSONExample() {
   try {
     // Get discoverable JSON data from the given path.
-    const { data, skylink } = await mySky.getJSON("app.hns/path/file.json");
+    const { data, dataLink } = await mySky.getJSON("app.hns/path/file.json");
   } catch (error) {
     console.log(error)
   }
@@ -308,6 +318,17 @@ Field | Description | Default
 ----- | ----------- | -------
 `endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
 
+### Response
+
+```javascript-browser
+{
+  data: {
+    example: "This is some example JSON data."
+  },
+  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+}
+```
+
 ## Setting Discoverable JSON
 
 ```javascript--browser
@@ -316,7 +337,7 @@ Field | Description | Default
 async function setJSONExample() {
   try {
     // Set discoverable JSON data at the given path. The return type is the same as getJSON.
-    const { data, skylink } = await mySky.setJSON("app.hns/path/file.json", { message: "hello" });
+    const { data, dataLink } = await mySky.setJSON("app.hns/path/file.json", { message: "hello" });
   } catch (error) {
     console.log(error)
   }
@@ -341,3 +362,14 @@ Field | Description | Default
 ----- | ----------- | -------
 `endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
 `endpointSetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+
+### Response
+
+```javascript-browser
+{
+  data: {
+    example: "This is some example JSON data."
+  },
+  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+}
+```
