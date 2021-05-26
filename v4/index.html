@@ -3164,12 +3164,17 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <li><a href="#breaking-changes">Breaking Changes</a>
 
 <ul>
-<li><a href="#skydb-getjson-returns-a-skylink-instead-of-a-revision-number">SkyDB getJSON returns a skylink instead of a revision number</a></li>
+<li><a href="#skydb-getjson-returns-a-data-link-instead-of-a-revision-number">SkyDB getJSON returns a data link instead of a revision number</a></li>
 <li><a href="#skydb-setjson-no-longer-accepts-an-optional-revision-number">SkyDB setJSON no longer accepts an optional revision number</a></li>
 <li><a href="#getskylinkurl-downloadfile-openfile-and-the-hns-equivalents-are-all-now-async">getSkylinkUrl, downloadFile, openFile, and the HNS equivalents are all now async</a></li>
 <li><a href="#portalurl-is-now-an-async-method-instead-of-a-variable">portalUrl is now an async method instead of a variable</a></li>
 <li><a href="#renamed-registryentry-datakey-to-datakey-for-consistency">Renamed RegistryEntry datakey to dataKey for consistency</a></li>
-<li><a href="#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect">The getEntry timeout option has been removed as it no longer has an effect.</a></li>
+<li><a href="#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect">The getEntry timeout option has been removed as it no longer has an effect</a></li>
+<li><a href="#getfilecontent-and-getfilecontenthns-no-longer-return-metadata">getFileContent and getFileContentHns no longer return metadata</a></li>
+<li><a href="#getmetadata-no-longer-returns-contenttype">getMetadata no longer returns contentType</a></li>
+<li><a href="#registry-entries-now-take-data-that-is-type-uint8array-instead-of-string">Registry entries now take data that is type Uint8Array instead of string</a></li>
+<li><a href="#the-sia-skylink-prefix-has-been-changed-to-sia">The sia: skylink prefix has been changed to sia://</a></li>
+<li><a href="#skylinks-returned-from-skydb-all-start-with-sia">Skylinks returned from SkyDB all start with sia://</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -3198,12 +3203,12 @@ like regular libraries.</p>
 <p>For example, to install SkynetLabs&#39;s official Content Record DAC (see right):</p>
 
 <p>Usage instructions can be found <a href="https://github.com/SkynetLabs/content-record-library">here</a>.</p>
-<h2 id='breaking-changes'>Breaking Changes</h2><h3 id='skydb-getjson-returns-a-skylink-instead-of-a-revision-number'>SkyDB getJSON returns a skylink instead of a revision number</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<h2 id='breaking-changes'>Breaking Changes</h2><h3 id='skydb-getjson-returns-a-data-link-instead-of-a-revision-number'>SkyDB getJSON returns a data link instead of a revision number</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
 <p>=&gt;</p>
 </blockquote>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">dataLink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 </code></pre></div>
 <p>Revision numbers have been removed from SkyDB and the return value of <code>getJSON</code>
 changed according. See right.</p>
@@ -3268,15 +3273,66 @@ consistency with the rest of the codebase.</p>
 <h4 id='required-code-changes-5'>Required code changes</h4>
 <p>Please do a search for any instance of <code>datakey</code> (case-sensitive) in your code
 and replace it with <code>dataKey</code>.</p>
-<h3 id='the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect'>The getEntry timeout option has been removed as it no longer has an effect.</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">10</span> <span class="p">});</span>
+<h3 id='the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect'>The getEntry timeout option has been removed as it no longer has an effect</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="p">{</span> <span class="na">timeout</span><span class="p">:</span> <span class="mi">10</span> <span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>=&gt;</p>
 </blockquote>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-</code></pre></div><h4 id='required-code-changes-6'>Required code changes</h4>
+</code></pre></div>
+<p>The <code>timeout</code> optional option has been removed.</p>
+<h4 id='required-code-changes-6'>Required code changes</h4>
 <p>Please do a search for &quot;timeout&quot; in your code and remove it if using as an
 option to <code>getEntry</code>. You will get a runtime error if you don&#39;t make the change.</p>
+<h3 id='getfilecontent-and-getfilecontenthns-no-longer-return-metadata'>getFileContent and getFileContentHns no longer return metadata</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span><span class="p">,</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFileContent</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getFileContent</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
+</code></pre></div>
+<p>The metadata was too large to be returned in headers. It now has its own method
+and can only be obtained with <code>getMetadata</code>.</p>
+<h4 id='required-code-changes-7'>Required code changes</h4>
+<p>The metadata is no longer returned from these methods. Use the dedicated <code>getMetadata</code> method to get the metadata. See right.</p>
+<h3 id='getmetadata-no-longer-returns-contenttype'>getMetadata no longer returns contentType</h3>
+<p>The <code>getMetadata</code> method no longer returns a separate <code>contentType</code> field as it
+is now a part of the metadata itself.</p>
+<h3 id='registry-entries-now-take-data-that-is-type-uint8array-instead-of-string'>Registry entries now take data that is type Uint8Array instead of string</h3><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="nx">RegistryEntry</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+<span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">entry</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span> <span class="c1">// Previously, this was a string.</span>
+</code></pre></div>
+<blockquote>
+<p>=&gt;</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">stringToUint8ArrayUtf8</span><span class="p">,</span> <span class="nx">uint8ArrayToStringUtf8</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="nx">RegistryEntry</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">:</span> <span class="nx">stringToUint8ArrayUtf8</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">),</span> <span class="nx">revision</span> <span class="p">};</span>
+<span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">uint8ArrayToStringUtf8</span><span class="p">(</span><span class="nx">entry</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span> <span class="c1">// Now, this is a Uint8Array</span>
+</code></pre></div>
+<p>The type of <code>RegistryEntry.data</code> has changed. In order to maintain
+compatibility, please make sure you convert any string data to <code>Uint8Array</code> before
+calling <code>setEntry</code>, and that you convert <code>Uint8Array</code> back to a string on the
+returned data after calling <code>getEntry</code>.</p>
+
+<p>You should still be able to read entries set using older versions of the SDK,
+including SkyDB entries, but older versions may no longer be able to read
+entries set using the new version.</p>
+<h4 id='required-code-changes-8'>Required code changes</h4>
+<p>Please use the provided conversion functions <code>stringToUint8ArrayUtf8</code> and
+<code>uint8ArrayToStringUtf8</code> if you wish to continue using strings instead of raw
+bytes when working with entry data. See right.</p>
+<h3 id='the-sia-skylink-prefix-has-been-changed-to-sia'>The sia: skylink prefix has been changed to sia://</h3>
+<p>Please be aware of this change when working with any skylinks returned from the
+API.</p>
+<h3 id='skylinks-returned-from-skydb-all-start-with-sia'>Skylinks returned from SkyDB all start with sia://</h3>
+<p>Previously, some skylinks returned from SkyDB did not contain either the <code>sia:</code>
+or the <code>sia://</code> prefix. Please be aware that they now start with the new prefix
+(see above).</p>
 
       </div>
       <div class="dark-box">
