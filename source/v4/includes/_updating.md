@@ -9,12 +9,17 @@
     - [Upgrading](#upgrading)
     - [Installing a DAC](#installing-a-dac)
     - [Breaking Changes](#breaking-changes)
-        - [SkyDB getJSON returns a skylink instead of a revision number](#skydb-getjson-returns-a-skylink-instead-of-a-revision-number)
+        - [SkyDB getJSON returns a data link instead of a revision number](#skydb-getjson-returns-a-data-link-instead-of-a-revision-number)
         - [SkyDB setJSON no longer accepts an optional revision number](#skydb-setjson-no-longer-accepts-an-optional-revision-number)
         - [getSkylinkUrl, downloadFile, openFile, and the HNS equivalents are all now async](#getskylinkurl-downloadfile-openfile-and-the-hns-equivalents-are-all-now-async)
         - [portalUrl is now an async method instead of a variable](#portalurl-is-now-an-async-method-instead-of-a-variable)
         - [Renamed RegistryEntry datakey to dataKey for consistency](#renamed-registryentry-datakey-to-datakey-for-consistency)
-        - [The getEntry timeout option has been removed as it no longer has an effect.](#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect)
+        - [The getEntry timeout option has been removed as it no longer has an effect](#the-getentry-timeout-option-has-been-removed-as-it-no-longer-has-an-effect)
+        - [getFileContent and getFileContentHns no longer return metadata](#getfilecontent-and-getfilecontenthns-no-longer-return-metadata)
+        - [getMetadata no longer returns contentType](#getmetadata-no-longer-returns-contenttype)
+        - [Registry entries now take data that is type Uint8Array instead of string](#registry-entries-now-take-data-that-is-type-uint8array-instead-of-string)
+        - [The sia: skylink prefix has been changed to sia://](#the-sia-skylink-prefix-has-been-changed-to-sia)
+        - [Skylinks returned from SkyDB all start with sia://](#skylinks-returned-from-skydb-all-start-with-sia)
 
 <!-- markdown-toc end -->
 
@@ -53,7 +58,7 @@ Usage instructions can be found [here](https://github.com/SkynetLabs/content-rec
 
 ## Breaking Changes
 
-### SkyDB getJSON returns a skylink instead of a revision number
+### SkyDB getJSON returns a data link instead of a revision number
 
 ```javascript
 const { data, revision } = await client.db.getJSON(publicKey, dataKey);
@@ -62,7 +67,7 @@ const { data, revision } = await client.db.getJSON(publicKey, dataKey);
 > =>
 
 ```javascript
-const { data, skylink } = await client.db.getJSON(publicKey, dataKey);
+const { data, dataLink } = await client.db.getJSON(publicKey, dataKey);
 ```
 
 Revision numbers have been removed from SkyDB and the return value of `getJSON`
@@ -163,7 +168,7 @@ consistency with the rest of the codebase.
 Please do a search for any instance of `datakey` (case-sensitive) in your code
 and replace it with `dataKey`.
 
-### The getEntry timeout option has been removed as it no longer has an effect.
+### The getEntry timeout option has been removed as it no longer has an effect
 
 ```javascript
 await client.registry.getEntry(publicKey, dataKey, { timeout: 10 });
@@ -175,7 +180,80 @@ await client.registry.getEntry(publicKey, dataKey, { timeout: 10 });
 await client.registry.getEntry(publicKey, dataKey);
 ```
 
+The `timeout` optional option has been removed.
+
 #### Required code changes
 
 Please do a search for "timeout" in your code and remove it if using as an
 option to `getEntry`. You will get a runtime error if you don't make the change.
+
+### getFileContent and getFileContentHns no longer return metadata
+
+```javascript
+const { skylink, metadata } = await client.getFileContent(skylink);
+```
+
+> =>
+
+```javascript
+const { skylink } = await client.getFileContent(skylink);
+const { metadata } = await client.getMetadata(skylink);
+```
+
+The metadata was too large to be returned in headers. It now has its own method
+and can only be obtained with `getMetadata`.
+
+#### Required code changes
+
+The metadata is no longer returned from these methods. Use the dedicated `getMetadata` method to get the metadata. See right.
+
+### getMetadata no longer returns contentType
+
+The `getMetadata` method no longer returns a separate `contentType` field as it
+is now a part of the metadata itself.
+
+### Registry entries now take data that is type Uint8Array instead of string
+
+```javascript
+const entry = RegistryEntry { dataKey, data: "hello", revision };
+await client.registry.setEntry(privateKey, entry);
+const { entry } = client.registry.getEntry(publicKey, dataKey);
+const data = entry.data; // Previously, this was a string.
+```
+
+> =>
+
+```javascript
+import { stringToUint8ArrayUtf8, uint8ArrayToStringUtf8 } from "skynet-js";
+
+const entry = RegistryEntry { dataKey, data: stringToUint8ArrayUtf8("hello"), revision };
+await client.registry.setEntry(privateKey, entry);
+const { entry } = client.registry.getEntry(publicKey, dataKey);
+const data = uint8ArrayToStringUtf8(entry.data); // Now, this is a Uint8Array
+```
+
+The type of `RegistryEntry.data` has changed. In order to maintain
+compatibility, please make sure you convert any string data to `Uint8Array` before
+calling `setEntry`, and that you convert `Uint8Array` back to a string on the
+returned data after calling `getEntry`.
+
+You should still be able to read entries set using older versions of the SDK,
+including SkyDB entries, but older versions may no longer be able to read
+entries set using the new version.
+
+#### Required code changes
+
+Please use the provided conversion functions `stringToUint8ArrayUtf8` and
+`uint8ArrayToStringUtf8` if you wish to continue using strings instead of raw
+bytes when working with entry data. See right.
+
+### The sia: skylink prefix has been changed to sia://
+
+Please be aware of this change when working with any skylinks returned from the
+API.
+
+### Skylinks returned from SkyDB all start with sia://
+
+Previously, some skylinks returned from SkyDB did not contain either the `sia:`
+or the `sia://` prefix. Please be aware that they now start with the new prefix
+(see above).
