@@ -89,6 +89,11 @@ async function loadDacsExample() {
 }
 ```
 
+<aside class="success">
+DAC stands for "Data Access Controller". Find out more about DACs at
+<a href="https://blog.sia.tech/mysky-your-home-on-the-global-operating-system-of-the-future-5a288f89825c">this blog post</a>.
+</aside>
+
 This method loads the given DACs. They must have been instantiated previously
 using the DAC library's constructor, which creates the iframe for the DAC. DACs
 must also be loaded before they are ready to use.
