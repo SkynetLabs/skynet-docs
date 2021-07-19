@@ -1,7 +1,9 @@
 # SkyDB
 
 SkyDB is a framework that allows Skynet users to create decentralized accounts
-and store mutable files in those accounts. It is built on top of the [Registry](#registry), where every SkyDB entry in the Registry is a skylink that contains the full data.
+and store mutable files in those accounts. It is built on top of the
+[Registry](#registry), where every SkyDB entry in the Registry is a skylink that
+contains the full data.
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.

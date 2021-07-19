@@ -138,9 +138,15 @@ async function addPermissionsExample() {
 
 This method lets you add one or more custom permissions, which are then
 requested on login and must be approved by the user. It is useful to call this
-if you want access to e.g. the data domain of skapp other than your own.
+if you want access to e.g. the data domain of a skapp other than your own.
 
-Note that the requestor must be set manually in the `Permission` object.
+Note that the requestor must be set manually in the `Permission` object. For
+example, if you know that your skapp lives at `requestor.hns`, the requestor
+should be `"requestor.hns"`.
+
+You can request permission for either the entire domain or just a specific path.
+For more information about valid paths please consult [MySky
+Paths](#mysky-paths).
 
 ### Method
 
@@ -183,6 +189,51 @@ Value | Description | Constant
 ----- | ----------- | --------
 `PermType.Read` | Permission for reading. | `PermRead`
 `PermType.Write` | Permission for writing. | `PermWrite`
+
+## MySky Paths
+
+When calling methods to write or get data, a path must be passed in. Paths can
+point to a file or a directory; examples include
+`sky-feed.hns/path/to/file.json` and `riftapp.hns/some/directory`.
+
+All data
+lives at a certain path. Likewise, all paths have associated permissions. So a
+skapp cannot access a path, and its data, if it doesn't have permission with
+MySky to do so.
+
+### Path format
+
+Paths have a specific format that they must follow. All paths must start with a
+data domain, which usually is the domain of a skapp on Skynet, such as
+`riftapp.hns`. **Note:** this should **not** include the portal, such as
+`riftapp.hns.siasky.net`. Use `await client.extractDomain(url)` if you have a
+full URL and need the domain.
+
+The path may just be a data domain, for example when a skapp is requesting
+permissions for all files at a domain. The path may also contain a path to a
+file or directory after the data domain, with each path element separated by a
+forward slash.
+
+### Examples
+
+Valid paths include:
+
+<pre class="not_example">
+"app.hns"
+"app.hns/"
+"app.hns/path/file.json"
+"app.hns/path/"
+"app.hns/path"
+</pre>
+
+Invalid paths include:
+
+<pre class="not_example">
+"/app.hns"
+"/app.hns/path/"
+"/"
+""
+</pre>
 
 ## Logging In
 
