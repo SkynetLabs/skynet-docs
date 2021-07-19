@@ -60,7 +60,7 @@ If the skapp domain matches the requestor domain (e.g. the `skappDomain` is
 automatically, by default.
 </aside>
 
-## Additional Options
+### Additional Options
 
 Field | Description | Default
 ----- | ----------- | -------
