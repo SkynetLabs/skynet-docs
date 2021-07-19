@@ -194,7 +194,7 @@ Value | Description | Constant
 
 When calling methods to write or get data, a path must be passed in. Paths can
 point to a file or a directory; examples include
-`sky-feed.hns/path/to/file.json` and `riftapp.hns/some/directory`.
+`skyfeed.hns/path/to/file.json` and `riftapp.hns/some/directory`.
 
 All data
 lives at a certain path. Likewise, all paths have associated permissions. So a
