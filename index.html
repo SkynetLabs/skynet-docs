@@ -337,6 +337,9 @@
                     <a href="#adding-custom-permissions" class="toc-h2 toc-link" data-title="Adding Custom Permissions">Adding Custom Permissions</a>
                   </li>
                   <li>
+                    <a href="#mysky-paths" class="toc-h2 toc-link" data-title="MySky Paths">MySky Paths</a>
+                  </li>
+                  <li>
                     <a href="#logging-in" class="toc-h2 toc-link" data-title="Logging In">Logging In</a>
                   </li>
                   <li>
@@ -1438,7 +1441,9 @@ would be returned if the request had been a GET request.</p>
 <p>Coming Soon</p>
 <h1 id='skydb'>SkyDB</h1>
 <p>SkyDB is a framework that allows Skynet users to create decentralized accounts
-and store mutable files in those accounts. It is built on top of the <a href="#registry">Registry</a>, where every SkyDB entry in the Registry is a skylink that contains the full data.</p>
+and store mutable files in those accounts. It is built on top of the
+<a href="#registry">Registry</a>, where every SkyDB entry in the Registry is a skylink that
+contains the full data.</p>
 
 <aside class="warning">
 These functions have only been implemented for Browser JS at the moment.
@@ -1868,9 +1873,15 @@ library provided by SkynetLabs.</p>
 </code></pre></div>
 <p>This method lets you add one or more custom permissions, which are then
 requested on login and must be approved by the user. It is useful to call this
-if you want access to e.g. the data domain of skapp other than your own.</p>
+if you want access to e.g. the data domain of a skapp other than your own.</p>
 
-<p>Note that the requestor must be set manually in the <code>Permission</code> object.</p>
+<p>Note that the requestor must be set manually in the <code>Permission</code> object. For
+example, if you know that your skapp lives at <code>requestor.hns</code>, the requestor
+should be <code>&quot;requestor.hns&quot;</code>.</p>
+
+<p>You can request permission for either the entire domain or just a specific path.
+For more information about valid paths please consult <a href="#mysky-paths">MySky
+Paths</a>.</p>
 <h3 id='method-2'>Method</h3>
 <p><code>mySky.addPermissions</code></p>
 <h3 id='parameters-3'>Parameters</h3>
@@ -1967,6 +1978,45 @@ you can use the provided constant instead of the enum value.</p>
 <td><code>PermWrite</code></td>
 </tr>
 </tbody></table>
+<h2 id='mysky-paths'>MySky Paths</h2>
+<p>When calling methods to write or get data, a path must be passed in. Paths can
+point to a file or a directory; examples include
+<code>sky-feed.hns/path/to/file.json</code> and <code>riftapp.hns/some/directory</code>.</p>
+
+<p>All data
+lives at a certain path. Likewise, all paths have associated permissions. So a
+skapp cannot access a path, and its data, if it doesn&#39;t have permission with
+MySky to do so.</p>
+<h3 id='path-format'>Path format</h3>
+<p>Paths have a specific format that they must follow. All paths must start with a
+data domain, which usually is the domain of a skapp on Skynet, such as
+<code>riftapp.hns</code>. <strong>Note:</strong> this should <strong>not</strong> include the portal, such as
+<code>riftapp.hns.siasky.net</code>. Use <code>await client.extractDomain(url)</code> if you have a
+full URL and need the domain.</p>
+
+<p>The path may just be a data domain, for example when a skapp is requesting
+permissions for all files at a domain. The path may also contain a path to a
+file or directory after the data domain, with each path element separated by a
+forward slash.</p>
+<h3 id='examples'>Examples</h3>
+<p>Valid paths include:</p>
+
+<pre class="not_example">
+"app.hns"
+"app.hns/"
+"app.hns/path/file.json"
+"app.hns/path/"
+"app.hns/path"
+</pre>
+
+<p>Invalid paths include:</p>
+
+<pre class="not_example">
+"/app.hns"
+"/app.hns/path/"
+"/"
+""
+</pre>
 <h2 id='logging-in'>Logging In</h2>
 <p>In order to actually use MySky the user will need to be logged in to a MySky
 account. Most of the time, the user should already be logged in -- a single
