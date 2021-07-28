@@ -279,7 +279,7 @@ None. Any requested permissions should be set earlier through `mySky.addPermissi
 
 ### Response
 
-```javascript-browser
+```javascript--browser
 true
 ```
 
@@ -324,9 +324,32 @@ blocked by most popup blockers!
 
 None. Any requested permissions should be set earlier through `mySky.addPermissions`.
 
-```javascript-browser
+```javascript--browser
 true
 ```
+
+## Logout
+
+```javascript--browser
+async function logoutExample() {
+  try {
+    await mySky.logout();
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+Logout method that can be called if the user is logged in. Note that the `MySky`
+instance cannot be used to access data until the user logs in again.
+
+### Method
+
+`mySky.logout`
+
+### Parameters
+
+None.
 
 ## Getting And Setting User Data
 
