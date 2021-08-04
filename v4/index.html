@@ -360,6 +360,12 @@
                   <li>
                     <a href="#setting-discoverable-json" class="toc-h2 toc-link" data-title="Setting Discoverable JSON">Setting Discoverable JSON</a>
                   </li>
+                  <li>
+                    <a href="#getting-encrypted-json" class="toc-h2 toc-link" data-title="Getting Encrypted JSON">Getting Encrypted JSON</a>
+                  </li>
+                  <li>
+                    <a href="#setting-encrypted-json" class="toc-h2 toc-link" data-title="Setting Encrypted JSON">Setting Encrypted JSON</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -373,23 +379,6 @@
                   </li>
                   <li>
                     <a href="#deriving-child-seeds" class="toc-h2 toc-link" data-title="Deriving Child Seeds">Deriving Child Seeds</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#encryption" class="toc-h1 toc-link" data-title="Encryption">Encryption</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#creating-a-skykey" class="toc-h2 toc-link" data-title="Creating A Skykey">Creating A Skykey</a>
-                  </li>
-                  <li>
-                    <a href="#adding-a-skykey" class="toc-h2 toc-link" data-title="Adding A Skykey">Adding A Skykey</a>
-                  </li>
-                  <li>
-                    <a href="#getting-a-skykey-by-name" class="toc-h2 toc-link" data-title="Getting A Skykey By Name">Getting A Skykey By Name</a>
-                  </li>
-                  <li>
-                    <a href="#listing-skykeys" class="toc-h2 toc-link" data-title="Listing Skykeys">Listing Skykeys</a>
                   </li>
               </ul>
           </li>
@@ -2121,7 +2110,10 @@ the requested filepath.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='method-6'>Method</h3>
+</code></pre></div>
+<p>This method gets discoverable JSON. It does not require permissions because all
+discoverable data can be read publicly.</p>
+<h3 id='method-6'>Method</h3>
 <p><code>mySky.getJSON</code></p>
 <h3 id='parameters-7'>Parameters</h3>
 <table><thead>
@@ -2151,17 +2143,27 @@ the requested filepath.
 </tr>
 </thead><tbody>
 <tr>
+<td><code>cachedDataLink</code></td>
+<td>The latest known data link. If the data link at the registry entry is the same, then skip downloading the file again.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>endpointDownload</code></td>
+<td>The relative URL path of the portal endpoint to contact for downloads.</td>
+<td><code>/</code></td>
+</tr>
+<tr>
 <td><code>endpointGetEntry</code></td>
-<td>The relative URL path of the portal endpoint to contact.</td>
+<td>The relative URL path of the portal endpoint to contact for the registry.</td>
 <td><code>/skynet/registry</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
-  data: {
-    example: "This is some example JSON data."
-  },
-  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
-}
+<h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+<span class="p">}</span>
 </code></pre></div><h2 id='setting-discoverable-json'>Setting Discoverable JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setJSONExample</span><span class="p">()</span> <span class="p">{</span>
@@ -2172,7 +2174,10 @@ the requested filepath.
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h3 id='method-7'>Method</h3>
+</code></pre></div>
+<p>This method sets discoverable JSON. It requires Discoverable Write permissions
+for the given path.</p>
+<h3 id='method-7'>Method</h3>
 <p><code>mySky.setJSON</code></p>
 <h3 id='parameters-8'>Parameters</h3>
 <table><thead>
@@ -2217,12 +2222,137 @@ the requested filepath.
 <td><code>/skynet/registry</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
-  data: {
-    example: "This is some example JSON data."
-  },
-  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
-}
+<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div><h2 id='getting-encrypted-json'>Getting Encrypted JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getJSONEncryptedExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Get encrypted JSON data from the given path.</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mySky</span><span class="p">.</span><span class="nx">getJSONEncrypted</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This method gets encrypted JSON. It requires Hidden Read permissions for the given path.</p>
+<h3 id='method-8'>Method</h3>
+<p><code>mySky.getJSONEncrypted</code></p>
+<h3 id='parameters-9'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>The data path.</td>
+</tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters-3'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>cachedDataLink</code></td>
+<td>The latest known data link. If the data link at the registry entry is the same, then skip downloading the file again.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>endpointDownload</code></td>
+<td>The relative URL path of the portal endpoint to contact for downloads.</td>
+<td><code>/</code></td>
+</tr>
+<tr>
+<td><code>endpointGetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-4'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><h2 id='setting-encrypted-json'>Setting Encrypted JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">setJSONEncryptedExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="c1">// Set encrypted JSON data at the given path. The return type is the same as getJSONEncrypted.</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">mySky</span><span class="p">.</span><span class="nx">setJSONEncrypted</span><span class="p">(</span><span class="dl">"</span><span class="s2">app.hns/path/file.json</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This method sets encrypted JSON. It requires Hidden Write permissions for the
+given path.</p>
+<h3 id='method-9'>Method</h3>
+<p><code>mySky.setJSONEncrypted</code></p>
+<h3 id='parameters-10'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>The data path.</td>
+</tr>
+<tr>
+<td><code>json</code></td>
+<td><code>Object</code></td>
+<td>The data to set.</td>
+</tr>
+<tr>
+<td><code>customOptions</code></td>
+<td><code>Object</code></td>
+<td>Custom options to pass into this method. See below.</td>
+</tr>
+</tbody></table>
+<h3 id='optional-parameters-4'>Optional Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>endpointGetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+<tr>
+<td><code>endpointSetEntry</code></td>
+<td>The relative URL path of the portal endpoint to contact.</td>
+<td><code>/skynet/registry</code></td>
+</tr>
+</tbody></table>
+<h3 id='response-5'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div><h1 id='crypto-utilities'>Crypto Utilities</h1>
 <p>This page documents cryptographic utilities for generating public and private
 keys as well as secure seeds. Private keys should, as the name implies, be kept
@@ -2302,406 +2432,7 @@ the subseed can be the name of an application.</p>
 </tr>
 </tbody></table>
 <h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>"f79cd29b92124c80a662f3085bba98955f7defbaed6e58ea891b901dc99aafc0"
-</code></pre></div><h1 id='encryption'>Encryption</h1>
-<p>Encryption and decryption in Skynet are performed using <em>skykeys</em>. Skykeys can
-be created and queried using the functions in this section. The name or ID of a
-skykey must be provided when uploading or downloading with encryption.</p>
-
-<p>See also:</p>
-
-<ul>
-<li><a href="#uploading-with-encryption">Uploading With Encryption</a></li>
-<li><a href="#downloading-with-decryption">Downloading With Decryption</a></li>
-</ul>
-<h2 id='creating-a-skykey'>Creating A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span>  <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"name=key_to_the_castle"</span> <span class="nt">-d</span> <span class="s2">"type=private-id"</span> <span class="s2">"localhost:9980/skynet/createskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey create <span class="s2">"testcreateskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">createSkykeyExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">createSkykey</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
-
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">create_skykey</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"private-id"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Create skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">const</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Creating skykey with name %v...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">skykey</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">CreateSkykey</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"private-id"</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultCreateSkykeyOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to create skykey: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Created skykey %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
-</code></pre></div>
-<p>This function creates a skykey stored under the given name.</p>
-<h3 id='parameters'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>Desired name of the skykey.</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>Desired type of the skykey. The two supported types are <code>&quot;public-id&quot;</code> and <code>&quot;private-id&quot;</code>. Users should use <code>&quot;private-id&quot;</code> skykeys unless they have a specific reason to use <code>&quot;public-id&quot;</code> skykeys which reveal skykey IDs and show which skyfiles are encrypted with the same skykey.</td>
-</tr>
-</tbody></table>
-<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
-  <span class="s2">"skykey"</span>: <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1"</span>,
-  <span class="s2">"name"</span>: <span class="s2">"key_to_the_castle"</span>,
-  <span class="s2">"id"</span>: <span class="s2">"ai5z8cf5NWbcvPBaBn0DFQ=="</span>,
-  <span class="s2">"type"</span>: <span class="s2">"private-id"</span>
-<span class="o">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">skykey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">key_to_the_castle</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ai5z8cf5NWbcvPBaBn0DFQ==</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">skykey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">key_to_the_castle</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ai5z8cf5NWbcvPBaBn0DFQ==</span><span class="dl">"</span><span class="p">,</span>
-  <span class="dl">"</span><span class="s2">type</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">private-id</span><span class="dl">"</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="p">{</span>
-  <span class="s">"skykey"</span><span class="p">:</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1"</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="p">:</span> <span class="s">"key_to_the_castle"</span><span class="p">,</span>
-  <span class="s">"id"</span><span class="p">:</span> <span class="s">"ai5z8cf5NWbcvPBaBn0DFQ=="</span><span class="p">,</span>
-  <span class="s">"type"</span><span class="p">:</span> <span class="s">"private-id"</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="p">{</span>
-  <span class="s">"skykey"</span><span class="o">:</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq?name=testskykey1"</span><span class="p">,</span>
-  <span class="s">"name"</span><span class="o">:</span> <span class="s">"key_to_the_castle"</span><span class="p">,</span>
-  <span class="s">"id"</span><span class="o">:</span> <span class="s">"ai5z8cf5NWbcvPBaBn0DFQ=="</span><span class="p">,</span>
-  <span class="s">"type"</span><span class="o">:</span> <span class="s">"private-id"</span>
-<span class="p">}</span>
-</code></pre></div>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>skykey</code></td>
-<td>string</td>
-<td>Base-64 encoded Skykey</td>
-</tr>
-<tr>
-<td><code>name</code></td>
-<td>string</td>
-<td>Name of the Skykey</td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td>string</td>
-<td>ID of the Skykey</td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td>string</td>
-<td>Desired type of the skykey. See above for more information.</td>
-</tr>
-</tbody></table>
-<h2 id='adding-a-skykey'>Adding A Skykey</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"skykey=BAAAAAAAAABrZXkxAAAAAAAAAAQgAAAAAAAAADiObVg49-0juJ8udAx4qMW-TEHgDxfjA0fjJSNBuJ4a"</span> <span class="s2">"localhost:9980/skynet/addskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey add <span class="s2">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">addSkykeyExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">addSkykey</span><span class="p">(</span><span class="nx">skykey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">addSkykey</span><span class="p">(</span><span class="nx">skykey</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
-
-<span class="n">client</span><span class="o">.</span><span class="n">add_skykey</span><span class="p">(</span><span class="n">skykey</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Add skykey successful"</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">const</span> <span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Adding skykey %v...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
-    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">AddSkykey</span><span class="p">(</span><span class="n">skykey</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultAddSkykeyOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to add skykey: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-</code></pre></div>
-<p>This function stores the given skykey with the renter&#39;s skykey manager.</p>
-<h3 id='parameters-2'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>skykey</code></td>
-<td>Base-64 encoded skykey</td>
-</tr>
-</tbody></table>
-<h3 id='response-2'>Response</h3>
-<p>Error or exception on failure.</p>
-<h2 id='getting-a-skykey-by-name'>Getting A Skykey By Name</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># -G option is required to send --data (-d) with a GET.</span>
-curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"name=key_to_the_castle"</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get name <span class="s2">"testcreateskykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">getSkykeyByNameExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeyByName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">testcreateskykey</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeyByName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
-
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_skykey_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">const</span> <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Getting skykey with name %v...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-    <span class="n">skykey</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">GetSkykeyByName</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultGetSkykeyOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to get skykey: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Skykey: %#v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
-</code></pre></div>
-<p>This function returns the base-64 encoded skykey stored under that name.</p>
-<h3 id='parameters-3'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>Name of the skykey being queried.</td>
-</tr>
-</tbody></table>
-<h3 id='response-3'>Response</h3>
-<p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
-<h3 id='getting-a-skykey-by-id'>Getting A Skykey By ID</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># -G option is required to send --data (-d) with a GET.</span>
-curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"id=qwxONTt4agqbEmzPlSywaQ=="</span> <span class="s2">"localhost:9980/skynet/skykey"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey get <span class="nb">id</span> <span class="s2">"pJAPPfWkWXpss3BvMDCJCw=="</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">getSkykeyByIdExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeyById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="nx">id</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">pJAPPfWkWXpss3BvMDCJCw==</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykey</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeyById</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-<span class="nb">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
-
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_skykey_by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
-
-<span class="k">const</span> <span class="n">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Getting skykey with id %v...</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">id</span><span class="p">)</span>
-    <span class="n">skykey</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">GetSkykeyByID</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultGetSkykeyOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to get skykey: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Skykey: %#v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykey</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>This function returns the base-64 encoded skykey stored under that ID.</p>
-<h3 id='parameters-4'>Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>id</code></td>
-<td>ID of the skykey being queried.</td>
-</tr>
-</tbody></table>
-<h3 id='response-4'>Response</h3>
-<p>See <a href="#creating-a-skykey">Creating A Skykey</a>.</p>
-<h2 id='listing-skykeys'>Listing Skykeys</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="s2">"localhost:9980/skynet/skykeys"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet skykey list
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-
-<span class="k">async</span> <span class="kd">function</span> <span class="nx">getSkykeysExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeys</span><span class="p">();</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="c1">// NOTE: this function has not yet been implemented for this SDK.</span>
-
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@nebulous/skynet</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skykeys</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getSkykeys</span><span class="p">();</span>
-<span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># NOTE: this function has not yet been implemented for this SDK.
-</span>
-<span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
-
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
-
-<span class="n">skykeys</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_skykeys</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Get skykeys successful, skykeys: "</span> <span class="o">+</span> <span class="n">skykeys</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
-
-<span class="k">import</span> <span class="p">(</span>
-    <span class="s">"fmt"</span>
-    <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
-<span class="p">)</span>
-
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
-
-<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Listing skykeys..."</span><span class="p">)</span>
-    <span class="n">skykeys</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">ListSkykeys</span><span class="p">(</span><span class="n">skynet</span><span class="o">.</span><span class="n">DefaultListSkykeysOptions</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to get skykeys: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Skykeys: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skykeys</span><span class="p">)</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>This function lists all skykeys on the given portal.</p>
-<h3 id='parameters-5'>Parameters</h3>
-<p>None</p>
-<h3 id='response-5'>Response</h3>
-<p>List of Skykeys (see <a href="#creating-a-skykey">Creating A Skykey</a>).</p>
-<h1 id='handshake'>Handshake</h1>
+</code></pre></div><h1 id='handshake'>Handshake</h1>
 <p><a href="https://handshake.org/">Handshake</a> is a protocol which allows the creation of
 update-able content with persistent links, backed by the Skynet infrastructure.
 For more information on using Handshake with Skynet, please see <a href="https://blog.sia.tech/skynet-handshake-d5d16e6b632f">this blog
