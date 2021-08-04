@@ -28,7 +28,6 @@ includes:
   - registry
   - mysky
   - crypto-utilities
-  - encryption
   - handshake
   - browser-js-api
   - authentication

@@ -380,6 +380,9 @@ async function getJSONExample() {
 }
 ```
 
+This method gets discoverable JSON. It does not require permissions because all
+discoverable data can be read publicly.
+
 ### Method
 
 `mySky.getJSON`
@@ -395,11 +398,13 @@ Field | Type | Description
 
 Field | Description | Default
 ----- | ----------- | -------
-`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+`cachedDataLink` | The latest known data link. If the data link at the registry entry is the same, then skip downloading the file again. | `undefined`
+`endpointDownload` | The relative URL path of the portal endpoint to contact for downloads. | `/`
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact for the registry. | `/skynet/registry`
 
 ### Response
 
-```javascript-browser
+```javascript--browser
 {
   data: {
     example: "This is some example JSON data."
@@ -423,6 +428,9 @@ async function setJSONExample() {
 }
 ```
 
+This method sets discoverable JSON. It requires Discoverable Write permissions
+for the given path.
+
 ### Method
 
 `mySky.setJSON`
@@ -444,11 +452,104 @@ Field | Description | Default
 
 ### Response
 
-```javascript-browser
+```javascript--browser
 {
   data: {
     example: "This is some example JSON data."
   },
   dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+}
+```
+
+## Getting Encrypted JSON
+
+```javascript--browser
+// Assume we have a logged-in mysky instance from above
+
+async function getJSONEncryptedExample() {
+  try {
+    // Get encrypted JSON data from the given path.
+    const { data } = await mySky.getJSONEncrypted("app.hns/path/file.json");
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+This method gets encrypted JSON. It requires Hidden Read permissions for the given path.
+
+### Method
+
+`mySky.getJSONEncrypted`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`path` | `string` | The data path.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`cachedDataLink` | The latest known data link. If the data link at the registry entry is the same, then skip downloading the file again. | `undefined`
+`endpointDownload` | The relative URL path of the portal endpoint to contact for downloads. | `/`
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+
+### Response
+
+```javascript--browser
+{
+  data: {
+    example: "This is some example JSON data."
+  }
+}
+```
+
+## Setting Encrypted JSON
+
+```javascript--browser
+// Assume we have a logged-in mysky instance from above
+
+async function setJSONEncryptedExample() {
+  try {
+    // Set encrypted JSON data at the given path. The return type is the same as getJSONEncrypted.
+    const { data } = await mySky.setJSONEncrypted("app.hns/path/file.json", { message: "hello" });
+  } catch (error) {
+    console.log(error)
+  }
+}
+```
+
+This method sets encrypted JSON. It requires Hidden Write permissions for the
+given path.
+
+### Method
+
+`mySky.setJSONEncrypted`
+
+### Parameters
+
+Field | Type | Description
+----- | ---- | -----------
+`path` | `string` | The data path.
+`json` | `Object` | The data to set.
+`customOptions` | `Object` | Custom options to pass into this method. See below.
+
+### Optional Parameters
+
+Field | Description | Default
+----- | ----------- | -------
+`endpointGetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+`endpointSetEntry` | The relative URL path of the portal endpoint to contact. | `/skynet/registry`
+
+### Response
+
+```javascript--browser
+{
+  data: {
+    example: "This is some example JSON data."
+  }
 }
 ```
