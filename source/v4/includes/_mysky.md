@@ -56,8 +56,8 @@ Field | Description
 
 <aside class="success">
 If the skapp domain matches the requestor domain (e.g. the `skappDomain` is
-"app.hns" and your skapp is located at "app.hns") permission will be granted
-automatically, by default.
+"app.hns" and your skapp is located at "app.hns") full permissions will be
+granted automatically, by default.
 </aside>
 
 ### Additional Options
