@@ -444,8 +444,8 @@
       </ul>
         <ul class="toc-footer">
             <li>Version: v4</li>
-            <li><a href='v4'>Permalink to this version</a></li>
-            <li><a href='v3'>Previous version</a></li>
+            <li><a href='../v4'>Permalink to this version</a></li>
+            <li><a href=../'v3'>Previous version</a></li>
             <li>---</li>
             <li><a href='https://siasky.net/'>Check out Skynet!</a></li>
             <li><a href='https://github.com/SkynetLabs/skynet-docs'>Contribute to the docs</a></li>
@@ -457,7 +457,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
+<p><strong>Latest version:</strong> <a href='../v4'>v4</a> (<a href="../v4#updating-from-v3">Update Guide</a>)</p>
 
 <p>Welcome to the Skynet SDK documentation! To learn more about Skynet, see the
 <a href="https://support.siasky.net/">Skynet support docs</a>.</p>
@@ -1341,14 +1341,6 @@ would be returned if the request had been a GET request.</p>
 <td><code>skylink</code></td>
 <td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
 </tr>
-<tr>
-<td><code>contentType</code></td>
-<td>String representing the file&#39;s content type.</td>
-</tr>
-<tr>
-<td><code>metadata</code></td>
-<td>Object returned in the <code>skynet-metadata</code> header when accessing the file</td>
-</tr>
 </tbody></table>
 <h3 id='additional-options-2'>Additional Options</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
@@ -1430,8 +1422,26 @@ would be returned if the request had been a GET request.</p>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<p>Coming Soon</p>
+</code></pre></div><h3 id='parameters-3'>Parameters</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>skylink</code></td>
+<td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
+</tr>
+<tr>
+<td><code>contentType</code></td>
+<td>String representing the file&#39;s content type.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>Object returned in the <code>skynet-metadata</code> header when accessing the file.</td>
+</tr>
+</tbody></table>
 <h1 id='skydb'>SkyDB</h1>
 <p>SkyDB is a framework that allows Skynet users to create decentralized accounts
 and store mutable files in those accounts. It is built on top of the
