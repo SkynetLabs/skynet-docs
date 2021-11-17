@@ -301,8 +301,6 @@ would be returned if the request had been a GET request.
 Field | Description
 ----- | -----------
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
-| `contentType` | String representing the file's content type. |
-| `metadata` | Object returned in the `skynet-metadata` header when accessing the file |
 
 ### Additional Options
 
@@ -406,4 +404,10 @@ See [Downloading A File](#downloading-a-file).
 }
 ```
 
-Coming Soon
+### Parameters
+
+Field | Description
+----- | -----------
+`skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
+| `contentType` | String representing the file's content type. |
+| `metadata` | Object returned in the `skynet-metadata` header when accessing the file. |
