@@ -40,7 +40,8 @@ search: true
 
 **Latest version:** <a href='v4'>v4</a> ([Update Guide](v4#updating-from-v3))
 
-Welcome to the Skynet SDK docs! To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
+Welcome to the Skynet SDK documentation! To learn more about Skynet, see the
+[Skynet support docs](https://support.siasky.net/).
 
 We have SDK support for several languages:
 

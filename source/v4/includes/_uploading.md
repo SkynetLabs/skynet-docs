@@ -28,7 +28,7 @@ async function uploadExample() {
 ```
 
 ```javascript--node
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 const client = new SkynetClient();
 
@@ -179,7 +179,7 @@ async function uploadDirectoryExample() {
 ```
 
 ```javascript--node
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 const client = new SkynetClient();
 

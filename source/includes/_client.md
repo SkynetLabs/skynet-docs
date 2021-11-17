@@ -16,7 +16,7 @@ const client = new SkynetClient("https://some-other-portal.xyz");
 ```
 
 ```javascript--node
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 // Or SkynetClient() without arguments to use the default portal.
 const client = new SkynetClient("https://some-other-portal.xyz");
@@ -66,7 +66,7 @@ const client = new SkynetClient("", { APIKey: "foobar" });
 ```
 
 ```javascript--node
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 const client = new SkynetClient("", { APIKey: "foobar" });
 ```

@@ -37,7 +37,7 @@ try {
 ```javascript--node
 # NOTE: this function has not yet been implemented for this SDK.
 
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 const client = new SkynetClient();
 const domain = "doesn";
@@ -132,7 +132,7 @@ try {
 ```javascript--node
 # NOTE: this function has not yet been implemented for this SDK.
 
-const { SkynetClient } = require('@nebulous/skynet');
+const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
 const client = new SkynetClient();
 const domain = "doesn";
