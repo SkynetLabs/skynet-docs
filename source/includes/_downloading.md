@@ -404,8 +404,6 @@ See [Downloading A File](#downloading-a-file).
 }
 ```
 
-### Parameters
-
 Field | Description
 ----- | -----------
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.
