@@ -447,7 +447,7 @@ exceptions on failure. The error messages may contain HTTP status codes (see
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -585,7 +585,7 @@ parameters.
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span>
   <span class="s">"image.jpg"</span><span class="p">,</span>
   <span class="p">{</span><span class="s">"api_key"</span><span class="p">:</span> <span class="s">"foobar"</span><span class="p">,</span> <span class="s">"custom_user_agent"</span><span class="p">:</span> <span class="s">"Sia-Agent"</span><span class="p">}</span>
 <span class="p">)</span>
@@ -650,7 +650,7 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -815,7 +815,7 @@ Note that the SDKs only return the skylink since this is what you want most of t
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, url: "</span> <span class="o">+</span> <span class="n">url</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -938,7 +938,7 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 </span>
 <span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -989,7 +989,7 @@ options when uploading a file or directory.</p>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="n">skynet</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1096,7 +1096,7 @@ Directory</a> for examples.</p>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
 
-<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="n">skynet</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1148,7 +1148,7 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">md</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
 
 <span class="k">package</span> <span class="n">main</span>
@@ -1300,7 +1300,7 @@ would be returned if the request had been a GET request.</p>
 
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">skynet</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
+<span class="n">skynet</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="n">skykeyName</span><span class="p">:</span> <span class="s">"my-skykey"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1372,7 +1372,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
 
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">create_skykey</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"private-id"</span><span class="p">)</span>
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">create_skykey</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"private-id"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Create skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1499,7 +1499,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="n">skykey</span> <span class="o">=</span> <span class="s">"skykey:AUI0eAOXWXHwW6KOLyI5O1OYduVvHxAA8qUR_fJ8Kluasb-ykPlHBEjDczrL21hmjhH0zAoQ3-Qq"</span>
 
-<span class="n">skynet</span><span class="o">.</span><span class="n">add_skykey</span><span class="p">(</span><span class="n">skykey</span><span class="p">)</span>
+<span class="n">skynet</span><span class="p">.</span><span class="n">add_skykey</span><span class="p">(</span><span class="n">skykey</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Add skykey successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1563,7 +1563,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="n">name</span> <span class="o">=</span> <span class="s">"testcreateskykey"</span>
 
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykey_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">get_skykey_by_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1628,7 +1628,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 
 <span class="nb">id</span> <span class="o">=</span> <span class="s">"pJAPPfWkWXpss3BvMDCJCw=="</span>
 
-<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykey_by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
+<span class="n">skykey</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">get_skykey_by_id</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get skykey successful, skykey: "</span> <span class="o">+</span> <span class="n">skykey</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1686,7 +1686,7 @@ skykey must be provided when uploading or downloading with encryption.</p>
 </span>
 <span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">skykeys</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">get_skykeys</span><span class="p">()</span>
+<span class="n">skykeys</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">get_skykeys</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Get skykeys successful, skykeys: "</span> <span class="o">+</span> <span class="n">skykeys</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
