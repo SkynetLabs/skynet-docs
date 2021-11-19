@@ -2066,11 +2066,13 @@ popup window will be blocked by most popup blockers!</p>
     <span class="c1">// Add button action for login.</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">loggedIn</span><span class="p">)</span> <span class="p">{</span>
       <span class="nb">document</span>
-        <span class="p">.</span><span class="nx">getObjectByID</span><span class="p">(</span><span class="dl">"</span><span class="s2">login-button</span><span class="dl">"</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="nx">mySky</span><span class="p">.</span><span class="nx">requestLoginAccess</span><span class="p">());</span>
+        <span class="p">.</span><span class="nx">getElementByID</span><span class="p">(</span><span class="dl">"</span><span class="s2">login-button</span><span class="dl">"</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">"</span><span class="s2">click</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="nx">mySky</span><span class="p">.</span><span class="nx">requestLoginAccess</span><span class="p">();</span>
+        <span class="p">});</span>
     <span class="p">}</span>
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
