@@ -227,6 +227,9 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#languages" class="toc-h2 toc-link" data-title="Languages">Languages</a>
+                  </li>
+                  <li>
                     <a href="#tutorial" class="toc-h2 toc-link" data-title="Tutorial">Tutorial</a>
                   </li>
                   <li>
@@ -459,24 +462,24 @@
         <h1 id='introduction'>Introduction</h1>
 <p><strong>Latest version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
 
-<p>Welcome to the Skynet SDK documentation! To learn more about Skynet, see the
-<a href="https://support.siasky.net/">Skynet support docs</a>.</p>
+<p>Welcome to the Skynet SDK API reference docs!</p>
 
+<p>To learn more about Skynet, see the <a href="https://support.siasky.net/">Skynet support docs</a>.</p>
+
+<p>For developer guides, see the <a href="https://docs.siasky.net/">Skynet developer docs</a>.</p>
+<h2 id='languages'>Languages</h2>
 <p>We have SDK support for several languages:</p>
 
 <ul>
 <li>Shell (using curl). See the <a href="#using-the-shell">Using The Shell</a> section.</li>
-<li><a href="https://github.com/SkynetLabs/skynet-js">Browser JS</a></li>
-<li><a href="https://github.com/SkynetLabs/nodejs-skynet">NodeJS</a></li>
-<li><a href="https://github.com/SkynetLabs/python-skynet">Python</a></li>
-<li><a href="https://github.com/SkynetLabs/go-skynet">Go</a></li>
+<li><a href="https://github.com/SkynetLabs/skynet-js">Browser JS</a> <strong>(most up-to-date)</strong></li>
+<li><a href="https://github.com/SkynetLabs/nodejs-skynet">NodeJS</a> (missing MySky but mostly featureful)</li>
+<li><a href="https://github.com/SkynetLabs/python-skynet">Python</a> (basic functionality only)</li>
+<li><a href="https://github.com/SkynetLabs/go-skynet">Go</a> (basic functionality only)</li>
+<li><a href="https://github.com/SkynetLabs/skynet-cli">Skynet CLI</a> (written in Go, basic functionality only).</li>
 </ul>
 
-<p>as well as the <a href="https://github.com/SkynetLabs/skynet-cli">Skynet CLI</a> (written
-in Go).</p>
-
-<p>These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints.
-Full documentation for the Skynet HTTP API can be found in the <a href="https://sia.tech/docs/#skynet">Sia API
+<p>Full documentation for the Skynet HTTP API can be found in the <a href="https://sia.tech/docs/#skynet">Sia API
 Documentation</a>.</p>
 
 <aside class="success">
@@ -485,9 +488,8 @@ programming language of your choice by clicking the tabs in the top right.
 </aside>
 
 <aside class="warning">
-The SDKs are still partially under construction. Please see our <a
-href="https://hackmd.io/BFPWYyDfT6yalz0o_gipyw?view">status</a> document to see
-the level of feature support for each language.
+As of November 2021 the SDKs are still under heavy construction. Use the JS
+libraries for the best experience.
 </aside>
 <h2 id='tutorial'>Tutorial</h2>
 <p>We have a detailed tutorial for <a href="https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f">Creating Your First Webapp On
