@@ -42,11 +42,16 @@ search: true
 
 Welcome to the Skynet SDK API reference docs!
 
-To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
+To **learn more about Skynet**, see the [Skynet support docs](https://support.siasky.net/).
 
-For developer guides, see the [Skynet developer docs](https://docs.siasky.net/).
+For **developer guides**, see the [Skynet developer docs](https://docs.siasky.net/).
 
 ## Languages
+
+<aside class="warning">
+As of November 2021 the SDKs are still under heavy construction. Use the JS
+libraries for the best experience.
+</aside>
 
 We have SDK support for several languages:
 
@@ -63,11 +68,6 @@ Documentation](https://sia.tech/docs/#skynet).
 <aside class="success">
 You can view code examples in the dark area to the right. Switch to the
 programming language of your choice by clicking the tabs in the top right.
-</aside>
-
-<aside class="warning">
-As of November 2021 the SDKs are still under heavy construction. Use the JS
-libraries for the best experience.
 </aside>
 
 ## Tutorial
