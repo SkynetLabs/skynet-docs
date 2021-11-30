@@ -40,21 +40,23 @@ search: true
 
 **Latest version:** <a href='../v4'>v4</a> ([Update Guide](../v4#updating-from-v3))
 
-Welcome to the Skynet SDK documentation! To learn more about Skynet, see the
-[Skynet support docs](https://support.siasky.net/).
+Welcome to the Skynet SDK API reference docs!
+
+To learn more about Skynet, see the [Skynet support docs](https://support.siasky.net/).
+
+For developer guides, see the [Skynet developer docs](https://docs.siasky.net/).
+
+## Languages
 
 We have SDK support for several languages:
 
 - Shell (using curl). See the [Using The Shell](#using-the-shell) section.
-- [Browser JS](https://github.com/SkynetLabs/skynet-js)
-- [NodeJS](https://github.com/SkynetLabs/nodejs-skynet)
-- [Python](https://github.com/SkynetLabs/python-skynet)
-- [Go](https://github.com/SkynetLabs/go-skynet)
+- [Browser JS](https://github.com/SkynetLabs/skynet-js) **(most up-to-date)**
+- [NodeJS](https://github.com/SkynetLabs/nodejs-skynet) (missing MySky but mostly featureful)
+- [Python](https://github.com/SkynetLabs/python-skynet) (basic functionality only)
+- [Go](https://github.com/SkynetLabs/go-skynet) (basic functionality only)
+- [Skynet CLI](https://github.com/SkynetLabs/skynet-cli) (written in Go, basic functionality only).
 
-as well as the [Skynet CLI](https://github.com/SkynetLabs/skynet-cli) (written
-in Go).
-
-These SDKs are wrappers around HTTP calls to the corresponding Skynet endpoints.
 Full documentation for the Skynet HTTP API can be found in the [Sia API
 Documentation](https://sia.tech/docs/#skynet).
 
@@ -64,9 +66,8 @@ programming language of your choice by clicking the tabs in the top right.
 </aside>
 
 <aside class="warning">
-The SDKs are still partially under construction. Please see our <a
-href="https://hackmd.io/BFPWYyDfT6yalz0o_gipyw?view">status</a> document to see
-the level of feature support for each language.
+As of November 2021 the SDKs are still under heavy construction. Use the JS
+libraries for the best experience.
 </aside>
 
 ## Tutorial
