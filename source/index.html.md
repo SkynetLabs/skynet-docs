@@ -76,6 +76,8 @@ We have a detailed tutorial for [Creating Your First Webapp On
 Skynet](https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f)
 on our tech blog. Check it out if you are just starting out!
 
+See also our [developer docs](https://docs.siasky.net/) for more guides.
+
 ## Using the Beta
 
 We are releasing new features and fixes first on the `beta` stream. The latest
