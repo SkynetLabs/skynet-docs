@@ -256,7 +256,7 @@ const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
 
 (async () => {
 	const md = await client.getMetadata(skylink);
-	console.log(Get metadata successful');
+	console.log(`Get metadata successful: ${md}`);
 })();
 ```
 
