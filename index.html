@@ -1298,9 +1298,9 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">md</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">getMetadata</span><span class="p">(</span><span class="nx">skylink</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">Get</span> <span class="nx">metadata</span> <span class="nx">successful</span><span class="dl">'</span><span class="s1">);
-})();
-</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Get metadata successful: </span><span class="p">${</span><span class="nx">md</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
