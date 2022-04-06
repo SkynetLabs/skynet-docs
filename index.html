@@ -423,10 +423,10 @@
             <a href="#api-authentication" class="toc-h1 toc-link" data-title="API Authentication">API Authentication</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#setting-the-user-agent" class="toc-h2 toc-link" data-title="Setting The User Agent">Setting The User Agent</a>
+                    <a href="#skynet-portal-authentication" class="toc-h2 toc-link" data-title="Skynet Portal Authentication">Skynet Portal Authentication</a>
                   </li>
                   <li>
-                    <a href="#more-information" class="toc-h2 toc-link" data-title="More Information">More Information</a>
+                    <a href="#local-node-authentication" class="toc-h2 toc-link" data-title="Local Node Authentication">Local Node Authentication</a>
                   </li>
               </ul>
           </li>
@@ -2890,7 +2890,39 @@ domain.</p>
 <td>See <a href="#uploading-a-file">Uploading A File</a>.</td>
 </tr>
 </tbody></table>
-<h1 id='api-authentication'>API Authentication</h1><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:<span class="s2">"foobar"</span> <span class="se">\</span>
+<h1 id='api-authentication'>API Authentication</h1><h2 id='skynet-portal-authentication'>Skynet Portal Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">authenticationExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetAPIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@skynetlabs/skynet-nodejs</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetAPIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="p">})();</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div>
+<p>Certain Skynet portals are only available to signed-in or paid users. To access
+these programmatically, you will need an API key. You can get an API key for
+your user and pass it either to individual calls or to the Skynet client.</p>
+
+<p><strong>Warning:</strong> Be careful not to leak your API key as it will allow malicious
+attackers to compromise your account!</p>
+<h3 id='obtaining-a-skynet-api-key'>Obtaining a Skynet API Key</h3>
+<p><a href="https://docs.skynetlabs.com/developer-guides/server-hosted-skynet-usage#obtaining-your-skynet-api-key">Instructions</a></p>
+<h2 id='local-node-authentication'>Local Node Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">--user</span> <span class="s2">""</span>:<span class="s2">"foobar"</span> <span class="se">\</span>
   <span class="s2">"https://siasky.net/skynet/skyfile"</span> <span class="nt">-F</span> <span class="s1">'file=@image.jpg'</span>
 </code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload <span class="s2">"./image.jpg"</span> <span class="nt">--api-key</span> <span class="s2">"foobar"</span> <span class="nt">--custom-user-agent</span> <span class="s2">"Sia-Agent"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -2953,7 +2985,7 @@ is to prevent unwanted modifications to the blocklist, portal list, etc.</p>
 <p>If you are authorized to use password-protected endpoints on a portal, you may
 authenticate yourself by setting the <code>APIKey</code> custom option when calling a
 function.</p>
-<h2 id='setting-the-user-agent'>Setting The User Agent</h2>
+<h3 id='setting-the-user-agent'>Setting The User Agent</h3>
 <p>The portal may also require that certain sensitive requests contain a custom
 user agent header, usually <code>Sia-Agent</code>. This is for security purposes, as
 otherwise a malicious website could make requests to your local portal on your
@@ -2962,7 +2994,7 @@ behalf and steal coins.</p>
 <p>We want this to be an opt-in for now, so <code>Sia-Agent</code> is not currently the
 default. You may change the user agent header by setting the <code>customUserAgent</code>
 custom option. See <a href="#setting-additional-options">Setting Additional Options</a>.</p>
-<h2 id='more-information'>More Information</h2>
+<h3 id='more-information'>More Information</h3>
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='updating-from-v3'>Updating From v3</h1>
