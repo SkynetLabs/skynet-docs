@@ -49,7 +49,7 @@ For **developer guides**, see the [Skynet developer docs](https://docs.siasky.ne
 ## Languages
 
 <aside class="warning">
-As of November 2021 the SDKs are still under heavy construction. Use the JS
+As of April 2022 the non-JS SDKs are still under heavy construction. Use the JS
 libraries for the best experience.
 </aside>
 
@@ -57,7 +57,7 @@ We have SDK support for several languages:
 
 - Shell (using curl). See the [Using The Shell](#using-the-shell) section.
 - [Browser JS](https://github.com/SkynetLabs/skynet-js) **(most up-to-date)**
-- [NodeJS](https://github.com/SkynetLabs/nodejs-skynet) (missing MySky but mostly featureful)
+- [NodeJS](https://github.com/SkynetLabs/nodejs-skynet) (missing SkyDB and MySky but mostly featureful)
 - [Python](https://github.com/SkynetLabs/python-skynet) (basic functionality only)
 - [Go](https://github.com/SkynetLabs/go-skynet) (basic functionality only)
 - [Skynet CLI](https://github.com/SkynetLabs/skynet-cli) (written in Go, basic functionality only).
