@@ -2998,7 +2998,7 @@ custom option. See <a href="#setting-additional-options">Setting Additional Opti
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='updating-from-v3'>Updating From v3</h1>
-<p><a href="https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG-BETA.md">Changelog</a></p>
+<p><a href="https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md">Changelog</a></p>
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 
@@ -3030,14 +3030,15 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 
 <!-- markdown-toc end -->
 
-<p>We recently made a breaking change from <code>v3</code> of the SDK to the newest version,
-<code>v4</code>. We needed to make some non-async methods async, and to remove <code>revision</code> from SkyDB and change the return
-types of the SkyDB methods. Additionally, this version marks the release of
-MySky and Data Access Controllers (DACs).</p>
+<p>Version <code>v4</code> is a breaking change coming from <code>v3</code>. In addition to some major
+changes such as adding MySky and Data Access Controllers (DACs), this change
+contains many quality-of-life changes. These include making some non-async
+methods async, removing <code>revision</code> from SkyDB, and changing the return types of
+the SkyDB methods.</p>
 
 <p>We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.</p>
-<h2 id='upgrading'>Upgrading</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js@beta
+<h2 id='upgrading'>Upgrading</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js
 </code></pre></div>
 <p>To upgrade to v4 (see right):</p>
 
