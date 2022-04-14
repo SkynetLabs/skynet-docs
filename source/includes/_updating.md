@@ -1,6 +1,6 @@
 # Updating From v3
 
-[Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG-BETA.md)
+[Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md)
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
 **Table of Contents**
@@ -23,10 +23,11 @@
 
 <!-- markdown-toc end -->
 
-We recently made a breaking change from `v3` of the SDK to the newest version,
-`v4`. We needed to make some non-async methods async, and to remove `revision` from SkyDB and change the return
-types of the SkyDB methods. Additionally, this version marks the release of
-MySky and Data Access Controllers (DACs).
+Version `v4` is a breaking change coming from `v3`. In addition to some major
+changes such as adding MySky and Data Access Controllers (DACs), this change
+contains many quality-of-life changes. These include making some non-async
+methods async, removing `revision` from SkyDB, and changing the return types of
+the SkyDB methods.
 
 We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.
@@ -34,7 +35,7 @@ inconvenient, so we put together this guide which we hope will be helpful.
 ## Upgrading
 
 ```sh
-npm install skynet-js@beta
+npm install skynet-js
 ```
 
 To upgrade to v4 (see right):
