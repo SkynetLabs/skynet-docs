@@ -42,7 +42,7 @@ search: true
 
 Welcome to the Skynet SDK API reference docs!
 
-To **learn more about Skynet**, see the [Skynet support docs](https://support.skynetlabs.net/).
+To **learn more about Skynet**, see the [Skynet support docs](https://support.skynetlabs.com/).
 
 For **developer guides**, see the [Skynet developer docs](https://docs.skynetlabs.com/).
 
@@ -76,7 +76,7 @@ We have a detailed tutorial for [Creating Your First Webapp On
 Skynet](https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f)
 on our tech blog. Check it out if you are just starting out!
 
-See also our [developer docs](https://docs.skynetlabs.net/) for more guides.
+See also our [developer docs](https://docs.skynetlabs.com/) for more guides.
 
 ## Using the Beta
 
