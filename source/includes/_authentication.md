@@ -3,7 +3,7 @@
 ## Skynet Portal Authentication
 
 ```shell--curl
-Coming Soon
+curl -X POST -H "Skynet-Api-Key: <token>" "https://skynetfree.net/skynet/skyfile"
 ```
 
 ```shell--cli
