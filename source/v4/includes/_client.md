@@ -62,20 +62,20 @@ options for default portal selection, such as configuration files. Please see
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
-const client = new SkynetClient("", { APIKey: "foobar" });
+const client = new SkynetClient("", { SkynetApiKey: "foobar" });
 ```
 
 ```javascript--node
 const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
-const client = new SkynetClient("", { APIKey: "foobar" });
+const client = new SkynetClient("", { SkynetApiKey: "foobar" });
 ```
 
 ```python
 import siaskynet as skynet
 
 # Or SkynetClient() without arguments to use the default portal.
-client = skynet.SkynetClient("", {"api_key": "foobar"})
+client = skynet.SkynetClient("", { "skynet_api_key": "foobar" })
 ```
 
 ```go
@@ -86,7 +86,7 @@ import (
 	skynet "github.com/SkynetLabs/go-skynet/v2"
 )
 
-var client = skynet.NewCustom("", skynet.Options{APIKey: "foobar"})
+var client = skynet.NewCustom("", skynet.Options{ SkynetAPIKey: "foobar" })
 ```
 
 Apart from setting a persistent portal, client initialization also allows you to
@@ -94,7 +94,11 @@ choose persistent connection settings. These will be applied on every subsequent
 API call using the client, unless the setting is overridden in a particular
 call.
 
-Please see [Setting Additional Options](#setting-additional-options).
+For example, in the code samples we initialize a client with a Skynet API key
+that is applied on every request made by the client. See [API
+Authentication](#api-authentication).
+
+Please also see [Setting Additional Options](#setting-additional-options).
 
 <aside class="notice">
 To set custom connection options while using the default portal, set the portal
