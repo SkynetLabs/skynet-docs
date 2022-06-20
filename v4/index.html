@@ -447,8 +447,8 @@
       </ul>
         <ul class="toc-footer">
             <li>Version: v4</li>
-            <li><a href='v4'>Permalink to this version</a></li>
-            <li><a href='v3'>Previous version</a></li>
+            <li><a href='../v4'>Permalink to this version</a></li>
+            <li><a href=../'v3'>Previous version</a></li>
             <li>---</li>
             <li><a href='https://siasky.net/'>Check out Skynet!</a></li>
             <li><a href='https://github.com/SkynetLabs/skynet-docs'>Contribute to the docs</a></li>
@@ -460,7 +460,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
+<p><strong>Latest version:</strong> <a href='../v4'>v4</a> (<a href="../v4#updating-from-v3">Update Guide</a>)</p>
 
 <p>Welcome to the Skynet SDK API reference docs!</p>
 
@@ -763,14 +763,14 @@ options for default portal selection, such as configuration files. Please see
 <a href="https://github.com/SkynetLabs/skynet-docs/issues/5">this issue</a>.</p>
 <h2 id='setting-connection-options'>Setting Connection Options</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">APIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">SkynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@skynetlabs/skynet-nodejs</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">APIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">SkynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="c1"># Or SkynetClient() without arguments to use the default portal.
-</span><span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span><span class="s">"api_key"</span><span class="p">:</span> <span class="s">"foobar"</span><span class="p">})</span>
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -778,14 +778,18 @@ options for default portal selection, such as configuration files. Please see
     <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
 <span class="p">)</span>
 
-<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">NewCustom</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Options</span><span class="p">{</span><span class="n">APIKey</span><span class="o">:</span> <span class="s">"foobar"</span><span class="p">})</span>
+<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">NewCustom</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">Options</span><span class="p">{</span> <span class="n">SkynetAPIKey</span><span class="o">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
 </code></pre></div>
 <p>Apart from setting a persistent portal, client initialization also allows you to
 choose persistent connection settings. These will be applied on every subsequent
 API call using the client, unless the setting is overridden in a particular
 call.</p>
 
-<p>Please see <a href="#setting-additional-options">Setting Additional Options</a>.</p>
+<p>For example, in the code samples we initialize a client with a Skynet API key
+that is applied on every request made by the client. See <a href="#api-authentication">API
+Authentication</a>.</p>
+
+<p>Please also see <a href="#setting-additional-options">Setting Additional Options</a>.</p>
 
 <aside class="notice">
 To set custom connection options while using the default portal, set the portal
