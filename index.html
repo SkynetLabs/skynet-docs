@@ -431,10 +431,10 @@
               </ul>
           </li>
           <li>
-            <a href="#updating-from-v3" class="toc-h1 toc-link" data-title="Updating From v3">Updating From v3</a>
+            <a href="#updating-from-v3-browserjs" class="toc-h1 toc-link" data-title="Updating From v3 (BrowserJS)">Updating From v3 (BrowserJS)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#upgrading" class="toc-h2 toc-link" data-title="Upgrading">Upgrading</a>
+                    <a href="#upgrading-browserjs" class="toc-h2 toc-link" data-title="Upgrading BrowserJS">Upgrading BrowserJS</a>
                   </li>
                   <li>
                     <a href="#installing-a-dac" class="toc-h2 toc-link" data-title="Installing a DAC">Installing a DAC</a>
@@ -478,7 +478,7 @@ libraries for the best experience.
 <ul>
 <li>Shell (using curl). See the <a href="#using-the-shell">Using The Shell</a> section.</li>
 <li><a href="https://github.com/SkynetLabs/skynet-js">Browser JS</a> <strong>(most up-to-date)</strong></li>
-<li><a href="https://github.com/SkynetLabs/nodejs-skynet">NodeJS</a> (missing SkyDB and MySky but mostly featureful)</li>
+<li><a href="https://github.com/SkynetLabs/nodejs-skynet">NodeJS</a> (missing MySky and not as well-tested but mostly featureful)</li>
 <li><a href="https://github.com/SkynetLabs/python-skynet">Python</a> (basic functionality only)</li>
 <li><a href="https://github.com/SkynetLabs/go-skynet">Go</a> (basic functionality only)</li>
 <li><a href="https://github.com/SkynetLabs/skynet-cli">Skynet CLI</a> (written in Go, basic functionality only).</li>
@@ -3001,7 +3001,7 @@ custom option. See <a href="#setting-additional-options">Setting Additional Opti
 <h3 id='more-information'>More Information</h3>
 <p>For more information about authentication on portals and local <code>siad</code> instances
 please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
-<h1 id='updating-from-v3'>Updating From v3</h1>
+<h1 id='updating-from-v3-browserjs'>Updating From v3 (BrowserJS)</h1>
 <p><a href="https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md">Changelog</a></p>
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
@@ -3012,7 +3012,7 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <li><a href="#updating-from-v3">Updating From v3</a>
 
 <ul>
-<li><a href="#upgrading">Upgrading</a></li>
+<li><a href="#upgrading-browserjs">Upgrading BrowserJS</a></li>
 <li><a href="#installing-a-dac">Installing a DAC</a></li>
 <li><a href="#breaking-changes">Breaking Changes</a>
 
@@ -3034,15 +3034,15 @@ please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 
 <!-- markdown-toc end -->
 
-<p>Version <code>v4</code> is a breaking change coming from <code>v3</code>. In addition to some major
-changes such as adding MySky and Data Access Controllers (DACs), this change
-contains many quality-of-life changes. These include making some non-async
-methods async, removing <code>revision</code> from SkyDB, and changing the return types of
-the SkyDB methods.</p>
+<p><code>skynet-js</code> version <code>v4</code> is a breaking change coming from <code>v3</code>. In addition to
+some major changes such as adding MySky and Data Access Controllers (DACs), this
+change contains many quality-of-life changes. These include making some
+non-async methods async, removing <code>revision</code> from SkyDB, and changing the return
+types of the SkyDB methods.</p>
 
 <p>We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.</p>
-<h2 id='upgrading'>Upgrading</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js
+<h2 id='upgrading-browserjs'>Upgrading BrowserJS</h2><div class="highlight"><pre class="highlight sh tab-shell"><code>npm <span class="nb">install </span>skynet-js
 </code></pre></div>
 <p>To upgrade to v4 (see right):</p>
 
