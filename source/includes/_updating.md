@@ -1,4 +1,4 @@
-# Updating From v3
+# Updating From v3 (BrowserJS)
 
 [Changelog](https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md)
 
@@ -6,7 +6,7 @@
 **Table of Contents**
 
 - [Updating From v3](#updating-from-v3)
-    - [Upgrading](#upgrading)
+    - [Upgrading BrowserJS](#upgrading-browserjs)
     - [Installing a DAC](#installing-a-dac)
     - [Breaking Changes](#breaking-changes)
         - [SkyDB getJSON returns a data link instead of a revision number](#skydb-getjson-returns-a-data-link-instead-of-a-revision-number)
@@ -23,16 +23,16 @@
 
 <!-- markdown-toc end -->
 
-Version `v4` is a breaking change coming from `v3`. In addition to some major
-changes such as adding MySky and Data Access Controllers (DACs), this change
-contains many quality-of-life changes. These include making some non-async
-methods async, removing `revision` from SkyDB, and changing the return types of
-the SkyDB methods.
+`skynet-js` version `v4` is a breaking change coming from `v3`. In addition to
+some major changes such as adding MySky and Data Access Controllers (DACs), this
+change contains many quality-of-life changes. These include making some
+non-async methods async, removing `revision` from SkyDB, and changing the return
+types of the SkyDB methods.
 
 We understand that updating your code to accommodate breaking changes is
 inconvenient, so we put together this guide which we hope will be helpful.
 
-## Upgrading
+## Upgrading BrowserJS
 
 ```sh
 npm install skynet-js
