@@ -6,7 +6,7 @@ and store mutable files in those accounts. It is built on top of the
 contains the full data.
 
 <aside class="warning">
-These functions have only been implemented for Browser JS at the moment.
+These functions have only been implemented for Browser JS and NodeJS at the moment.
 </aside>
 
 ## Getting Data From SkyDB
@@ -32,6 +32,19 @@ async function getJSONExample() {
 }
 ```
 
+```javascript--node
+const { SkynetClient, genKeyPairFromSeed } = require("@skynetlabs/skynet-nodejs");
+
+const client = new SkynetClient();
+const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for security");
+
+const dataKey = "myApp";
+
+(async () => {
+  const { data, dataLink } = await client.db.getJSON(publicKey, dataKey);
+}
+```
+
 ### Method
 
 `getJSON`
@@ -45,7 +58,16 @@ Field | Type | Description
 
 ### Response
 
-```javascript-browser
+```javascript--browser
+{
+  data: {
+    example: "This is some example JSON data."
+  },
+  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
+}
+```
+
+```javascript--node
 {
   data: {
     example: "This is some example JSON data."
@@ -78,6 +100,20 @@ async function setJSONExample() {
 }
 ```
 
+```javascript--node
+const { SkynetClient, genKeyPairFromSeed } = require("@skynetlabs/skynet-nodejs");
+
+const client = new SkynetClient();
+const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for security");
+
+const dataKey = "myApp";
+const json = { example: "This is some example JSON data." };
+
+(async () => {
+  await client.db.setJSON(privateKey, dataKey, json);
+}
+```
+
 ### Method
 
 `setJSON`
@@ -93,36 +129,3 @@ Field | Type | Description
 ### Response
 
 Empty on success.
-
-## Getting The Entry URL
-
-```javascript--browser
-import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
-
-const client = new SkynetClient();
-const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for security");
-
-const dataKey = "foo";
-
-function getEntryExample() {
-  try {
-    const url = client.registry.getEntryUrl(publicKey, dataKey);
-  } catch (error) {
-    console.log(error);
-  }
-}
-```
-
-### Method
-
-`getEntryUrl`
-
-### Parameters
-
-See [Getting Data From The Registry](#getting-data-from-the-registry).
-
-### Response
-
-```javascript-browser
-"https://siasky.net/skynet/registry?publickey=ed25519%3Ac1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c&datakey=7c96a0537ab2aaac9cfe0eca217732f4e10791625b4ab4c17e4d91c8078713b9"
-```
