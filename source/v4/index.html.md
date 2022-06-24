@@ -10,7 +10,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - go: Go
 
 toc_footers:
-  - "Version: v4"
+  - "BrowserJS version: v4"
   - <a href='../v4'>Permalink to this version</a>
   - <a href=../'v3'>Previous version</a>
   - ---
@@ -38,7 +38,7 @@ search: true
 
 # Introduction
 
-**Latest version:** <a href='../v4'>v4</a> ([Update Guide](../v4#updating-from-v3))
+**Latest BrowserJS version:** <a href='../v4'>v4</a> ([Update Guide](../v4#updating-from-v3))
 
 Welcome to the Skynet SDK API reference docs!
 
@@ -77,11 +77,6 @@ Skynet](https://blog.sia.tech/creating-your-first-web-app-on-skynet-ec6f4fff405f
 on our tech blog. Check it out if you are just starting out!
 
 See also our [developer docs](https://docs.skynetlabs.com/) for more guides.
-
-## Using the Beta
-
-We are releasing new features and fixes first on the `beta` stream. The latest
-beta version can be installed with `npm install skynet-js@beta`.
 
 ## A Note About Language Differences
 
