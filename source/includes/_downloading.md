@@ -73,20 +73,24 @@ the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a `404`
 error will be returned. This timeout is configurable.
 
-### Parameters
+### Parameters (non-BrowserJS)
 
 Field | Description
 ----- | -----------
 `path` | The local path where the file should be downloaded to.
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path.
 
-*Browser JS:*
+### Parameters (BrowserJS)
 
 Field | Description
 ----- | -----------
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path.
 
-### Additional Options
+### Additional Options (non-BrowserJS)
+
+None.
+
+### Additional Options (BrowserJS)
 
 Field | Description | Default
 ----- | ----------- | -------
@@ -144,13 +148,6 @@ const client = new SkynetClient();
   await client.downloadFile("./dst.jpg", skylink);
   console.log('Download successful');
 })();
-
-// Using the path option.
-(async () => {
-  const skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg";
-	await client.downloadFile("./dst.jpg", skylink, { path: "dir2/file3" });
-	console.log('Download successful');
-})()
 ```
 
 ```python
@@ -161,11 +158,6 @@ client = skynet.SkynetClient()
 # Using the skylink.
 skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"
 client.download_file("./dst.jpg", skylink)
-print("Download successful")
-
-# Using the path option.
-skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
-client.download_file("./dst.jpg", skylink, { "path": "dir2/file3" })
 print("Download successful")
 ```
 
@@ -188,15 +180,6 @@ func main() {
 		panic("Something went wrong, please try again.\nError: " + err.Error())
 	}
 	fmt.Println("Download successful")
-
-	// Using the path option.
-	skylink = "XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"
-	opts.Path = "dir2/file3";
-	err := client.DownloadFile("./dst.go", skylink, opts)
-	if err != nil {
-		panic("Something went wrong, please try again.\nError: " + err.Error())
-	}
-	fmt.Println("Download successful")
 }
 ```
 
@@ -210,7 +193,7 @@ a directory or a particular file. If specified, only that file or directory will
 be returned. The examples here use the directory structure from [Uploading A
 Directory](#uploading-a-directory) to illustrate this.
 
-### The Path Additional Parameter
+### The Path Additional Parameter (BrowserJS)
 
 There is a caveat to the above approach: the skylink is used as-is and any
 special characters in the appended path are not encoded. We recommend using the
