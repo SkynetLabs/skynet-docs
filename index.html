@@ -233,9 +233,6 @@
                     <a href="#tutorial" class="toc-h2 toc-link" data-title="Tutorial">Tutorial</a>
                   </li>
                   <li>
-                    <a href="#using-the-beta" class="toc-h2 toc-link" data-title="Using the Beta">Using the Beta</a>
-                  </li>
-                  <li>
                     <a href="#a-note-about-language-differences" class="toc-h2 toc-link" data-title="A Note About Language Differences">A Note About Language Differences</a>
                   </li>
                   <li>
@@ -311,9 +308,6 @@
                   <li>
                     <a href="#setting-data-on-skydb" class="toc-h2 toc-link" data-title="Setting Data On SkyDB">Setting Data On SkyDB</a>
                   </li>
-                  <li>
-                    <a href="#getting-the-entry-url" class="toc-h2 toc-link" data-title="Getting The Entry URL">Getting The Entry URL</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -324,6 +318,9 @@
                   </li>
                   <li>
                     <a href="#setting-data-on-the-registry" class="toc-h2 toc-link" data-title="Setting Data On The Registry">Setting Data On The Registry</a>
+                  </li>
+                  <li>
+                    <a href="#getting-the-entry-url" class="toc-h2 toc-link" data-title="Getting The Entry URL">Getting The Entry URL</a>
                   </li>
               </ul>
           </li>
@@ -446,7 +443,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li>Version: v4</li>
+            <li>BrowserJS version: v4</li>
             <li><a href='v4'>Permalink to this version</a></li>
             <li><a href='v3'>Previous version</a></li>
             <li>---</li>
@@ -460,7 +457,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
+<p><strong>Latest BrowserJS version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
 
 <p>Welcome to the Skynet SDK API reference docs!</p>
 
@@ -497,9 +494,6 @@ Skynet</a>
 on our tech blog. Check it out if you are just starting out!</p>
 
 <p>See also our <a href="https://docs.skynetlabs.com/">developer docs</a> for more guides.</p>
-<h2 id='using-the-beta'>Using the Beta</h2>
-<p>We are releasing new features and fixes first on the <code>beta</code> stream. The latest
-beta version can be installed with <code>npm install skynet-js@beta</code>.</p>
 <h2 id='a-note-about-language-differences'>A Note About Language Differences</h2>
 <p>Though we tried to keep the SDKs as similar to each other as possible in usage,
 differences between the languages -- the idiosyncracies and best practices of
@@ -1436,7 +1430,7 @@ and store mutable files in those accounts. It is built on top of the
 contains the full data.</p>
 
 <aside class="warning">
-These functions have only been implemented for Browser JS at the moment.
+These functions have only been implemented for Browser JS and NodeJS at the moment.
 </aside>
 <h2 id='getting-data-from-skydb'>Getting Data From SkyDB</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># There are no API endpoints for SkyDB -- you must use the registry directly.</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -1452,6 +1446,16 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">myApp</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">dataLink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method'>Method</h3>
 <p><code>getJSON</code></p>
@@ -1474,12 +1478,18 @@ These functions have only been implemented for Browser JS at the moment.
 <td>The key of the data to fetch for the given user.</td>
 </tr>
 </tbody></table>
-<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>{
-  data: {
-    example: "This is some example JSON data."
-  },
-  dataLink: "sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg"
-}
+<h3 id='response'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+  <span class="p">},</span>
+  <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
+<span class="p">}</span>
 </code></pre></div><h2 id='setting-data-on-skydb'>Setting Data On SkyDB</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="c"># There are no API endpoints for SkyDB -- you must use the registry directly.</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1495,6 +1505,17 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">myApp</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span> <span class="p">};</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setJSON</code></p>
@@ -1524,26 +1545,7 @@ These functions have only been implemented for Browser JS at the moment.
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
-<h2 id='getting-the-entry-url'>Getting The Entry URL</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
-<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
-
-<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">getEntryExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h3 id='method-3'>Method</h3>
-<p><code>getEntryUrl</code></p>
-<h3 id='parameters-3'>Parameters</h3>
-<p>See <a href="#getting-data-from-the-registry">Getting Data From The Registry</a>.</p>
-<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight plaintext"><code>"https://siasky.net/skynet/registry?publickey=ed25519%3Ac1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c&amp;datakey=7c96a0537ab2aaac9cfe0eca217732f4e10791625b4ab4c17e4d91c8078713b9"
-</code></pre></div><h1 id='registry'>Registry</h1>
+<h1 id='registry'>Registry</h1>
 <p>The registry allows getting and setting registry entries with a user&#39;s key and a
 data key (e.g. the name of an app).</p>
 
@@ -1554,7 +1556,7 @@ calling <code>setEntry</code>. Previous revisions are not accessible once an ent
 overwritten with a higher revision number.</p>
 
 <aside class="warning">
-These functions have only been implemented for Browser JS at the moment.
+These functions have only been implemented for Browser JS and NodeJS at the moment.
 </aside>
 <h2 id='getting-data-from-the-registry'>Getting Data From The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"publickey=ed25519%3Ab4f9e43178222cf33bd4432dc1eca49499397ecd1f7de23b568f3fa1e72e5c7c"</span> <span class="nt">-d</span> <span class="s2">"datakey=79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d"</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -1570,6 +1572,16 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span><span class="p">,</span> <span class="nx">signature</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method'>Method</h3>
 <p><code>getEntry</code></p>
@@ -1624,6 +1636,14 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="p">},</span>
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
+  <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">revision</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="p">},</span>
+  <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
+<span class="p">}</span>
 </code></pre></div><h2 id='setting-data-on-the-registry'>Setting Data On The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{"publickey":{"algorithm":"ed25519","key":[180,249,228,49,120,34,44,243,59,212,67,45,193,236,164,148,153,57,126,205,31,125,226,59,86,143,63,161,231,46,92,124]},"datakey":"79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d","revision":7,"data":[65,65,65,118,74,68,105,95,101,102,75,76,101,99,83,65,112,78,56,110,89,113,84,110,122,83,106,76,116,102,66,55,80,99,69,110,81,112,75,75,101,79,88,100,54,119],"signature":[2,105,4,22,162,190,49,191,180,70,89,91,4,177,81,87,79,175,225,40,224,69,173,193,113,227,225,106,48,121,221,1,119,92,253,115,198,90,142,167,2,108,245,249,217,99,112,174,87,117,213,5,105,162,191,242,129,103,244,126,136,68,33,11]}'</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
@@ -1641,6 +1661,19 @@ These functions have only been implemented for Browser JS at the moment.
   <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setEntry</code></p>
@@ -1715,7 +1748,37 @@ These functions have only been implemented for Browser JS at the moment.
 </tbody></table>
 <h3 id='response-2'>Response</h3>
 <p>Empty on success.</p>
-<h1 id='mysky'>MySky</h1>
+<h2 id='getting-the-entry-url'>Getting The Entry URL</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">getEntryExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
+<span class="kd">const</span> <span class="p">{</span> <span class="nx">publicKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div><h3 id='method-3'>Method</h3>
+<p><code>getEntryUrl</code></p>
+<h3 id='parameters-3'>Parameters</h3>
+<p>See <a href="#getting-data-from-the-registry">Getting Data From The Registry</a>.</p>
+<h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="dl">"</span><span class="s2">https://siasky.net/skynet/registry?publickey=ed25519%3Ac1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c&amp;datakey=7c96a0537ab2aaac9cfe0eca217732f4e10791625b4ab4c17e4d91c8078713b9</span><span class="dl">"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="dl">"</span><span class="s2">https://siasky.net/skynet/registry?publickey=ed25519%3Ac1197e1275fbf570d21dde01a00af83ed4a743d1884e4a09cebce0dd21ae254c&amp;datakey=7c96a0537ab2aaac9cfe0eca217732f4e10791625b4ab4c17e4d91c8078713b9</span><span class="dl">"</span>
+</code></pre></div><h1 id='mysky'>MySky</h1>
 <p>MySky is a decentralized identity protocol that gives users their own empire of
 data within Skynet. Everything that happens inside of that empire is under the
 control of the user, but it can also be visited by anyone else and shared around
