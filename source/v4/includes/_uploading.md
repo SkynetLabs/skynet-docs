@@ -184,8 +184,8 @@ const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 const client = new SkynetClient();
 
 (async () => {
-	const url = await client.uploadDirectory("./images");
-	console.log(`Upload successful, url: ${url}`);
+	const skylink = await client.uploadDirectory("./images");
+	console.log(`Upload successful, skylink: ${skylink}`);
 })();
 ```
 
@@ -194,8 +194,8 @@ import siaskynet as skynet
 
 client = skynet.SkynetClient()
 
-url = client.upload_directory("./images")
-print("Upload successful, url: " + url)
+skylink = client.upload_directory("./images")
+print("Upload successful, skylink: " + skylink)
 ```
 
 ```go
@@ -209,11 +209,11 @@ import (
 var client = skynet.New()
 
 func main() {
-	url, err := client.UploadDirectory("./images", skynet.DefaultUploadOptions)
+	skylink, err := client.UploadDirectory("./images", skynet.DefaultUploadOptions)
 	if err != nil {
 		panic("Unable to upload: " + err.Error())
 	}
-	fmt.Printf("Upload successful, url: %v\n", url)
+	fmt.Printf("Upload successful, skylink: %v\n", skylink)
 }
 ```
 
