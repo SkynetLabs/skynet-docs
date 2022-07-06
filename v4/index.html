@@ -444,8 +444,8 @@
       </ul>
         <ul class="toc-footer">
             <li>BrowserJS version: v4</li>
-            <li><a href='../v4'>Permalink to this version</a></li>
-            <li><a href=../'v3'>Previous version</a></li>
+            <li><a href='v4'>Permalink to this version</a></li>
+            <li><a href='v3'>Previous version</a></li>
             <li>---</li>
             <li><a href='https://siasky.net/'>Check out Skynet!</a></li>
             <li><a href='https://github.com/SkynetLabs/skynet-docs'>Contribute to the docs</a></li>
@@ -457,7 +457,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest BrowserJS version:</strong> <a href='../v4'>v4</a> (<a href="../v4#updating-from-v3">Update Guide</a>)</p>
+<p><strong>Latest BrowserJS version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
 
 <p>Welcome to the Skynet SDK API reference docs!</p>
 
@@ -720,7 +720,9 @@ will be used for all requests. It can also be initialized with custom connection
 options that will be applied in all calls, unless calling an API method with the
 same options (which then take precedent and override what was set in client
 initialization).</p>
-<h2 id='basic-portal-selection'>Basic Portal Selection</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+<h2 id='basic-portal-selection'>Basic Portal Selection</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>No client available.
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>No client available.
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="c1">// Or SkynetClient() without arguments to use the default portal.</span>
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://some-other-portal.xyz</span><span class="dl">"</span><span class="p">);</span>
@@ -755,16 +757,17 @@ keeps friction for new developers low.</p>
 <p>In the future the default selection will be smarter and there will be more
 options for default portal selection, such as configuration files. Please see
 <a href="https://github.com/SkynetLabs/skynet-docs/issues/5">this issue</a>.</p>
-<h2 id='setting-connection-options'>Setting Connection Options</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+<h2 id='setting-connection-options'>Setting Connection Options</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>No client available.
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>No client available.
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">SkynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@skynetlabs/skynet-nodejs</span><span class="dl">'</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">SkynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="c1"># Or SkynetClient() without arguments to use the default portal.
-</span><span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -973,15 +976,15 @@ Note that the SDKs only return the skylink since this is what you want most of t
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadDirectory</span><span class="p">(</span><span class="dl">"</span><span class="s2">./images</span><span class="dl">"</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, url: </span><span class="p">${</span><span class="nx">url</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadDirectory</span><span class="p">(</span><span class="dl">"</span><span class="s2">./images</span><span class="dl">"</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
-<span class="n">url</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, url: "</span> <span class="o">+</span> <span class="n">url</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -992,11 +995,11 @@ Note that the SDKs only return the skylink since this is what you want most of t
 <span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
 
 <span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">url</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">UploadDirectory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span><span class="p">)</span>
+    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">UploadDirectory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">,</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to upload: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, url: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">url</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>It is possible to upload a directory as a single piece of content. Doing this
@@ -1126,7 +1129,7 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a <code>404</code>
 error will be returned. This timeout is configurable.</p>
-<h3 id='parameters-non-browserjs'>Parameters (non-BrowserJS)</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1142,7 +1145,9 @@ error will be returned. This timeout is configurable.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
-<h3 id='parameters-browserjs'>Parameters (BrowserJS)</h3>
+
+<p><em>Browser JS:</em></p>
+
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1154,9 +1159,7 @@ error will be returned. This timeout is configurable.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
-<h3 id='additional-options-non-browserjs'>Additional Options (non-BrowserJS)</h3>
-<p>None.</p>
-<h3 id='additional-options-browserjs'>Additional Options (BrowserJS)</h3>
+<h3 id='additional-options'>Additional Options</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1212,6 +1215,13 @@ error will be returned. This timeout is configurable.</p>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">})();</span>
+
+<span class="c1">// Using the path option.</span>
+<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
+    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dir2/file3</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
+<span class="p">})()</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
@@ -1219,6 +1229,11 @@ error will be returned. This timeout is configurable.</p>
 <span class="c1"># Using the skylink.
 </span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
 <span class="n">client</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+
+<span class="c1"># Using the path option.
+</span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+<span class="n">client</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="s">"path"</span><span class="p">:</span> <span class="s">"dir2/file3"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1238,6 +1253,15 @@ error will be returned. This timeout is configurable.</p>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
+
+    <span class="c">// Using the path option.</span>
+    <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="s">"dir2/file3"</span><span class="p">;</span>
+    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>It is possible to download files from uploaded directories if their paths
@@ -1247,7 +1271,7 @@ relative to the uploaded directory are known. There are two ways to do this.</p>
 a directory or a particular file. If specified, only that file or directory will
 be returned. The examples here use the directory structure from <a href="#uploading-a-directory">Uploading A
 Directory</a> to illustrate this.</p>
-<h3 id='the-path-additional-parameter-browserjs'>The Path Additional Parameter (BrowserJS)</h3>
+<h3 id='the-path-additional-parameter'>The Path Additional Parameter</h3>
 <p>There is a caveat to the above approach: the skylink is used as-is and any
 special characters in the appended path are not encoded. We recommend using the
 additional option <code>path</code> to let the SDK properly encode it for you.</p>
@@ -1311,7 +1335,7 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 the entire content. These API calls will perform a HEAD request that fetches the
 headers for the given skylink. These headers are identical to the ones that
 would be returned if the request had been a GET request.</p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1323,7 +1347,7 @@ would be returned if the request had been a GET request.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
 </tr>
 </tbody></table>
-<h3 id='additional-options'>Additional Options</h3>
+<h3 id='additional-options-2'>Additional Options</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
   <span class="s2">"mode"</span>:     640,
@@ -1441,11 +1465,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">myApp</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getJSONExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">dataLink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">dataLink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1456,7 +1476,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">dataLink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">getJSON</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">})();</span>
 </code></pre></div><h3 id='method'>Method</h3>
 <p><code>getJSON</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -1500,11 +1520,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 <span class="kd">const</span> <span class="nx">json</span> <span class="o">=</span> <span class="p">{</span> <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span> <span class="p">};</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setJSONExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1516,7 +1532,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">db</span><span class="p">.</span><span class="nx">setJSON</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">json</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">})();</span>
 </code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setJSON</code></p>
 <h3 id='parameters-2'>Parameters</h3>
@@ -1556,7 +1572,7 @@ calling <code>setEntry</code>. Previous revisions are not accessible once an ent
 overwritten with a higher revision number.</p>
 
 <aside class="warning">
-These functions have only been implemented for Browser JS and NodeJS at the moment.
+These functions have only been implemented for BrowserJS and NodeJS at the moment.
 </aside>
 <h2 id='getting-data-from-the-registry'>Getting Data From The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> GET <span class="nt">-G</span> <span class="nt">-A</span> <span class="s2">"Sia-Agent"</span> <span class="nt">-u</span> <span class="s2">""</span>:&lt;apipassword&gt; <span class="nt">-d</span> <span class="s2">"publickey=ed25519%3Ab4f9e43178222cf33bd4432dc1eca49499397ecd1f7de23b568f3fa1e72e5c7c"</span> <span class="nt">-d</span> <span class="s2">"datakey=79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d"</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
@@ -1567,11 +1583,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">getEntryExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span><span class="p">,</span> <span class="nx">signature</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span><span class="p">,</span> <span class="nx">signature</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1582,7 +1594,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="p">{</span> <span class="nx">entry</span><span class="p">,</span> <span class="nx">signature</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntry</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">})();</span>
 </code></pre></div><h3 id='method'>Method</h3>
 <p><code>getEntry</code></p>
 <h3 id='parameters'>Parameters</h3>
@@ -1631,50 +1643,46 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">revision</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
+    <span class="na">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
   <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">revision</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="na">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
+    <span class="na">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div><h2 id='setting-data-on-the-registry'>Setting Data On The Registry</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-L</span> <span class="nt">-X</span> POST <span class="nt">-d</span> <span class="s1">'{"publickey":{"algorithm":"ed25519","key":[180,249,228,49,120,34,44,243,59,212,67,45,193,236,164,148,153,57,126,205,31,125,226,59,86,143,63,161,231,46,92,124]},"datakey":"79c05b4b67764ad99a7976a7d2fb1cfce4f196ea217ef0356af042cb5492bd5d","revision":7,"data":[65,65,65,118,74,68,105,95,101,102,75,76,101,99,83,65,112,78,56,110,89,113,84,110,122,83,106,76,116,102,66,55,80,99,69,110,81,112,75,75,101,79,88,100,54,119],"signature":[2,105,4,22,162,190,49,191,180,70,89,91,4,177,81,87,79,175,225,40,224,69,173,193,113,227,225,106,48,121,221,1,119,92,253,115,198,90,142,167,2,108,245,249,217,99,112,174,87,117,213,5,105,162,191,242,129,103,244,126,136,68,33,11]}'</span> <span class="s2">"https://siasky.net/skynet/registry"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span><span class="p">,</span> <span class="nx">stringToUint8ArrayUtf8</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">stringToUint8ArrayUtf8</span><span class="p">(</span><span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">setEntryExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
 <span class="p">}</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span><span class="p">,</span> <span class="nx">stringToUint8ArrayUtf8</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 <span class="kd">const</span> <span class="p">{</span> <span class="nx">privateKey</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">genKeyPairFromSeed</span><span class="p">(</span><span class="dl">"</span><span class="s2">this seed should be fairly long for security</span><span class="dl">"</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">;</span>
-<span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">stringToUint8ArrayUtf8</span><span class="p">(</span><span class="dl">"</span><span class="s2">bar</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">revision</span> <span class="o">=</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">entry</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">dataKey</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">revision</span> <span class="p">};</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">setEntry</span><span class="p">(</span><span class="nx">privateKey</span><span class="p">,</span> <span class="nx">entry</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">})();</span>
 </code></pre></div><h3 id='method-2'>Method</h3>
 <p><code>setEntry</code></p>
 <h3 id='parameters-2'>Parameters</h3>
@@ -1755,12 +1763,8 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 
 <span class="kd">const</span> <span class="nx">dataKey</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">getEntryExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+<span class="k">async</span> <span class="kd">function</span> <span class="nx">getEntryUrlExample</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span><span class="p">,</span> <span class="nx">genKeyPairFromSeed</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">@skynetlabs/skynet-nodejs</span><span class="dl">"</span><span class="p">);</span>
 
@@ -1771,7 +1775,7 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">url</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">registry</span><span class="p">.</span><span class="nx">getEntryUrl</span><span class="p">(</span><span class="nx">publicKey</span><span class="p">,</span> <span class="nx">dataKey</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="p">})();</span>
 </code></pre></div><h3 id='method-3'>Method</h3>
 <p><code>getEntryUrl</code></p>
 <h3 id='parameters-3'>Parameters</h3>
@@ -2937,28 +2941,46 @@ domain.</p>
 </tr>
 </tbody></table>
 <h1 id='api-authentication'>API Authentication</h1><h2 id='skynet-portal-authentication'>Skynet Portal Authentication</h2><div class="highlight"><pre class="highlight shell tab-shell--curl"><code>curl <span class="nt">-X</span> POST <span class="nt">-H</span> <span class="s2">"Skynet-Api-Key: &lt;token&gt;"</span> <span class="s2">"https://skynetfree.net/skynet/skyfile"</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>Coming Soon
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell--cli"><code>skynet upload image.jpg <span class="nt">--skynet-api-key</span> foobar
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">authenticationExample</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetAPIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-  <span class="p">}</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">skylink</span> <span class="p">}</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="nx">file</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="kd">const</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">@skynetlabs/skynet-nodejs</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">();</span>
 
 <span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetAPIKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
+    <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">uploadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./image.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Upload successful, skylink: </span><span class="p">${</span><span class="nx">skylink</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
 <span class="p">})();</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="n">Coming</span> <span class="n">Soon</span>
-</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="n">Coming</span> <span class="n">Soon</span>
+</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"fmt"</span>
+    <span class="n">skynet</span> <span class="s">"github.com/SkynetLabs/go-skynet/v2"</span>
+<span class="p">)</span>
+
+<span class="k">var</span> <span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">opts</span> <span class="o">:=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">DefaultUploadOptions</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">SkynetAPIKey</span> <span class="o">=</span> <span class="s">"foobar"</span>
+    <span class="n">skylink</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">UploadFile</span><span class="p">(</span><span class="s">"./image.jpg"</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
+        <span class="nb">panic</span><span class="p">(</span><span class="s">"Unable to upload: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
+    <span class="p">}</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>Certain Skynet portals are only available to signed-in or paid users. To access
 these programmatically, you will need an API key. You can get an API key for
