@@ -10,7 +10,7 @@ calling `setEntry`. Previous revisions are not accessible once an entry has been
 overwritten with a higher revision number.
 
 <aside class="warning">
-These functions have only been implemented for Browser JS and NodeJS at the moment.
+These functions have only been implemented for BrowserJS and NodeJS at the moment.
 </aside>
 
 ## Getting Data From The Registry
@@ -28,11 +28,7 @@ const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for se
 const dataKey = "foo";
 
 async function getEntryExample() {
-  try {
-    const { entry, signature } = await client.registry.getEntry(publicKey, dataKey);
-  } catch (error) {
-    console.log(error);
-  }
+  const { entry, signature } = await client.registry.getEntry(publicKey, dataKey);
 }
 ```
 
@@ -46,7 +42,7 @@ const dataKey = "foo";
 
 (async () => {
   const { entry, signature } = await client.registry.getEntry(publicKey, dataKey);
-}
+})();
 ```
 
 ### Method
@@ -74,8 +70,8 @@ Field | Description | Default
 {
   entry: {
     datakey: "foo",
-    data: "bar",
-    revision: 0
+    data: Uint8Array([ 98, 97, 114 ]), // corresponds to string "bar"
+    revision: BigInt(0)
   },
   signature: "788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164"
 }
@@ -85,8 +81,8 @@ Field | Description | Default
 {
   entry: {
     datakey: "foo",
-    data: "bar",
-    revision: 0
+    data: Uint8Array([ 98, 97, 114 ]), // corresponds to string "bar"
+    revision: BigInt(0)
   },
   signature: "788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164"
 }
@@ -99,39 +95,35 @@ curl -L -X POST -d '{"publickey":{"algorithm":"ed25519","key":[180,249,228,49,12
 ```
 
 ```javascript--browser
-import { SkynetClient, genKeyPairFromSeed } from "skynet-js";
+import { SkynetClient, genKeyPairFromSeed, stringToUint8ArrayUtf8 } from "skynet-js";
 
 const client = new SkynetClient();
 const { privateKey } = genKeyPairFromSeed("this seed should be fairly long for security");
 
 const dataKey = "foo";
-const data = "bar";
-const revision = 0;
+const data = stringToUint8ArrayUtf8("bar");
+const revision = BigInt(0);
 const entry = { dataKey, data, revision };
 
 async function setEntryExample() {
-  try {
-    await client.registry.setEntry(privateKey, entry);
-  } catch (error) {
-    console.log(error);
-  }
+  await client.registry.setEntry(privateKey, entry);
 }
 ```
 
 ```javascript--node
-const { SkynetClient, genKeyPairFromSeed } = require("@skynetlabs/skynet-nodejs");
+const { SkynetClient, genKeyPairFromSeed, stringToUint8ArrayUtf8 } = require("@skynetlabs/skynet-nodejs");
 
 const client = new SkynetClient();
 const { privateKey } = genKeyPairFromSeed("this seed should be fairly long for security");
 
 const dataKey = "foo";
-const data = "bar";
-const revision = 0;
+const data = stringToUint8ArrayUtf8("bar");
+const revision = BigInt(0);
 const entry = { dataKey, data, revision };
 
 (async () => {
   await client.registry.setEntry(privateKey, entry);
-}
+})();
 ```
 
 ### Method
@@ -177,12 +169,8 @@ const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for se
 
 const dataKey = "foo";
 
-function getEntryExample() {
-  try {
-    const url = client.registry.getEntryUrl(publicKey, dataKey);
-  } catch (error) {
-    console.log(error);
-  }
+async function getEntryUrlExample() {
+  const url = await client.registry.getEntryUrl(publicKey, dataKey);
 }
 ```
 
@@ -196,7 +184,7 @@ const dataKey = "foo";
 
 (async () => {
   const url = await client.registry.getEntryUrl(publicKey, dataKey);
-}
+})();
 ```
 
 ### Method

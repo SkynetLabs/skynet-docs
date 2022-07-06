@@ -12,7 +12,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - "BrowserJS version: v4"
   - <a href='../v4'>Permalink to this version</a>
-  - <a href=../'v3'>Previous version</a>
+  - <a href='../v3'>Previous version</a>
   - ---
   - <a href='https://siasky.net/'>Check out Skynet!</a>
   - <a href='https://github.com/SkynetLabs/skynet-docs'>Contribute to the docs</a>

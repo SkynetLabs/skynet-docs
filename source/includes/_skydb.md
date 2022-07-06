@@ -24,11 +24,7 @@ const { publicKey } = genKeyPairFromSeed("this seed should be fairly long for se
 const dataKey = "myApp";
 
 async function getJSONExample() {
-  try {
-    const { data, dataLink } = await client.db.getJSON(publicKey, dataKey);
-  } catch (error) {
-    console.log(error);
-  }
+  const { data, dataLink } = await client.db.getJSON(publicKey, dataKey);
 }
 ```
 
@@ -42,7 +38,7 @@ const dataKey = "myApp";
 
 (async () => {
   const { data, dataLink } = await client.db.getJSON(publicKey, dataKey);
-}
+})();
 ```
 
 ### Method
@@ -92,11 +88,7 @@ const dataKey = "myApp";
 const json = { example: "This is some example JSON data." };
 
 async function setJSONExample() {
-  try {
-    await client.db.setJSON(privateKey, dataKey, json);
-  } catch (error) {
-    console.log(error);
-  }
+  await client.db.setJSON(privateKey, dataKey, json);
 }
 ```
 
@@ -111,7 +103,7 @@ const json = { example: "This is some example JSON data." };
 
 (async () => {
   await client.db.setJSON(privateKey, dataKey, json);
-}
+})();
 ```
 
 ### Method
