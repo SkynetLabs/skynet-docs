@@ -444,8 +444,8 @@
       </ul>
         <ul class="toc-footer">
             <li>BrowserJS version: v4</li>
-            <li><a href='v4'>Permalink to this version</a></li>
-            <li><a href='v3'>Previous version</a></li>
+            <li><a href='../v4'>Permalink to this version</a></li>
+            <li><a href='../v3'>Previous version</a></li>
             <li>---</li>
             <li><a href='https://siasky.net/'>Check out Skynet!</a></li>
             <li><a href='https://github.com/SkynetLabs/skynet-docs'>Contribute to the docs</a></li>
@@ -457,7 +457,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p><strong>Latest BrowserJS version:</strong> <a href='v4'>v4</a> (<a href="v4#updating-from-v3">Update Guide</a>)</p>
+<p><strong>Latest BrowserJS version:</strong> <a href='../v4'>v4</a> (<a href="../v4#updating-from-v3">Update Guide</a>)</p>
 
 <p>Welcome to the Skynet SDK API reference docs!</p>
 
@@ -591,9 +591,9 @@ uses <a href="https://stedolan.github.io/jq/"><code>jq</code></a>.</p>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -733,7 +733,7 @@ initialization).</p>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
 <span class="c1"># Or SkynetClient() without arguments to use the default portal.
-</span><span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">"https://some-other-portal.xyz"</span><span class="p">)</span>
+</span><span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">"https://some-other-portal.xyz"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -767,7 +767,7 @@ options for default portal selection, such as configuration files. Please see
 <span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">""</span><span class="p">,</span> <span class="p">{</span> <span class="na">skynetApiKey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foobar</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
 <span class="k">import</span> <span class="p">(</span>
@@ -818,9 +818,9 @@ value to <code>""</code>.
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -981,9 +981,9 @@ Note that the SDKs only return the skylink since this is what you want most of t
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_directory</span><span class="p">(</span><span class="s">"./images"</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1102,10 +1102,10 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">client</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1129,7 +1129,7 @@ example, to link to the <code>main.css</code> resource from <code>index.html</co
 the data is received. There is a 30s default timeout applied to downloading a
 skylink. If the data can not be found within this 30s time constraint, a <code>404</code>
 error will be returned. This timeout is configurable.</p>
-<h3 id='parameters'>Parameters</h3>
+<h3 id='parameters-non-browserjs'>Parameters (non-BrowserJS)</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1145,9 +1145,7 @@ error will be returned. This timeout is configurable.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
-
-<p><em>Browser JS:</em></p>
-
+<h3 id='parameters-browserjs'>Parameters (BrowserJS)</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1159,7 +1157,9 @@ error will be returned. This timeout is configurable.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
 </tbody></table>
-<h3 id='additional-options'>Additional Options</h3>
+<h3 id='additional-options-non-browserjs'>Additional Options (non-BrowserJS)</h3>
+<p>None.</p>
+<h3 id='additional-options-browserjs'>Additional Options (BrowserJS)</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1215,25 +1215,13 @@ error will be returned. This timeout is configurable.</p>
   <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">);</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">})();</span>
-
-<span class="c1">// Using the path option.</span>
-<span class="p">(</span><span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">skylink</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg</span><span class="dl">"</span><span class="p">;</span>
-    <span class="k">await</span> <span class="nx">client</span><span class="p">.</span><span class="nx">downloadFile</span><span class="p">(</span><span class="dl">"</span><span class="s2">./dst.jpg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="dl">"</span><span class="s2">dir2/file3</span><span class="dl">"</span> <span class="p">});</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Download successful</span><span class="dl">'</span><span class="p">);</span>
-<span class="p">})()</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
 <span class="c1"># Using the skylink.
 </span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg/dir2/file3"</span>
-<span class="n">client</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
-
-<span class="c1"># Using the path option.
-</span><span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-<span class="n">client</span><span class="p">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="p">{</span> <span class="s">"path"</span><span class="p">:</span> <span class="s">"dir2/file3"</span> <span class="p">})</span>
+<span class="n">client</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="s">"./dst.jpg"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -1253,15 +1241,6 @@ error will be returned. This timeout is configurable.</p>
         <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
     <span class="p">}</span>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
-
-    <span class="c">// Using the path option.</span>
-    <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
-    <span class="n">opts</span><span class="o">.</span><span class="n">Path</span> <span class="o">=</span> <span class="s">"dir2/file3"</span><span class="p">;</span>
-    <span class="n">err</span> <span class="o">:=</span> <span class="n">client</span><span class="o">.</span><span class="n">DownloadFile</span><span class="p">(</span><span class="s">"./dst.go"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">,</span> <span class="n">opts</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-        <span class="nb">panic</span><span class="p">(</span><span class="s">"Something went wrong, please try again.</span><span class="se">\n</span><span class="s">Error: "</span> <span class="o">+</span> <span class="n">err</span><span class="o">.</span><span class="n">Error</span><span class="p">())</span>
-    <span class="p">}</span>
-    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Download successful"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>It is possible to download files from uploaded directories if their paths
@@ -1271,7 +1250,7 @@ relative to the uploaded directory are known. There are two ways to do this.</p>
 a directory or a particular file. If specified, only that file or directory will
 be returned. The examples here use the directory structure from <a href="#uploading-a-directory">Uploading A
 Directory</a> to illustrate this.</p>
-<h3 id='the-path-additional-parameter'>The Path Additional Parameter</h3>
+<h3 id='the-path-additional-parameter-browserjs'>The Path Additional Parameter (BrowserJS)</h3>
 <p>There is a caveat to the above approach: the skylink is used as-is and any
 special characters in the appended path are not encoded. We recommend using the
 additional option <code>path</code> to let the SDK properly encode it for you.</p>
@@ -1307,10 +1286,10 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 <span class="n">skylink</span> <span class="o">=</span> <span class="s">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg"</span>
 
-<span class="n">md</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
+<span class="n">md</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_metadata</span><span class="p">(</span><span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
 
 <span class="k">package</span> <span class="n">main</span>
@@ -1335,7 +1314,7 @@ skynet metadata <span class="s2">"XABvi7JtJbQSMAcDwnUnmp2FKDPjg8_tTTFP4BwMSxVdEg
 the entire content. These API calls will perform a HEAD request that fetches the
 headers for the given skylink. These headers are identical to the ones that
 would be returned if the request had been a GET request.</p>
-<h3 id='parameters-2'>Parameters</h3>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1347,7 +1326,7 @@ would be returned if the request had been a GET request.</p>
 <td>The skylink that should be downloaded. The skylink can contain an optional path. This path can specify a directory or a particular file. If specified, only that file or directory will be returned.</td>
 </tr>
 </tbody></table>
-<h3 id='additional-options-2'>Additional Options</h3>
+<h3 id='additional-options'>Additional Options</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
   <span class="s2">"mode"</span>:     640,
@@ -1500,13 +1479,13 @@ These functions have only been implemented for Browser JS and NodeJS at the mome
 </tbody></table>
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 <span class="p">}</span>
@@ -1642,17 +1621,17 @@ These functions have only been implemented for BrowserJS and NodeJS at the momen
 </tbody></table>
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
-    <span class="na">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nl">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
+    <span class="nx">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript--node"><code><span class="p">{</span>
   <span class="nl">entry</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
-    <span class="na">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nl">datakey</span><span class="p">:</span> <span class="dl">"</span><span class="s2">foo</span><span class="dl">"</span><span class="p">,</span>
+    <span class="nx">data</span><span class="p">:</span> <span class="nb">Uint8Array</span><span class="p">([</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">97</span><span class="p">,</span> <span class="mi">114</span> <span class="p">]),</span> <span class="c1">// corresponds to string "bar"</span>
+    <span class="nx">revision</span><span class="p">:</span> <span class="nx">BigInt</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="nx">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">788dddf5232807611557a3dc0fa5f34012c2650526ba91d55411a2b04ba56164</span><span class="dl">"</span>
 <span class="p">}</span>
@@ -2227,7 +2206,7 @@ discoverable data can be read publicly.</p>
 </tbody></table>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 <span class="p">}</span>
@@ -2291,7 +2270,7 @@ for the given path.</p>
 </tbody></table>
 <h3 id='response-3'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">},</span>
   <span class="nx">dataLink</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sia://CABAB_1Dt0FJsxqsu_J4TodNCbCGvtFf1Uys_3EgzOlTcg</span><span class="dl">"</span>
 <span class="p">}</span>
@@ -2354,7 +2333,7 @@ for the given path.</p>
 </tbody></table>
 <h3 id='response-4'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><h2 id='setting-encrypted-json'>Setting Encrypted JSON</h2><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="c1">// Assume we have a logged-in mysky instance from above</span>
@@ -2417,7 +2396,7 @@ given path.</p>
 </tbody></table>
 <h3 id='response-5'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
   <span class="nl">data</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
+    <span class="nl">example</span><span class="p">:</span> <span class="dl">"</span><span class="s2">This is some example JSON data.</span><span class="dl">"</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><h1 id='crypto-utilities'>Crypto Utilities</h1>
@@ -2537,10 +2516,10 @@ skynet hns download <span class="s2">"doesn"</span> <span class="s2">"./dst.html
 </span>
 <span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 <span class="n">domain</span> <span class="o">=</span> <span class="s">"doesn"</span>
 
-<span class="n">client</span><span class="p">.</span><span class="n">download_file_hns</span><span class="p">(</span><span class="s">"./dst.html"</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">download_file_hns</span><span class="p">(</span><span class="s">"./dst.html"</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Handshake download successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -2627,10 +2606,10 @@ skynet hns resolve <span class="s2">"doesn"</span>
 </span>
 <span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 <span class="n">domain</span> <span class="o">=</span> <span class="s">"doesn"</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">resolve_hns</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">resolve_hns</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Handshake resolve successful"</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="c">// NOTE: this function has not yet been implemented for this SDK.</span>
 
@@ -2727,7 +2706,7 @@ to downloading the file.</p>
 <h3 id='additional-options'>Additional Options</h3>
 <p>See <a href="#downloading-a-file">Downloading A File</a>.</p>
 <h3 id='response-2'>Response</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="p">{</span>
-  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span> <span class="na">fruit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="na">size</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Large</span><span class="dl">'</span><span class="p">,</span> <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Red</span><span class="dl">'</span> <span class="p">},</span>
+  <span class="nl">data</span><span class="p">:</span> <span class="p">{</span> <span class="nl">fruit</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Apple</span><span class="dl">'</span><span class="p">,</span> <span class="nx">size</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Large</span><span class="dl">'</span><span class="p">,</span> <span class="nx">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Red</span><span class="dl">'</span> <span class="p">},</span>
   <span class="nx">contentType</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
   <span class="nx">metadata</span><span class="p">:</span> <span class="p">{</span>
     <span class="nl">filename</span><span class="p">:</span> <span class="dl">'</span><span class="s1">example_1.json</span><span class="dl">'</span><span class="p">,</span>
@@ -2959,9 +2938,9 @@ domain.</p>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">()</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">()</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="s">"image.jpg"</span><span class="p">,</span> <span class="p">{</span> <span class="s">"skynet_api_key"</span><span class="p">:</span> <span class="s">"foobar"</span> <span class="p">})</span>
 <span class="k">print</span><span class="p">(</span><span class="s">"Upload successful, skylink: "</span> <span class="o">+</span> <span class="n">skylink</span><span class="p">)</span>
 </code></pre></div><div class="highlight"><pre class="highlight go tab-go"><code><span class="k">package</span> <span class="n">main</span>
 
@@ -3020,9 +2999,9 @@ attackers to compromise your account!</p>
 <span class="p">})();</span>
 </code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">siaskynet</span> <span class="k">as</span> <span class="n">skynet</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="p">.</span><span class="n">SkynetClient</span><span class="p">();</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">skynet</span><span class="o">.</span><span class="n">SkynetClient</span><span class="p">();</span>
 
-<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="p">.</span><span class="n">upload_file</span><span class="p">(</span>
+<span class="n">skylink</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span>
   <span class="s">"image.jpg"</span><span class="p">,</span>
   <span class="p">{</span><span class="s">"api_key"</span><span class="p">:</span> <span class="s">"foobar"</span><span class="p">,</span> <span class="s">"custom_user_agent"</span><span class="p">:</span> <span class="s">"Sia-Agent"</span><span class="p">}</span>
 <span class="p">)</span>
