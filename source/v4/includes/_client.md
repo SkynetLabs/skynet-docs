@@ -8,6 +8,14 @@ initialization).
 
 ## Basic Portal Selection
 
+```shell--curl
+No client available.
+```
+
+```shell--cli
+No client available.
+```
+
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
@@ -59,22 +67,29 @@ options for default portal selection, such as configuration files. Please see
 
 ## Setting Connection Options
 
+```shell--curl
+No client available.
+```
+
+```shell--cli
+No client available.
+```
+
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
-const client = new SkynetClient("", { SkynetApiKey: "foobar" });
+const client = new SkynetClient("", { skynetApiKey: "foobar" });
 ```
 
 ```javascript--node
 const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 
-const client = new SkynetClient("", { SkynetApiKey: "foobar" });
+const client = new SkynetClient("", { skynetApiKey: "foobar" });
 ```
 
 ```python
 import siaskynet as skynet
 
-# Or SkynetClient() without arguments to use the default portal.
 client = skynet.SkynetClient("", { "skynet_api_key": "foobar" })
 ```
 

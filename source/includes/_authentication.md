@@ -7,7 +7,7 @@ curl -X POST -H "Skynet-Api-Key: <token>" "https://skynetfree.net/skynet/skyfile
 ```
 
 ```shell--cli
-Coming Soon
+skynet upload image.jpg --skynet-api-key foobar
 ```
 
 ```javascript--browser
@@ -16,11 +16,7 @@ import { SkynetClient } from "skynet-js";
 const client = new SkynetClient();
 
 async function authenticationExample() {
-  try {
-    const { skylink } = await client.uploadFile(file, { skynetAPIKey: "foobar" });
-  } catch (error) {
-    console.log(error);
-  }
+  const { skylink } = await client.uploadFile(file, { skynetApiKey: "foobar" });
 }
 ```
 
@@ -30,17 +26,39 @@ const { SkynetClient } = require('@skynetlabs/skynet-nodejs');
 const client = new SkynetClient();
 
 (async () => {
-	const skylink = await client.uploadFile("./image.jpg", { skynetAPIKey: "foobar" });
+	const skylink = await client.uploadFile("./image.jpg", { skynetApiKey: "foobar" });
 	console.log(`Upload successful, skylink: ${skylink}`);
 })();
 ```
 
 ```python
-Coming Soon
+import siaskynet as skynet
+
+client = skynet.SkynetClient()
+
+skylink = client.upload_file("image.jpg", { "skynet_api_key": "foobar" })
+print("Upload successful, skylink: " + skylink)
 ```
 
 ```go
-Coming Soon
+package main
+
+import (
+	"fmt"
+	skynet "github.com/SkynetLabs/go-skynet/v2"
+)
+
+var client = skynet.New()
+
+func main() {
+	opts := skynet.DefaultUploadOptions
+	opts.SkynetAPIKey = "foobar"
+	skylink, err := client.UploadFile("./image.jpg", opts)
+	if err != nil {
+		panic("Unable to upload: " + err.Error())
+	}
+	fmt.Printf("Upload successful, skylink: %v\n", skylink)
+}
 ```
 
 Certain Skynet portals are only available to signed-in or paid users. To access
