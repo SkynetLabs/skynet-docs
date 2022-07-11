@@ -98,7 +98,6 @@ Field | Description | Default
 `customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser. | `""`
 `customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default. | `""`
 `onUploadProgress` | Optional callback to track upload progress. See [Setting Additional Options](#setting-additional-options). | `undefined`
-`timeout_seconds` (Python-only) | The timeout in seconds. | `""`
 
 ### Response
 

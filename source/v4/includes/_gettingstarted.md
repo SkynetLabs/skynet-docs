@@ -137,6 +137,8 @@ Option | Description | Default
 `APIKey` | The API password used for [authentication](#api-authentication). | `""`
 `customUserAgent` | Allows changing the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
 `onUploadProgress` | Optional callback to track upload progress. | `undefined`
+`onDownloadProgress` | Optional callback to track download progress. | `undefined`
+`timeout_seconds` (Python-only) | The timeout in seconds. | `""`
 
 ## Useful Constants
 
