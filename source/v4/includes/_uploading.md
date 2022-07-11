@@ -97,7 +97,7 @@ Field | Description | Default
 `portalDirectoryFileFieldName` | The field name for directories on the portal. Usually should not need to be changed. | `"files[]"`
 `customFilename` | Custom filename. This is the filename that will be returned when downloading the file in a browser. | `""`
 `customDirname` | Custom dirname. If this is empty, the base name of the directory being uploaded will be used by default. | `""`
-`timeout_seconds` | The timeout in seconds. | `""`
+`onUploadProgress` | Optional callback to track upload progress. See [Setting Additional Options](#setting-additional-options). | `undefined`
 
 ### Response
 

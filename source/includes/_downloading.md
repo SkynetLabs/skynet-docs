@@ -79,6 +79,7 @@ Field | Description
 ----- | -----------
 `path` | The local path where the file should be downloaded to.
 `skylink` | The skylink that should be downloaded. The skylink can contain an optional path.
+`onDownloadProgress` | Optional callback to track download progress. See [Setting Additional Options](#setting-additional-options). | `undefined`
 
 ### Parameters (BrowserJS)
 
@@ -95,7 +96,6 @@ None.
 Field | Description | Default
 ----- | ----------- | -------
 `path` | The path to use after the skylink. See the next section.  | `""`
-`timeout_seconds` | The timeout in seconds. | `""`
 
 ### Response
 

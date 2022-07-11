@@ -113,16 +113,13 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 ```javascript--browser
 import { SkynetClient } from "skynet-js";
 
-// Set a custom user agent.
-const customUserAgent = "Sia-Agent";
-
 // Set an upload progress tracker.
 const onUploadProgress = (progress, { loaded, total }) => {
   console.info(`Progress ${Math.round(progress * 100)}%`);
 };
 
 // Initialize the client.
-const client = new SkynetClient("https://siasky.net", { customUserAgent, onUploadProgress });
+const client = new SkynetClient("https://siasky.net", { onUploadProgress });
 
 async function uploadExample() {
   try {
@@ -139,7 +136,9 @@ Option | Description | Default
 ------ | ----------- | -------
 `APIKey` | The API password used for [authentication](#api-authentication). | `""`
 `customUserAgent` | Allows changing the User Agent, as some portals may reject user agents that are not `Sia-Agent` for security reasons. | `""`
-`onUploadProgress` | Optional callback to track upload progress. | undefined
+`onUploadProgress` | Optional callback to track upload progress. | `undefined`
+`onDownloadProgress` | Optional callback to track download progress. | `undefined`
+`timeout_seconds` (Python-only) | The timeout in seconds. | `""`
 
 ## Useful Constants
 
