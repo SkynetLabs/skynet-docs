@@ -689,6 +689,16 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 <td>Optional callback to track upload progress.</td>
 <td><code>undefined</code></td>
 </tr>
+<tr>
+<td><code>onDownloadProgress</code></td>
+<td>Optional callback to track download progress.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>timeout_seconds</code> (Python-only)</td>
+<td>The timeout in seconds.</td>
+<td><code>&quot;&quot;</code></td>
+</tr>
 </tbody></table>
 <h2 id='useful-constants'>Useful Constants</h2>
 <p>Here are some constants exported by the SDKs which may be of use in applications.</p>
@@ -904,11 +914,6 @@ valid.
 <td><code>onUploadProgress</code></td>
 <td>Optional callback to track upload progress. See <a href="#setting-additional-options">Setting Additional Options</a>.</td>
 <td><code>undefined</code></td>
-</tr>
-<tr>
-<td><code>timeout_seconds</code> (Python-only)</td>
-<td>The timeout in seconds.</td>
-<td><code>&quot;&quot;</code></td>
 </tr>
 </tbody></table>
 <h3 id='response'>Response</h3><div class="highlight"><pre class="highlight shell tab-shell--curl"><code><span class="o">{</span>
@@ -1146,6 +1151,10 @@ error will be returned. This timeout is configurable.</p>
 <td><code>skylink</code></td>
 <td>The skylink that should be downloaded. The skylink can contain an optional path.</td>
 </tr>
+<tr>
+<td><code>onDownloadProgress</code></td>
+<td>Optional callback to track download progress. See <a href="#setting-additional-options">Setting Additional Options</a>.</td>
+</tr>
 </tbody></table>
 <h3 id='parameters-browserjs'>Parameters (BrowserJS)</h3>
 <table><thead>
@@ -1172,11 +1181,6 @@ error will be returned. This timeout is configurable.</p>
 <tr>
 <td><code>path</code></td>
 <td>The path to use after the skylink. See the next section.</td>
-<td><code>&quot;&quot;</code></td>
-</tr>
-<tr>
-<td><code>timeout_seconds</code></td>
-<td>The timeout in seconds.</td>
 <td><code>&quot;&quot;</code></td>
 </tr>
 </tbody></table>
