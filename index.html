@@ -649,16 +649,13 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 </aside>
 <h3 id='common-options'>Common Options</h3><div class="highlight"><pre class="highlight javascript tab-javascript--browser"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">SkynetClient</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">skynet-js</span><span class="dl">"</span><span class="p">;</span>
 
-<span class="c1">// Set a custom user agent.</span>
-<span class="kd">const</span> <span class="nx">customUserAgent</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Sia-Agent</span><span class="dl">"</span><span class="p">;</span>
-
 <span class="c1">// Set an upload progress tracker.</span>
 <span class="kd">const</span> <span class="nx">onUploadProgress</span> <span class="o">=</span> <span class="p">(</span><span class="nx">progress</span><span class="p">,</span> <span class="p">{</span> <span class="nx">loaded</span><span class="p">,</span> <span class="nx">total</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s2">`Progress </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">progress</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)}</span><span class="s2">%`</span><span class="p">);</span>
 <span class="p">};</span>
 
 <span class="c1">// Initialize the client.</span>
-<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">customUserAgent</span><span class="p">,</span> <span class="nx">onUploadProgress</span> <span class="p">});</span>
+<span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">SkynetClient</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://siasky.net</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="nx">onUploadProgress</span> <span class="p">});</span>
 
 <span class="k">async</span> <span class="kd">function</span> <span class="nx">uploadExample</span><span class="p">()</span> <span class="p">{</span>
   <span class="k">try</span> <span class="p">{</span>
@@ -690,7 +687,7 @@ The additional options object is optional in most SDKs but mandatory in Go. See
 <tr>
 <td><code>onUploadProgress</code></td>
 <td>Optional callback to track upload progress.</td>
-<td>undefined</td>
+<td><code>undefined</code></td>
 </tr>
 </tbody></table>
 <h2 id='useful-constants'>Useful Constants</h2>
@@ -904,7 +901,12 @@ valid.
 <td><code>&quot;&quot;</code></td>
 </tr>
 <tr>
-<td><code>timeout_seconds</code></td>
+<td><code>onUploadProgress</code></td>
+<td>Optional callback to track upload progress. See <a href="#setting-additional-options">Setting Additional Options</a>.</td>
+<td><code>undefined</code></td>
+</tr>
+<tr>
+<td><code>timeout_seconds</code> (Python-only)</td>
 <td>The timeout in seconds.</td>
 <td><code>&quot;&quot;</code></td>
 </tr>
