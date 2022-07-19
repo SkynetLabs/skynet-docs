@@ -3032,14 +3032,17 @@ attackers to compromise your account!</p>
     <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"Upload successful, skylink: %v</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">skylink</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Portals will likely require authentication on several of their endpoints. This
-is to prevent unwanted modifications to the blocklist, portal list, etc.</p>
+<aside class="warning">
+This option is for users who are running their own Skynet node (skyd instance)
+locally. This option is not related to skynetApiKey which authenticates with
+portals (not single nodes). You should probably be using that option, instead.
+</aside>
 
-<p>If you are authorized to use password-protected endpoints on a portal, you may
-authenticate yourself by setting the <code>APIKey</code> custom option when calling a
-function.</p>
+<p>When making requests to a locally-running Skynet node (<code>skyd</code> instance), you may
+authenticate yourself by setting the <code>APIKey</code> custom option. You would have to
+set the portal to localhost.</p>
 <h3 id='setting-the-user-agent'>Setting The User Agent</h3>
-<p>The portal may also require that certain sensitive requests contain a custom
+<p>The node may also require that certain sensitive requests contain a custom
 user agent header, usually <code>Sia-Agent</code>. This is for security purposes, as
 otherwise a malicious website could make requests to your local portal on your
 behalf and steal coins.</p>
@@ -3048,8 +3051,8 @@ behalf and steal coins.</p>
 default. You may change the user agent header by setting the <code>customUserAgent</code>
 custom option. See <a href="#setting-additional-options">Setting Additional Options</a>.</p>
 <h3 id='more-information'>More Information</h3>
-<p>For more information about authentication on portals and local <code>siad</code> instances
-please see <a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
+<p>For more information about authentication on local <code>skyd</code> instances please see
+<a href="https://sia.tech/docs/#authentication">the Sia Docs</a>.</p>
 <h1 id='updating-from-v3-browserjs'>Updating From v3 (BrowserJS)</h1>
 <p><a href="https://github.com/SkynetLabs/skynet-js/blob/master/CHANGELOG.md">Changelog</a></p>
 
